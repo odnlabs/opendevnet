@@ -24,13 +24,21 @@ yarn-error.log*
 
 # local env files
 .env
+.env.production
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
-
 # vercel
 .vercel
+
+# Custom
+nginx.conf
+odn.crt
+odn.key
+dist/
+tmp/
+
+# Rust
+**/target/
