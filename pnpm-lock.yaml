@@ -14,9 +14,9 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
+      eslint-config-odn:
         specifier: workspace:*
-        version: link:packages/eslint-config-custom
+        version: link:packages/eslint-config-odn
       prettier:
         specifier: ^2.5.1
         version: 2.8.8
@@ -48,9 +48,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.7
         version: 18.2.3
-      eslint-config-custom:
+      eslint-config-odn:
         specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
+        version: link:../../packages/eslint-config-odn
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -82,9 +82,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.0.7
         version: 18.2.3
-      eslint-config-custom:
+      eslint-config-odn:
         specifier: workspace:*
-        version: link:../../packages/eslint-config-custom
+        version: link:../../packages/eslint-config-odn
       tsconfig:
         specifier: workspace:*
         version: link:../../packages/tsconfig
@@ -92,7 +92,7 @@ importers:
         specifier: ^4.5.3
         version: 4.9.5
 
-  packages/eslint-config-custom:
+  packages/eslint-config-odn:
     dependencies:
       eslint-config-next:
         specifier: ^13.4.1
@@ -120,9 +120,9 @@ importers:
       eslint:
         specifier: ^7.32.0
         version: 7.32.0
-      eslint-config-custom:
+      eslint-config-odn:
         specifier: workspace:*
-        version: link:../eslint-config-custom
+        version: link:../eslint-config-odn
       react:
         specifier: ^17.0.2
         version: 17.0.2
