@@ -42,3 +42,6 @@ odn.crt
 odn.key
 dist/
 tmp/
+
+# Rust
+**/target/
