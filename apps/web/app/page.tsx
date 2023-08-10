@@ -1,10 +1,10 @@
-import { Button, Header } from "ui";
+import { Button } from 'ui';
 
 export default function Page() {
   return (
     <>
-      <Header text="Web" />
-      <Button />
+      <p className="text-4xl font-bold uppercase bg-blue-500">Hello world</p>
+      <Button title="hello" />
     </>
   );
 }
