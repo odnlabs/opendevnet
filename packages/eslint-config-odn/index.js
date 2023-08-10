@@ -9,7 +9,6 @@ module.exports = {
     'plugin:import/recommended', // Import plugin's recommended rules
     'plugin:import/typescript', // Import plugin's TypeScript rules
     'next', // Next.js ESLint rules
-    'turbo', // Turbo ESLint rules
     'prettier', // Prettier rules,
   ],
   plugins: ['@typescript-eslint', 'jsdoc'],
