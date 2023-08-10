@@ -1,10 +1,12 @@
 {
+  "name": "opendevnet",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "turbo run lint"
   },
   "devDependencies": {
     "@turbo/gen": "^1.9.7",
@@ -13,6 +15,5 @@
     "prettier": "^2.5.1",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10",
-  "name": "opendevnet"
+  "packageManager": "pnpm@8.6.10"
 }
