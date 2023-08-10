@@ -2,9 +2,6 @@
   "name": "eslint-config-odn",
   "version": "0.0.0",
   "main": "index.js",
-  "publishConfig": {
-    "access": "public"
-  },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.10",
     "@typescript-eslint/eslint-plugin": "^6.3.0",
@@ -12,7 +9,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "^13.4.1",
     "eslint-config-prettier": "^8.8.0",
-    "eslint-config-turbo": "^1.9.3",
     "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-jsdoc": "^46.4.6",
@@ -20,5 +16,8 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "7.28.0",
     "eslint-plugin-tsdoc": "^0.2.17"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
