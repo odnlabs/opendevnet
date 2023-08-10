@@ -12,9 +12,10 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
     "lint": { "dependsOn": ["^build"] },
+    "check-types": {},
     "start": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
