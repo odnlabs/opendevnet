@@ -1,15 +1,30 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": ["**/.env.*local"],
+  "globalEnv": [
+    "NODE_ENV",
+    "DEBUG",
+    "API_HTTP_PORT",
+    "PUBLIC_API_URL",
+    "PUBLIC_WEBSITE_URL",
+    "MONGODB_URI"
+  ],
+  "globalDependencies": ["**/.env.*local", "**/.env.*production"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "lint": {},
+    "lint": { "dependsOn": ["^build"] },
+    "start": {
+      "dependsOn": ["^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "clean": {
+      "cache": false
     }
   }
 }
