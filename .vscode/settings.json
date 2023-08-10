@@ -1,4 +1,5 @@
 {
+  "rust-analyzer.linkedProjects": [".\\apps\\api\\Cargo.toml"],
   "eslint.workingDirectories": [
     {
       "pattern": "./apps/*"
