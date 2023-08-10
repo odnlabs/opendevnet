@@ -1,13 +1,192 @@
 const colors = require('tailwindcss/colors');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
-  content: [
-    // app content
-    `src/**/*.{js,ts,jsx,tsx}`,
-    // include packages if not transpiling
-    '../../packages/**/*.{js,ts,jsx,tsx}',
-  ],
   theme: {
+    colors: {
+      ...colors,
+      // Primary
+      'primary': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--primary), ${opacityValue})`
+          : `rgba(var(--primary))`;
+      },
+      'primary-hover': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--primary-hover), ${opacityValue})`
+          : `rgba(var(--primary-hover))`;
+      },
+      'primary-active': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--primary-active), ${opacityValue})`
+          : `rgba(var(--primary-active))`;
+      },
+      'secondary': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--secondary), ${opacityValue})`
+          : `rgba(var(--secondary))`;
+      },
+      'secondary-hover': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--secondary-hover), ${opacityValue})`
+          : `rgba(var(--secondary-hover))`;
+      },
+      'secondary-active': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--secondary-active), ${opacityValue})`
+          : `rgba(var(--secondary-active))`;
+      },
+      'default': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--default), ${opacityValue})`
+          : `rgba(var(--default))`;
+      },
+      'default-hover': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--default-hover), ${opacityValue})`
+          : `rgba(var(--default-hover))`;
+      },
+      'default-active': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--default-active), ${opacityValue})`
+          : `rgba(var(--default-active))`;
+      },
+
+      // Text
+      'text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--text), ${opacityValue})`
+          : `rgba(var(--text))`;
+      },
+      'text-primary': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--text-primary), ${opacityValue})`
+          : `rgba(var(--text-primary))`;
+      },
+      'text-secondary': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--text-secondary), ${opacityValue})`
+          : `rgba(var(--text-secondary))`;
+      },
+      'text-faint': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--text-faint), ${opacityValue})`
+          : `rgba(var(--text-faint))`;
+      },
+      'text-button': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--text-button), ${opacityValue})`
+          : `rgba(var(--text-button))`;
+      },
+
+      // Background
+      'background': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--background), ${opacityValue})`
+          : `rgba(var(--background))`;
+      },
+      'shade': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--shade), ${opacityValue})`
+          : `rgba(var(--shade))`;
+      },
+      'tooltip': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--tooltip), ${opacityValue})`
+          : `rgba(var(--tooltip))`;
+      },
+      'tooltip-text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--tooltip-text), ${opacityValue})`
+          : `rgba(var(--tooltip-text))`;
+      },
+
+      // System
+      'warning': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--warning), ${opacityValue})`
+          : `rgba(var(--warning))`;
+      },
+      'warning-hover': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--warning-hover), ${opacityValue})`
+          : `rgba(var(--warning-hover))`;
+      },
+      'warning-active': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--warning-active), ${opacityValue})`
+          : `rgba(var(--warning-active))`;
+      },
+      'success': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--success), ${opacityValue})`
+          : `rgba(var(--success))`;
+      },
+      'success-hover': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--success-hover), ${opacityValue})`
+          : `rgba(var(--success-hover))`;
+      },
+      'success-active': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--success-active), ${opacityValue})`
+          : `rgba(var(--success-active))`;
+      },
+      'danger': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--danger), ${opacityValue})`
+          : `rgba(var(--danger))`;
+      },
+      'danger-hover': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--danger-hover), ${opacityValue})`
+          : `rgba(var(--danger-hover))`;
+      },
+      'danger-active': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--danger-active), ${opacityValue})`
+          : `rgba(var(--danger-active))`;
+      },
+
+      // Components
+      'link': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--link), ${opacityValue})`
+          : `rgba(var(--link))`;
+      },
+      'input': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--input), ${opacityValue})`
+          : `rgba(var(--input))`;
+      },
+      'input-focus': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--input-focus), ${opacityValue})`
+          : `rgba(var(--input-focus))`;
+      },
+      'border': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--border), ${opacityValue})`
+          : `rgba(var(--border))`;
+      },
+
+      // Header
+      'header': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--header), ${opacityValue})`
+          : `rgba(var(--header))`;
+      },
+      'header-border': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--header-border), ${opacityValue})`
+          : `rgba(var(--header-border))`;
+      },
+      'header-text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--header-text), ${opacityValue})`
+          : `rgba(var(--header-text))`;
+      },
+    },
     extend: {
       width: {
         '1/2': '50%',
