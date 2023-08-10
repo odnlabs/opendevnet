@@ -2,18 +2,34 @@
   "name": "opendevnet",
   "private": true,
   "license": "CC-BY-NC-SA-4.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "lint": "turbo run lint"
+    "clean": "turbo run clean",
+    "dev": "dotenv -e .env.local -- turbo run dev",
+    "fix": "manypkg fix",
+    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\" --ignore-path=.prettierignore",
+    "postinstall": "manypkg check",
+    "lint": "turbo run lint",
+    "start": "dotenv -- turbo run start"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@manypkg/cli": "^0.21.0",
     "@turbo/gen": "^1.10.12",
+    "dotenv-cli": "^7.2.1",
     "eslint": "^7.32.0",
     "eslint-config-odn": "workspace:*",
     "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10"
+  "packageManager": "pnpm@8.6.10",
+  "manypkg": {
+    "ignoredRules": [
+      "INTERNAL_MISMATCH"
+    ]
+  }
 }
