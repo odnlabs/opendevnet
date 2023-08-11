@@ -19,7 +19,7 @@ const NavButton: React.FC<{ btn: DefaultButton }> = ({ btn }) => {
   return (
     <Link
       href={btn.route}
-      className={`block w-10 h-10 p-2 mt-3 transition duration-200 rounded-xl ${
+      className={`block w-10 h-10 p-2 mt-4 transition duration-200 rounded-xl ${
         pathname === btn.route
           ? 'text-text-button bg-primary ring-2 ring-secondary ring-offset-4 ring-offset-navigation-bar'
           : 'text-primary bg-background hover:bg-secondary active:bg-secondary-hover'
@@ -59,7 +59,7 @@ export const NavigationBar: React.FC = () => {
           />
         </div>
 
-        <div className="w-8 h-px mx-auto my-3 bg-white/20"></div>
+        <div className="w-8 h-px mx-auto my-4 bg-text-button/20"></div>
 
         <div className="px-3">
           {defaultButtons.map((btn) => (
