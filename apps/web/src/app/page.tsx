@@ -1,4 +1,8 @@
-import { Button } from 'ui';
+import { Button } from '@odnlabs/ui';
+
+export const metadata = {
+  title: 'Home | Open Dev Net',
+};
 
 export default function Page() {
   return (

@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@types/node": "^17.0.45",
+    "tsconfig": "workspace:*",
     "tsup": "^7.1.0"
   },
   "publishConfig": {
