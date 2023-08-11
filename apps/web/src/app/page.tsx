@@ -7,7 +7,7 @@ export const metadata = {
 export default function Page() {
   return (
     <>
-      <Button title="Submit" />
+      <Button title="Submit" variant="secondary" />
     </>
   );
 }
