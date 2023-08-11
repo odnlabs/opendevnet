@@ -1,6 +1,10 @@
-// styles
+// Styles
 import './styles.css';
 
-// components
-export * from './Button';
-export * from './Card';
+// Types
+export * from './typings/core';
+
+// Components
+export * from './components/Button';
+export * from './components/Toasts/Toast';
+export * from './components/Toasts/Toasts';
