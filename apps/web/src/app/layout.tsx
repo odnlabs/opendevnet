@@ -1,5 +1,12 @@
 import '@odnlabs/ui/styles.css';
+import { Outfit } from 'next/font/google';
+
 import '../styles/globals.css';
+
+const font = Outfit({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin', 'latin-ext'],
+});
 
 export const metadata = {
   title: 'Open Dev Net',
@@ -14,6 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body>{children}</body>
     </html>
   );
