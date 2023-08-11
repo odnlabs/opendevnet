@@ -1,6 +1,12 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  content: [
+    // app content
+    `src/**/*.{js,ts,jsx,tsx}`,
+    // include packages if not transpiling
+    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     colors: {
       ...colors,
@@ -35,20 +41,20 @@ module.exports = {
           ? `rgba(var(--secondary-active), ${opacityValue})`
           : `rgba(var(--secondary-active))`;
       },
-      'default': ({ opacityValue }) => {
+      'secondary': ({ opacityValue }) => {
         return opacityValue !== undefined
-          ? `rgba(var(--default), ${opacityValue})`
-          : `rgba(var(--default))`;
+          ? `rgba(var(--secondary), ${opacityValue})`
+          : `rgba(var(--secondary))`;
       },
-      'default-hover': ({ opacityValue }) => {
+      'secondary-hover': ({ opacityValue }) => {
         return opacityValue !== undefined
-          ? `rgba(var(--default-hover), ${opacityValue})`
-          : `rgba(var(--default-hover))`;
+          ? `rgba(var(--secondary-hover), ${opacityValue})`
+          : `rgba(var(--secondary-hover))`;
       },
-      'default-active': ({ opacityValue }) => {
+      'secondary-active': ({ opacityValue }) => {
         return opacityValue !== undefined
-          ? `rgba(var(--default-active), ${opacityValue})`
-          : `rgba(var(--default-active))`;
+          ? `rgba(var(--secondary-active), ${opacityValue})`
+          : `rgba(var(--secondary-active))`;
       },
 
       // Text
@@ -175,15 +181,30 @@ module.exports = {
           ? `rgba(var(--header), ${opacityValue})`
           : `rgba(var(--header))`;
       },
-      'header-border': ({ opacityValue }) => {
-        return opacityValue !== undefined
-          ? `rgba(var(--header-border), ${opacityValue})`
-          : `rgba(var(--header-border))`;
-      },
       'header-text': ({ opacityValue }) => {
         return opacityValue !== undefined
           ? `rgba(var(--header-text), ${opacityValue})`
           : `rgba(var(--header-text))`;
+      },
+      'navigation-bar': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--navigation-bar), ${opacityValue})`
+          : `rgba(var(--navigation-bar))`;
+      },
+      'navigation-bar-text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--navigation-bar-text), ${opacityValue})`
+          : `rgba(var(--navigation-bar-text))`;
+      },
+      'sidebar': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--sidebar), ${opacityValue})`
+          : `rgba(var(--sidebar))`;
+      },
+      'sidebar-text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--sidebar-text), ${opacityValue})`
+          : `rgba(var(--sidebar-text))`;
       },
     },
     extend: {
