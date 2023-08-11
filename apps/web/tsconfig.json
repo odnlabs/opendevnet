@@ -7,6 +7,7 @@
       "@config": ["./src/config.ts"],
       "@constants/*": ["./src/constants/*"],
       "@components": ["./src/components"],
+      "@components/layout": ["./src/components/layout"],
       "@styles/*": ["./src/styles/*"],
       "@slices/*": ["./src/slices/*"],
       "@typings/*": ["./src/typings/*"],

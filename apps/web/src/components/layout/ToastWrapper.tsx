@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { toastsState } from '@slices/toasts.slice';
 
-export const ToastWrapper = () => {
+export const ToastWrapper: React.FC = () => {
   const dispatch = useDispatch();
 
   const toasts = useSelector(toastsState);
