@@ -17,12 +17,14 @@
   /* System */
   --link: 91, 169, 255;
   /* Elements */
-  --background: 0, 0, 0;
-  --shade: 255, 255, 255;
+  --background: 26, 27, 38;
+  --shade: 22, 22, 30;
   --tooltip: 29, 32, 43;
   --tooltip-text: 255, 255, 255;
   /* Header */
-  --header: var(--shade);
+  --header: 22, 22, 30;
+  --navigation-bar: 11, 12, 16;
+  --sidebar: 17, 18, 25;
   /* System (no change) */
   --warning: 253, 182, 34;
   --warning-hover: 254, 207, 112;
@@ -36,5 +38,5 @@
   /* Components */
   --input: 229, 231, 235;
   --input-focus: 255, 255, 255;
-  --border: 219, 222, 227;
+  --border: 14, 14, 20;
 }
