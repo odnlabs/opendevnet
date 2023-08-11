@@ -2,28 +2,27 @@
 
 :root {
   /* Primary */
-  --primary: 3, 130, 144;
-  --primary-hover: 2, 163, 181;
-  --primary-active: 2, 198, 219;
-  --default: 231, 234, 237;
-  --default-hover: 217, 221, 225;
-  --default-active: 193, 199, 206;
-  --page: 189, 233, 227;
-  /* Header */
-  --header: var(--shade);
+  --primary: 64, 155, 255;
+  --primary-hover: 32, 138, 255;
+  --primary-active: 0, 120, 253;
+  --default: 50, 50, 50;
+  --default-hover: 50, 50, 50;
+  --default-active: 50, 50, 50;
   /* Text */
-  --text: 0, 0, 0;
-  --text-primary: 55, 65, 81;
-  --text-secondary: 75, 85, 107;
-  --text-faint: 135, 141, 156;
+  --text: 255, 255, 255;
+  --text-primary: 255, 255, 255;
+  --text-secondary: 255, 255, 255;
+  --text-faint: 255, 255, 255;
   --text-button: 255, 255, 255;
   /* System */
   --link: 91, 169, 255;
   /* Elements */
-  --background: 245, 245, 245;
+  --background: 0, 0, 0;
   --shade: 255, 255, 255;
   --tooltip: 29, 32, 43;
   --tooltip-text: 255, 255, 255;
+  /* Header */
+  --header: var(--shade);
   /* System (no change) */
   --warning: 253, 182, 34;
   --warning-hover: 254, 207, 112;
