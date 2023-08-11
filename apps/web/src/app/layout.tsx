@@ -1,8 +1,13 @@
 import '@odnlabs/ui/styles.css';
 import { Roboto } from 'next/font/google';
 
-import Providers from 'src/components/layout/Providers';
-import { ToastWrapper } from 'src/components/layout/ToastWrapper';
+import {
+  Header,
+  NavigationBar,
+  Sidebar,
+  ToastWrapper,
+} from '@components/layout';
+import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
 
 const font = Roboto({
@@ -30,13 +35,16 @@ export default function RootLayout({
         <body className={font.className}>
           <ToastWrapper />
 
-          <div className="relative h-14"></div>
+          <div className="relative h-10"></div>
           <div className="flex">
-            {/* <Header /> */}
+            <Header />
+
+            <NavigationBar />
+
+            <Sidebar />
 
             <div className="flex-grow">
               <div className="min-h-[80vh]">{children}</div>
-              {/* <Footer /> */}
             </div>
           </div>
         </body>
