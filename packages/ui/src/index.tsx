@@ -5,7 +5,6 @@ import './styles.css';
 export * from './typings/core';
 
 // Components
-export * from './Button';
-export * from './Card';
-export * from './Toasts/Toast';
-export * from './Toasts/Toasts';
+export * from './components/Button';
+export * from './components/Toasts/Toast';
+export * from './components/Toasts/Toasts';
