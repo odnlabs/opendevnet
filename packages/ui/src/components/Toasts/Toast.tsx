@@ -90,7 +90,11 @@ export const Toast: React.FC<Props> = ({ toast, removeToast }) => {
 
         {/* Content */}
         {toast.description && (
-          <div className={`px-4 pb-4 pt-3 ${typeBackground[toast.type]}`}>
+          <div
+            className={`px-4 pb-4 pt-3 rounded-b-lg ${
+              typeBackground[toast.type]
+            }`}
+          >
             <p className="mt-0.5 text-sm leading-4 text-gray-300">
               {toast.description}
             </p>
