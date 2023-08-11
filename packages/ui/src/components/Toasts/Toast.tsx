@@ -6,7 +6,7 @@ import { HiCheckCircle } from 'react-icons/hi';
 import { IoWarning } from 'react-icons/io5';
 import { MdClose, MdError, MdInfo } from 'react-icons/md';
 
-import { IToast, ToastType } from '../typings/core';
+import { IToast, ToastType } from '../../typings/core';
 
 const typeBorder = {
   [ToastType.Info]: 'border-blue-400/20',
