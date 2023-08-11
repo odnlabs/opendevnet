@@ -1,10 +1,12 @@
 import '@odnlabs/ui/styles.css';
-import { Outfit } from 'next/font/google';
+import { Roboto } from 'next/font/google';
 
+import Providers from 'src/components/layout/Providers';
+import { ToastWrapper } from 'src/components/layout/ToastWrapper';
 import '../styles/globals.css';
 
-const font = Outfit({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+const font = Roboto({
+  weight: ['100', '300', '400', '500', '700', '900'],
   subsets: ['latin', 'latin-ext'],
 });
 
@@ -24,7 +26,21 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body>{children}</body>
+      <Providers>
+        <body className={font.className}>
+          <ToastWrapper />
+
+          <div className="relative h-14"></div>
+          <div className="flex">
+            {/* <Header /> */}
+
+            <div className="flex-grow">
+              <div className="min-h-[80vh]">{children}</div>
+              {/* <Footer /> */}
+            </div>
+          </div>
+        </body>
+      </Providers>
     </html>
   );
 }

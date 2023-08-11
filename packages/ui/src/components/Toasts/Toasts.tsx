@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { IToast } from '../typings/core';
+import { IToast } from '../../typings/core';
 import { Toast } from './Toast';
 
 interface Props {

@@ -6,7 +6,7 @@
     "paths": {
       "@config": ["./src/config.ts"],
       "@constants/*": ["./src/constants/*"],
-      "@components/*": ["./src/components/*"],
+      "@components": ["./src/components"],
       "@styles/*": ["./src/styles/*"],
       "@slices/*": ["./src/slices/*"],
       "@typings/*": ["./src/typings/*"],
