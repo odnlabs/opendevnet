@@ -5,14 +5,14 @@
   --primary: 64, 155, 255;
   --primary-hover: 32, 138, 255;
   --primary-active: 0, 120, 253;
-  --default: 50, 50, 50;
-  --default-hover: 50, 50, 50;
-  --default-active: 50, 50, 50;
+  --secondary: 46, 48, 67;
+  --secondary-hover: 64, 67, 94;
+  --secondary-active: 83, 87, 121;
   /* Text */
   --text: 255, 255, 255;
-  --text-primary: 255, 255, 255;
-  --text-secondary: 255, 255, 255;
-  --text-faint: 255, 255, 255;
+  --text-primary: 223, 223, 223;
+  --text-secondary: 199, 199, 200;
+  --text-faint: 130, 130, 133;
   --text-button: 255, 255, 255;
   /* System */
   --link: 91, 169, 255;

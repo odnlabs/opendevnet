@@ -41,20 +41,20 @@ module.exports = {
           ? `rgba(var(--secondary-active), ${opacityValue})`
           : `rgba(var(--secondary-active))`;
       },
-      'default': ({ opacityValue }) => {
+      'secondary': ({ opacityValue }) => {
         return opacityValue !== undefined
-          ? `rgba(var(--default), ${opacityValue})`
-          : `rgba(var(--default))`;
+          ? `rgba(var(--secondary), ${opacityValue})`
+          : `rgba(var(--secondary))`;
       },
-      'default-hover': ({ opacityValue }) => {
+      'secondary-hover': ({ opacityValue }) => {
         return opacityValue !== undefined
-          ? `rgba(var(--default-hover), ${opacityValue})`
-          : `rgba(var(--default-hover))`;
+          ? `rgba(var(--secondary-hover), ${opacityValue})`
+          : `rgba(var(--secondary-hover))`;
       },
-      'default-active': ({ opacityValue }) => {
+      'secondary-active': ({ opacityValue }) => {
         return opacityValue !== undefined
-          ? `rgba(var(--default-active), ${opacityValue})`
-          : `rgba(var(--default-active))`;
+          ? `rgba(var(--secondary-active), ${opacityValue})`
+          : `rgba(var(--secondary-active))`;
       },
 
       // Text
