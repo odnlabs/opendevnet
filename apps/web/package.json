@@ -9,15 +9,24 @@
     "start": "next start"
   },
   "dependencies": {
+    "@odnlabs/ui": "workspace:*",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@splidejs/react-splide": "^0.7.12",
+    "builder-validation": "^0.0.3",
     "next": "^13.4.1",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "ui": "workspace:*"
+    "react-icons": "^4.10.1",
+    "react-redux": "^8.1.2",
+    "redux": "^4.2.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.45",
     "@types/react": "^18.2.5",
     "@types/react-dom": "^18.2.0",
+    "@types/uuid": "^9.0.2",
     "autoprefixer": "^10.4.14",
     "eslint-config-odn": "workspace:*",
     "postcss": "^8.4.20",
