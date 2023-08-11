@@ -181,15 +181,30 @@ module.exports = {
           ? `rgba(var(--header), ${opacityValue})`
           : `rgba(var(--header))`;
       },
-      'header-border': ({ opacityValue }) => {
-        return opacityValue !== undefined
-          ? `rgba(var(--header-border), ${opacityValue})`
-          : `rgba(var(--header-border))`;
-      },
       'header-text': ({ opacityValue }) => {
         return opacityValue !== undefined
           ? `rgba(var(--header-text), ${opacityValue})`
           : `rgba(var(--header-text))`;
+      },
+      'navigation-bar': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--navigation-bar), ${opacityValue})`
+          : `rgba(var(--navigation-bar))`;
+      },
+      'navigation-bar-text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--navigation-bar-text), ${opacityValue})`
+          : `rgba(var(--navigation-bar-text))`;
+      },
+      'sidebar': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--sidebar), ${opacityValue})`
+          : `rgba(var(--sidebar))`;
+      },
+      'sidebar-text': ({ opacityValue }) => {
+        return opacityValue !== undefined
+          ? `rgba(var(--sidebar-text), ${opacityValue})`
+          : `rgba(var(--sidebar-text))`;
       },
     },
     extend: {
