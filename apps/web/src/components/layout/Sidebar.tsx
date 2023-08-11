@@ -48,7 +48,7 @@ export const Sidebar: React.FC = () => {
             </button>
           ))}
 
-          <div className="w-full h-px mx-auto my-3 bg-text-button/10"></div>
+          <div className="w-full h-px mx-auto my-3 bg-text/10"></div>
         </div>
       </div>
     </>

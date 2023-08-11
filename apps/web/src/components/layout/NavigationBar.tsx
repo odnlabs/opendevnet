@@ -59,7 +59,7 @@ export const NavigationBar: React.FC = () => {
           />
         </div>
 
-        <div className="w-8 h-px mx-auto my-4 bg-text-button/20"></div>
+        <div className="w-8 h-px mx-auto my-4 bg-text/20"></div>
 
         <div className="px-3">
           {defaultButtons.map((btn) => (
