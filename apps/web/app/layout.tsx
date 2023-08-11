@@ -1,4 +1,3 @@
-import 'ui/styles.css';
 import '../styles/globals.css';
 
 export const metadata = {
