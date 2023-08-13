@@ -18,7 +18,7 @@ const font = Roboto({
 export const metadata = {
   title: 'Open Dev Net',
   description:
-    'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows. ',
+    'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
 };
 
 export default function RootLayout({
