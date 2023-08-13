@@ -7,14 +7,14 @@
     "@typescript-eslint/eslint-plugin": "^6.3.0",
     "@typescript-eslint/parser": "^6.3.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-next": "^13.4.1",
-    "eslint-config-prettier": "^8.8.0",
+    "eslint-config-next": "^13.4.13",
+    "eslint-config-prettier": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.0",
     "eslint-plugin-import": "^2.28.0",
     "eslint-plugin-jsdoc": "^46.4.6",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "7.28.0",
+    "eslint-plugin-react": "7.33.1",
     "eslint-plugin-tsdoc": "^0.2.17"
   },
   "publishConfig": {
