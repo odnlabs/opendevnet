@@ -2,8 +2,7 @@ import type { Config } from 'tailwindcss';
 
 import sharedConfig from 'tailwind-config/tailwind.config.js';
 
-const config: Config = {
-  content: [],
+const config: Omit<Config, 'content'> = {
   presets: [sharedConfig],
 };
 
