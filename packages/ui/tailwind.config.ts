@@ -4,6 +4,7 @@ import sharedConfig from 'tailwind-config/tailwind.config.js';
 
 const config: Config = {
   content: [],
+  prefix: 'ui-',
   presets: [sharedConfig],
 };
 
