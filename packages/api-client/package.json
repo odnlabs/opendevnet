@@ -11,9 +11,9 @@
     "axios": "^1.4.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.45",
+    "@types/node": "^20.4.10",
     "tsconfig": "workspace:*",
-    "tsup": "^7.1.0"
+    "tsup": "^7.2.0"
   },
   "publishConfig": {
     "access": "public"
