@@ -34,7 +34,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-default-active;
+  @apply bg-secondary-active;
   -webkit-border-radius: 8px;
 }
 
@@ -183,7 +183,7 @@ table {
 }
 
 tbody tr {
-  @apply odd:bg-default;
+  @apply odd:bg-secondary;
 }
 
 th,
@@ -201,7 +201,7 @@ td {
 
 /* Code */
 .code {
-  @apply text-[14px] py-0.5 px-1.5 mx-0 rounded-sm bg-default-hover text-text font-semibold cursor-auto transition duration-200;
+  @apply text-[14px] py-0.5 px-1.5 mx-0 rounded-sm bg-secondary-hover text-text font-semibold cursor-auto transition duration-200;
 }
 
 /* Animated gradient */
