@@ -19,10 +19,10 @@ const NavButton: React.FC<{ btn: DefaultButton }> = ({ btn }) => {
   return (
     <Link
       href={btn.route}
-      className={`block w-10 h-10 p-2 mt-4 transition duration-200 rounded-xl ${
+      className={`block w-10 h-10 p-2 mt-4 transition duration-200 rounded-xl ring-secondary ring-offset-4 ring-offset-navigation-bar ${
         pathname === btn.route
-          ? 'text-text-button bg-primary ring-2 ring-secondary ring-offset-4 ring-offset-navigation-bar'
-          : 'text-primary bg-background hover:bg-secondary active:bg-secondary-hover'
+          ? 'text-text-button bg-primary ring-2'
+          : 'text-primary bg-background hover:bg-secondary active:bg-secondary-hover focus:ring-2'
       }`}
     >
       <btn.icon className="w-6 h-6" />
