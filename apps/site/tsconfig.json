@@ -1,0 +1,18 @@
+{
+  "extends": "tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@config": ["./src/config.ts"],
+      "@constants/*": ["./src/constants/*"],
+      "@components": ["./src/components"],
+      "@components/layout": ["./src/components/layout"],
+      "@styles/*": ["./src/styles/*"],
+      "@slices/*": ["./src/slices/*"],
+      "@typings/*": ["./src/typings/*"],
+      "@utils/*": ["./src/utils/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

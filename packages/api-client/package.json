@@ -1,0 +1,21 @@
+{
+  "name": "api-client",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs --dts",
+    "dev": "pnpm run build -- --watch",
+    "lint": "eslint --ext .ts src/"
+  },
+  "dependencies": {
+    "axios": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.10",
+    "tsconfig": "workspace:*",
+    "tsup": "^7.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

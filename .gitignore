@@ -1,36 +1,40 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+# Dependencies
 node_modules
 .pnp
 .pnp.js
 
-# testing
+# Testing
 coverage
 
-# next.js
+# Next.js
 .next/
 out/
-build
 
-# misc
+# Misc
 .DS_Store
 *.pem
 
-# debug
+# Debug
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+tmp/
 
-# local env files
+# Environment files
 .env
+.env.production
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
+# Production
+build
+dist/
+nginx.conf
+odn.crt
+odn.key
 
-# vercel
-.vercel
+
+# Rust
+**/target/

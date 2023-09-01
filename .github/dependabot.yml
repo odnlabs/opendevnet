@@ -1,0 +1,58 @@
+version: 2
+updates:
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+
+  - package-ecosystem: 'npm'
+    directory: '/apps/web'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/apps/api'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/packages/api-client'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/packages/eslint-config-odn'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/packages/ui'
+    schedule:
+      interval: 'daily'
+    target-branch: 'development'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
