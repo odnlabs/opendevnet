@@ -10,6 +10,7 @@
     "build": "nx run-many -t build",
     "clean": "nx run-many -t clean",
     "dev": "dotenv -e .env.local -- nx run-many -t dev",
+    "dev:api": "dotenv -e .env.local -- nx run api:dev",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "postinstall": "manypkg check",
