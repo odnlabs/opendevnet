@@ -35,7 +35,7 @@ export default function RootLayout({
         <body className={font.className}>
           <ToastWrapper />
 
-          <div className="relative h-10"></div>
+          <div className="relative h-14"></div>
           <div className="flex">
             <Header />
 

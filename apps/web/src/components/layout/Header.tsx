@@ -1,38 +1,56 @@
 import Image from 'next/image';
 
+import { HiChevronDown } from 'react-icons/hi';
+import { RiNotification3Line } from 'react-icons/ri';
+
+import config from '@config';
+
 export const Header: React.FC = () => {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full h-10 border-b bg-header border-border">
+      <div className="fixed top-0 left-0 w-full h-14 bg-header">
         <div className="flex justify-between">
           {/* Branding */}
-          <div className="flex px-2 py-1.5">
-            <div className="py-0.5 flex">
-              <Image
-                src="/logo.png"
-                height={30}
-                width={30}
-                alt="Logo"
-                className="w-6 h-6 mr-1"
-              />
-              <p className="text-sm font-medium no-select text-text-faint py-0.5">
-                Open Dev Net
-              </p>
-              <div className="w-px h-4 my-1 ml-3 mr-1 bg-text/20"></div>
-            </div>
-            <button className="px-1.5 py-1 text-sm rounded-sm h-7 text-text-faint hover:text-text-secondary focus:text-text hover:bg-secondary focus:bg-secondary-hover">
-              Settings
-            </button>
-            <button className="px-1.5 py-1 text-sm rounded-sm h-7 text-text-faint hover:text-text-secondary focus:text-text hover:bg-secondary focus:bg-secondary-hover">
-              Help
-            </button>
+          <div className="flex p-1.5">
+            <Image
+              src="/logo.png"
+              height={100}
+              width={100}
+              alt="Logo"
+              className="w-11 h-11 mr-1 rounded-full"
+            />
+            <p className="font-bold text-xl text-text-secondary my-2 ml-2">
+              Open Dev Net
+            </p>
           </div>
 
-          {/* Account Dropdown */}
-          <div className="py-1.5 mr-3">
-            <button className="px-1.5 py-1 text-sm rounded-sm h-7 text-text-faint hover:text-text-secondary focus:text-text hover:bg-secondary focus:bg-secondary-hover">
-              Account
-            </button>
+          <div className="absolute top-2 left-1/2 -translate-x-1/2 w-full max-w-xl">
+            <input
+              type="text"
+              placeholder="Search for networks, events, and users..."
+              className="py-2 px-3 h-10 rounded-lg bg-input border border-border w-full focus:bg-input-focus transition duration-200 placeholder:text-sm text-text-secondary"
+            />
+          </div>
+
+          <div className="flex">
+            <div className="mr-5 py-2">
+              <button className="text-text-secondary hover:text-text p-1.5">
+                <RiNotification3Line className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Account Dropdown */}
+            <div className="py-1.5 mr-3">
+              <button className="flex text-text-secondary">
+                <img
+                  src={config.defaultAvatar}
+                  alt="User Avatar"
+                  className="h-10 w-10 rounded-full"
+                />
+                <span className="ml-2.5 mr-1.5 py-2 font-medium">User</span>
+                <HiChevronDown className="h-5 w-5 my-2.5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>

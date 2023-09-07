@@ -2,12 +2,12 @@
 
 :root {
   /* Primary */
-  --primary: 64, 155, 255;
-  --primary-hover: 32, 138, 255;
+  --primary: 28, 107, 247;
+  --primary-hover: 255, 75, 43;
   --primary-active: 0, 120, 253;
-  --secondary: 46, 48, 67;
-  --secondary-hover: 64, 67, 94;
-  --secondary-active: 83, 87, 121;
+  --secondary: 51, 51, 67;
+  --secondary-hover: 61, 61, 77;
+  --secondary-active: 81, 81, 97;
   /* Text */
   --text: 255, 255, 255;
   --text-primary: 223, 223, 223;
@@ -17,14 +17,14 @@
   /* System */
   --link: 91, 169, 255;
   /* Elements */
-  --background: 26, 27, 38;
-  --shade: 22, 22, 30;
+  --background: 30, 30, 44;
+  --shade: 40, 40, 54;
   --tooltip: 29, 32, 43;
   --tooltip-text: 255, 255, 255;
   /* Header */
-  --header: 22, 22, 30;
-  --navigation-bar: 7, 8, 10;
-  --sidebar: 17, 18, 25;
+  --header: 18, 18, 28;
+  --navigation-bar: var(--header);
+  --sidebar: 23, 23, 36;
   /* System (no change) */
   --warning: 253, 182, 34;
   --warning-hover: 254, 207, 112;
@@ -36,7 +36,7 @@
   --danger-hover: 213, 28, 46;
   --danger-active: 189, 26, 41;
   /* Components */
-  --input: 229, 231, 235;
-  --input-focus: 255, 255, 255;
-  --border: 14, 14, 20;
+  --input: 39, 39, 58;
+  --input-focus: 8, 8, 8;
+  --border: 60, 60, 79;
 }

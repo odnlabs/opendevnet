@@ -3,7 +3,9 @@
 import { useState } from 'react';
 import { IconType } from 'react-icons';
 
-import { HiHome, HiUsers } from 'react-icons/hi';
+import { FiRadio } from 'react-icons/fi';
+import { MdOutlineEvent, MdOutlineFavoriteBorder } from 'react-icons/md';
+import { PiBooks } from 'react-icons/pi';
 
 interface DefaultButton {
   id: string;
@@ -12,18 +14,28 @@ interface DefaultButton {
 }
 
 export const Sidebar: React.FC = () => {
-  const [activeButton, setActiveButton] = useState<string>('home');
+  const [activeButton, setActiveButton] = useState<string>('feed');
 
   const defaultButtons: DefaultButton[] = [
     {
-      id: 'home',
-      label: 'Home',
-      icon: HiHome,
+      id: 'feed',
+      label: 'Feed',
+      icon: FiRadio,
     },
     {
-      id: 'friends',
-      label: 'Friends',
-      icon: HiUsers,
+      id: 'library',
+      label: 'Library',
+      icon: PiBooks,
+    },
+    {
+      id: 'events',
+      label: 'Events',
+      icon: MdOutlineEvent,
+    },
+    {
+      id: 'favorites',
+      label: 'Favorites',
+      icon: MdOutlineFavoriteBorder,
     },
   ];
 
@@ -31,14 +43,14 @@ export const Sidebar: React.FC = () => {
     <>
       <div className="relative w-56 h-full"></div>
 
-      <div className="fixed w-56 h-full border-r left-16 top-10 bg-sidebar border-border">
+      <div className="fixed w-56 z-50 h-full left-14 top-14 bg-sidebar">
         <div className="px-3 pt-3">
           {defaultButtons.map((btn) => (
             <button
               className={`flex w-full px-3 py-3 mt-1 text-sm font-medium transition duration-200 rounded-md ${
                 btn.id === activeButton
-                  ? 'bg-secondary-hover active:bg-secondary-active'
-                  : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover'
+                  ? 'bg-secondary'
+                  : 'text-text/75 hover:bg-text/10 active:bg-text/20'
               }`}
               key={btn.id}
               onClick={() => setActiveButton(btn.id)}

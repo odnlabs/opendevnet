@@ -39,6 +39,8 @@ const config: Config = {
       // Background
       'background': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--background), ${opacityValue ?? 1})`,
+      'background-2': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--background-2), ${opacityValue ?? 1})`,
       'shade': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--shade), ${opacityValue ?? 1})`,
       'tooltip': ({ opacityValue }: { opacityValue: string }) =>
