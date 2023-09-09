@@ -28,7 +28,7 @@ const MoreNavLinks = () => {
     'block px-3 text-text-secondary py-1.5 rounded-md hover:text-text active:text-text hover:bg-secondary active:bg-secondary-hover';
 
   return (
-    <div className="absolute bottom-2 left-12 w-48 p-1 text-sm bg-shade rounded-lg border border-border">
+    <div className="absolute bottom-2 left-12 w-48 p-1 text-sm bg-background-secondary rounded-lg border border-border">
       {links.map((section, index) => (
         <React.Fragment key={index}>
           {index !== 0 && <div className="w-full h-px my-2 bg-text/20"></div>}

@@ -2,7 +2,7 @@ import { Button } from '@components';
 import config from '@config';
 
 export const metadata = {
-  title: 'Dashboard | Open Dev Net',
+  title: 'Feed | Open Dev Net',
 };
 
 const events = [
@@ -141,7 +141,10 @@ export default function Page() {
             <p className="text-3xl font-medium">Events</p>
             <div className="mt-5">
               {events.map((event, index) => (
-                <div className="mt-5 flex bg-shade rounded-lg p-8" key={index}>
+                <div
+                  className="mt-5 flex bg-background-secondary rounded-lg p-8"
+                  key={index}
+                >
                   <div className="w-20">
                     <img
                       src={event.icon}
@@ -190,7 +193,7 @@ export default function Page() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-shade rounded-lg mt-3">
+                  <div className="bg-background-secondary rounded-lg mt-3">
                     <div
                       className="h-40 rounded-lg"
                       style={{ background: post.color }}
@@ -221,7 +224,10 @@ export default function Page() {
             <p className="text-3xl font-medium">Featured Networks</p>
             <div className="mt-5">
               {featuredNetworks.map((network, index) => (
-                <div className="mt-5 flex bg-shade rounded-lg p-5" key={index}>
+                <div
+                  className="mt-5 flex bg-background-secondary rounded-lg p-5"
+                  key={index}
+                >
                   <div className="w-20">
                     <img
                       src={network.icon}

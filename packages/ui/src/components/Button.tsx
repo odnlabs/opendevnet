@@ -28,7 +28,7 @@ export const Button = ({ title, size, variant, ...props }: ButtonProps) => {
 
   return (
     <button
-      className={`${sizeStyle} ${variantStyle} transition duration-200 rounded-sm text-text-button`}
+      className={`${sizeStyle} ${variantStyle} transition duration-200 rounded-sm text-text-white`}
       {...props}
     >
       {title}

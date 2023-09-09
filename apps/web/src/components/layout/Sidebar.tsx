@@ -43,14 +43,14 @@ export const Sidebar: React.FC = () => {
     <>
       <div className="relative w-56 h-full"></div>
 
-      <div className="fixed w-56 z-50 h-full left-14 top-14 bg-sidebar">
-        <div className="px-3 pt-3">
+      <div className="fixed w-56 z-50 h-full left-14 top-14 bg-[rgb(var(--sidebar))]">
+        <div className="">
           {defaultButtons.map((btn) => (
             <button
-              className={`flex w-full px-3 py-3 mt-1 text-sm font-medium transition duration-200 rounded-md ${
+              className={`flex w-full px-3 py-4 text-sm font-medium ${
                 btn.id === activeButton
-                  ? 'bg-secondary'
-                  : 'text-text/75 hover:bg-text/10 active:bg-text/20'
+                  ? 'text-text bg-secondary-hover'
+                  : 'text-text-secondary hover:bg-secondary/50 active:bg-secondary hover:text-text active:text-text'
               }`}
               key={btn.id}
               onClick={() => setActiveButton(btn.id)}

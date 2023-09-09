@@ -1,4 +1,4 @@
 export default {
   name: 'Open Dev Net',
-  defaultAvatar: '/default-avatar.png',
+  defaultAvatar: '/app/default-avatar.png',
 };

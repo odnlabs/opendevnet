@@ -27,7 +27,7 @@ const NavButton: React.FC<{
   return btn.route ? (
     <Link
       href={btn.route}
-      className={`relative block w-full h-14 px-4 py-4 mx-0 mt-1 ${
+      className={`relative block w-full h-14 p-4 ${
         pathname === btn.route
           ? 'text-text bg-secondary/50'
           : 'text-text/50 hover:text-text hover:bg-secondary/20 active:text-text active:bg-secondary/30 focus:bg-secondary/30'
@@ -86,7 +86,7 @@ export const NavigationBar: React.FC = () => {
     <>
       <div className="relative w-14 h-full"></div>
 
-      <div className="fixed z-60 left-0 w-14 h-full top-14 bg-navigation-bar">
+      <div className="fixed z-60 left-0 w-14 h-full top-14 bg-[rgb(var(--navigation-bar))]">
         <div className="">
           {defaultButtons.map((section, index) => (
             <React.Fragment key={index}>

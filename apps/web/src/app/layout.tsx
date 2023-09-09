@@ -1,5 +1,5 @@
 import '@odnlabs/ui/styles.css';
-import { Roboto } from 'next/font/google';
+import { Poppins } from 'next/font/google';
 
 import {
   Header,
@@ -10,8 +10,8 @@ import {
 import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
 
-const font = Roboto({
-  weight: ['100', '300', '400', '500', '700', '900'],
+const font = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin', 'latin-ext'],
 });
 

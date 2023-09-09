@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // basePath: '/app',
+  basePath: '/app',
   reactStrictMode: true,
   transpilePackages: ['@odnlabs/ui'],
 };

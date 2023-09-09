@@ -35,12 +35,12 @@ body {
 
 ::selection {
   background: rgb(var(--primary));
-  color: rgb(var(--text-button));
+  color: rgb(var(--primary-text));
   text-shadow: none;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-secondary-active;
+  background: rgb(var(--secondary-active));
   -webkit-border-radius: 8px;
 }
 
@@ -55,7 +55,8 @@ body {
 }
 
 .no-select::selection {
-  @apply bg-transparent text-transparent;
+  background: transparent;
+  color: transparent;
 }
 
 .yes-select {
@@ -78,7 +79,8 @@ body {
 }
 
 .hover-thin-scroll::-webkit-scrollbar {
-  @apply hidden w-[3px];
+  display: none;
+  width: 3px;
 }
 
 .hover-thin-scroll:hover::-webkit-scrollbar {
@@ -100,7 +102,10 @@ body {
   scrollbar-color: rgba(0, 0, 0, 0) rgba(255, 255, 255, 0);
   scrollbar-width: thin;
   scroll-behavior: smooth;
-  @apply relative overflow-x-auto overflow-y-hidden whitespace-nowrap;
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
 }
 
 .scroll-bar:hover {
@@ -108,12 +113,14 @@ body {
 }
 
 .scroll-bar::-webkit-scrollbar {
-  @apply w-[5px] h-[5px];
+  width: 5px;
+  height: 5px;
 }
 
 /* The grabbable scrollbar button  */
 .scroll-bar:hover::-webkit-scrollbar-thumb {
-  @apply bg-[rgba(0,0,0,0)] rounded-[30px];
+  background: rgba(0, 0, 0, 0);
+  border-radius: 30px;
 }
 
 .scroll-bar::-webkit-scrollbar-thumb {
@@ -156,58 +163,92 @@ input[type='number']::-webkit-outer-spin-button {
 
 .range-container input {
   -webkit-appearance: none;
-  @apply cursor-pointer;
+  cursor: pointer;
 }
 
 .range-container input::-webkit-slider-thumb {
-  @apply bg-shade border-solid border-4 border-primary h-7 w-7 rounded-full;
+  background: rgb(var(--background-secondary));
+  border: 4px solid rgb(var(--primary));
+  height: 28px;
+  width: 28px;
+  border-radius: 999px;
   -webkit-appearance: none;
 }
 
 .range-container input:active {
-  @apply cursor-grab;
+  cursor: grab;
 }
 
 .range-container input::-moz-range-thumb {
-  @apply bg-shade border-4 border-primary h-5 w-5 rounded-full cursor-pointer;
+  background: rgb(var(--background-secondary));
+  border: 4px solid rgb(var(--primary));
+  height: 20px;
+  width: 20px;
+  border-radius: 999px;
+  cursor: pointer;
   -webkit-appearance: none;
 }
 
 .range-container input:active {
-  @apply cursor-grab;
+  cursor: grab;
 }
 
 /* Accessibility */
-a,
-button {
-  @apply focus-visible:transition-none focus-visible:ring;
+a:focus-visible,
+button:focus-visible {
+  transition: none;
+  box-shadow: none;
 }
 
 /* Table */
 table {
-  @apply my-5 border-t border-l border-border border border-collapse table-auto text-text-secondary break-words w-full !important;
+  margin: 20px 0;
+  border: 1px solid rgb(var(--border));
+  border-bottom: none;
+  border-right: none;
+  border-collapse: collapse;
+  table-layout: auto;
+  overflow-wrap: break-word;
+  width: 100%;
 }
 
-tbody tr {
-  @apply odd:bg-secondary;
+tbody tr:nth-child(odd) {
+  background: rgb(var(--background-secondary));
 }
 
 th,
 td {
-  @apply border-r border-b border-border border-collapse;
+  border: 1px solid rgb(var(--border));
+  border-bottom: none;
+  border-left: none;
+  border-collapse: collapse;
 }
 
 th {
-  @apply px-3 py-2 text-sm font-medium text-text-secondary;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(var(--text-secondary));
 }
 
 td {
-  @apply px-3 py-2 text-sm font-medium text-text;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(var(--text));
 }
 
 /* Code */
 .code {
-  @apply text-[14px] py-0.5 px-1.5 mx-0 rounded-sm bg-secondary-hover text-text font-semibold cursor-auto transition duration-200;
+  font-size: 14px;
+  padding: 2px 6px;
+  margin: 0;
+  border-radius: 4px;
+  background: rgb(var(--secondary-hover));
+  color: rgb(var(--text));
+  font-weight: 600;
+  cursor: auto;
+  transition: background 0.2s ease;
 }
 
 /* Animated gradient */
