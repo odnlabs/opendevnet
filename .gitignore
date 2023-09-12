@@ -35,6 +35,9 @@ nginx.conf
 odn.crt
 odn.key
 
-
 # Rust
 **/target/
+
+# Docker
+docker/postgres-data
+docker/redis-data

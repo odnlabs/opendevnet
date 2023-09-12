@@ -1,0 +1,29 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    ports:
+      - '6500:5432'
+    volumes:
+      - ./docker/postgres-data:/var/lib/postgresql/data
+    env_file:
+      - .env.local
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - '6501:80'
+    env_file:
+      - .env.local
+  redis:
+    image: redis:alpine
+    container_name: redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - ./docker/redis-data:/data
+
+volumes:
+  postgres-data:
+  redis-data:
