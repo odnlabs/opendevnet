@@ -13,26 +13,26 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@splidejs/react-splide": "^0.7.12",
     "builder-validation": "^0.0.3",
-    "next": "^13.4.13",
+    "next": "^13.4.19",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
+    "react-icons": "^4.11.0",
     "react-redux": "^8.1.2",
     "redux": "^4.2.1",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.4.10",
-    "@types/react": "^18.2.20",
+    "@types/node": "^20.6.2",
+    "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "@types/uuid": "^9.0.2",
-    "autoprefixer": "^10.4.14",
+    "@types/uuid": "^9.0.4",
+    "autoprefixer": "^10.4.15",
     "eslint-config-odn": "workspace:*",
-    "postcss": "^8.4.27",
+    "postcss": "^8.4.29",
     "tailwind-config": "workspace:*",
     "tailwindcss": "^3.3.3",
     "tsconfig": "workspace:*",
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   }
 }
