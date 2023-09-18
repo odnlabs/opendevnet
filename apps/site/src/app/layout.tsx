@@ -31,13 +31,9 @@ export default function RootLayout({
           <ToastWrapper />
 
           <div className="relative h-14"></div>
-          <div className="flex">
-            <Header />
+          <Header />
 
-            <div className="flex-grow">
-              <div className="min-h-[80vh]">{children}</div>
-            </div>
-          </div>
+          <div className="min-h-[80vh]">{children}</div>
         </body>
       </Providers>
     </html>

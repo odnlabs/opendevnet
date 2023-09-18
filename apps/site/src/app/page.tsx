@@ -5,5 +5,9 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <div className=""></div>;
+  return (
+    <div className="mt-20">
+      <h1 className="text-center text-3xl font-bold">Home Page</h1>
+    </div>
+  );
 }
