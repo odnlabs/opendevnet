@@ -3,6 +3,7 @@ import React from 'react';
 import { HeaderBrand } from './Header/HeaderBrand';
 import { HeaderButtons } from './Header/HeaderButtons';
 import { HeaderLinks } from './Header/HeaderLinks';
+import { HeaderMenu } from './Header/HeaderMenu';
 
 interface HeaderLink {
   title: string;
@@ -35,6 +36,9 @@ export const Header: React.FC = () => {
 
       <div className="fixed h-16 w-screen top-0 left-0 bg-[rgb(var(--header))] border-b border-border backdrop-blur-lg">
         <div className="flex justify-between max-w-7xl w-11/12 mx-auto">
+          {/* Menu */}
+          <HeaderMenu links={links} />
+
           {/* Branding */}
           <HeaderBrand />
 
