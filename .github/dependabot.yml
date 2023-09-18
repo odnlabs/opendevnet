@@ -4,19 +4,28 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
 
   - package-ecosystem: 'npm'
     directory: '/'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
 
   - package-ecosystem: 'npm'
     directory: '/apps/web'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/apps/site'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
     labels:
       - 'dependencies'
     open-pull-requests-limit: 20
@@ -25,7 +34,7 @@ updates:
     directory: '/apps/api'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
     labels:
       - 'dependencies'
     open-pull-requests-limit: 20
@@ -34,7 +43,7 @@ updates:
     directory: '/packages/api-client'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
     labels:
       - 'dependencies'
     open-pull-requests-limit: 20
@@ -43,7 +52,16 @@ updates:
     directory: '/packages/eslint-config-odn'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/packages/tailwind-config'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
     labels:
       - 'dependencies'
     open-pull-requests-limit: 20
@@ -52,7 +70,7 @@ updates:
     directory: '/packages/ui'
     schedule:
       interval: 'daily'
-    target-branch: 'development'
+    target-branch: 'dev'
     labels:
       - 'dependencies'
     open-pull-requests-limit: 20
