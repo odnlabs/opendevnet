@@ -2,12 +2,12 @@ import React from 'react';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  title: string;
+  label: string;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success';
 }
 
-export const Button = ({ title, size, variant, ...props }: ButtonProps) => {
+export const Button = ({ label, size, variant, ...props }: ButtonProps) => {
   const sizeStyle =
     size === 'sm'
       ? 'px-2 py-1 text-xs'
@@ -31,7 +31,7 @@ export const Button = ({ title, size, variant, ...props }: ButtonProps) => {
       className={`${sizeStyle} ${variantStyle} transition duration-200 rounded-sm text-text-white`}
       {...props}
     >
-      {title}
+      {label}
     </button>
   );
 };

@@ -209,7 +209,7 @@ export default function Page() {
                         {post.title}
                       </p>
                       <div className="mt-3">
-                        <Button title="Read More" variant="secondary" />
+                        <Button label="Read More" variant="secondary" />
                       </div>
                     </div>
                   </div>

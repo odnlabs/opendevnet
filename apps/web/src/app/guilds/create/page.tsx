@@ -14,7 +14,7 @@ export default function Page() {
         <div className="p-10 border rounded-md bg-background/50 border-border">
           <h1 className="mb-5 text-3xl font-bold">Create a new Guild</h1>
           <Button
-            title="Submit"
+            label="Submit"
             variant="primary"
             onClick={() =>
               dispatch(
