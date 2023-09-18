@@ -68,6 +68,15 @@ const config: Config = {
         `rgba(var(--danger-hover), ${opacityValue ?? 1})`,
       'danger-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger-active), ${opacityValue ?? 1})`,
+      // Brand
+      'brand-gradient-1': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-1), ${opacityValue ?? 1})`,
+      'brand-gradient-2': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-2), ${opacityValue ?? 1})`,
+      'brand-gradient-3': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-3), ${opacityValue ?? 1})`,
+      'brand-gradient-4': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-4), ${opacityValue ?? 1})`,
     } as unknown as RecursiveKeyValuePair<string, string>,
     extend: {
       width: {

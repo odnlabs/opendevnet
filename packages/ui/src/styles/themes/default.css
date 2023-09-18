@@ -32,6 +32,11 @@
   --danger: 227, 43, 61;
   --danger-hover: 213, 28, 46;
   --danger-active: 189, 26, 41;
+  /** Brand **/
+  --brand-gradient-1: 251, 176, 59;
+  --brand-gradient-2: 255, 0, 255;
+  --brand-gradient-3: 0, 255, 255;
+  --brand-gradient-4: 227, 255, 0;
   /** Layout **/
   /* Elements */
   --input: 39, 39, 58;
