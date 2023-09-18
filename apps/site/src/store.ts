@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import toastsReducer from './slices/toasts.slice';
+import toastsReducer from '../../site/src/slices/toasts.slice';
 
 export const store = configureStore({
   reducer: {

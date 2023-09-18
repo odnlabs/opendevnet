@@ -41,6 +41,9 @@ importers:
 
   apps/site:
     dependencies:
+      '@odnlabs/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
       '@reduxjs/toolkit':
         specifier: ^1.9.5
         version: 1.9.5(react-redux@8.1.2)(react@18.2.0)
@@ -188,6 +191,9 @@ importers:
       '@types/node':
         specifier: ^20.4.10
         version: 20.4.10
+      eslint-config-odn:
+        specifier: workspace:*
+        version: link:../eslint-config-odn
       tsconfig:
         specifier: workspace:*
         version: link:../tsconfig

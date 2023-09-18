@@ -1,10 +1,16 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import '@odnlabs/ui/styles.css';
+import { Poppins } from 'next/font/google';
+
+import { Header, ToastWrapper } from '@components/layout';
+import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin', 'latin-ext'],
+});
 
-export const metadata: Metadata = {
+export const metadata = {
   title: 'Open Dev Net',
   description:
     'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
@@ -17,7 +23,23 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <Providers>
+        <body className={font.className}>
+          <ToastWrapper />
+
+          <div className="relative h-14"></div>
+          <div className="flex">
+            <Header />
+
+            <div className="flex-grow">
+              <div className="min-h-[80vh]">{children}</div>
+            </div>
+          </div>
+        </body>
+      </Providers>
     </html>
   );
 }
