@@ -7,7 +7,7 @@ import { Button } from '@odnlabs/ui';
 export const HeaderButtons: React.FC = () => {
   return (
     <div className="flex my-3">
-      <Link href="/register" className="mr-2">
+      <Link href="/register" className="mr-2 hidden md:inline-block">
         <Button label="Register" variant="secondary" />
       </Link>
       <Link href="/login">
