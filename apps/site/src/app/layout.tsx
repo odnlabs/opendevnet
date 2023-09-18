@@ -2,6 +2,7 @@ import '@odnlabs/ui/styles.css';
 import { Poppins } from 'next/font/google';
 
 import { Header, ToastWrapper } from '@components/layout';
+import { Footer } from 'src/components/layout/Footer';
 import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
 
@@ -34,6 +35,8 @@ export default function RootLayout({
           <Header />
 
           <div className="min-h-[80vh]">{children}</div>
+
+          <Footer />
         </body>
       </Providers>
     </html>
