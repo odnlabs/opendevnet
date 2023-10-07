@@ -23,7 +23,7 @@ export default function Page() {
                   description:
                     'You can now start adding members to your guild.',
                   type: ToastType.Success,
-                  duration: 5000,
+                  time: 5000,
                 })
               )
             }

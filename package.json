@@ -11,6 +11,7 @@
     "clean": "nx run-many -t clean",
     "dev": "dotenv -e .env.local -- nx run-many -t dev",
     "dev:api": "dotenv -e .env.local -- nx run api:dev",
+    "dev:site": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui api-client site",
     "dev:web": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui api-client web",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\" --ignore-path=.prettierignore",
