@@ -17,6 +17,8 @@ export const metadata: Metadata = {
     'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
 };
 
+export const revalidate = 0;
+
 export default function RootLayout({
   children,
 }: {

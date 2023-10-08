@@ -20,9 +20,9 @@ const links: { title: string; items: Link[] }[] = [
     title: 'About Us',
     items: [
       { label: 'About', href: '/about' },
-      { label: 'Developers', href: '/about/devs' },
-      { label: 'Story', href: '/story' },
-      { label: 'Vision', href: '/vision' },
+      { label: 'Story', href: '/about' },
+      { label: 'Vision', href: '/about/vision' },
+      { label: 'Team', href: '/about/team' },
     ],
   },
   {
