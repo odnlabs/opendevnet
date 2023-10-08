@@ -5,9 +5,9 @@ export const metadata: Metadata = {
 };
 
 export default function About() {
-  const paragraphStyle = 'my-3 text-text-primary font-light';
-  const headerStyle = 'mt-8 text-2xl font-semibold';
-  const subheaderStyle = 'mt-5 text-xl font-medium';
+  const paragraphStyle = 'my-3 text-text-primary font-';
+  const headerStyle = 'mt-10 text-2xl font-semibold';
+  const subheaderStyle = 'mt-8 text-xl font-medium';
 
   return (
     <div className="max-w-2xl mx-auto py-10">

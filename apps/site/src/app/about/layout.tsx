@@ -31,8 +31,8 @@ export default function AboutLayout({
   ];
 
   return (
-    <div className="max-w-7xl w-11/12 mx-auto mt-2 mb-20">
-      <div className="relative flex justify-center">
+    <div className="max-w-7xl w-11/12 mx-auto mb-20">
+      <div className="relative flex justify-center bg-background-secondary max-w-3xl w-11/12 mx-auto rounded-b-3xl">
         <div className="relative">
           <span
             style={{

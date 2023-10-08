@@ -32,7 +32,6 @@ export default function RootLayout({
         <body className={font.className}>
           <ToastWrapper />
 
-          <div className="relative h-14"></div>
           <Header />
 
           <div className="min-h-[80vh]">{children}</div>

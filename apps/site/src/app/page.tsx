@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div>
-      <div className="max-w-7xl w-11/12 mx-auto pt-20 pb-32">
+      <div className="max-w-7xl w-11/12 mx-auto py-32">
         <div className="text-center">
           <h1 className="text-5xl font-bold text-text-secondary">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
