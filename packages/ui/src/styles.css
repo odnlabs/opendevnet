@@ -31,8 +31,13 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 *:focus {
-  outline: none;
+  outline: none !important;
+  box-shadow: none;
 }
 
 ::selection {

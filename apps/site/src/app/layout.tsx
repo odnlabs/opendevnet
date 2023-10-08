@@ -1,9 +1,8 @@
 import '@odnlabs/ui/styles.css';
 import { Poppins } from 'next/font/google';
 
-import { Header, ToastWrapper } from '@components/layout';
+import { ToastWrapper } from '@components/layout';
 import { Metadata } from 'next';
-import { Footer } from 'src/components/layout/Footer';
 import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
 
@@ -32,11 +31,7 @@ export default function RootLayout({
         <body className={font.className}>
           <ToastWrapper />
 
-          <Header />
-
-          <div className="min-h-[80vh]">{children}</div>
-
-          <Footer />
+          {children}
         </body>
       </Providers>
     </html>
