@@ -262,3 +262,12 @@ td {
     transform: translateX(0);
   }
 }
+
+.link {
+  color: rgb(var(--link));
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

@@ -2,6 +2,7 @@ import '@odnlabs/ui/styles.css';
 import { Poppins } from 'next/font/google';
 
 import { Header, ToastWrapper } from '@components/layout';
+import { Metadata } from 'next';
 import { Footer } from 'src/components/layout/Footer';
 import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
@@ -11,7 +12,7 @@ const font = Poppins({
   subsets: ['latin', 'latin-ext'],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Open Dev Net',
   description:
     'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',

@@ -52,13 +52,13 @@ export const Footer: React.FC = () => {
         <div className="max-w-5xl py-10 mx-auto w-11/12 flex justify-between">
           <div className="w-80">
             <Image
-              height={80}
-              width={80}
+              height={50}
+              width={50}
               src="/logo.png"
               alt="Footer Logo"
               className=""
             />
-            <p className="mt-5 font-medium text-2xl text-text-primary">
+            <p className="mt-4 font-medium text-xl text-text-primary">
               Open Dev Net
             </p>
           </div>
@@ -83,7 +83,10 @@ export const Footer: React.FC = () => {
       </div>
       <div className="py-5 border-t border-border bg-[rgb(var(--footer))] text-sm">
         <p className="text-center text-sm text-text-faint">
-          © {new Date().getFullYear()}, OpenDevNet.com
+          © {new Date().getFullYear()},{' '}
+          <Link href="/" className="hover:underline">
+            OpenDevNet.com
+          </Link>
         </p>
       </div>
     </>
