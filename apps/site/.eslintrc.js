@@ -2,9 +2,12 @@ const path = require('path');
 
 module.exports = {
   root: true,
-  extends: ['custom'],
+  extends: ['odn'],
   parserOptions: {
     tsconfigRootDir: __dirname,
+  },
+  rules: {
+    'jsdoc/require-jsdoc': 0,
   },
   settings: {
     'import/resolver': {

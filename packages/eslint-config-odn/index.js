@@ -17,13 +17,14 @@ module.exports = {
     project: './tsconfig.json',
     ecmaVersion: 'latest',
     sourceType: 'module',
-    babelOptions: {
-      presets: [require.resolve('next/babel')],
-    },
+    // babelOptions: {
+    //   presets: [require.resolve('next/babel')],
+    // },
   },
   ignorePatterns: ['*.js', '*.cjs', '*.json'],
   rules: {
     // Import plugin rules
+    'import/no-unresolved': 0, // Ensures that all imports are resolvable to a module on the local filesystem
     'import/first': 0, // Reports any imports that come after non-import statements
     'import/extensions': 0, // Ensures consistent use of file extension within the import path
     'import/prefer-default-export': 0, // Prefer a default export if module exports a single name

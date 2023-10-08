@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Licenses | Open Dev Net',
 };
 
-export default async function Licenses() {
+export default async function Licenses(): Promise<JSX.Element> {
   const paths = [
     '../../package.json',
     './package.json',
@@ -30,9 +30,7 @@ export default async function Licenses() {
   }
 
   const filteredLicenses = licenses
-    .filter(function (item, pos, self) {
-      return self.indexOf(item) == pos;
-    })
+    .filter((item, pos, self) => self.indexOf(item) === pos)
     .sort();
 
   return (

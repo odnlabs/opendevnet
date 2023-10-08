@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { Base, BaseOptions } from './builders/Base';
 
+import { Auth } from './auth';
+
 export * from './typings';
 
 interface ClientOptions extends Omit<BaseOptions, 'instance'> {}
@@ -9,7 +11,7 @@ interface ClientOptions extends Omit<BaseOptions, 'instance'> {}
  * The main client class, used to interact with the API.
  */
 export class Client extends Base {
-  // public user: User;
+  public auth: Auth;
 
   /**
    * Creates a new client instance.
@@ -28,12 +30,12 @@ export class Client extends Base {
       baseWebUrl: options.baseWebUrl,
     });
 
-    // this.user = new User({
-    //   instance,
-    //   tokenKey: this.tokenKey,
-    //   baseApiUrl: this.baseApiUrl,
-    //   baseWebUrl: this.baseWebUrl,
-    // });
+    this.auth = new Auth({
+      instance,
+      tokenKey: this.tokenKey,
+      baseApiUrl: this.baseApiUrl,
+      baseWebUrl: this.baseWebUrl,
+    });
   }
 
   /**
