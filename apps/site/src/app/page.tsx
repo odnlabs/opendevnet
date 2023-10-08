@@ -1,8 +1,6 @@
-'use client';
-
 import { Metadata } from 'next';
 
-import { Button } from '@odnlabs/ui';
+import { HomepageButtons } from './components';
 
 export const metadata: Metadata = {
   title: 'Home | Open Dev Net',
@@ -28,11 +26,7 @@ export default function Home() {
               in connecting minds, creating solutions, and making a positive
               impact on the world.
             </p>
-            <div className="mt-10 flex justify-center">
-              <Button label="Log In" variant="secondary" size="lg" />
-              <div className="w-4"></div>
-              <Button label="Get Started" size="lg" />
-            </div>
+            <HomepageButtons />
           </div>
         </div>
       </div>

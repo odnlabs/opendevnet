@@ -31,7 +31,7 @@ const links: { title: string; items: Link[] }[] = [
       { label: 'Docs', href: '/docs' },
       { label: 'Help Center', href: '/help' },
       { label: 'Feedback', href: '/feedback' },
-      { label: 'Change Log', href: '/changelog' },
+      { label: 'Changelog', href: '/changelog' },
     ],
   },
   {

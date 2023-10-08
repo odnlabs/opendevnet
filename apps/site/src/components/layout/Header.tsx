@@ -24,7 +24,7 @@ const links: HeaderLink[] = [
     href: '/blog',
   },
   {
-    title: 'Change Log',
+    title: 'Changelog',
     href: '/changelog',
   },
 ];
