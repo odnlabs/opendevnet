@@ -45,6 +45,8 @@ export const Header: React.FC = () => (
               <Image
                 src={config.defaultAvatar}
                 alt="User Avatar"
+                height={100}
+                width={100}
                 className="h-10 w-10 rounded-full"
               />
               <span className="ml-2.5 mr-1.5 py-2 font-medium">User</span>
