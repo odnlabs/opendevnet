@@ -4,7 +4,7 @@ import React from 'react';
 import { HiChevronDown } from 'react-icons/hi';
 import { RiNotification3Line } from 'react-icons/ri';
 
-import config from '@config';
+import { config } from '@odnlabs/utils';
 
 export const Header: React.FC = () => {
   return (

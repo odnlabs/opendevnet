@@ -1,5 +1,5 @@
 import { Button } from '@components';
-import config from '@config';
+import { config } from '@odnlabs/utils';
 
 export const metadata = {
   title: 'Feed | Open Dev Net',

@@ -6,7 +6,7 @@ interface DefaultLink {
   onClick?: () => void;
 }
 
-const MoreNavLinks = () => {
+export default function MoreNavLinks(): JSX.Element {
   const links: DefaultLink[][] = [
     [
       {
@@ -32,13 +32,17 @@ const MoreNavLinks = () => {
       {links.map((section, index) => (
         <React.Fragment key={index}>
           {index !== 0 && <div className="w-full h-px my-2 bg-text/20"></div>}
-          {section.map((btn, i) =>
+          {section.map((btn, btnIndex) =>
             btn.route ? (
-              <a href={btn.route} className={linkClass}>
+              <a href={btn.route} key={btnIndex} className={linkClass}>
                 {btn.label}
               </a>
             ) : (
-              <button onClick={btn.onClick} className={linkClass}>
+              <button
+                onClick={btn.onClick}
+                key={btnIndex}
+                className={linkClass}
+              >
                 {btn.label}
               </button>
             )
@@ -47,6 +51,4 @@ const MoreNavLinks = () => {
       ))}
     </div>
   );
-};
-
-export default MoreNavLinks;
+}

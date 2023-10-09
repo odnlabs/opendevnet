@@ -9,7 +9,7 @@ const nextConfig = {
     ],
   },
   reactStrictMode: true,
-  transpilePackages: ['@odnlabs/ui'],
+  transpilePackages: ['@odnlabs/ui', '@odnlabs/utils'],
 };
 
 module.exports = nextConfig;
