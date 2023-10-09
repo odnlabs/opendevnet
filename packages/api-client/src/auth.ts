@@ -8,7 +8,7 @@ export class Auth extends Base {
    * Logs the user in.
    * @returns The current Auth instance.
    */
-  public async login(): Promise<this> {
-    return this;
-  }
+  // public async login(): Promise<this> {
+  //   return this;
+  // }
 }

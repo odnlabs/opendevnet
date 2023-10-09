@@ -3,7 +3,7 @@ import { Base, BaseOptions } from './builders/Base';
 
 import { Auth } from './auth';
 
-export * from './typings';
+// export * from './typings';
 
 interface ClientOptions extends Omit<BaseOptions, 'instance'> {}
 

@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { IToast } from '@odnlabs/ui';
 
-import { RootState } from 'src/store';
-
 const initialState: IToast[] = [];
 
 const history: IToast[] = [];
@@ -24,20 +22,13 @@ const toastsSlice = createSlice({
       state.push(newToast);
       history.push(newToast);
     },
-    removeToast: (state, action: PayloadAction<string>) => {
-      return state.filter((toast) => toast.id !== action.payload);
-    },
-    getHistory: () => {
-      return history;
-    },
+    removeToast: (state, action: PayloadAction<string>) =>
+      state.filter((toast) => toast.id !== action.payload),
+    getHistory: () => history,
     deleteHistory: () => {
       history.length = 0;
     },
   },
 });
 
-export const { addToast, removeToast } = toastsSlice.actions;
-
-export const toastsState = (state: RootState) => state.toasts;
-
-export default toastsSlice.reducer;
+export default toastsSlice;

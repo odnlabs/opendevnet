@@ -6,6 +6,8 @@ import { Button, Input } from '@odnlabs/ui';
 import Link from 'next/link';
 
 export const LoginBox: React.FC = () => {
+  // TODO: disable the rule below when component is implemented
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
 
@@ -26,7 +28,7 @@ export const LoginBox: React.FC = () => {
             id="email"
             label="Email"
             placeholder="name@example.com"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
             required
           />
         </div>
@@ -36,7 +38,7 @@ export const LoginBox: React.FC = () => {
             id="password"
             label="Password"
             placeholder="Choose a strong password"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(event) => setName(event.target.value)}
             required
           />
           <div className="mt-2 text-xs">

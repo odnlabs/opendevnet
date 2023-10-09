@@ -5,7 +5,7 @@ export interface ButtonProps
   label: string;
   size?: 'sm' | 'md' | 'lg';
   variant?: 'primary' | 'secondary' | 'danger' | 'warning' | 'success';
-  width: 'auto' | 'full';
+  width?: 'auto' | 'full';
 }
 
 export const Button = ({
@@ -14,7 +14,7 @@ export const Button = ({
   variant,
   width,
   ...props
-}: ButtonProps) => {
+}: ButtonProps): JSX.Element => {
   const sizeStyle =
     size === 'sm'
       ? 'px-2 py-1 text-xs'

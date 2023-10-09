@@ -6,6 +6,7 @@ module.exports = {
   parserOptions: {
     tsconfigRootDir: __dirname,
   },
+  ignorePatterns: ['tsup.config.ts', 'dist/'],
   rules: {
     'jsdoc/require-jsdoc': 0,
   },

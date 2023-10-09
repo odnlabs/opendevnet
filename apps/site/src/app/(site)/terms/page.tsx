@@ -1,9 +1,9 @@
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 
 export const metadata: Metadata = {
   title: 'Terms of Service | Open Dev Net',
 };
 
-export default function Terms() {
-  return <div className="">Terms of Service</div>;
-}
+const Terms: NextPage = () => <div className="">Terms of Service</div>;
+
+export default Terms;

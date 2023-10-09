@@ -2,10 +2,11 @@
 
 import { Button } from '@components';
 import { ToastType } from '@odnlabs/ui';
-import { addToast } from '@slices/toasts.slice';
+import { addToast } from '@store';
+import { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
 
-export default function Page() {
+const CreateGuild: NextPage = () => {
   const dispatch = useDispatch();
 
   return (
@@ -32,4 +33,6 @@ export default function Page() {
       </div>
     </>
   );
-}
+};
+
+export default CreateGuild;

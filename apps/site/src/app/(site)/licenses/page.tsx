@@ -1,11 +1,11 @@
 import fs from 'fs/promises';
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 
 export const metadata: Metadata = {
   title: 'Licenses | Open Dev Net',
 };
 
-export default async function Licenses(): Promise<JSX.Element> {
+const Licenses: NextPage = async () => {
   const paths = [
     '../../package.json',
     './package.json',
@@ -58,4 +58,6 @@ export default async function Licenses(): Promise<JSX.Element> {
       </div>
     </>
   );
-}
+};
+
+export default Licenses;

@@ -8,10 +8,8 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const Providers: React.FC<Props> = ({ children }) => {
-  return (
-    <>
-      <ReduxProvider store={store}>{children}</ReduxProvider>
-    </>
-  );
-};
+export const Providers: React.FC<Props> = ({ children }) => (
+  <>
+    <ReduxProvider store={store}>{children}</ReduxProvider>
+  </>
+);

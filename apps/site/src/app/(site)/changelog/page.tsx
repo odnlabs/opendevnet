@@ -1,11 +1,11 @@
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Changelog | Open Dev Net',
 };
 
-export default function ChangeLog() {
+const ChangeLog: NextPage = () => {
   interface ChangeLog {
     version: string;
     type: 'major' | 'minor' | 'patch';
@@ -65,8 +65,8 @@ export default function ChangeLog() {
     <div className="py-20 max-w-3xl w-11/12 mx-auto">
       <h1 className="text-4xl font-bold">Changelog</h1>
       <div className="mt-10">
-        {changeLogData.map((changeLog) => (
-          <div className="py-10 border-t border-border">
+        {changeLogData.map((changeLog, index) => (
+          <div key={index} className="py-10 border-t border-border">
             <h2 className="text-3xl font-bold">
               <span className="">
                 {changeLog.date
@@ -85,8 +85,10 @@ export default function ChangeLog() {
               <span className="capitalize">{changeLog.type}</span>
             </p>
             <ul className="mt-5 list-disc pl-5">
-              {changeLog.changes.map((change) => (
-                <li className="mt-2 pl-2">{change}</li>
+              {changeLog.changes.map((change, changeIndex) => (
+                <li key={changeIndex} className="mt-2 pl-2">
+                  {change}
+                </li>
               ))}
             </ul>
           </div>
@@ -94,4 +96,6 @@ export default function ChangeLog() {
       </div>
     </div>
   );
-}
+};
+
+export default ChangeLog;

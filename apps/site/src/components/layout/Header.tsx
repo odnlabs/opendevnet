@@ -29,26 +29,24 @@ const links: HeaderLink[] = [
   },
 ];
 
-export const Header: React.FC = () => {
-  return (
-    <>
-      <div className="relative h-16 w-full"></div>
+export const Header: React.FC = () => (
+  <>
+    <div className="relative h-16 w-full"></div>
 
-      <div className="fixed z-40 h-16 w-screen top-0 left-0 bg-[rgb(var(--header))] border-b border-border backdrop-blur-lg">
-        <div className="flex justify-between max-w-7xl w-11/12 mx-auto">
-          {/* Menu */}
-          <HeaderMenu links={links} />
+    <div className="fixed z-40 h-16 w-screen top-0 left-0 bg-[rgb(var(--header))] border-b border-border backdrop-blur-lg">
+      <div className="flex justify-between max-w-7xl w-11/12 mx-auto">
+        {/* Menu */}
+        <HeaderMenu links={links} />
 
-          {/* Branding */}
-          <HeaderBrand />
+        {/* Branding */}
+        <HeaderBrand />
 
-          {/* Links */}
-          <HeaderLinks links={links} />
+        {/* Links */}
+        <HeaderLinks links={links} />
 
-          {/* App/Authentication */}
-          <HeaderButtons />
-        </div>
+        {/* App/Authentication */}
+        <HeaderButtons />
       </div>
-    </>
-  );
-};
+    </div>
+  </>
+);

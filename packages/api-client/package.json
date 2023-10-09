@@ -15,7 +15,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "pnpm run build -- --watch",
-    "lint": "eslint --ext .ts src/"
+    "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
     "axios": "^1.5.1"

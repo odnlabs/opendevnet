@@ -1,11 +1,11 @@
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'About | Open Dev Net',
 };
 
-export default function About() {
+const About: NextPage = () => {
   const paragraphStyle = 'my-3 text-text-primary font-';
   const headerStyle = 'mt-10 text-2xl font-semibold';
   const subheaderStyle = 'mt-8 text-xl font-medium';
@@ -16,7 +16,7 @@ export default function About() {
 
       <div className="mt-5">
         <p className={paragraphStyle}>
-          Hey! We're the team behind Open Dev Net, a group of developers
+          Hey! We&apos;re the team behind Open Dev Net, a group of developers
           passionate about developing open-source software and building a
           community of developers. Thus, we decided to create Open Dev Net, a
           social platform for developers to collaborate, find new opportunities,
@@ -56,7 +56,8 @@ export default function About() {
           software development and want to be a part of that future.
         </p>
         <p className={paragraphStyle}>
-          If you're interested in contributing to the project, check out our{' '}
+          If you&apos;re interested in contributing to the project, check out
+          our{' '}
           <a
             href="https://github.com/open-dev-net/.github/blob/main/CONTRIBUTING.md/"
             target="_blank"
@@ -65,8 +66,8 @@ export default function About() {
           >
             Contributing Guidelines
           </a>
-          . If you're interested in officially joining the team, DM Slekup on
-          Discord at <b className="font-bold">@slekup</b> or email at{' '}
+          . If you&apos;re interested in officially joining the team, DM Slekup
+          on Discord at <b className="font-bold">@slekup</b> or email at{' '}
           <a
             href="mailto:slekupvimplyrataqq@protonmail.com"
             target="_blank"
@@ -102,4 +103,6 @@ export default function About() {
       </div>
     </div>
   );
-}
+};
+
+export default About;

@@ -45,50 +45,49 @@ const links: { title: string; items: Link[] }[] = [
   },
 ];
 
-export const Footer: React.FC = () => {
-  return (
-    <>
-      <div className="py-5 border-t border-border bg-[rgb(var(--footer))] text-sm">
-        <div className="max-w-5xl py-10 mx-auto w-11/12 flex justify-between">
-          <div className="w-80">
-            <Image
-              height={50}
-              width={50}
-              src="/logo.png"
-              alt="Footer Logo"
-              className=""
-            />
-            <p className="mt-4 font-medium text-xl text-text-primary">
-              Open Dev Net
-            </p>
-          </div>
-          <div className="flex justify-between">
-            {links.map((category) => (
-              <div className="mx-10">
-                <p className="mb-4 font-semibold uppercase text-sm">
-                  {category.title}
-                </p>
-                {category.items.map((item) => (
-                  <Link
-                    href={item.href}
-                    className="block my-2 text-text-faint hover:text-text-primary hover:underline active:text-text active:underline"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            ))}
-          </div>
+export const Footer: React.FC = () => (
+  <>
+    <div className="py-5 border-t border-border bg-[rgb(var(--footer))] text-sm">
+      <div className="max-w-5xl py-10 mx-auto w-11/12 flex justify-between">
+        <div className="w-80">
+          <Image
+            height={50}
+            width={50}
+            src="/logo.png"
+            alt="Footer Logo"
+            className=""
+          />
+          <p className="mt-4 font-medium text-xl text-text-primary">
+            Open Dev Net
+          </p>
+        </div>
+        <div className="flex justify-between">
+          {links.map((category, index) => (
+            <div className="mx-10" key={index}>
+              <p className="mb-4 font-semibold uppercase text-sm">
+                {category.title}
+              </p>
+              {category.items.map((item, itemIndex) => (
+                <Link
+                  key={itemIndex}
+                  href={item.href}
+                  className="block my-2 text-text-faint hover:text-text-primary hover:underline active:text-text active:underline"
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          ))}
         </div>
       </div>
-      <div className="py-5 border-t border-border bg-[rgb(var(--footer))] text-sm">
-        <p className="text-center text-sm text-text-faint">
-          © {new Date().getFullYear()},{' '}
-          <Link href="/" className="hover:underline">
-            OpenDevNet.com
-          </Link>
-        </p>
-      </div>
-    </>
-  );
-};
+    </div>
+    <div className="py-5 border-t border-border bg-[rgb(var(--footer))] text-sm">
+      <p className="text-center text-sm text-text-faint">
+        © {new Date().getFullYear()},{' '}
+        <Link href="/" className="hover:underline">
+          OpenDevNet.com
+        </Link>
+      </p>
+    </div>
+  </>
+);

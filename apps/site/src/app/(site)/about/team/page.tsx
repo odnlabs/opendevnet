@@ -1,33 +1,32 @@
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
-
-const devList = [
-  {
-    name: 'Slekup',
-    username: 'slekup',
-    avatar: 'https://avatars.githubusercontent.com/u/74949101?v=4',
-    title: 'Founder & Lead Developer',
-  },
-  {
-    name: 'Abdullah Alharbi',
-    username: 'A-alharbi9 ',
-    avatar: 'https://avatars.githubusercontent.com/u/82731458?v=4',
-    title: 'Fullstack Developer',
-  },
-  {
-    name: 'Brian Kungu ',
-    username: 'brianKungu',
-    avatar: 'https://avatars.githubusercontent.com/u/49023180?v=4',
-    title: 'Frontend Developer',
-  },
-];
 
 export const metadata: Metadata = {
   title: 'Developers | Open Dev Net',
 };
 
-export default function Developers({}) {
+const Team: NextPage = () => {
+  const devList = [
+    {
+      name: 'Slekup',
+      username: 'slekup',
+      avatar: 'https://avatars.githubusercontent.com/u/74949101?v=4',
+      title: 'Founder & Lead Developer',
+    },
+    {
+      name: 'Abdullah Alharbi',
+      username: 'A-alharbi9 ',
+      avatar: 'https://avatars.githubusercontent.com/u/82731458?v=4',
+      title: 'Fullstack Developer',
+    },
+    {
+      name: 'Brian Kungu ',
+      username: 'brianKungu',
+      avatar: 'https://avatars.githubusercontent.com/u/49023180?v=4',
+      title: 'Frontend Developer',
+    },
+  ];
+
   return (
     <div className="mx-auto py-5 max-w-5xl sm:py-8 md:py-10">
       <h1 className="text-center text-3xl font-semibold">Developers</h1>
@@ -67,4 +66,6 @@ export default function Developers({}) {
       </p>
     </div>
   );
-}
+};
+
+export default Team;

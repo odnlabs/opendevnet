@@ -54,7 +54,7 @@ export class Base {
    * Gets the token for the current user, or redirects to the login page if the user is not logged in.
    * @returns The token for the current user.
    */
-  protected getToken(): string {
-    return '';
-  }
+  // protected getToken(): string {
+  //   return '';
+  // }
 }

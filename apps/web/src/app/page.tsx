@@ -1,5 +1,7 @@
 import { Button } from '@components';
 import { config } from '@odnlabs/utils';
+import { NextPage } from 'next';
+import Image from 'next/image';
 
 export const metadata = {
   title: 'Feed | Open Dev Net',
@@ -132,123 +134,119 @@ const featuredNetworks = [
   },
 ];
 
-export default function Page() {
-  return (
-    <>
-      <div className="max-w-8xl w-11/12 mx-auto my-10 flex">
-        <div className="w-1/3 pr-5">
-          <div className="">
-            <p className="text-3xl font-medium">Events</p>
-            <div className="mt-5">
-              {events.map((event, index) => (
-                <div
-                  className="mt-5 flex bg-background-secondary rounded-lg p-8"
-                  key={index}
-                >
-                  <div className="w-20">
-                    <img
-                      src={event.icon}
+const HomePage: NextPage = () => (
+  <>
+    <div className="max-w-8xl w-11/12 mx-auto my-10 flex">
+      <div className="w-1/3 pr-5">
+        <div className="">
+          <p className="text-3xl font-medium">Events</p>
+          <div className="mt-5">
+            {events.map((event, index) => (
+              <div
+                className="mt-5 flex bg-background-secondary rounded-lg p-8"
+                key={index}
+              >
+                <div className="w-20">
+                  <Image
+                    src={event.icon}
+                    alt="Event Icon"
+                    className="h-12 w-12 rounded-full"
+                  />
+                </div>
+                <div className="">
+                  <p className="text-lg font-bold text-text">{event.title}</p>
+                  <p className="text-sm text-text-secondary">{event.date}</p>
+                  <p className="text-sm text-text-faint">{event.type}</p>
+                  <p className="text-sm text-text-faint">by {event.by}</p>
+                  <div className="mt-3">
+                    <Button
+                      label={event.upcoming ? 'Join' : 'Upcoming'}
+                      variant={event.upcoming ? 'primary' : 'secondary'}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="w-1/3 px-5">
+        <div className="">
+          <p className="text-3xl font-medium">What&apos;s new</p>
+          <div className="mt-5">
+            {posts.map((post, index) => (
+              <div className="mt-8" key={index}>
+                <div className="flex">
+                  <div className="w-16">
+                    <Image
+                      src={post.author.icon}
                       alt="Event Icon"
                       className="h-12 w-12 rounded-full"
                     />
                   </div>
-                  <div className="">
-                    <p className="text-lg font-bold text-text">{event.title}</p>
-                    <p className="text-sm text-text-secondary">{event.date}</p>
-                    <p className="text-sm text-text-faint">{event.type}</p>
-                    <p className="text-sm text-text-faint">by {event.by}</p>
-                    <div className="mt-3">
-                      <Button
-                        title={event.upcoming ? 'Join' : 'Upcoming'}
-                        variant={event.upcoming ? 'primary' : 'secondary'}
-                      />
-                    </div>
+                  <div className="ml-1">
+                    <p className="text-lg font-bold text-text">
+                      {post.author.name}
+                    </p>
+                    <p className="text-sm text-text-secondary">
+                      {post.author.position}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="w-1/3 px-5">
-          <div className="">
-            <p className="text-3xl font-medium">What's new</p>
-            <div className="mt-5">
-              {posts.map((post, index) => (
-                <div className="mt-8" key={index}>
-                  <div className="flex">
-                    <div className="w-16">
-                      <img
-                        src={post.author.icon}
-                        alt="Event Icon"
-                        className="h-12 w-12 rounded-full"
-                      />
-                    </div>
-                    <div className="ml-1">
-                      <p className="text-lg font-bold text-text">
-                        {post.author.name}
-                      </p>
-                      <p className="text-sm text-text-secondary">
-                        {post.author.position}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="bg-background-secondary rounded-lg mt-3">
-                    <div
-                      className="h-40 rounded-lg"
-                      style={{ background: post.color }}
-                    >
-                      {/* <img
+                <div className="bg-background-secondary rounded-lg mt-3">
+                  <div
+                    className="h-40 rounded-lg"
+                    style={{ background: post.color }}
+                  >
+                    {/* <img
                         src={config.defaultAvatar}
                         alt="Event Icon"
                         className="h-full w-full object-cover rounded-t-lg"
                       /> */}
-                    </div>
-                    <div className="p-5">
-                      <p className="text-lg font-bold text-text">
-                        {post.title}
-                      </p>
-                      <div className="mt-3">
-                        <Button label="Read More" variant="secondary" />
-                      </div>
+                  </div>
+                  <div className="p-5">
+                    <p className="text-lg font-bold text-text">{post.title}</p>
+                    <div className="mt-3">
+                      <Button label="Read More" variant="secondary" />
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="w-1/3 pl-5">
-          <div className="">
-            <p className="text-3xl font-medium">Featured Networks</p>
-            <div className="mt-5">
-              {featuredNetworks.map((network, index) => (
-                <div
-                  className="mt-5 flex bg-background-secondary rounded-lg p-5"
-                  key={index}
-                >
-                  <div className="w-20">
-                    <img
-                      src={network.icon}
-                      alt="Event Icon"
-                      className="h-12 w-12 rounded-full"
-                    />
-                  </div>
-                  <div className="">
-                    <p className="text-lg font-bold text-text">
-                      {network.name}
-                    </p>
-                    <p className="text-lg text-text-secondary">
-                      {network.members.toLocaleString()}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </>
-  );
-}
+
+      <div className="w-1/3 pl-5">
+        <div className="">
+          <p className="text-3xl font-medium">Featured Networks</p>
+          <div className="mt-5">
+            {featuredNetworks.map((network, index) => (
+              <div
+                className="mt-5 flex bg-background-secondary rounded-lg p-5"
+                key={index}
+              >
+                <div className="w-20">
+                  <Image
+                    src={network.icon}
+                    alt="Event Icon"
+                    className="h-12 w-12 rounded-full"
+                  />
+                </div>
+                <div className="">
+                  <p className="text-lg font-bold text-text">{network.name}</p>
+                  <p className="text-lg text-text-secondary">
+                    {network.members.toLocaleString()}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+);
+
+export default HomePage;

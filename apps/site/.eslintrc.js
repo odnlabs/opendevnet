@@ -6,8 +6,10 @@ module.exports = {
   parserOptions: {
     tsconfigRootDir: __dirname,
   },
+  ignorePatterns: ['.next/'],
   rules: {
     'jsdoc/require-jsdoc': 0,
+    'no-console': 0,
   },
   settings: {
     'import/resolver': {

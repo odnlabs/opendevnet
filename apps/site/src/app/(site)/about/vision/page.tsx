@@ -1,14 +1,14 @@
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Vision | Open Dev Net',
 };
 
-export default function Vision() {
+const Vision: NextPage = () => {
   const paragraphStyle = 'my-3 text-text-primary font-light';
   const headerStyle = 'mt-8 text-2xl font-semibold';
-  const subheaderStyle = 'mt-5 text-xl font-medium';
+  // const subheaderStyle = 'mt-5 text-xl font-medium';
 
   // TODO: Rewrite the content for this page
   // ! Will be rewritten
@@ -51,7 +51,7 @@ export default function Vision() {
         </p>
         <h2 className={headerStyle}>Streamlining Developer Workflows</h2>
         <p className={paragraphStyle}>
-          Efficiency is at the core of our vision. We're committed to
+          Efficiency is at the core of our vision. We&apos;re committed to
           simplifying the lives of developers by streamlining workflows,
           providing tools and features tailored to their needs, and fostering an
           environment where productivity knows no bounds.
@@ -74,13 +74,13 @@ export default function Vision() {
         </p>
         <h2 className={headerStyle}>Join Us in Shaping the Future</h2>
         <p className={paragraphStyle}>
-          Our vision is ambitious, but it's a vision worth chasing. Join us in
-          making it a reality. Whether you're a developer looking for
+          Our vision is ambitious, but it&apos;s a vision worth chasing. Join us
+          in making it a reality. Whether you&apos;re a developer looking for
           opportunities, a client seeking expertise, or an innovator with a
           groundbreaking idea, Open Dev Net is here to empower you.
         </p>
         <p className={paragraphStyle}>
-          Together, we'll create a digital world where innovation knows no
+          Together, we&apos;ll create a digital world where innovation knows no
           bounds, where connections flourish, and where developers like you lead
           the way. Welcome to the future of developer collaboration. Welcome to
           Open Dev Net.
@@ -88,4 +88,6 @@ export default function Vision() {
       </div>
     </div>
   );
-}
+};
+
+export default Vision;

@@ -20,22 +20,22 @@ export const Sidebar: React.FC = () => {
     {
       id: 'feed',
       label: 'Feed',
-      icon: FiRadio,
+      icon: FiRadio as IconType,
     },
     {
       id: 'library',
       label: 'Library',
-      icon: PiBooks,
+      icon: PiBooks as IconType,
     },
     {
       id: 'events',
       label: 'Events',
-      icon: MdOutlineEvent,
+      icon: MdOutlineEvent as IconType,
     },
     {
       id: 'favorites',
       label: 'Favorites',
-      icon: MdOutlineFavoriteBorder,
+      icon: MdOutlineFavoriteBorder as IconType,
     },
   ];
 

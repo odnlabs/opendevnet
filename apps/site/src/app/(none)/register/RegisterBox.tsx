@@ -6,6 +6,8 @@ import { Button, Checkbox, Input } from '@odnlabs/ui';
 import Link from 'next/link';
 
 export const RegisterBox: React.FC = () => {
+  // TODO: Remove the rule below when the component is implemented
+  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
   const [password, setPasswored] = useState<string>('');
@@ -29,7 +31,7 @@ export const RegisterBox: React.FC = () => {
             id="email"
             label="Email"
             placeholder="name@example.com"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(event) => setEmail(event.target.value)}
             required
           />
         </div>
@@ -39,7 +41,7 @@ export const RegisterBox: React.FC = () => {
             id="name"
             label="Name"
             placeholder="This will be your display name"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(event) => setName(event.target.value)}
             required
           />
         </div>
@@ -49,7 +51,7 @@ export const RegisterBox: React.FC = () => {
             id="password"
             label="Password"
             placeholder="Choose a strong password"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(event) => setName(event.target.value)}
             required
           />
         </div>
@@ -59,7 +61,7 @@ export const RegisterBox: React.FC = () => {
             id="retype-password"
             label="Retype Password"
             placeholder="Retype password"
-            onChange={(e) => setName(e.target.value)}
+            onChange={(event) => setName(event.target.value)}
             required
           />
         </div>
@@ -70,8 +72,8 @@ export const RegisterBox: React.FC = () => {
             </span>
           </div>
           <p className="text-xs text-text-faint">
-            It's okay to send me emails with Open Dev Net updates, tips, and
-            special offers. You can opt out at any time.
+            It&apos;s okay to send me emails with Open Dev Net updates, tips,
+            and special offers. You can opt out at any time.
           </p>
         </div>
 
@@ -81,7 +83,7 @@ export const RegisterBox: React.FC = () => {
 
         <div className="mt-3">
           <p className="text-xs text-text-secondary">
-            By registering, you agree to Open Dev Net's{' '}
+            By registering, you agree to Open Dev Net&apos;s{' '}
             <Link href="/terms" className="link">
               Terms of Service
             </Link>{' '}

@@ -1,9 +1,9 @@
-import { Metadata } from 'next';
+import { Metadata, NextPage } from 'next';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | Open Dev Net',
 };
 
-export default function Privacy() {
-  return <div className="">Privacy Policy</div>;
-}
+const Privacy: NextPage = () => <div className="">Privacy Policy</div>;
+
+export default Privacy;

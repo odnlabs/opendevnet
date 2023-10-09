@@ -60,24 +60,24 @@ export const NavigationBar: React.FC = () => {
       {
         label: 'Dashboard',
         route: '/',
-        icon: RxDashboard,
+        icon: RxDashboard as IconType,
       },
       {
         label: 'Friends',
         route: '/friends',
-        icon: BsPeople,
+        icon: BsPeople as IconType,
       },
       {
         label: 'Network',
         route: '/networks',
-        icon: IoPlanetOutline,
+        icon: IoPlanetOutline as IconType,
       },
     ],
     [
       {
         label: 'Create Guild',
         route: '/guilds/create',
-        icon: HiOutlinePlus,
+        icon: HiOutlinePlus as IconType,
       },
     ],
   ];
@@ -93,8 +93,8 @@ export const NavigationBar: React.FC = () => {
               {index !== 0 && (
                 <div className="w-8 h-px mx-auto my-2 bg-text/20"></div>
               )}
-              {section.map((btn, i) => (
-                <NavButton btn={btn} key={i} />
+              {section.map((btn, index) => (
+                <NavButton btn={btn} key={index} />
               ))}
             </React.Fragment>
           ))}
@@ -105,7 +105,7 @@ export const NavigationBar: React.FC = () => {
             btn={{
               label: 'Account',
               onClick: () => console.log('Account'),
-              icon: BiDotsHorizontalRounded,
+              icon: BiDotsHorizontalRounded as IconType,
             }}
           />
           <MoreNavLinks />
