@@ -19,12 +19,16 @@ const config: Config = {
         `rgba(var(--primary-hover), ${opacityValue ?? 1})`,
       'primary-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--primary-active), ${opacityValue ?? 1})`,
+      'primary-text': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--primary-text), ${opacityValue ?? 1})`,
       'secondary': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--secondary), ${opacityValue ?? 1})`,
       'secondary-hover': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--secondary-hover), ${opacityValue ?? 1})`,
       'secondary-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--secondary-active), ${opacityValue ?? 1})`,
+      'secondary-text': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--secondary-text), ${opacityValue ?? 1})`,
       // Text
       'text': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--text), ${opacityValue ?? 1})`,
@@ -34,58 +38,45 @@ const config: Config = {
         `rgba(var(--text-secondary), ${opacityValue ?? 1})`,
       'text-faint': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--text-faint), ${opacityValue ?? 1})`,
-      'text-button': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--text-button), ${opacityValue ?? 1})`,
-      // Background
+      // System
       'background': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--background), ${opacityValue ?? 1})`,
-      'shade': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--shade), ${opacityValue ?? 1})`,
-      'tooltip': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--tooltip), ${opacityValue ?? 1})`,
-      'tooltip-text': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--tooltip-text), ${opacityValue ?? 1})`,
+      'background-secondary': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--background-secondary), ${opacityValue ?? 1})`,
+      'background-tertiary': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--background-tertiary), ${opacityValue ?? 1})`,
+      'border': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--border), ${opacityValue ?? 1})`,
+      'link': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--link), ${opacityValue ?? 1})`,
       // System
-      'warning': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--warning), ${opacityValue ?? 1})`,
-      'warning-hover': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--warning-hover), ${opacityValue ?? 1})`,
-      'warning-active': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--warning-active), ${opacityValue ?? 1})`,
       'success': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--success), ${opacityValue ?? 1})`,
       'success-hover': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--success-hover), ${opacityValue ?? 1})`,
       'success-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--success-active), ${opacityValue ?? 1})`,
+      'warning': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--warning), ${opacityValue ?? 1})`,
+      'warning-hover': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--warning-hover), ${opacityValue ?? 1})`,
+      'warning-active': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--warning-active), ${opacityValue ?? 1})`,
       'danger': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger), ${opacityValue ?? 1})`,
       'danger-hover': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger-hover), ${opacityValue ?? 1})`,
       'danger-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger-active), ${opacityValue ?? 1})`,
-      // Components
-      'link': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--link), ${opacityValue ?? 1})`,
-      'input': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--input), ${opacityValue ?? 1})`,
-      'input-focus': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--input-focus), ${opacityValue ?? 1})`,
-      'border': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--border), ${opacityValue ?? 1})`,
-      // Header
-      'header': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--header), ${opacityValue ?? 1})`,
-      'header-text': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--header-text), ${opacityValue ?? 1})`,
-      'navigation-bar': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--navigation-bar), ${opacityValue ?? 1})`,
-      'navigation-bar-text': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--nagivation-bar-text), ${opacityValue ?? 1})`,
-      'sidebar': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--sidebar), ${opacityValue ?? 1})`,
-      'sidebar-text': ({ opacityValue }: { opacityValue: string }) =>
-        `rgba(var(--sidebar-text), ${opacityValue ?? 1})`,
+      // Brand
+      'brand-gradient-1': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-1), ${opacityValue ?? 1})`,
+      'brand-gradient-2': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-2), ${opacityValue ?? 1})`,
+      'brand-gradient-3': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-3), ${opacityValue ?? 1})`,
+      'brand-gradient-4': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--brand-gradient-4), ${opacityValue ?? 1})`,
     } as unknown as RecursiveKeyValuePair<string, string>,
     extend: {
       width: {

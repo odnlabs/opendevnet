@@ -1,42 +1,51 @@
 /* FBB03B  FF00FF  00FFFF  E3FF00*/
 
 :root {
+  /** Global (tailwind configured) **/
   /* Primary */
-  --primary: 64, 155, 255;
-  --primary-hover: 32, 138, 255;
-  --primary-active: 0, 120, 253;
-  --secondary: 46, 48, 67;
-  --secondary-hover: 64, 67, 94;
-  --secondary-active: 83, 87, 121;
+  --primary: 28, 107, 247;
+  --primary-hover: 24, 86, 231;
+  --primary-active: 18, 71, 164;
+  --primary-text: 255, 255, 255;
+  --secondary: 51, 51, 67;
+  --secondary-hover: 61, 61, 77;
+  --secondary-active: 81, 81, 97;
+  --secondary-text: 255, 255, 255;
   /* Text */
   --text: 255, 255, 255;
   --text-primary: 223, 223, 223;
   --text-secondary: 199, 199, 200;
   --text-faint: 130, 130, 133;
-  --text-button: 255, 255, 255;
   /* System */
+  --background: 30, 30, 44;
+  --background-secondary: 40, 40, 54;
+  --background-tertiary: 50, 50, 64;
+  --border: 60, 60, 79;
   --link: 91, 169, 255;
-  /* Elements */
-  --background: 26, 27, 38;
-  --shade: 22, 22, 30;
-  --tooltip: 29, 32, 43;
-  --tooltip-text: 255, 255, 255;
-  /* Header */
-  --header: 22, 22, 30;
-  --navigation-bar: 7, 8, 10;
-  --sidebar: 17, 18, 25;
   /* System (no change) */
-  --warning: 253, 182, 34;
-  --warning-hover: 254, 207, 112;
-  --warning-active: 251, 170, 2;
   --success: 34, 197, 94;
   --success-hover: 31, 180, 87;
   --success-active: 29, 165, 80;
+  --warning: 253, 182, 34;
+  --warning-hover: 254, 207, 112;
+  --warning-active: 251, 170, 2;
   --danger: 227, 43, 61;
   --danger-hover: 213, 28, 46;
   --danger-active: 189, 26, 41;
-  /* Components */
-  --input: 229, 231, 235;
-  --input-focus: 255, 255, 255;
-  --border: 14, 14, 20;
+  /** Brand **/
+  --brand-gradient-1: 251, 176, 59;
+  --brand-gradient-2: 255, 0, 255;
+  --brand-gradient-3: 0, 255, 255;
+  --brand-gradient-4: 227, 255, 0;
+  /** Layout **/
+  /* Elements */
+  --input: 19, 19, 28;
+  --input-focus: 8, 8, 8;
+  --tooltip: 29, 32, 43;
+  --tooltip-text: 255, 255, 255;
+  /* Layout components */
+  --header: 18, 18, 28;
+  --navigation-bar: var(--header);
+  --sidebar: 23, 23, 36;
+  --footer: 13, 13, 19;
 }

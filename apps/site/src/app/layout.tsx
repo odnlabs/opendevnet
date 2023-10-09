@@ -1,8 +1,15 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import '@odnlabs/ui/styles.css';
+import { Poppins } from 'next/font/google';
+
+import { ToastWrapper } from '@components/layout';
+import { Metadata } from 'next';
+import { Providers } from 'src/components/layout/Providers';
 import '../styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const font = Poppins({
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin', 'latin-ext'],
+});
 
 export const metadata: Metadata = {
   title: 'Open Dev Net',
@@ -14,10 +21,19 @@ export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}) {
+}): JSX.Element {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
+      <Providers>
+        <body className={font.className}>
+          <ToastWrapper />
+
+          {children}
+        </body>
+      </Providers>
     </html>
   );
 }

@@ -10,6 +10,9 @@
     "build": "nx run-many -t build",
     "clean": "nx run-many -t clean",
     "dev": "dotenv -e .env.local -- nx run-many -t dev",
+    "dev:api": "dotenv -e .env.local -- nx run api:dev",
+    "dev:site": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client site",
+    "dev:web": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client web",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "postinstall": "manypkg check",
@@ -18,13 +21,13 @@
   },
   "dependencies": {
     "@manypkg/cli": "^0.21.0",
-    "dotenv-cli": "^7.2.1",
-    "eslint": "^8.47.0",
+    "dotenv-cli": "^7.3.0",
+    "eslint": "^8.51.0",
     "eslint-config-odn": "workspace:*",
     "nx": "16.6.0",
-    "nx-cloud": "^16.3.0",
-    "prettier": "^3.0.1",
-    "prettier-plugin-tailwindcss": "^0.5.2"
+    "nx-cloud": "^16.4.0",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.5"
   },
   "packageManager": "pnpm@8.6.10",
   "manypkg": {

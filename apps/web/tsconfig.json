@@ -4,7 +4,7 @@
     "plugins": [{ "name": "next" }],
     "baseUrl": ".",
     "paths": {
-      "@config": ["./src/config.ts"],
+      "@store": ["./src/store.ts"],
       "@constants/*": ["./src/constants/*"],
       "@components": ["./src/components"],
       "@components/layout": ["./src/components/layout"],

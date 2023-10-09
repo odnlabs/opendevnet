@@ -10,14 +10,12 @@ interface Props {
   removeToast: (id: string) => void;
 }
 
-export const Toasts: React.FC<Props> = ({ toasts, removeToast }) => {
-  return (
-    <>
-      <div className="fixed right-2 top-2 z-[100]">
-        {toasts.map((toast) => (
-          <Toast toast={toast} key={toast.id} removeToast={removeToast} />
-        ))}
-      </div>
-    </>
-  );
-};
+export const Toasts: React.FC<Props> = ({ toasts, removeToast }) => (
+  <>
+    <div className="fixed right-2 top-2 z-[100]">
+      {toasts.map((toast) => (
+        <Toast toast={toast} key={toast.id} removeToast={removeToast} />
+      ))}
+    </div>
+  </>
+);

@@ -37,7 +37,7 @@ interface Props {
 export const Toast: React.FC<Props> = ({ toast, removeToast }) => {
   const [visible, setVisible] = useState<boolean>(true);
 
-  const handleClose = () => {
+  const handleClose = (): void => {
     setVisible(false);
     setTimeout(() => {
       if (toast.id) removeToast(toast.id);
@@ -45,9 +45,12 @@ export const Toast: React.FC<Props> = ({ toast, removeToast }) => {
   };
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      handleClose();
-    }, toast.time ?? 1000 * 60);
+    const timer = setTimeout(
+      () => {
+        handleClose();
+      },
+      toast.time ?? 1000 * 60
+    );
     return () => clearTimeout(timer);
   });
 

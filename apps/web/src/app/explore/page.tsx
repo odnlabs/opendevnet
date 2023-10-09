@@ -1,7 +1,9 @@
-export default function Page() {
-  return (
-    <>
-      <p>Explore</p>
-    </>
-  );
-}
+import { NextPage } from 'next';
+
+const Explore: NextPage = () => (
+  <>
+    <p>Explore</p>
+  </>
+);
+
+export default Explore;

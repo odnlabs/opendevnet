@@ -1,0 +1,63 @@
+version: '3.3'
+services:
+  api:
+    container_name: api
+    image: slekup/opendevnet-api:main
+    build: ./api
+    env_file:
+      - .env.production
+    restart: always
+    environment:
+      NODE_ENV: production
+    ports:
+      - '5000:5000'
+    networks:
+      - app-network
+
+  site:
+    container_name: site
+    image: slekup/opendevnet-site:main
+    env_file:
+      - .env.production
+    restart: always
+    environment:
+      NEXT_PUBLIC_APP_NODE_ENV: production
+    ports:
+      - '3000:3000'
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+  web:
+    container_name: web
+    image: slekup/opendevnet-web:main
+    env_file:
+      - .env.production
+    restart: always
+    ports:
+      - '3500:3500'
+    depends_on:
+      - api
+    networks:
+      - app-network
+
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/production/ssl/:/etc/ssl/:ro
+    ports:
+      - '443:443'
+      - '80:80'
+    depends_on:
+      - api
+      - site
+      - web
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
