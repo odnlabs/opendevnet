@@ -4,8 +4,8 @@
   "main": "index.js",
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "@typescript-eslint/parser": "^6.7.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-config-next": "^13.5.4",
     "eslint-config-prettier": "^9.0.0",
@@ -14,7 +14,7 @@
     "eslint-plugin-jsdoc": "^46.8.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "eslint-plugin-react": "7.33.1",
+    "eslint-plugin-react": "7.33.2",
     "eslint-plugin-tsdoc": "^0.2.17"
   },
   "publishConfig": {

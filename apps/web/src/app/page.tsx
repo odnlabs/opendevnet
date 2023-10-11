@@ -149,6 +149,8 @@ const HomePage: NextPage = () => (
                 <div className="w-20">
                   <Image
                     src={event.icon}
+                    height={100}
+                    width={100}
                     alt="Event Icon"
                     className="h-12 w-12 rounded-full"
                   />
@@ -181,6 +183,8 @@ const HomePage: NextPage = () => (
                   <div className="w-16">
                     <Image
                       src={post.author.icon}
+                      height={100}
+                      width={100}
                       alt="Event Icon"
                       className="h-12 w-12 rounded-full"
                     />
@@ -202,6 +206,8 @@ const HomePage: NextPage = () => (
                     {/* <img
                         src={config.defaultAvatar}
                         alt="Event Icon"
+                        height={100}
+                        width={100}
                         className="h-full w-full object-cover rounded-t-lg"
                       /> */}
                   </div>
@@ -230,6 +236,8 @@ const HomePage: NextPage = () => (
                 <div className="w-20">
                   <Image
                     src={network.icon}
+                    height={100}
+                    width={100}
                     alt="Event Icon"
                     className="h-12 w-12 rounded-full"
                   />
