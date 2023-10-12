@@ -10,7 +10,7 @@ export const HeaderButtons: React.FC = () => (
       <Button label="Register" variant="secondary" />
     </Link>
     <Link href="/login">
-      <Button label="Login" />
+      <Button label="Log In" />
     </Link>
   </div>
 );

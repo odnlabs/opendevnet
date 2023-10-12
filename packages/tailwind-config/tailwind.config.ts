@@ -21,6 +21,8 @@ const config: Config = {
         `rgba(var(--primary-active), ${opacityValue ?? 1})`,
       'primary-text': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--primary-text), ${opacityValue ?? 1})`,
+      'primary-glass': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--primary-glass), ${opacityValue ?? 1})`,
       'secondary': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--secondary), ${opacityValue ?? 1})`,
       'secondary-hover': ({ opacityValue }: { opacityValue: string }) =>
@@ -29,6 +31,8 @@ const config: Config = {
         `rgba(var(--secondary-active), ${opacityValue ?? 1})`,
       'secondary-text': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--secondary-text), ${opacityValue ?? 1})`,
+      'secondary-glass': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--secondary-glass), ${opacityValue ?? 1})`,
       // Text
       'text': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--text), ${opacityValue ?? 1})`,
@@ -56,18 +60,30 @@ const config: Config = {
         `rgba(var(--success-hover), ${opacityValue ?? 1})`,
       'success-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--success-active), ${opacityValue ?? 1})`,
+      'success-text': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--success-text), ${opacityValue ?? 1})`,
+      'success-glass': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--success-glass), ${opacityValue ?? 1})`,
       'warning': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--warning), ${opacityValue ?? 1})`,
       'warning-hover': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--warning-hover), ${opacityValue ?? 1})`,
       'warning-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--warning-active), ${opacityValue ?? 1})`,
+      'warning-text': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--warning-text), ${opacityValue ?? 1})`,
+      'warning-glass': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--warning-glass), ${opacityValue ?? 1})`,
       'danger': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger), ${opacityValue ?? 1})`,
       'danger-hover': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger-hover), ${opacityValue ?? 1})`,
       'danger-active': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--danger-active), ${opacityValue ?? 1})`,
+      'danger-text': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--danger-text), ${opacityValue ?? 1})`,
+      'danger-glass': ({ opacityValue }: { opacityValue: string }) =>
+        `rgba(var(--danger-glass), ${opacityValue ?? 1})`,
       // Brand
       'brand-gradient-1': ({ opacityValue }: { opacityValue: string }) =>
         `rgba(var(--brand-gradient-1), ${opacityValue ?? 1})`,

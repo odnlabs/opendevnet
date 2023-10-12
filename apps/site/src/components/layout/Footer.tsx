@@ -63,7 +63,7 @@ export const Footer: React.FC = () => (
         </div>
         <div className="flex justify-between">
           {links.map((category, index) => (
-            <div className="mx-10" key={index}>
+            <div className="mx-10 flex-grow w-full" key={index}>
               <p className="mb-4 font-semibold uppercase text-sm">
                 {category.title}
               </p>

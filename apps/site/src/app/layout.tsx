@@ -17,23 +17,19 @@ export const metadata: Metadata = {
     'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}): JSX.Element {
-  return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-      </head>
-      <Providers>
-        <body className={font.className}>
-          <ToastWrapper />
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <html lang="en">
+    <head>
+      <link rel="icon" href="/favicon.ico" sizes="any" />
+    </head>
+    <Providers>
+      <body className={font.className}>
+        <ToastWrapper />
 
-          {children}
-        </body>
-      </Providers>
-    </html>
-  );
-}
+        {children}
+      </body>
+    </Providers>
+  </html>
+);
+
+export default RootLayout;

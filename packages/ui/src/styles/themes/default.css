@@ -1,5 +1,3 @@
-/* FBB03B  FF00FF  00FFFF  E3FF00*/
-
 :root {
   /** Global (tailwind configured) **/
   /* Primary */
@@ -7,10 +5,12 @@
   --primary-hover: 24, 86, 231;
   --primary-active: 18, 71, 164;
   --primary-text: 255, 255, 255;
+  --primary-glass: 101, 145, 241;
   --secondary: 51, 51, 67;
   --secondary-hover: 61, 61, 77;
   --secondary-active: 81, 81, 97;
   --secondary-text: 255, 255, 255;
+  --secondary-glass: var(--text);
   /* Text */
   --text: 255, 255, 255;
   --text-primary: 223, 223, 223;
@@ -26,12 +26,18 @@
   --success: 34, 197, 94;
   --success-hover: 31, 180, 87;
   --success-active: 29, 165, 80;
+  --success-text: 255, 255, 255;
+  --success-glass: var(--success);
   --warning: 253, 182, 34;
   --warning-hover: 254, 207, 112;
   --warning-active: 251, 170, 2;
+  --warning-text: 255, 255, 255;
+  --warning-glass: var(--warning);
   --danger: 227, 43, 61;
   --danger-hover: 213, 28, 46;
   --danger-active: 189, 26, 41;
+  --danger-text: 255, 255, 255;
+  --danger-glass: var(--danger);
   /** Brand **/
   --brand-gradient-1: 251, 176, 59;
   --brand-gradient-2: 255, 0, 255;
