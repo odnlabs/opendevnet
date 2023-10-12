@@ -1,14 +1,16 @@
 import { Header } from '@components/layout';
 import { Footer } from 'src/components/layout/Footer';
 
-export const RootLayout = ({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-}): JSX.Element => (
-  <>
-    <Header />
-    <div className="min-h-[80vh]">{children}</div>
-    <Footer />
-  </>
-);
+}): JSX.Element {
+  return (
+    <>
+      <Header />
+      <div className="min-h-[80vh]">{children}</div>
+      <Footer />
+    </>
+  );
+}
