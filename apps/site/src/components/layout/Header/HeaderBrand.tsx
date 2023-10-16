@@ -10,7 +10,7 @@ export const HeaderBrand: React.FC = () => {
   return (
     <Link
       href="/"
-      className="relative sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:left-0 lg:translate-x-0 lg:relative flex py-2.5"
+      className="relative sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:left-0 lg:translate-x-0 lg:relative flex py-2.5 ring-inset focus-visible:ring"
     >
       <Image
         src={`/logo-trans${theme === 'light' ? 'light' : ''}.png`}

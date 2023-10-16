@@ -1,33 +1,22 @@
 # Use Node.js v18 as the base image
 FROM node:18-alpine AS base
-# Install the latest pnpm version
+# Install the latest pnpm version with corepack
+# RUN corepack enable && corepack prepare pnpm@latest --activate
 RUN npm install -g pnpm@latest
-
-
-FROM base as builder
-RUN apk add --no-cache libc6-compat
-RUN apk update
-# Set working directory
-WORKDIR /app
-COPY . .
-RUN npm install -g nx
-# ! RUN nx prune --scope=site --docker
+# ENV PNPM_HOME=/usr/local/bin
 
 
 # Install dependencies
 FROM base AS installer
 RUN apk add --no-cache libc6-compat
 RUN apk update
-# Set the working directory
+# Set working directory
 WORKDIR /app
-COPY .gitignore .gitignore
-# Install the dependencies
-COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
-RUN pnpm install
+COPY . .
+# RUN pnpm i -g nx
+RUN pnpm i --filter=. --filter=packages/ui --filter=packages/utils --filter=packages/api-client --filter=apps/site --filter=!*
 # Build the project
-COPY --from=builder /app/out/full/ .
-RUN pnpm dlx nx run-many -t build -p site
+RUN pnpm dlx nx run-many -t build -p @odnlabs/ui @odnlabs/utils api-client site
 
 
 # Create the production-ready image - final output of build

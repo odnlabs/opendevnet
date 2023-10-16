@@ -1,1 +1,3 @@
-export * from './global/Button';
+'use client';
+
+export * from '@odnlabs/ui';

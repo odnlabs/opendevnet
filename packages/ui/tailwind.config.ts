@@ -3,7 +3,7 @@ import type { Config } from 'tailwindcss';
 import sharedConfig from 'tailwind-config/tailwind.config.js';
 
 const config: Omit<Config, 'content'> = {
-  prefix: 'ui-',
+  // prefix: 'ui-',
   presets: [sharedConfig],
 };
 
