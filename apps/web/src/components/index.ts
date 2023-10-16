@@ -1,1 +1,1 @@
-export * from './global/Button';
+export * from './global/uiComponents';

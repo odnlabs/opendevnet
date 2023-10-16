@@ -1,8 +1,6 @@
-'use client';
-
 import Link from 'next/link';
 
-import { Button } from '@odnlabs/ui';
+import { Button } from '@components';
 
 export const HeaderButtons: React.FC = () => (
   <div className="flex my-3">
