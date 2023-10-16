@@ -1,1 +1,3 @@
-export * from './global/uiComponents';
+'use client';
+
+export * from '@odnlabs/ui';
