@@ -5,6 +5,7 @@ import './styles.css';
 export * from './typings/core';
 
 // Components
+export * from './components/Accordian';
 export * from './components/Button';
 export * from './components/Checkbox';
 export * from './components/Input';
