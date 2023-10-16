@@ -1,3 +1,3 @@
-'use client';
+export { default as DocumentContent } from './global/DocumentContent';
 
-export * from '@odnlabs/ui';
+export * from './global/uiClientComponents';
