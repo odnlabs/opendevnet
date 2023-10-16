@@ -22,6 +22,7 @@ export interface ButtonProps
     | 'success-outline';
   width?: 'auto' | 'full';
   outline?: boolean;
+  link?: boolean;
 }
 
 export const Button = ({
@@ -29,6 +30,7 @@ export const Button = ({
   size = 'md',
   variant = 'primary',
   width = 'auto',
+  link = false,
   ...props
 }: ButtonProps): JSX.Element => {
   const sizeStyle = {
@@ -70,11 +72,24 @@ export const Button = ({
       'bg-success-glass/10 hover:bg-success-glass/20 active:bg-success-glass/40 text-success-glass',
   };
 
-  return (
-    <button
-      className={`${sizeStyle[size]} ${variantStyle[`${variant}`]} ${
+  return link ? (
+    <p
+      className={`transition duration-200 rounded-sm group-focus-visible:ring group-focus-visible:transition-none ${
+        sizeStyle[size]
+      } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'
-      } transition duration-200 rounded-sm ${width === 'full' && 'w-full'}`}
+      } ${width === 'full' && 'w-full'}`}
+      {...(props as React.HTMLAttributes<HTMLParagraphElement>)}
+    >
+      {label}
+    </p>
+  ) : (
+    <button
+      className={`transition duration-200 rounded-sm focus-visible:ring focus-visible:transition-none ${
+        sizeStyle[size]
+      } ${variantStyle[`${variant}`]} ${
+        variant.endsWith('-outline') && 'border'
+      } ${width === 'full' && 'w-full'}`}
       {...props}
     >
       {label}

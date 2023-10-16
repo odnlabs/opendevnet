@@ -92,13 +92,14 @@ export const Footer: React.FC = () => {
                   }`}
                 >
                   {category.items.map((item, itemIndex) => (
-                    <Link
-                      key={itemIndex}
-                      href={item.href}
-                      className="block border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:py-0 md:my-2 text-text-secondary md:text-text-faint hover:text-text-primary md:hover:underline active:text-text md:active:underline transition duration-300 md:transition-none"
-                    >
-                      {item.label}
-                    </Link>
+                    <div key={itemIndex}>
+                      <Link
+                        href={item.href}
+                        className="block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:py-0 md:my-2 text-text-secondary md:text-text-faint hover:text-text-primary md:hover:underline active:text-text md:active:underline transition duration-300 md:transition-none ring-inset focus-visible:ring"
+                      >
+                        {item.label}
+                      </Link>
+                    </div>
                   ))}
                 </div>
               </div>

@@ -8,7 +8,7 @@ export const Input: React.FC<InputProps> = ({ label, ...props }) => (
   <div>
     {label && (
       <label
-        htmlFor="email"
+        htmlFor={props.id}
         className="inline-block text-sm text-text-primary font-medium mb-2 ml-1"
       >
         {label}

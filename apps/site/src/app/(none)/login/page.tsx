@@ -1,6 +1,6 @@
 import { Metadata, NextPage } from 'next';
 
-import { LoginBox } from './LoginBox';
+import { LoginForm } from './LoginForm';
 
 export const metadata: Metadata = {
   title: 'Login | Open Dev Net',
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const Login: NextPage = () => (
   <div className="py-20 h-screen bg-background-secondary">
-    <LoginBox />
+    <LoginForm />
   </div>
 );
 

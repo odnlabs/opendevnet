@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button, Input } from '@odnlabs/ui';
 import Link from 'next/link';
 
-export const LoginBox: React.FC = () => {
+export const LoginForm: React.FC = () => {
   // TODO: disable the rule below when component is implemented
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');

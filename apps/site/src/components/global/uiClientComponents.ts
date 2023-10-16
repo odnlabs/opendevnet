@@ -1,3 +1,11 @@
 'use client';
 
-export { Accordian, Button, Checkbox, Input, Toast } from '@odnlabs/ui';
+export {
+  Accordian,
+  Button,
+  Checkbox,
+  Input,
+  Select,
+  TextArea,
+  Toast,
+} from '@odnlabs/ui';

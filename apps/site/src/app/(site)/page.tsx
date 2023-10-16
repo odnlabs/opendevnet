@@ -61,18 +61,18 @@ const Home: NextPage = () => {
   return (
     <>
       <section>
-        <div className="max-w-7xl w-11/12 mx-auto py-32">
+        <div className="max-w-7xl w-10/12 mx-auto py-24 sm:py-32">
           <div className="text-center">
             <h1 className="text-5xl font-bold text-text-secondary">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
                 Connecting Developers
               </span>
             </h1>
-            <h1 className="mt-5 text-5xl font-bold">
+            <h1 className="mt-5 text-3xl md:text-5xl font-bold">
               <span>Across the World</span>
             </h1>
             <div className="max-w-2xl mx-auto">
-              <p className="text-text-secondary my-8">
+              <p className="text-sm sm:text-base text-text-secondary my-8">
                 Welcome to Open Dev Net, where programmers from all corners of
                 the globe collaborate, innovate, and code for a better future.
                 Join us in connecting minds, creating solutions, and making a

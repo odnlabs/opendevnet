@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Button, Checkbox, Input } from '@odnlabs/ui';
 import Link from 'next/link';
 
-export const RegisterBox: React.FC = () => {
+export const RegisterForm: React.FC = () => {
   // TODO: Remove the rule below when the component is implemented
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
