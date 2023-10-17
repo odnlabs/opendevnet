@@ -62,7 +62,16 @@ const Team: NextPage = () => {
         ))}
       </div>
       <p className="mt-10 text-center text-gray-400">
-        Want to join? DM @<b>slekup</b> on discord.
+        Want to join the team?{' '}
+        <a
+          href="mailto:slekupvimplyrataqq@protonmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link"
+        >
+          Send an email
+        </a>
+        .
       </p>
     </div>
   );

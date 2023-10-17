@@ -15,6 +15,7 @@ const links: { title: string; items: Link[] }[] = [
     items: [
       { label: 'Homepage', href: '/' },
       { label: 'Blog', href: '/blog' },
+      { label: 'Contact Us', href: '/contact' },
       { label: 'Login', href: '/login' },
       { label: 'Register', href: '/register' },
     ],
@@ -22,7 +23,7 @@ const links: { title: string; items: Link[] }[] = [
   {
     title: 'About Us',
     items: [
-      { label: 'About', href: '/about' },
+      { label: 'About Us', href: '/about' },
       { label: 'Story', href: '/about' },
       { label: 'Vision', href: '/about/vision' },
       { label: 'Team', href: '/about/team' },
@@ -43,6 +44,7 @@ const links: { title: string; items: Link[] }[] = [
       { label: 'Terms of Service', href: '/terms' },
       { label: 'Privacy Policy', href: '/privacy' },
       { label: 'Community Guidelines', href: '/guidelines' },
+      { label: 'Accessibility', href: '/accessibility' },
       { label: 'Licenses', href: '/licenses' },
     ],
   },
@@ -53,7 +55,7 @@ export const Footer: React.FC = () => {
 
   return (
     <>
-      <div className="md:py-5 border-t border-border bg-[rgb(var(--footer))] text-sm">
+      <div className="md:py-10 border-t border-border bg-[rgb(var(--footer))] text-sm">
         <div className="max-w-5xl pt-10 md:py-5 lg:py-10 mx-auto md:w-10/12 lg:flex justify-between">
           <div className="mx-auto text-center mb-10 lg:mx-0 lg:text-left w-80 lg:mb-0">
             <Image
@@ -70,11 +72,12 @@ export const Footer: React.FC = () => {
           <div className="w-full md:flex justify-between">
             {links.map((category, index) => (
               <div className="md:w-1/4" key={index}>
+                {/* Category */}
                 <p className="mb-4 font-semibold uppercase text-sm hidden md:block">
                   {category.title}
                 </p>
                 <button
-                  className={`block w-full border-t border-border/50 py-5 font-semibold uppercase text-text-secondary text-sm md:hidden transition duration-200 ${
+                  className={`block md:hidden w-full border-t border-border/50 py-5 font-semibold uppercase text-text-secondary text-sm transition duration-200 ${
                     openIndex !== index &&
                     'hover:bg-secondary active:bg-secondary-active'
                   }`}
@@ -84,6 +87,8 @@ export const Footer: React.FC = () => {
                 >
                   {category.title}
                 </button>
+
+                {/* Links */}
                 <div
                   className={`transition-[max-height,transform,opacity] duration-300 origin-top ${
                     openIndex === index
@@ -92,10 +97,10 @@ export const Footer: React.FC = () => {
                   }`}
                 >
                   {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex}>
+                    <div key={itemIndex} className="md:my-2">
                       <Link
                         href={item.href}
-                        className="block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:py-0 md:my-2 text-text-secondary md:text-text-faint hover:text-text-primary md:hover:underline active:text-text md:active:underline transition duration-300 md:transition-none ring-inset focus-visible:ring"
+                        className="block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:py-0 text-text-secondary md:text-text-faint hover:text-text-primary active:text-text transition duration-300 md:transition-none ring-inset focus-visible:ring"
                       >
                         {item.label}
                       </Link>
@@ -110,7 +115,7 @@ export const Footer: React.FC = () => {
       <div className="py-5 border-t border-border/50 bg-[rgb(var(--footer))] text-sm">
         <p className="text-center text-sm text-text-faint">
           © {new Date().getFullYear()},{' '}
-          <Link href="/" className="hover:underline">
+          <Link href="/" className="hover:text-text">
             OpenDevNet.com
           </Link>
         </p>
