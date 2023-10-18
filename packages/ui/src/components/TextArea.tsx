@@ -2,7 +2,7 @@ import React from 'react';
 
 interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label: string;
+  label?: string;
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({ label, ...props }) => (
