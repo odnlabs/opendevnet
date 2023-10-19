@@ -7,23 +7,23 @@ export const metadata: Metadata = {
 };
 
 const Help: NextPage = () => {
-  
   interface BlockLink {
     title: string;
     description: string;
     href: string;
   }
-  
+
   const links: BlockLink[] = [
     {
       title: 'Getting Started',
-      description: 'Learn the basics of Open Dev Net and you can start using it effectively today.',
-      href: 'getting-started'
+      description:
+        'Learn the basics of Open Dev Net and you can start using it effectively today.',
+      href: 'getting-started',
     },
     {
       title: 'Network Administration',
       description: '',
-      href: 'administration'
+      href: 'administration',
     },
     {
       title: 'Personal Customization',
@@ -34,16 +34,19 @@ const Help: NextPage = () => {
       title: 'Automation',
       description: '',
       href: 'automation',
-    }
-  ]
+    },
+  ];
 
-return <>
-  <div className="py-10 bg-gradient-to-tr from-brand-gradient-3 to-brand-gradient-4">
-    <div className="text-center max-w-5xl w-11/12 max-w-auto">
-      <h1 className="font-bold text-4xl">Help Center</h1>
-      <Input placeholder="What do you need help with?"/>
-    </div>
-  </div>
-</>};
+  return (
+    <>
+      <div className="py-10 bg-gradient-to-tr from-brand-gradient-3 to-brand-gradient-4">
+        <div className="text-center max-w-5xl w-11/12 max-w-auto">
+          <h1 className="font-bold text-4xl">Help Center</h1>
+          <Input placeholder="What do you need help with?" />
+        </div>
+      </div>
+    </>
+  );
+};
 
 export default Help;

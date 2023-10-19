@@ -1,9 +1,10 @@
-import '@odnlabs/ui/styles.css';
 import { Poppins } from 'next/font/google';
 
 import { ToastWrapper } from '@components/layout';
 import { Metadata } from 'next';
 import { Providers } from 'src/components/layout/Providers';
+
+import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
 
 const font = Poppins({
