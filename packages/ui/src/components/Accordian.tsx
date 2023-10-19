@@ -7,17 +7,17 @@ export interface FAQ {
   answer: string | JSX.Element;
 }
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   data: FAQ[];
   autoClose?: boolean;
 }
 
-export const Accordian: React.FC<Props> = ({ data, autoClose }) => {
+export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
   const [focused, setFocused] = useState<number | null>(null);
   const [focusedArr, setFocusedArr] = useState<number[]>([]);
 
   return (
-    <>
+    <div {...props}>
       {data.map((set, index) => (
         <div
           key={index}
@@ -68,6 +68,6 @@ export const Accordian: React.FC<Props> = ({ data, autoClose }) => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };

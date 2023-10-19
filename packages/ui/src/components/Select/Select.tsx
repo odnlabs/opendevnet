@@ -4,7 +4,9 @@ import { HiChevronDown } from 'react-icons/hi';
 
 import { SelectDropdown, SharedProps } from './Select.Dropdown';
 
-interface Props extends SharedProps {
+interface Props
+  extends SharedProps,
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
    * Additional class names to be added to the select component.
    */
@@ -31,12 +33,12 @@ export const Select: React.FC<Props> = ({
   options,
   state,
   setState,
-  className,
   title,
   fixedTitle,
   onChange,
   disabled,
   loading,
+  ...props
 }) => {
   const [focused, setFocused] = useState<boolean>(false);
 
@@ -79,13 +81,14 @@ export const Select: React.FC<Props> = ({
 
   return (
     <div
-      className={`max-h-16 w-full overflow-visible ${focused && 'z-[100]'}`}
+      {...props}
+      className={`max-h-16 w-full overflow-visible ${focused && 'z-[100]'} ${
+        props.className
+      }`}
       onScroll={handleScroll}
     >
       <button
         className={`flex w-full cursor-pointer justify-between rounded-sm py-3 pl-4 pr-3 text-sm font-medium text-text-primary ring-primary/30 transition ${
-          className && className
-        } ${
           disabled
             ? 'cursor-default'
             : 'bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))] border-2 border-transparent focus:border-primary'

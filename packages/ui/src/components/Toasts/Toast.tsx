@@ -29,12 +29,12 @@ const typeIcon = {
   [ToastType.Error]: <MdError className="w-6 h-6 text-red-400" />,
 };
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   toast: IToast;
   removeToast: (id: string) => void;
 }
 
-export const Toast: React.FC<Props> = ({ toast, removeToast }) => {
+export const Toast: React.FC<Props> = ({ toast, removeToast, ...props }) => {
   const [visible, setVisible] = useState<boolean>(true);
 
   const handleClose = (): void => {
@@ -56,13 +56,14 @@ export const Toast: React.FC<Props> = ({ toast, removeToast }) => {
 
   return (
     <div
+      {...props}
       className={`max-w-80 border-border relative grid rounded-lg bg-gray-900 shadow-lg transition-all duration-500 ${
         visible
           ? `mb-2 animate-[toast-enter_500ms_ease] grid-rows-[1fr] border ${
               typeBorder[toast.type]
             }`
           : 'translate-x-full grid-rows-[0fr] opacity-0'
-      }`}
+      } ${props.className}`}
     >
       <div
         className="overflow-hidden transition-all duration-500"

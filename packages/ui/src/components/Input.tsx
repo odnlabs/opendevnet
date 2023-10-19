@@ -17,7 +17,7 @@ export const Input: React.FC<InputProps> = ({ label, ...props }) => (
     )}
     <input
       {...props}
-      className="block w-full px-3 py-2 rounded-md bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm border-2 border-transparent focus:border-primary"
+      className={`block w-full px-3 py-2 rounded-md bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm border-2 border-transparent focus:border-primary ${props.className}`}
     />
   </div>
 );
