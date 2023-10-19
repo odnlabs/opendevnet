@@ -90,7 +90,7 @@ export const Button = ({
         sizeStyle[size]
       } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'
-      } ${width === 'full' && 'w-full'} ${props.className}`}
+      } ${width === 'full' && 'w-full'}`}
     >
       {label}
     </button>

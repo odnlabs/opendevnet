@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const Feedback: NextPage = () => (
-  <div className="pt-20 pb-40 bg-background-secondary">
+  <div className="pt-20 pb-52">
     <FeedbackForm />
   </div>
 );

@@ -38,7 +38,7 @@ export const FeedbackForm: React.FC = () => {
   const [content, setContent] = useState<string>('');
 
   return (
-    <div className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
+    <div className="max-w-lg w-11/12 mx-auto rounded-3xl bg-background-secondary border border-border shadow-xl p-8">
       <div className="border-b border-border pb-5">
         <h1 className="text-2xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-3 to-brand-gradient-4">
@@ -94,7 +94,7 @@ export const FeedbackForm: React.FC = () => {
             placeholder="Type your feedback here..."
             minLength={10}
             maxLength={500}
-            className="resize-none h-32"
+            className="h-32"
             onChange={(event) => setEmail(event.target.value)}
             required
           />

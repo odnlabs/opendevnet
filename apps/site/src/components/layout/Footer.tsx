@@ -11,6 +11,8 @@ import { RiGithubFill, RiLinkedinFill } from 'react-icons/ri';
 
 import { config } from '@odnlabs/utils';
 
+import { Button } from '@components';
+
 interface Link {
   label: string;
   href: string;
@@ -21,8 +23,8 @@ const links: { title: string; items: Link[] }[] = [
     title: 'Website',
     items: [
       { label: 'Homepage', href: '/' },
-      { label: 'Blog', href: '/blog' },
       { label: 'Contact Us', href: '/contact' },
+      { label: 'Blog', href: '/blog' },
       { label: 'Login', href: '/login' },
       { label: 'Register', href: '/register' },
     ],
@@ -86,8 +88,51 @@ export const Footer: React.FC = () => {
 
   return (
     <>
+      <div className="max-w-7xl w-11/12 mx-auto rounded-lg shadow-xl mb-8 sm:mb-10 lg:mb-20 bg-gradient-to-tr from-rose-600 to-blue-700">
+        <div className="p-10 md:p-12 lg:p-20 md:flex justify-between">
+          <div className="drop-shadow-lg">
+            <h1 className="text-2xl lg:text-3xl font-semibold">
+              Try Open Dev Net today!
+            </h1>
+            <p className="mt-3">
+              Supercharge your development journey with Open Dev Net.
+            </p>
+          </div>
+
+          <div className="pt-5 md:py-5 flex md:justify-end min-w-72">
+            <div>
+              <Link
+                href="/register"
+                className="inline-block group shadow-sm rounded-sm"
+              >
+                <Button
+                  label="Register"
+                  size="lg"
+                  variant="secondary-glass"
+                  link
+                />
+              </Link>
+            </div>
+            <div className="w-3"></div>
+            <div>
+              <Link
+                href="/login"
+                className="inline-block group shadow-sm rounded-sm"
+              >
+                <Button
+                  label="Log In"
+                  size="lg"
+                  variant="secondary-glass"
+                  link
+                />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="md:py-10 border-t border-border bg-[rgb(var(--footer))] text-sm">
-        <div className="max-w-5xl pt-10 md:py-5 lg:py-10 mx-auto md:w-10/12 lg:flex justify-between">
+        <div className="max-w-7xl pt-10 md:py-5 lg:py-10 mx-auto md:w-10/12 lg:flex justify-between">
           <div className="mx-auto text-center mb-10 lg:mx-0 lg:text-left w-80 lg:mb-0">
             <Image
               height={50}
@@ -100,7 +145,7 @@ export const Footer: React.FC = () => {
               Open Dev Net
             </p>
 
-            <div className="flex mt-5 text-text-faint">
+            <div className="flex justify-center lg:justify-start mt-5 text-text-faint">
               {socialMediaLinks.map((link, index) => (
                 <a
                   key={index}
@@ -114,7 +159,8 @@ export const Footer: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="w-full md:flex justify-between">
+
+          <div className="max-w-4xl w-full md:flex justify-between">
             {links.map((category, index) => (
               <div className="md:w-1/4" key={index}>
                 {/* Category */}
@@ -157,7 +203,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="py-5 border-t border-border/50 bg-[rgb(var(--footer))] text-sm">
+      <div className="py-8 border-t border-border/50 bg-[rgb(var(--footer))] text-sm">
         <p className="text-center text-sm text-text-faint">
           © {new Date().getFullYear()},{' '}
           <Link href="/" className="hover:text-text">
