@@ -4,6 +4,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { IconType } from 'react-icons';
+import { BsYoutube } from 'react-icons/bs';
+import { MdEmail } from 'react-icons/md';
+import { RiGithubFill, RiLinkedinFill } from 'react-icons/ri';
+
+import { config } from '@odnlabs/utils';
+
 interface Link {
   label: string;
   href: string;
@@ -24,18 +31,19 @@ const links: { title: string; items: Link[] }[] = [
     title: 'About Us',
     items: [
       { label: 'About Us', href: '/about' },
-      { label: 'Story', href: '/about' },
-      { label: 'Vision', href: '/about/vision' },
-      { label: 'Team', href: '/about/team' },
+      { label: 'Our Story', href: '/about' },
+      { label: 'The Vision Ahead', href: '/about/vision' },
+      { label: 'Meet the Team', href: '/about/team' },
     ],
   },
   {
     title: 'Resources',
     items: [
-      { label: 'Docs', href: '/docs' },
+      { label: 'Documentation', href: '/docs' },
       { label: 'Help Center', href: '/help' },
       { label: 'Feedback', href: '/feedback' },
       { label: 'Changelog', href: '/changelog' },
+      { label: 'Sitemap', href: '/sitemap' },
     ],
   },
   {
@@ -47,6 +55,29 @@ const links: { title: string; items: Link[] }[] = [
       { label: 'Accessibility', href: '/accessibility' },
       { label: 'Licenses', href: '/licenses' },
     ],
+  },
+];
+
+const socialMediaLinks = [
+  {
+    name: 'GitHub',
+    url: config.social.github,
+    icon: RiGithubFill as IconType,
+  },
+  {
+    name: 'LinkedIn',
+    url: config.social.linkedin,
+    icon: RiLinkedinFill as IconType,
+  },
+  {
+    name: 'YouTube',
+    url: config.social.youtube,
+    icon: BsYoutube as IconType,
+  },
+  {
+    name: 'Email',
+    url: config.social.email,
+    icon: MdEmail as IconType,
   },
 ];
 
@@ -68,6 +99,20 @@ export const Footer: React.FC = () => {
             <p className="mt-4 font-medium text-xl text-text-primary">
               Open Dev Net
             </p>
+
+            <div className="flex mt-5 text-text-faint">
+              {socialMediaLinks.map((link, index) => (
+                <a
+                  key={index}
+                  href={link.url}
+                  className="hover:text-text-secondary active:text-text transition duration-200 mr-3"
+                  target="_black"
+                  rel="noreferrer"
+                >
+                  <link.icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
           <div className="w-full md:flex justify-between">
             {links.map((category, index) => (
