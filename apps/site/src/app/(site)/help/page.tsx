@@ -39,7 +39,7 @@ const Help: NextPage = () => {
 
   return (
     <>
-      <div className="py-20 bg-gradient-to-tr from-brand-gradient-3 to-brand-gradient-4">
+      <div className="py-20 bg-gradient-to-tr from-brand-gradient-3/50 to-transparent">
         <div className="text-center max-w-xl w-10/12 mx-auto">
           <h1 className="font-bold text-5xl drop-shadow-md">Help Center</h1>
           <Input

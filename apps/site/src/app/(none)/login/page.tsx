@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const Login: NextPage = () => (
-  <div className="py-20 h-screen bg-background-secondary">
+  <div className="py-5 sm:py-10 md:py-20 min-h-screen bg-background-secondary">
     <LoginForm />
   </div>
 );
