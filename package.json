@@ -11,6 +11,7 @@
     "clean": "nx run-many -t clean",
     "dev": "dotenv -e .env.local -- nx run-many -t dev",
     "dev:api": "dotenv -e .env.local -- nx run api:dev",
+    "dev:frontend": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client site web",
     "dev:site": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client site",
     "dev:web": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client web",
     "fix": "manypkg fix",
