@@ -35,7 +35,7 @@ const Licenses: NextPage = async () => {
 
   return (
     <>
-      <div className="max-w-3xl mx-auto pt-20 pb-40">
+      <div className="max-w-3xl w-10/12 mx-auto mt-10 lg:mt-20 mb-20 lg:mb-28">
         <h1 className="text-4xl font-bold">Licenses</h1>
         <p className="mt-4">
           All software and documentation in the Open Dev Net is released under
