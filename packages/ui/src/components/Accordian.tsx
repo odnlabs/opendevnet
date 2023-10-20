@@ -7,17 +7,17 @@ export interface FAQ {
   answer: string | JSX.Element;
 }
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   data: FAQ[];
   autoClose?: boolean;
 }
 
-export const Accordian: React.FC<Props> = ({ data, autoClose }) => {
+export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
   const [focused, setFocused] = useState<number | null>(null);
   const [focusedArr, setFocusedArr] = useState<number[]>([]);
 
   return (
-    <>
+    <div {...props}>
       {data.map((set, index) => (
         <div
           key={index}
@@ -40,6 +40,7 @@ export const Accordian: React.FC<Props> = ({ data, autoClose }) => {
           >
             <div className="-mt-0.5 flex justify-between">
               <p className="w-[calc(100%-1.5rem)]">{set.question}</p>
+
               <FaChevronDown
                 className={`mt-1.5 h-4 w-4 transition duration-300 ${
                   (autoClose ? focused === index : focusedArr.includes(index))
@@ -68,6 +69,6 @@ export const Accordian: React.FC<Props> = ({ data, autoClose }) => {
           </div>
         </div>
       ))}
-    </>
+    </div>
   );
 };

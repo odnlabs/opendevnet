@@ -85,12 +85,12 @@ export const Button = ({
     </p>
   ) : (
     <button
+      {...props}
       className={`transition duration-200 rounded-sm focus-visible:ring focus-visible:transition-none ${
         sizeStyle[size]
       } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'
       } ${width === 'full' && 'w-full'}`}
-      {...props}
     >
       {label}
     </button>

@@ -1,35 +1,43 @@
 {
   "name": "opendevnet",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/odnlabs/opendevnet"
+  },
   "license": "CC-BY-NC-SA-4.0",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "build": "nx run-many -t build",
-    "clean": "nx run-many -t clean",
-    "dev": "dotenv -e .env.local -- nx run-many -t dev",
+    "build": "nx run-many --target=build --all",
+    "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
     "dev:api": "dotenv -e .env.local -- nx run api:dev",
     "dev:site": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client site",
     "dev:web": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client web",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "postinstall": "manypkg check",
-    "lint": "nx run-many -t lint",
-    "start": "dotenv -- nx run-many -t start"
+    "lint": "nx run-many --target=lint --all",
+    "test": "nx test"
   },
   "dependencies": {
     "@manypkg/cli": "^0.21.0",
+    "@monodon/rust": "^1.2.0",
+    "@nx/eslint": "^17.0.0",
+    "@nx/jest": "^17.0.0",
+    "@nx/next": "^17.0.0",
+    "@nx/react": "^17.0.0",
+    "@nx/workspace": "^17.0.0",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.51.0",
     "eslint-config-odn": "workspace:*",
-    "nx": "16.6.0",
-    "nx-cloud": "^16.5.2",
+    "nx": "16.10.0",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6"
   },
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@8.9.2",
   "manypkg": {
     "ignoredRules": [
       "INTERNAL_MISMATCH"

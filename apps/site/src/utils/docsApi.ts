@@ -27,12 +27,12 @@ export const getSlugs = async (docsDir: string): Promise<ReturnedSlug[]> => {
   }, []);
 
   const paths: string[] = [];
-  categories.forEach((cat) => {
+  for (const cat of categories) {
     const categorySlugs = sync(`${docsDir}/${cat}/*.mdx`.replaceAll('\\', '/'));
     categorySlugs.forEach((slugPath) => {
       paths.push(slugPath);
     });
-  });
+  }
 
   const returnedSlugs: ReturnedSlug[] = [];
 
@@ -120,4 +120,43 @@ export const getAllDocs = async (
   );
   // Return meta data of last {docsDir} docs - not markdown
   return docs.slice(0, results || 999).map((doc) => doc.meta);
+};
+
+interface StructuredPath {
+  category: string;
+  items: { title: string; slug: string }[];
+}
+
+export const structurePaths = async (
+  dirName: string
+): Promise<StructuredPath[]> => {
+  const paths = (await getSlugs(dirName)).map(({ slug, cat, title }) => ({
+    params: { slug, category: cat, title },
+  }));
+
+  const data: StructuredPath[] = [];
+
+  paths.forEach((path) => {
+    const { slug, title, category } = path.params;
+
+    // Ensure object for category exists
+    const categoryIndex = data.findIndex((cat) => cat.category === category);
+    if (categoryIndex === -1) {
+      data.push({
+        category,
+        items: [],
+      });
+    }
+
+    // Ensure object for section within category exists
+    const newCategoryIndex = data.findIndex((cat) => cat.category === category);
+
+    // Add item to section
+    data[newCategoryIndex].items.push({
+      title,
+      slug,
+    });
+  });
+
+  return data;
 };

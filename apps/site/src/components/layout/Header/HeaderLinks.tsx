@@ -19,8 +19,10 @@ export const HeaderLinks: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
         <Link
           key={index}
           href={link.href}
-          className={`mx-2.5 py-0.5 focus-visible:ring ${
-            basePath === link.href ? 'text-text' : 'text-text-faint'
+          className={`mx-3 py-0.5 focus-visible:ring ${
+            basePath === link.href
+              ? 'text-text'
+              : 'text-text-faint hover:text-text-secondary focus:text-text'
           }`}
         >
           {link.title}

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
 };
 
 const Register: NextPage = () => (
-  <div className="py-20 bg-background-secondary h-screen">
+  <div className="py-5 sm:py-10 md:py-20 min-h-screen bg-background-secondary">
     <RegisterForm />
   </div>
 );

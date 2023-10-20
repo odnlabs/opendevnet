@@ -9,7 +9,9 @@ export const metadata: Metadata = {
 
 const Home: NextPage = () => {
   const faq = [
-    {question: 'How can I get started on Open Dev Net? ', answer:
+    {
+      question: 'How can I get started on Open Dev Net?',
+      answer:
         "To get started, simply sign up for an account on our platform. Once you're registered, you can explore discussions, join projects, and interact with other developers. Feel free to introduce yourself in our community forums.",
     },
     {

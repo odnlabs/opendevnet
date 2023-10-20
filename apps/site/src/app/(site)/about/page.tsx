@@ -66,8 +66,7 @@ const About: NextPage = () => {
           >
             Contributing Guidelines
           </a>
-          . If you&apos;re interested in officially joining the team, DM Slekup
-          on Discord at <b className="font-bold">@slekup</b> or email at{' '}
+          . If you&apos;re interested in officially joining the team, email at{' '}
           <a
             href="mailto:slekupvimplyrataqq@protonmail.com"
             target="_blank"
@@ -76,7 +75,7 @@ const About: NextPage = () => {
           >
             slekupvimplyrataqq@protonmail.com
           </a>
-          . (I check Discord more often).
+          .
         </p>
         <h2 className={subheaderStyle}>Technology Stack</h2>
         <p className={paragraphStyle}>

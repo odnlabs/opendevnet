@@ -14,7 +14,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@splidejs/react-splide": "^0.7.12",
     "builder-validation": "^0.0.3",
-    "next": "^13.5.5",
+    "next": "^13.5.6",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -24,10 +24,10 @@
     "uuid": "^9.0.1"
   },
   "devDependencies": {
-    "@types/node": "^20.8.6",
-    "@types/react": "^18.2.28",
-    "@types/react-dom": "^18.2.13",
-    "@types/uuid": "^9.0.5",
+    "@types/node": "^20.8.7",
+    "@types/react": "^18.2.30",
+    "@types/react-dom": "^18.2.14",
+    "@types/uuid": "^9.0.6",
     "autoprefixer": "^10.4.16",
     "eslint-config-odn": "workspace:*",
     "postcss": "^8.4.31",

@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useRef } from 'react';
 
 const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const pathname = usePathname();
@@ -26,6 +27,8 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     },
   ];
 
+  const linkRefs = useRef<HTMLAnchorElement[]>([]);
+
   return (
     <div className="max-w-7xl w-11/12 mx-auto mb-20">
       <div className="relative flex justify-center bg-background-secondary max-w-3xl w-11/12 mx-auto rounded-b-3xl">
@@ -44,6 +47,9 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           <Link
             key={index}
             href={link.href}
+            ref={(el) => {
+              linkRefs.current[index] = el as HTMLAnchorElement;
+            }}
             className={`group relative py-4 w-24 text-center font-medium transition duration-200 ${
               pathname === link.href
                 ? 'text-text'

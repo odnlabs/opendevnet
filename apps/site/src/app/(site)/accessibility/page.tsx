@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { DocumentContent } from '@components';
 import { getDocFromSlug } from '@utils/docsApi';
 
-const fileName = 'terms';
+const fileName = 'accessibility';
 const fileDir = 'src/markdown/policies';
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -13,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const Terms = async (): Promise<JSX.Element> => {
+const Accessibility = async (): Promise<JSX.Element> => {
   const doc = await getDocFromSlug(fileName, fileDir);
 
   return (
@@ -23,4 +23,4 @@ const Terms = async (): Promise<JSX.Element> => {
   );
 };
 
-export default Terms;
+export default Accessibility;

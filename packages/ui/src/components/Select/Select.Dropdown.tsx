@@ -1,6 +1,7 @@
-import ReactDom from 'react-dom';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { BsCheckCircle } from '@react-icons/all-files/bs/BsCheckCircle';
 
 export interface SharedProps {
   /**
@@ -67,9 +68,15 @@ export const SelectDropdown: React.FC<Props> = ({
   fromLeft,
   closeSelect,
   onChange,
-}) =>
-  document.body
-    ? ReactDom.createPortal(
+}) => {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted
+    ? createPortal(
         <>
           <div
             className={`fixed left-0 top-0 z-[90] h-full w-full ${
@@ -133,7 +140,7 @@ export const SelectDropdown: React.FC<Props> = ({
                 >
                   {option.label}
                   {state === option.value && (
-                    <BsCheckCircleFill className="mt-0.5 h-4 w-4 text-text-secondary" />
+                    <BsCheckCircle className="mt-0.5 h-4 w-4 text-text-secondary" />
                   )}
                 </button>
               ))}
@@ -143,3 +150,4 @@ export const SelectDropdown: React.FC<Props> = ({
         document.body
       )
     : null;
+};

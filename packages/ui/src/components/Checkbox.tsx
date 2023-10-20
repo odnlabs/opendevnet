@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
 
-interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
   checked: boolean;
   setChecked: React.Dispatch<React.SetStateAction<boolean>>;
   className?: string;
@@ -14,8 +14,8 @@ interface CheckboxProps extends React.InputHTMLAttributes<HTMLInputElement> {
 export const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   setChecked,
-  className,
   disabled,
+  ...props
 }) => (
   <div
     className={`min-h-5 min-w-5 max-h-5 max-w-5 cursor-default rounded-sm border transition duration-200 ${
@@ -25,7 +25,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             !disabled &&
             'hover:border-primary hover:bg-[rgb(var(--input-focus))] hover:transition-none'
           }`
-    } ${className && className}`}
+    } ${props.className}`}
     onClick={() => setChecked(!checked)}
   >
     <FaCheck
