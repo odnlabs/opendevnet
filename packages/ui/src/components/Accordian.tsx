@@ -40,6 +40,7 @@ export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
           >
             <div className="-mt-0.5 flex justify-between">
               <p className="w-[calc(100%-1.5rem)]">{set.question}</p>
+
               <FaChevronDown
                 className={`mt-1.5 h-4 w-4 transition duration-300 ${
                   (autoClose ? focused === index : focusedArr.includes(index))

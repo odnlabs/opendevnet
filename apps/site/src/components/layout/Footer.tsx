@@ -3,11 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-
 import { IconType } from 'react-icons';
-import { BsYoutube } from 'react-icons/bs';
-import { MdEmail } from 'react-icons/md';
-import { RiGithubFill, RiLinkedinFill } from 'react-icons/ri';
+
+import { MdEmail } from '@react-icons/all-files/md/MdEmail';
+import { RiGithubFill } from '@react-icons/all-files/ri/RiGithubFill';
+import { RiLinkedinFill } from '@react-icons/all-files/ri/RiLinkedinFill';
+import { SiYoutube } from '@react-icons/all-files/si/SiYoutube';
 
 import { config } from '@odnlabs/utils';
 
@@ -74,7 +75,7 @@ const socialMediaLinks = [
   {
     name: 'YouTube',
     url: config.social.youtube,
-    icon: BsYoutube as IconType,
+    icon: SiYoutube as IconType,
   },
   {
     name: 'Email',

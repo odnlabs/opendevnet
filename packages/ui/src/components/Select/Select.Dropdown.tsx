@@ -1,6 +1,6 @@
 import ReactDom from 'react-dom';
 
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { BsCheckCircle } from '@react-icons/all-files/bs/BsCheckCircle';
 
 export interface SharedProps {
   /**
@@ -133,7 +133,7 @@ export const SelectDropdown: React.FC<Props> = ({
                 >
                   {option.label}
                   {state === option.value && (
-                    <BsCheckCircleFill className="mt-0.5 h-4 w-4 text-text-secondary" />
+                    <BsCheckCircle className="mt-0.5 h-4 w-4 text-text-secondary" />
                   )}
                 </button>
               ))}

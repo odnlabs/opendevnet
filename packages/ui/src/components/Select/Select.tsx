@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { HiChevronDown } from 'react-icons/hi';
+import { HiChevronDown } from '@react-icons/all-files/hi/HiChevronDown';
 
 import { SelectDropdown, SharedProps } from './Select.Dropdown';
 
@@ -116,6 +116,7 @@ export const Select: React.FC<Props> = ({
             ? options.find((opt) => opt?.value === state)?.label
             : title || 'Select from dropdown'
           : title || 'Select from dropdown'}
+
         <HiChevronDown
           className={`pointer-events-none h-5 w-5 transition duration-200 ${
             focused && 'rotate-180'

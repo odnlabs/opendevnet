@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { RiSearchLine } from 'react-icons/ri';
+import { RiSearchLine } from '@react-icons/all-files/ri/RiSearchLine';
 
 enum IconOptions {
   Search = 'search',

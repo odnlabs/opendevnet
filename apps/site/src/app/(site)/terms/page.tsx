@@ -1,10 +1,10 @@
-import { Metadata, NextPage } from 'next';
+import { Metadata } from 'next';
 
 import { DocumentContent } from '@components';
 import { getDocFromSlug } from '@utils/docsApi';
 
 const fileName = 'terms';
-const fileDir = 'src/constants/policies';
+const fileDir = 'src/markdown/policies';
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const { meta } = await getDocFromSlug(fileName, fileDir);
@@ -13,7 +13,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   };
 };
 
-const Terms: NextPage = async () => {
+const Terms = async (): Promise<JSX.Element> => {
   const doc = await getDocFromSlug(fileName, fileDir);
 
   return (

@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
 
 interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
   checked: boolean;

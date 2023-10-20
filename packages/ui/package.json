@@ -16,6 +16,7 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-dom": "^18.2.14",
     "react-dom": "^18.2.0",
@@ -26,6 +27,7 @@
   },
   "devDependencies": {
     "@types/react": "^18.2.30",
+    "autoprefixer": "^10.4.16",
     "eslint-config-odn": "workspace:*",
     "postcss": "^8.4.31",
     "react": "^18.2.0",

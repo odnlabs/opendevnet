@@ -2,9 +2,11 @@
 
 import React, { useEffect, useState } from 'react';
 
-import { HiCheckCircle } from 'react-icons/hi';
-import { IoWarning } from 'react-icons/io5';
-import { MdClose, MdError, MdInfo } from 'react-icons/md';
+import { HiCheckCircle } from '@react-icons/all-files/hi/HiCheckCircle';
+import { IoWarning } from '@react-icons/all-files/io5/IoWarning';
+import { MdClose } from '@react-icons/all-files/md/MdClose';
+import { MdError } from '@react-icons/all-files/md/MdError';
+import { MdInfo } from '@react-icons/all-files/md/MdInfo';
 
 import { IToast, ToastType } from '../../typings/core';
 
