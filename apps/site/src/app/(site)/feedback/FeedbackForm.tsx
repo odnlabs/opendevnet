@@ -1,9 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useState } from 'react';
 
 import { Button, Input, Select, TextArea } from '@components';
-import Image from 'next/image';
 
 export const FeedbackForm: React.FC = () => {
   enum Rating {

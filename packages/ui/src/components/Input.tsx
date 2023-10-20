@@ -10,7 +10,7 @@ interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   size?: 'sm' | 'md' | 'lg';
   label?: string;
-  icon?: IconOptions | React.ComponentType;
+  icon?: `${IconOptions}`;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -19,7 +19,11 @@ export const Input: React.FC<InputProps> = ({
   icon,
   ...props
 }) => {
-  const Icon = icon === IconOptions.Search ? RiSearchLine : undefined;
+  const icons = {
+    search: RiSearchLine,
+  };
+
+  const Icon = icon ? icons[icon] : undefined;
 
   const sizeStyles = {
     sm: `py-1 pr-2 ${Icon ? 'pl-8' : 'pl-2'}`,

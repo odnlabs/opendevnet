@@ -1,4 +1,5 @@
-import ReactDom from 'react-dom';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 import { BsCheckCircle } from '@react-icons/all-files/bs/BsCheckCircle';
 
@@ -67,9 +68,15 @@ export const SelectDropdown: React.FC<Props> = ({
   fromLeft,
   closeSelect,
   onChange,
-}) =>
-  document.body
-    ? ReactDom.createPortal(
+}) => {
+  const [mounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  return mounted
+    ? createPortal(
         <>
           <div
             className={`fixed left-0 top-0 z-[90] h-full w-full ${
@@ -143,3 +150,4 @@ export const SelectDropdown: React.FC<Props> = ({
         document.body
       )
     : null;
+};

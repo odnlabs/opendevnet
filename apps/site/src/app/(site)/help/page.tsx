@@ -28,10 +28,10 @@ const Help: NextPage = () => {
       href: 'administration',
     },
     {
-      title: 'Personal Customization',
+      title: 'Account Settings',
       description:
         ' Customize your experience with themes and preferences, making our platform truly yours.',
-      href: 'customization',
+      href: 'account',
     },
     {
       title: 'Automation',
@@ -70,7 +70,7 @@ const Help: NextPage = () => {
                     href={`/help/${category.href}`}
                     className="inline-block group"
                   >
-                    <Button label="View All" variant="secondary" link />
+                    <Button label="View All" variant="primary-glass" link />
                   </Link>
                 </div>
               </div>

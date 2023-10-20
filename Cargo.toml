@@ -1,0 +1,6 @@
+
+[workspace]
+members = ['apps/api']
+
+[profile.release]
+lto = true
