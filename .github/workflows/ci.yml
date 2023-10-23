@@ -125,11 +125,11 @@ jobs:
 
       - name: Format check (main branch only)
         if: github.ref == 'refs/heads/main'
-        run: pnpm run format
+        run: pnpm run format:check
 
       - name: Format (other branches)
         if: github.ref != 'refs/heads/main'
-        run: pnpm run format:write
+        run: pnpm run format
 
   build:
     runs-on: ubuntu-latest
