@@ -1,4 +1,4 @@
-name: 'Issue Labeler'
+name: Issue Labeler
 
 on:
   issues:
@@ -9,10 +9,11 @@ permissions:
   contents: read
 
 jobs:
-  issue-triage:
+  issue-labeler:
+    name: Issue Labeler
     runs-on: ubuntu-latest
     steps:
-      - name: 'Issue Labeler'
+      - name: Run Issue Labeler
         uses: github/issue-labeler@v3.2
         with:
           configuration-path: .github/labeler.yml
