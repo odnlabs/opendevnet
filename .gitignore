@@ -31,9 +31,10 @@ tmp/
 # Production
 build
 dist/
-nginx.conf
-odn.crt
-odn.key
+/docker/production/nginx.conf
+/docker/production/ssl/*
+!/docker/production/ssl/example.crt
+!/docker/production/ssl/example.key
 
 # Rust
 **/target/

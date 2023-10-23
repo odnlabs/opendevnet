@@ -1,6 +1,12 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "opendevnet",
+  "version": "0.0.0",
   "private": true,
+  "description": "The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.",
+  "bugs": {
+    "url": "https://github.com/odnlabs/opendevnet/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/odnlabs/opendevnet"
@@ -17,27 +23,36 @@
     "dev:site": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client site",
     "dev:web": "dotenv -e .env.local -- nx run-many -t dev -p @odnlabs/ui @odnlabs/utils api-client web",
     "fix": "manypkg fix",
-    "format": "prettier --write \"**/*.{ts,tsx,md,mdx,json}\" --ignore-path=.prettierignore",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "postinstall": "manypkg check",
     "lint": "nx run-many --target=lint --all",
-    "test": "nx test"
+    "lint:fix": "nx run-many --target=lint --all -- --fix",
+    "test": "nx run-many --target=test --all"
   },
   "dependencies": {
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-angular": "^18.0.0",
     "@manypkg/cli": "^0.21.0",
     "@monodon/rust": "^1.2.0",
-    "@nx/eslint": "^17.0.0",
-    "@nx/jest": "^17.0.0",
-    "@nx/next": "^17.0.0",
-    "@nx/react": "^17.0.0",
-    "@nx/workspace": "^17.0.0",
+    "@nx/eslint": "^17.0.1",
+    "@nx/jest": "^17.0.1",
+    "@nx/js": "^17.0.1",
+    "@nx/next": "^17.0.1",
+    "@nx/react": "^17.0.1",
+    "@nx/workspace": "^17.0.1",
     "dotenv-cli": "^7.3.0",
-    "eslint": "^8.51.0",
+    "eslint": "^8.52.0",
     "eslint-config-odn": "workspace:*",
+    "husky": "^8.0.3",
     "nx": "16.10.0",
     "prettier": "^3.0.3",
     "prettier-plugin-tailwindcss": "^0.5.6"
   },
   "packageManager": "pnpm@8.9.2",
+  "engines": {
+    "node": ">=21.0.0"
+  },
   "manypkg": {
     "ignoredRules": [
       "INTERNAL_MISMATCH"

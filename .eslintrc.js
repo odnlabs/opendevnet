@@ -4,7 +4,7 @@ module.exports = {
   extends: ['odn'],
   settings: {
     next: {
-      rootDir: ['apps/*/'],
+      rootDir: ['apps/*/', 'packages/*/'],
     },
   },
 };

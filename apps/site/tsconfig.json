@@ -3,16 +3,22 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "@store": ["./src/store.ts"],
-      "@constants/*": ["./src/constants/*"],
-      "@components": ["./src/components"],
-      "@components/layout": ["./src/components/layout"],
-      "@styles/*": ["./src/styles/*"],
-      "@slices/*": ["./src/slices/*"],
-      "@typings/*": ["./src/typings/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@store": ["src/store.ts"],
+      "@constants/*": ["src/constants/*"],
+      "@components": ["src/components"],
+      "@components/layout": ["src/components/layout"],
+      "@styles/*": ["src/styles/*"],
+      "@slices/*": ["src/slices/*"],
+      "@typings/*": ["src/typings/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../dist/apps/site/.next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }
