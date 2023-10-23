@@ -42,17 +42,17 @@
   color: aed5fc
 - name: invalid
   color: e4e669
-- name: packages:api-client
+- name: libs:api-client
   color: fbca04
-- name: packages:eslint-config-odn
+- name: libs:eslint-config-odn
   color: fbca04
-- name: packages:tailwind-config
+- name: libs:tailwind-config
   color: fbca04
-- name: packages:tsconfig
+- name: libs:tsconfig
   color: fbca04
-- name: packages:ui
+- name: libs:ui
   color: fbca04
-- name: packages:utils
+- name: libs:utils
   color: fbca04
 - name: performance
   color: 80c042

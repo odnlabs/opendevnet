@@ -46,7 +46,7 @@ importers:
         version: 8.52.0
       eslint-config-odn:
         specifier: workspace:*
-        version: link:packages/eslint-config-odn
+        version: link:libs/eslint-config-odn
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -73,10 +73,10 @@ importers:
         version: 13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
       '@odnlabs/ui':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../libs/ui
       '@odnlabs/utils':
         specifier: workspace:*
-        version: link:../../packages/utils
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -91,7 +91,7 @@ importers:
         version: 2.0.9
       api-client:
         specifier: workspace:*
-        version: link:../../packages/api-client
+        version: link:../../libs/api-client
       builder-validation:
         specifier: ^0.0.3
         version: 0.0.3
@@ -136,7 +136,7 @@ importers:
         version: 4.0.0
       tailwind-config:
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../libs/tailwind-config
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -161,7 +161,7 @@ importers:
         version: 8.52.0
       eslint-config-odn:
         specifier: workspace:*
-        version: link:../../packages/eslint-config-odn
+        version: link:../../libs/eslint-config-odn
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -170,7 +170,7 @@ importers:
         version: 3.3.3(ts-node@10.9.1)
       tsconfig:
         specifier: workspace:*
-        version: link:../../packages/tsconfig
+        version: link:../../libs/tsconfig
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
@@ -179,10 +179,10 @@ importers:
     dependencies:
       '@odnlabs/ui':
         specifier: workspace:*
-        version: link:../../packages/ui
+        version: link:../../libs/ui
       '@odnlabs/utils':
         specifier: workspace:*
-        version: link:../../packages/utils
+        version: link:../../libs/utils
       '@reduxjs/toolkit':
         specifier: ^1.9.7
         version: 1.9.7(react-redux@8.1.3)(react@18.2.0)
@@ -215,7 +215,7 @@ importers:
         version: 4.2.1
       tailwind-config:
         specifier: workspace:*
-        version: link:../../packages/tailwind-config
+        version: link:../../libs/tailwind-config
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -237,7 +237,7 @@ importers:
         version: 10.4.16(postcss@8.4.31)
       eslint-config-odn:
         specifier: workspace:*
-        version: link:../../packages/eslint-config-odn
+        version: link:../../libs/eslint-config-odn
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -246,12 +246,12 @@ importers:
         version: 3.3.3(ts-node@10.9.1)
       tsconfig:
         specifier: workspace:*
-        version: link:../../packages/tsconfig
+        version: link:../../libs/tsconfig
       typescript:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/api-client:
+  libs/api-client:
     dependencies:
       axios:
         specifier: ^1.5.1
@@ -270,7 +270,7 @@ importers:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)
 
-  packages/eslint-config-odn:
+  libs/eslint-config-odn:
     devDependencies:
       '@babel/eslint-parser':
         specifier: ^7.22.15
@@ -312,15 +312,15 @@ importers:
         specifier: ^0.2.17
         version: 0.2.17
 
-  packages/tailwind-config:
+  libs/tailwind-config:
     devDependencies:
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3(ts-node@10.9.1)
 
-  packages/tsconfig: {}
+  libs/tsconfig: {}
 
-  packages/ui:
+  libs/ui:
     dependencies:
       '@react-icons/all-files':
         specifier: ^4.1.0
@@ -372,7 +372,7 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  packages/utils:
+  libs/utils:
     dependencies:
       axios:
         specifier: ^1.5.1
@@ -4749,7 +4749,7 @@ packages:
   /builtins@5.0.1:
     resolution: {integrity: sha512-qwVpFEHNfhYJIzNRBvd2C1kyo6jz3ZSMPyyuR47OPdiKWlbYnZNyDWuyR175qDnAJLiCo5fBBqPb3RiXgWlkOQ==}
     dependencies:
-      semver: 7.5.4
+      semver: 7.5.3
     dev: false
 
   /bundle-require@4.0.2(esbuild@0.18.20):
@@ -6421,7 +6421,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.1.2
+      minimatch: 3.0.5
       once: 1.4.0
       path-is-absolute: 1.0.1
     dev: false
@@ -8918,7 +8918,7 @@ packages:
     dependencies:
       hosted-git-info: 7.0.1
       proc-log: 3.0.0
-      semver: 7.5.4
+      semver: 7.5.3
       validate-npm-package-name: 5.0.0
     dev: false
 

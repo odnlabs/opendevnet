@@ -10,11 +10,11 @@ const Licenses: NextPage = async () => {
     '../../package.json',
     './package.json',
     '../web/package.json',
-    '../../packages/api-client/package.json',
-    '../../packages/eslint-config-odn/package.json',
-    '../../packages/tailwind-config/package.json',
-    '../../packages/tsconfig/package.json',
-    '../../packages/ui/package.json',
+    '../../libs/api-client/package.json',
+    '../../libs/eslint-config-odn/package.json',
+    '../../libs/tailwind-config/package.json',
+    '../../libs/tsconfig/package.json',
+    '../../libs/ui/package.json',
   ];
 
   const licenses = [];

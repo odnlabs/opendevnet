@@ -7,7 +7,7 @@ const config: Config = {
     // App content
     `src/**/*.{js,ts,jsx,tsx}`,
     // UI package
-    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',
+    '../../libs/ui/src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     colors: {
