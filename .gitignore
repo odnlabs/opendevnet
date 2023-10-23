@@ -31,7 +31,7 @@ tmp/
 # Production
 build
 dist/
-nginx.conf
+/docker/production/nginx.conf
 /docker/production/ssl/*
 !/docker/production/ssl/example.crt
 !/docker/production/ssl/example.key
@@ -42,4 +42,3 @@ nginx.conf
 # Docker
 docker/postgres-data
 docker/redis-data
-docker-compose.testing.yml
