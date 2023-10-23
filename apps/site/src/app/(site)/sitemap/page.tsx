@@ -9,7 +9,7 @@ const Sitemap: NextPage = () => {
   const pages = [
     { name: 'Home', path: '/' },
     { name: 'Contact Us', path: '/contact' },
-    { name: 'About', path: '/about' },
+    { name: 'About Us', path: '/about' },
     { name: 'App', path: '/app' },
   ];
 
