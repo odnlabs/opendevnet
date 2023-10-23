@@ -14,8 +14,12 @@ export const RegisterForm: React.FC = () => {
   const [retypePassword, setRetypePassword] = useState<string>('');
   const [sendEmails, setSendEmails] = useState<boolean>(true);
 
+  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
+    <form className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
       <div className="border-b border-border pb-5">
         <h1 className="text-3xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
@@ -78,7 +82,12 @@ export const RegisterForm: React.FC = () => {
         </div>
 
         <div className="mt-5">
-          <Button label="Create Account" size="lg" width="full" />
+          <Button
+            label="Create Account"
+            size="lg"
+            width="full"
+            onSubmit={handleSubmit}
+          />
         </div>
 
         <div className="mt-3">
@@ -101,6 +110,6 @@ export const RegisterForm: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>
+    </form>
   );
 };

@@ -13,7 +13,7 @@ export const Header: React.FC = () => (
         {/* Branding */}
         <div className="flex p-1.5">
           <Image
-            src="/logo.png"
+            src="/app/logo.png"
             height={100}
             width={100}
             alt="Logo"
@@ -43,7 +43,7 @@ export const Header: React.FC = () => (
           <div className="py-1.5 mr-3">
             <button className="flex text-text-secondary">
               <Image
-                src={config.defaultAvatar}
+                src={`/app${config.defaultAvatar}`}
                 alt="User Avatar"
                 height={100}
                 width={100}

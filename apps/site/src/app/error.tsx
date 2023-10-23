@@ -27,7 +27,7 @@ export default function Error({
         </Link>{' '}
         for more information.
       </p>
-      <div className="flex">
+      <div className="flex justify-center">
         <Link href="/">
           <Button label="Home Page" />
         </Link>
