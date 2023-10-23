@@ -42,3 +42,7 @@ dist/
 # Docker
 docker/postgres-data
 docker/redis-data
+
+
+# NX
+.nx/
