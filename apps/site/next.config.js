@@ -17,30 +17,6 @@ const nextConfig = {
   images: {
     domains: ['opendevnet.com', 'avatars.githubusercontent.com'],
   },
-  async rewrites() {
-    return [
-      {
-        source: '/:path*',
-        destination: `/:path*`,
-      },
-      {
-        source: '/app',
-        destination: `${process.env.WEB_URL}`,
-      },
-      {
-        source: '/app/:path*',
-        destination: `${process.env.WEB_URL}/:path*`,
-      },
-      {
-        source: '/api',
-        destination: `${process.env.API_URL}`,
-      },
-      {
-        source: '/api/:path*',
-        destination: `${process.env.API_URL}/:path*`,
-      },
-    ];
-  },
 };
 
 module.exports = withMDX(nextConfig);
