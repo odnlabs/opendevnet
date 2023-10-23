@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "$schema": "https://github.com/nrwl/nx/raw/master/packages/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "apps/api/src",
   "targets": {

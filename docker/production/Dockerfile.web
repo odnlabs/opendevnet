@@ -1,39 +1,27 @@
-# Use Node.js v18 as the base image
-FROM node:18-alpine AS base
-# Install the latest pnpm version
-RUN npm install -g pnpm@latest
-
-
-FROM base as builder
+# Use Node.js v20 as the base image
+FROM node:21-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+# Install the latest pnpm version with corepack
+RUN corepack enable
+RUN corepack prepare pnpm@latest --activate
+# Add apk packages
+RUN apk add --update --no-cache python3 build-base gcc && ln -sf /usr/bin/python3 /usr/bin/python
 RUN apk add --no-cache libc6-compat
 RUN apk update
 # Set working directory
 WORKDIR /app
-COPY . .
-RUN npm install -g nx
-# ! RUN nx prune --scope=web --docker
-
 
 # Install dependencies
 FROM base AS installer
-RUN apk add --no-cache libc6-compat
-RUN apk update
-# Set the working directory
-WORKDIR /app
-COPY .gitignore .gitignore
-# Install the dependencies
-COPY --from=builder /app/out/json/ .
-COPY --from=builder /app/out/pnpm-lock.yaml ./pnpm-lock.yaml
-RUN pnpm install
+COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
 # Build the project
-COPY --from=builder /app/out/full/ .
-RUN pnpm dlx nx run-many -t build -p web
+RUN pnpm nx run web:build --prod
 
 
 # Create the production-ready image - final output of build
 FROM base as runner
-# Set the working directory to /app
-WORKDIR /app
 # Don't run production as root
 # Add a new group called nodejs, with GID 1001
 RUN addgroup -g 1001 -S nodejs
@@ -41,16 +29,21 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001 -G nodejs
 # Switch to the `nextjs` user
 USER nextjs
-# Config files that the app needs
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/next.config.js  .
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/tailwind.config.ts  .
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/postcss.config.js  .
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/package.json .
-# Copy the production-ready app from the previous stage to the container (deps + built files)
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/node_modules ./node_modules
-COPY --from=installer --chown=nextjs:nodejs /app/public ./public
-COPY --from=installer --chown=nextjs:nodejs /app/.next ./.next
-# Expose port 3000
-EXPOSE 3000
-# Start the app on port 3000
-CMD ["pnpm", "start"]
+# Root files
+COPY --from=installer --chown=nextjs:nodejs /app/package.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
+COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
+COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
+# Config, dep, and built files that the app needs
+COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/web  ./dist/apps/web
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/project.json  ./dist/apps/web/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/tailwind.config.ts  ./dist/apps/web/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/postcss.config.js  ./dist/apps/web/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/node_modules ./dist/apps/web/node_modules
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next ./dist/apps/web/.next
+# Expose port 4100
+EXPOSE 4100
+
+# Start the app on port 4100
+CMD ["pnpm", "nx", "run", "web:serve", "--prod", "--verbose"]

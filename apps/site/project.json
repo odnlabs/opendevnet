@@ -1,7 +1,7 @@
 {
   "name": "site",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/site/src",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/site",
   "projectType": "application",
   "options": {
     "outputPath": "dist/site"
@@ -13,11 +13,12 @@
       "defaultConfiguration": "production",
       "options": {
         "root": "apps/site",
-        "outputPath": "dist/apps/site"
+        "outputPath": "dist/apps/site",
+        "debug": true
       },
       "configurations": {
         "development": {
-          "outputPath": "apps/site"
+          "outputPath": "dist/apps"
         },
         "production": {}
       }
@@ -26,6 +27,7 @@
       "executor": "@nx/next:server",
       "defaultConfiguration": "development",
       "options": {
+        "port": 4000,
         "buildTarget": "site:build",
         "dev": true
       },
@@ -40,12 +42,27 @@
         }
       }
     },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "production",
+      "options": {
+        "port": 4000,
+        "buildTarget": "site:build",
+        "dev": false
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/site"],
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
         "jestConfig": "apps/site/jest.config.ts",
         "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
       }
     },
     "lint": {

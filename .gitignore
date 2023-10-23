@@ -32,8 +32,9 @@ tmp/
 build
 dist/
 nginx.conf
-odn.crt
-odn.key
+/docker/production/ssl/*
+!/docker/production/ssl/example.crt
+!/docker/production/ssl/example.key
 
 # Rust
 **/target/
@@ -41,3 +42,4 @@ odn.key
 # Docker
 docker/postgres-data
 docker/redis-data
+docker-compose.testing.yml

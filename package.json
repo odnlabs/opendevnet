@@ -27,6 +27,7 @@
     "@monodon/rust": "^1.2.0",
     "@nx/eslint": "^17.0.0",
     "@nx/jest": "^17.0.0",
+    "@nx/js": "^17.0.1",
     "@nx/next": "^17.0.0",
     "@nx/react": "^17.0.0",
     "@nx/workspace": "^17.0.0",

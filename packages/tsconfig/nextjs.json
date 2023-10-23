@@ -14,13 +14,13 @@
     "noEmit": true,
     "resolveJsonModule": true,
     "target": "es5",
-    // "strict": false,
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
     "moduleResolution": "bundler",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "paths": {}
   },
   "include": [
     "src",

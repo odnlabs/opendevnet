@@ -1,22 +1,5 @@
 version: '3'
 services:
-  site:
-    container_name: site
-    build:
-      context: .
-      dockerfile: ./docker/production/Dockerfile.site
-    env_file:
-      - .env.local
-    restart: always
-    environment:
-      NEXT_PUBLIC_APP_NODE_ENV: development
-    ports:
-      - '3000:3000'
-    # depends_on:
-    #   - api
-    # networks:
-    #   - app-network
-
   postgres:
     image: postgres:latest
     container_name: postgres
