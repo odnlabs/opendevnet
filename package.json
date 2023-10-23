@@ -45,5 +45,10 @@
     "ignoredRules": [
       "INTERNAL_MISMATCH"
     ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-angular": "^18.0.0",
+    "husky": "^8.0.3"
   }
 }
