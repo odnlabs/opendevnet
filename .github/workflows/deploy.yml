@@ -5,34 +5,101 @@ on:
     branches: ['main']
 
 jobs:
-  build:
-    name: Build Docker images
+  filter_check:
+    name: Filter check
     runs-on: ubuntu-latest
+    outputs:
+      api: ${{ steps.changes.outputs.api }}
+      site: ${{ steps.changes.outputs.site }}
+      web: ${{ steps.changes.outputs.web }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Build the Docker images
-        run: |
-          touch .env.local
-          docker-compose -f docker-compose.testing.yml build --no-cache --force-rm
+      - name: Filter changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            api:
+              - 'apps/api/**'
+              - 'docker/production/Dockerfile.api'
+            frontend:
+              - 'libs/api-client/**'
+              - 'libs/tailwind-config/**'
+              - 'libs/tsconfig/**'
+              - 'libs/ui/**'
+              - 'libs/utils/**'
+            site:
+              - *frontend
+              - 'apps/site/**'
+              - 'docker/production/Dockerfile.site'
+            web:
+              - *frontend
+              - 'apps/web/**'
+              - 'docker/production/Dockerfile.web'
 
-  test:
-    name: Test Docker images
+  build_site_image:
+    name: Build Site Image
     runs-on: ubuntu-latest
+    needs: filter_check
+    if: ${{ needs.filter_check.outputs.site == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Test the Docker image
+      - name: Build Site image
         run: |
           touch .env.local
-          docker-compose -f docker-compose.testing.yml up -d --build
+          docker-compose -f docker-compose.testing.yml build --no-cache --force-rm site
+
+  build_web_image:
+    name: Build Web Image
+    runs-on: ubuntu-latest
+    needs: filter_check
+    if: ${{ needs.filter_check.outputs.web == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Web Image
+        run: |
+          touch .env.local
+          docker-compose -f docker-compose.testing.yml build --no-cache --force-rm web
+
+  test_site_image:
+    name: Test Site Image
+    runs-on: ubuntu-latest
+    needs: filter_check
+    if: ${{ needs.filter_check.outputs.site == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Test Site image
+        run: |
+          touch .env.local
+          docker-compose -f docker-compose.testing.yml up -d --build site
+
+  test_web_image:
+    name: Test Web Image
+    runs-on: ubuntu-latest
+    needs: filter_check
+    if: ${{ needs.filter_check.outputs.web == 'true' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Test Web Image
+        run: |
+          touch .env.local
+          docker-compose -f docker-compose.testing.yml up -d --build web
 
   push_site_to_registry:
     name: Publish Site to Docker Hub
     runs-on: ubuntu-latest
-    needs: ['build', 'test']
+    needs: ['filter_check', 'build_site_image', 'test_site_image']
+    if: ${{ needs.filter_check.outputs.site == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -65,7 +132,8 @@ jobs:
   push_web_to_registry:
     name: Publish Web to Docker Hub
     runs-on: ubuntu-latest
-    needs: ['build', 'test']
+    needs: ['filter_check', 'build_web_image', 'test_web_image']
+    if: ${{ needs.filter_check.outputs.web == 'true' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -102,8 +170,9 @@ jobs:
     steps:
       - name: Install SSH Keys
         run: |
-          install -m 600 -D /dev/null ~/.ssh/id_rsa
+          install -m 600 -D /dev/null ~/.ssh/id_rsa ~/.ssh/id_rsa.pub
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          echo "${{ secrets.SSH_PUBLIC_KEY }}" > ~/.ssh/id_rsa.pub
           ssh-keyscan -H ${{ secrets.SSH_HOST }} > ~/.ssh/known_hosts
       - name: Connect and Deploy
         run: ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.WORK_DIR }} && chmod +x run.sh && ./run.sh prod update && exit"
