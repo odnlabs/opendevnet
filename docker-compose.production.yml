@@ -1,18 +1,18 @@
 version: '3.3'
 services:
-  api:
-    container_name: api
-    image: slekup/opendevnet-api:main
-    build: ./api
-    env_file:
-      - .env.production
-    restart: always
-    environment:
-      NODE_ENV: production
-    ports:
-      - '5000:5000'
-    networks:
-      - app-network
+  # api:
+  #   container_name: api
+  #   image: slekup/opendevnet-api:main
+  #   build: ./api
+  #   env_file:
+  #     - .env.production
+  #   restart: always
+  #   environment:
+  #     NODE_ENV: production
+  #   ports:
+  #     - '5000:5000'
+  #   networks:
+  #     - app-network
 
   site:
     container_name: site
@@ -23,9 +23,9 @@ services:
     environment:
       NEXT_PUBLIC_APP_NODE_ENV: production
     ports:
-      - '3000:3000'
-    depends_on:
-      - api
+      - '4000:4000'
+    # depends_on:
+    #   - api
     networks:
       - app-network
 
@@ -36,9 +36,9 @@ services:
       - .env.production
     restart: always
     ports:
-      - '3500:3500'
-    depends_on:
-      - api
+      - '4100:4100'
+    # depends_on:
+    #   - api
     networks:
       - app-network
 
@@ -52,7 +52,7 @@ services:
       - '443:443'
       - '80:80'
     depends_on:
-      - api
+      # - api
       - site
       - web
     networks:
