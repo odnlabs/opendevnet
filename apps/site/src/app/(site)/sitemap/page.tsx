@@ -1,4 +1,5 @@
 import { Metadata, NextPage } from 'next';
+import Link from 'next/link';
 
 export const metadata: Metadata = {
   title: 'Sitemap | Open Dev Net',
@@ -16,9 +17,9 @@ const Sitemap: NextPage = () => {
     <div className="py-20 max-w-7xl w-11/12 mx-auto">
       {pages.map((page, index) => (
         <div key={index}>
-          <a href={page.path} className="link">
+          <Link href={page.path} className="link">
             Link: {page.name}
-          </a>
+          </Link>
         </div>
       ))}
     </div>
