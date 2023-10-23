@@ -134,6 +134,9 @@ importers:
       remark-gfm:
         specifier: ^4.0.0
         version: 4.0.0
+      tailwind-config:
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -162,9 +165,6 @@ importers:
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
-      tailwind-config:
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3(ts-node@10.9.1)
@@ -213,6 +213,9 @@ importers:
       redux:
         specifier: ^4.2.1
         version: 4.2.1
+      tailwind-config:
+        specifier: workspace:*
+        version: link:../../packages/tailwind-config
       uuid:
         specifier: ^9.0.1
         version: 9.0.1
@@ -238,9 +241,6 @@ importers:
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
-      tailwind-config:
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
       tailwindcss:
         specifier: ^3.3.3
         version: 3.3.3(ts-node@10.9.1)
