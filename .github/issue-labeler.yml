@@ -1,0 +1,30 @@
+apps:api:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\napi\\n"
+apps:internal:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\ninternal\\n"
+apps:site:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\nsite\\n"
+apps:web:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\nweb\\n"
+libs:api-client:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\napi-client\\n"
+libs:eslint-config-odn:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\neslint-config-odn\\n"
+libs:tailwind-config:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\ntailwind-config\\n"
+libs:tsconfig:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\ntsconfig\\n"
+libs:ui:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\nui\\n"
+libs:utils:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\nutils\\n"
