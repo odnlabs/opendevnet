@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 const Sitemap: NextPage = () => {
   const pages = [
     { name: 'Home', path: '/' },
+    { name: 'Contact Us', path: '/contact' },
     { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' },
     { name: 'App', path: '/app' },
   ];
 
