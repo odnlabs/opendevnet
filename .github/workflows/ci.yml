@@ -14,9 +14,8 @@ jobs:
   commitlint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+      - name: 'Checkout'
+        uses: actions/checkout@v4
 
       - name: Install Node.js
         uses: actions/setup-node@v3
@@ -41,10 +40,8 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: ${{ runner.os }}-pnpm-store-
 
-      - name: Install commitlint
-        run: |
-          pnpm install -g @commitlint/config-angular
-          pnpm install -g @commitlint/cli
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
