@@ -9,9 +9,9 @@ jobs:
     name: Filter check
     runs-on: ubuntu-latest
     outputs:
-      api: ${{ steps.changes.outputs.api == 'true' }}
-      site: ${{ steps.changes.outputs.site == 'true' }}
-      web: ${{ steps.changes.outputs.web == 'true' }}
+      api: ${{ steps.filter_check.outputs.api }}
+      site: ${{ steps.filter_check.outputs.site }}
+      web: ${{ steps.filter_check.outputs.web }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
