@@ -1,6 +1,6 @@
 # Open Dev Net
 
-![Test Status](https://github.com/odnlabs/opendevnet/actions/workflows/tests.yml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/odnlabs/opendevnet) ![Github Repo Size](https://img.shields.io/github/repo-size/odnlabs/opendevnet) ![Github Repo Stars](https://img.shields.io/github/stars/odnlabs/opendevnet)
+![CI Status](https://github.com/odnlabs/opendevnet/actions/workflows/ci.yml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/odnlabs/opendevnet) ![Github Repo Size](https://img.shields.io/github/repo-size/odnlabs/opendevnet) ![Github Repo Stars](https://img.shields.io/github/stars/odnlabs/opendevnet)
 
 ### Welcome to the official Open Dev Net repository!
 
@@ -10,11 +10,12 @@ Open Dev Net is the open-source social platform for developers to collaborate, f
 
 - [Open Dev Net](https://opendevnet.com/)
 - [Internal Docs](https://odnlabs.github.io/internal-docs/)
-- [Code of Conduct](/CODE_OF_CONDUCT.md)
+- [Developer Docs](https://opendevnet.com/dev/docs)
+- [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 
 ## How to Contribute
 
-We welcome contributions from everyone! Please read our [contributing guidelines](/CONTRIBUTING.md) before submitting a pull request. To contribute to Open Dev Net, please follow these steps:
+We welcome contributions from everyone! Please read our [contributing guidelines](.github/CONTRIBUTING.md) before submitting a pull request. To contribute to Open Dev Net, please follow these steps:
 
 1. Fork this repository to your own GitHub account.
 2. Clone the forked repository to your local machine.
