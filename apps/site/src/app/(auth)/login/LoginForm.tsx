@@ -11,8 +11,12 @@ export const LoginForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [name, setName] = useState<string>('');
 
+  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
+  };
+
   return (
-    <div className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
+    <form className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
       <div className="border-b border-border pb-5">
         <h1 className="text-3xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
@@ -49,7 +53,12 @@ export const LoginForm: React.FC = () => {
         </div>
 
         <div className="mt-5">
-          <Button label="Login" size="lg" width="full" />
+          <Button
+            label="Login"
+            size="lg"
+            width="full"
+            onSubmit={handleSubmit}
+          />
         </div>
 
         <div className="mt-5">
@@ -61,6 +70,6 @@ export const LoginForm: React.FC = () => {
           </p>
         </div>
       </div>
-    </div>
+    </form>
   );
 };
