@@ -24,7 +24,7 @@ jobs:
             api:
               - 'apps/api/**'
               - 'docker/production/Dockerfile.api'
-            frontend:
+            frontend: &frontend
               - 'libs/api-client/**'
               - 'libs/tailwind-config/**'
               - 'libs/tsconfig/**'
