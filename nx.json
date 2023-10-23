@@ -14,7 +14,7 @@
   },
   "workspaceLayout": {
     "appsDir": "apps",
-    "libsDir": "packages"
+    "libsDir": "libs"
   },
   "targetDefaults": {
     "build": {

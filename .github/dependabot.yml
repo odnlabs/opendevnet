@@ -40,7 +40,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/packages/api-client'
+    directory: '/libs/api-client'
     schedule:
       interval: 'daily'
     target-branch: 'dev'
@@ -49,7 +49,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/packages/eslint-config-odn'
+    directory: '/libs/eslint-config-odn'
     schedule:
       interval: 'daily'
     target-branch: 'dev'
@@ -58,7 +58,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/packages/tailwind-config'
+    directory: '/libs/tailwind-config'
     schedule:
       interval: 'daily'
     target-branch: 'dev'
@@ -67,7 +67,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/packages/ui'
+    directory: '/libs/ui'
     schedule:
       interval: 'daily'
     target-branch: 'dev'

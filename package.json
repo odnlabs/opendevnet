@@ -14,7 +14,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "libs/*"
   ],
   "scripts": {
     "build": "nx run-many --target=build --all",

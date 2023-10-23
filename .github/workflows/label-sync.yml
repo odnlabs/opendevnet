@@ -1,0 +1,31 @@
+name: Label Sync
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/labels.yml'
+      - '.github/workflows/labels.yml'
+  pull_request:
+    paths:
+      - '.github/labels.yml'
+      - '.github/workflows/labels.yml'
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  label-sync:
+    name: Label Sync
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'odnlabs'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Run Labeler
+        uses: crazy-max/ghaction-github-labeler@v5
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          yaml-file: .github/labels.yml

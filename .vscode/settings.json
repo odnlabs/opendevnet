@@ -5,7 +5,7 @@
       "pattern": "./apps/*"
     },
     {
-      "pattern": "./packages/*"
+      "pattern": "./libs/*"
     }
   ],
   "eslint.validate": [

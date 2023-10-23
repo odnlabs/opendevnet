@@ -1,5 +1,5 @@
 name: Bug report
-description: Report an issue with Open Dev Net or one of its packages.
+description: Report an issue with Open Dev Net or one of its libraries.
 labels: [bug, need repro]
 body:
   - type: markdown
