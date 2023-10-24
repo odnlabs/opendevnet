@@ -17,9 +17,15 @@ const Sitemap: NextPage = () => {
     <div className="py-20 max-w-7xl w-11/12 mx-auto">
       {pages.map((page, index) => (
         <div key={index}>
-          <Link href={page.path} className="link">
-            Link: {page.name}
-          </Link>
+          {page.path.startsWith('/app') ? (
+            <a href={page.path} className="link">
+              Link: {page.name}
+            </a>
+          ) : (
+            <Link href={page.path} className="link">
+              Link: {page.name}
+            </Link>
+          )}
         </div>
       ))}
     </div>
