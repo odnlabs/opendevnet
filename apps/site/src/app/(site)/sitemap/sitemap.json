@@ -1,0 +1,254 @@
+[
+  {
+    "name": "Site",
+    "description": "Non-authenticated and mostly informational pages.",
+    "path": "/",
+    "children": [
+      {
+        "name": "Home",
+        "description": "Introduction to the platform and its features",
+        "path": "/"
+      },
+      {
+        "name": "About",
+        "path": "/about",
+        "description": "Learn about us, the platform, and our vision",
+        "children": [
+          {
+            "name": "Story",
+            "description": "Journey and history",
+            "path": "/about"
+          },
+          {
+            "name": "Vision",
+            "description": "What we aim for",
+            "path": "/about/vision"
+          },
+          {
+            "name": "Team",
+            "description": "Meet our team",
+            "path": "/about/team",
+            "children": [
+              {
+                "name": "Apply to Join",
+                "description": "Apply to join the official ODN team",
+                "path": "/about/team/apply"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Blog",
+        "description": "Where we post updates and news",
+        "path": "/blog"
+      },
+      {
+        "name": "Developer",
+        "description": "Developer resources and documentation",
+        "path": "/",
+        "children": [
+          {
+            "name": "Developer Docuementation",
+            "description": "Learn how to use the ODN API",
+            "path": "/"
+          }
+        ]
+      },
+      {
+        "name": "Feedback",
+        "description": "Provide feedback and suggestions",
+        "path": "/feedback"
+      },
+      {
+        "name": "Changelog",
+        "description": "See what's new",
+        "path": "/changelog"
+      },
+      {
+        "name": "Sitemap",
+        "description": "A list of all pages on the site",
+        "path": "/sitemap"
+      },
+      {
+        "name": "Policies",
+        "description": "Privacy, Terms of Service, and other policies",
+        "path": "/terms",
+        "children": [
+          {
+            "name": "Terms of Service",
+            "description": "The rules of the platform",
+            "path": "/terms"
+          },
+          {
+            "name": "Privacy Policy",
+            "description": "How we handle your data",
+            "path": "/privacy"
+          },
+          {
+            "name": "Network Guidelines",
+            "description": "How to behave on the platform",
+            "path": "/guidelines"
+          },
+          {
+            "name": "Accessibility Statement",
+            "description": "How we make the platform accessible",
+            "path": "/accessibility"
+          },
+          {
+            "name": "Licenses",
+            "description": "Licenses for the platform and its dependencies",
+            "path": "/licenses"
+          }
+        ]
+      },
+      {
+        "name": "Help Center",
+        "path": "/help",
+        "children": [
+          {
+            "name": "Getting Started",
+            "path": "/help/getting-started",
+            "description": "Learn the basics of Open Dev Net and you can start using it effectively today."
+          },
+          {
+            "name": "Network Administration",
+            "path": "/help/administration",
+            "description": "Manage online spaces effectively, from networks to workspaces, ensuring smooth operations and growth."
+          },
+          {
+            "name": "Account Settings",
+            "path": "/help/account-settings",
+            "description": "Customize your experience with themes and preferences, making our platform truly yours."
+          },
+          {
+            "name": "Automation",
+            "path": "/help/automation",
+            "description": "Enhance productivity with automated tasks and workflows, simplifying your online life."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Site (authentication)",
+    "description": "Pages for authenticating users",
+    "path": "/login",
+    "children": [
+      {
+        "name": "Register",
+        "description": "Create a new account",
+        "path": "/register"
+      },
+      {
+        "name": "Log In",
+        "description": "Log in to your account",
+        "path": "/login",
+        "children": [
+          {
+            "name": "Forgot Password",
+            "description": "Reset your password",
+            "path": "/forgot-password"
+          },
+          {
+            "name": "Reset Password",
+            "description": "Reset your password",
+            "path": "/reset-password"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "App",
+    "description": "User authenticated pages",
+    "path": "/app",
+    "children": [
+      {
+        "name": "Dashboard",
+        "description": "Your personal dashboard",
+        "path": "/app"
+      },
+      {
+        "name": "Networks",
+        "description": "Manage your networks",
+        "path": "/app/networks",
+        "children": [
+          {
+            "name": "Network",
+            "description": "Manage a network",
+            "path": "/app/networks/:id",
+            "children": [
+              {
+                "name": "Settings",
+                "description": "Manage network settings",
+                "path": "/app/networks/:id/settings"
+              },
+              {
+                "name": "Members",
+                "description": "Manage network members",
+                "path": "/app/networks/:id/members"
+              },
+              {
+                "name": "Moderation",
+                "description": "Manage network moderation",
+                "path": "/app/networks/:id/moderation"
+              },
+              {
+                "name": "Bans",
+                "description": "Manage network bans",
+                "path": "/app/networks/:id/bans"
+              },
+              {
+                "name": "Reports",
+                "description": "Manage network reports",
+                "path": "/app/networks/:id/reports"
+              },
+              {
+                "name": "Analytics",
+                "description": "View network analytics",
+                "path": "/app/networks/:id/analytics"
+              },
+              {
+                "name": "Integrations",
+                "description": "Manage network integrations",
+                "path": "/app/networks/:id/integrations"
+              },
+              {
+                "name": "Customization",
+                "description": "Manage network customization",
+                "path": "/app/networks/:id/customization"
+              },
+              {
+                "name": "Tools",
+                "description": "Manage network tools",
+                "path": "/app/networks/:id/tools"
+              },
+              {
+                "name": "Security",
+                "description": "Manage network security",
+                "path": "/app/networks/:id/security"
+              },
+              {
+                "name": "Audit Log",
+                "description": "View network audit log",
+                "path": "/app/networks/:id/audit-log"
+              },
+              {
+                "name": "Billing",
+                "description": "Manage network billing",
+                "path": "/app/networks/:id/billing"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "API",
+    "description": "Refer to the developer docs to find all of the API endpoints",
+    "path": "/dev/docs",
+    "children": []
+  }
+]
