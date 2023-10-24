@@ -35,6 +35,7 @@
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^4.0.0",
     "tailwind-config": "workspace:*",
+    "toml": "^3.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
