@@ -2,31 +2,29 @@
   {
     "name": "Site",
     "description": "Non-authenticated and mostly informational pages.",
-    "path": "/",
     "children": [
       {
         "name": "Home",
-        "description": "Introduction to the platform and its features",
+        "description": "Introduction to the platform and its features.",
         "path": "/"
       },
       {
-        "name": "About",
-        "path": "/about",
-        "description": "Learn about us, the platform, and our vision",
+        "name": "About Us",
+        "description": "Learn about Open Dev Net's story, vision, and team.",
         "children": [
           {
-            "name": "Story",
-            "description": "Journey and history",
+            "name": "Our Story",
+            "description": "Learn about the history of Open Dev Net",
             "path": "/about"
           },
           {
-            "name": "Vision",
-            "description": "What we aim for",
+            "name": "The Vision Ahead",
+            "description": "Learn about the vision of Open Dev Net",
             "path": "/about/vision"
           },
           {
-            "name": "Team",
-            "description": "Meet our team",
+            "name": "Meet the Team",
+            "description": "Meet the team behind Open Dev Net",
             "path": "/about/team",
             "children": [
               {
@@ -37,6 +35,11 @@
             ]
           }
         ]
+      },
+      {
+        "name": "Contact Us",
+        "description": "Get in touch with the Open Dev Net team",
+        "path": "/contact"
       },
       {
         "name": "Blog",
@@ -73,7 +76,6 @@
       {
         "name": "Policies",
         "description": "Privacy, Terms of Service, and other policies",
-        "path": "/terms",
         "children": [
           {
             "name": "Terms of Service",
@@ -104,6 +106,7 @@
       },
       {
         "name": "Help Center",
+        "description": "Explore our Open Dev Net resources to swiftly find answers through articles and videos. We're here to assist your learning journey!",
         "path": "/help",
         "children": [
           {
@@ -133,7 +136,6 @@
   {
     "name": "Site (authentication)",
     "description": "Pages for authenticating users",
-    "path": "/login",
     "children": [
       {
         "name": "Register",
@@ -147,7 +149,7 @@
         "children": [
           {
             "name": "Forgot Password",
-            "description": "Reset your password",
+            "description": "Forgot your password?",
             "path": "/forgot-password"
           },
           {
@@ -161,7 +163,7 @@
   },
   {
     "name": "App",
-    "description": "User authenticated pages",
+    "description": "User authenticated pages. The main application.",
     "path": "/app",
     "children": [
       {
@@ -248,7 +250,6 @@
   {
     "name": "API",
     "description": "Refer to the developer docs to find all of the API endpoints",
-    "path": "/dev/docs",
     "children": []
   }
 ]

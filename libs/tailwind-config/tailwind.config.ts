@@ -3,6 +3,7 @@ import colors from 'tailwindcss/colors';
 import { RecursiveKeyValuePair } from 'tailwindcss/types/config';
 
 const config: Config = {
+  mode: 'jit',
   content: [
     // App content
     `src/**/*.{js,ts,jsx,tsx}`,
@@ -160,7 +161,7 @@ const config: Config = {
       'fira': 'Fira Code',
       'dancing-script': 'dancing-script',
     },
-    //Font Weight
+    // Font Weight
     fontWeight: {
       light: '300',
       regular: '400',
