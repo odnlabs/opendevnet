@@ -1,4 +1,5 @@
 import { Metadata, NextPage } from 'next';
+import Image from 'next/image';
 
 import { Accordian } from '@components';
 import { HomepageButtons } from './components';
@@ -58,6 +59,21 @@ const Home: NextPage = () => {
     },
   ];
 
+  const features = [
+    {
+      image: '/home/network.svg',
+      text: 'Connect with developers from around the world',
+    },
+    {
+      image: '/home/innovation.svg',
+      text: 'Collaborate on projects and share ideas',
+    },
+    {
+      image: '/home/workflow.svg',
+      text: 'Streamline your workflow and boost productivity',
+    },
+  ];
+
   return (
     <>
       <section>
@@ -91,7 +107,26 @@ const Home: NextPage = () => {
       </section>
 
       <section>
-        <div className="max-w-3xl w-11/12 mx-auto py-32">
+        <div className="max-w-7xl mx-auto flex justify-center py-24">
+          {features.map((feature, index) => (
+            <div key={index} className="p-10 w-96 text-center">
+              <Image
+                src={feature.image}
+                alt="illustration"
+                height={200}
+                width={200}
+                className="mx-auto"
+              />
+              <p className="block mt-10 font-medium text-lg px-2">
+                {feature.text}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div className="max-w-3xl w-11/12 mx-auto pt-10 pb-32">
           <h1 className="font-medium text-3xl text-center">
             Frequently Asked Questions
           </h1>
