@@ -166,8 +166,9 @@ jobs:
   deploy:
     name: Deploy to Server
     runs-on: ubuntu-latest
+    # Runs if at least one of the depedant jobs was successful
+    if: ${{ always() && contains(join(needs.*.result, ','), 'success') }}
     needs: ['push_site_to_registry', 'push_web_to_registry']
-    if: ${{ success() }}
     steps:
       - name: Install SSH Keys
         run: |
