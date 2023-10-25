@@ -66,11 +66,11 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0(webpack@5.89.0)
       '@mdx-js/react':
-        specifier: ^2.3.0
-        version: 2.3.0(react@18.2.0)
+        specifier: ^3.0.0
+        version: 3.0.0(@types/react@18.2.31)(react@18.2.0)
       '@next/mdx':
         specifier: ^13.5.6
-        version: 13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0)
+        version: 13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@3.0.0)
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
@@ -2492,6 +2492,17 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@mdx-js/react@3.0.0(@types/react@18.2.31)(react@18.2.0):
+    resolution: {integrity: sha512-nDctevR9KyYFyV+m+/+S4cpzCWHqj+iHDHq3QrsWezcC+B17uZdIWgCguESUkwFhM3n/56KxWVE3V6EokrmONQ==}
+    peerDependencies:
+      '@types/react': '>=16'
+      react: '>=16'
+    dependencies:
+      '@types/mdx': 2.0.9
+      '@types/react': 18.2.31
+      react: 18.2.0
+    dev: false
+
   /@microsoft/tsdoc-config@0.16.2:
     resolution: {integrity: sha512-OGiIzzoBLgWWR0UdRJX98oYO+XKGf7tiK4Zk6tQ/E4IJqGCe7dvkTvgDZV5cFJUzLGDOjeAXrnZoA6QkVySuxw==}
     dependencies:
@@ -2533,7 +2544,7 @@ packages:
       glob: 7.1.7
     dev: true
 
-  /@next/mdx@13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@2.3.0):
+  /@next/mdx@13.5.6(@mdx-js/loader@2.3.0)(@mdx-js/react@3.0.0):
     resolution: {integrity: sha512-2AMyCrz1SxSWNUpADyLz3RbPbq0GHrchbO7Msvg7IsH8MrTw3VYaZSI1KNa6JzZIoykwtNVSEL+uBmPZi106Jw==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
@@ -2545,7 +2556,7 @@ packages:
         optional: true
     dependencies:
       '@mdx-js/loader': 2.3.0(webpack@5.89.0)
-      '@mdx-js/react': 2.3.0(react@18.2.0)
+      '@mdx-js/react': 3.0.0(@types/react@18.2.31)(react@18.2.0)
       source-map: 0.7.4
     dev: false
 
