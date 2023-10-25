@@ -16,7 +16,7 @@ interface ReturnedSlug {
 }
 
 export const getSlugs = async (docsDir: string): Promise<ReturnedSlug[]> => {
-  // Recieve directory and get all mdx files from the directory
+  // Recieve directory and get all mdx files in the directory
   const DOCS_PATH = path.join(process.cwd(), docsDir);
 
   const categories = (
