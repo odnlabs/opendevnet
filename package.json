@@ -40,7 +40,7 @@
     "@nx/js": "^17.0.1",
     "@nx/next": "^17.0.1",
     "@nx/react": "^17.0.1",
-    "@nx/workspace": "^17.0.1",
+    "@nx/workspace": "^17.0.2",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.52.0",
     "eslint-config-odn": "workspace:*",
