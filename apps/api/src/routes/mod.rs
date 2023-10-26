@@ -6,18 +6,24 @@ use axum::{
     Router,
 };
 
-use crate::{
-    handler::{
-        get_me_handler, health_checker_handler, login_user_handler, logout_handler,
-        refresh_access_token_handler, register_user_handler,
-    },
-    jwt_auth::auth,
-    AppState,
+mod auth;
+mod info;
+mod users;
+
+use auth::{
+    login::login_user_handler, logout::logout_handler, refresh::refresh_access_token_handler,
+    register::register_user_handler,
 };
+use info::healthchecker::health_checker_handler;
+use users::get_me::get_me_handler;
+
+use crate::{utils::jwt_auth::auth, AppState};
 
 pub fn create_router(app_state: Arc<AppState>) -> Router {
     Router::new()
-        .route("/api/healthchecker", get(health_checker_handler))
+        // Root
+        .route("/", get(|| async { "Welcome to the Open Dev Net API!" }))
+        // Auth
         .route("/api/auth/register", post(register_user_handler))
         .route("/api/auth/login", post(login_user_handler))
         .route("/api/auth/refresh", get(refresh_access_token_handler))
@@ -26,6 +32,9 @@ pub fn create_router(app_state: Arc<AppState>) -> Router {
             get(logout_handler)
                 .route_layer(middleware::from_fn_with_state(app_state.clone(), auth)),
         )
+        // Info
+        .route("/api/healthchecker", get(health_checker_handler))
+        // Users
         .route(
             "/api/users/me",
             get(get_me_handler)

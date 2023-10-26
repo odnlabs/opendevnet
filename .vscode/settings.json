@@ -29,5 +29,6 @@
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": "file:///d%3A/github/opendevnet/.github/workflows/deploy.yml",
     "https://json.schemastore.org/github-issue-config.json": "file:///d%3A/github/opendevnet/.github/ISSUE_TEMPLATE/config.yml"
-  }
+  },
+  "rust-analyzer.showUnlinkedFileNotification": false
 }
