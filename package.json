@@ -35,7 +35,7 @@
     "@commitlint/config-angular": "^18.0.0",
     "@manypkg/cli": "^0.21.0",
     "@monodon/rust": "^1.2.0",
-    "@nx/eslint": "^17.0.1",
+    "@nx/eslint": "^17.0.2",
     "@nx/jest": "^17.0.1",
     "@nx/js": "^17.0.1",
     "@nx/next": "^17.0.1",
