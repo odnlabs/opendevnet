@@ -26,13 +26,13 @@ services:
     volumes:
       - ./docker/redis-data:/data
 
-  # nginx:
-  #   container_name: nginx
-  #   image: nginx:latest
-  #   volumes:
-  #     - ./docker/development/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-  #   ports:
-  #     - '80:80'
+  nginx:
+    container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./docker/development/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    ports:
+      - '80:80'
 
 volumes:
   postgres-data:
