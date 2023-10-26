@@ -14,6 +14,7 @@ pub async fn register_user_handler(
     State(data): State<Arc<AppState>>,
     Json(body): Json<RegisterUserSchema>,
 ) -> Result<impl IntoResponse, (StatusCode, Json<serde_json::Value>)> {
+    // Check if user with that email already exists
     let user_exists: Option<bool> =
         sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM users WHERE email = $1)")
             .bind(body.email.to_owned().to_ascii_lowercase())
@@ -27,6 +28,7 @@ pub async fn register_user_handler(
                 (StatusCode::INTERNAL_SERVER_ERROR, Json(error_response))
             })?;
 
+    // If user exists, return error
     if let Some(exists) = user_exists {
         if exists {
             let error_response = serde_json::json!({
@@ -37,6 +39,7 @@ pub async fn register_user_handler(
         }
     }
 
+    // Hash password
     let salt = SaltString::generate(&mut OsRng);
     let hashed_password = Argon2::default()
         .hash_password(body.password.as_bytes(), &salt)
@@ -49,6 +52,7 @@ pub async fn register_user_handler(
         })
         .map(|hash| hash.to_string())?;
 
+    // Insert user into database
     let user = sqlx::query_as!(
         User,
         "INSERT INTO users (name,email,password) VALUES ($1, $2, $3) RETURNING *",
@@ -66,6 +70,7 @@ pub async fn register_user_handler(
         (StatusCode::INTERNAL_SERVER_ERROR, Json(error_response))
     })?;
 
+    // Return user
     let user_response = serde_json::json!({"status": "success","data": serde_json::json!({
         "user": filter_user_record(&user)
     })});
