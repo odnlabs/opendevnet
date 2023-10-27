@@ -5,7 +5,7 @@ export const Header: React.FC = () => (
   <>
     <div className="relative h-14 w-full"></div>
 
-    <div className="fixed top-0 left-0 h-14 w-screen bg-[rgb(var(--header))] border-b border-border flex">
+    <div className="fixed z-50 top-0 left-0 h-14 w-screen bg-[rgb(var(--header))] border-b border-border flex">
       <Link
         href="/"
         className="flex font-medium text-2xl px-3 py-3 focus-visible:ring ring-inset"

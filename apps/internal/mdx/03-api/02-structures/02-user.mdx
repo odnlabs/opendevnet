@@ -1,0 +1,98 @@
+---
+title: User Structures
+lastUpdated: '2023-10-28'
+---
+
+# User Structures
+
+## User
+
+| Field        | Type     | Description                |
+| ------------ | -------- | -------------------------- |
+| id           | String   | The unique ID for the user |
+| username     | String   | The user's chosen username |
+| email        | String   | The user's email           |
+| password     | String   |                            |
+| phone_number | String   |                            |
+| display_name | String   |                            |
+| avatar       | String   |                            |
+| banner       | String   |                            |
+| birthday     | Date     |                            |
+| bio          | String   |                            |
+| location     | String   |                            |
+| presence     | Presence |                            |
+| verified     | Boolean  |                            |
+| verifiedAt   | Date     |                            |
+| accent_color | String   |                            |
+| createdAt    | Date     |                            |
+| updatedAt    | Date     |                            |
+
+## Presence
+
+| Field  | Type   | Description |
+| ------ | ------ | ----------- |
+| status | String |             |
+| text   | String |             |
+| emoji  | String |             |
+
+## User (Public)
+
+| Field     | Type   | Description |
+| --------- | ------ | ----------- |
+| id        | String |             |
+| username  | String |             |
+| createdAt | Date   |             |
+| updatedAt | Date   |             |
+
+## User (Private)
+
+| Field      | Type     | Description |
+| ---------- | -------- | ----------- |
+| id         | ObjectId |             |
+| username   | String   |             |
+| email      | String   |             |
+| verified   | Boolean  |             |
+| verifiedAt | Date     |             |
+| createdAt  | Date     |             |
+| updatedAt  | Date     |             |
+
+## Friendship
+
+| Field      | Type     | Description |
+| ---------- | -------- | ----------- |
+| id         | ObjectId |             |
+| user_id    | ObjectId |             |
+| friend_id  | ObjectId |             |
+| created_at | Date     |             |
+| updated_at | Date     |             |
+
+## Friendship Status
+
+| Value | Description |
+| ----- | ----------- |
+| 0     | Pending     |
+| 1     | Accepted    |
+| 2     | Declined    |
+| 3     | Blocked     |
+
+## Direct Message
+
+| Field     | Type     | Description |
+| --------- | -------- | ----------- |
+| id        | ObjectId |             |
+| sender    | ObjectId |             |
+| recipient | ObjectId |             |
+| content   | String   |             |
+| createdAt | Date     |             |
+| updatedAt | Date     |             |
+
+## External Platform Connection
+
+| Field     | Type     | Description |
+| --------- | -------- | ----------- |
+| id        | ObjectId |             |
+| user      | ObjectId |             |
+| platform  | String   |             |
+| token     | String   |             |
+| createdAt | Date     |             |
+| updatedAt | Date     |             |

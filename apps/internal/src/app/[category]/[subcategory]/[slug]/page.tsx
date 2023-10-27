@@ -31,7 +31,7 @@ const Page = async ({ params }: { params: Params }): Promise<JSX.Element> => {
 
   return (
     <div className="mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-3xl mx-auto w-11/12">
-      <DocumentContent doc={{ source: doc.source, title: doc.meta.title }} />
+      <DocumentContent doc={doc} />
     </div>
   );
 };

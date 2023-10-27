@@ -22,9 +22,9 @@ const SidebarLink: React.FC<{
   return (
     <Link
       href={itemPath}
-      className={`block px-2.5 py-1.5 my-0.5 text-sm rounded-md ${
+      className={`block px-2.5 py-1.5 my-1 text-sm rounded-md ${
         itemPath === pathname ||
-        (pathname === '/' && itemPath === 'introduction/introduction')
+        (pathname === '/' && itemPath === '/introduction/introduction')
           ? 'bg-primary font-medium'
           : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
       }`}
@@ -37,12 +37,14 @@ const SidebarLink: React.FC<{
 export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
   const [open, setOpen] = useState<number[]>([]);
 
+  const pathname = usePathname();
+
   return cat.items.map((item, itemIndex) =>
     item.items && item.items?.length > 0 ? (
       <div className="h-full overflow-hidden" key={itemIndex}>
         <button
           className={`flex w-full justify-between text-left px-2.5 py-1.5 text-sm rounded-md ${
-            open.includes(itemIndex)
+            pathname.startsWith(`/${cat.slug}/${item.slug}`)
               ? 'bg-secondary font-medium'
               : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
           }`}
