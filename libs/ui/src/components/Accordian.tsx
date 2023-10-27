@@ -51,6 +51,7 @@ export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
             </div>
           </button>
           {/* Answer */}
+
           <div
             className={`grid transition-all duration-500 ${
               (autoClose ? focused === index : focusedArr.includes(index))

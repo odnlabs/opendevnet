@@ -30,7 +30,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <div className="flex">
         <Sidebar />
 
-        <div>
+        <div className="relative top-0 right-0 w-full">
           {children}
           <Footer />
         </div>
