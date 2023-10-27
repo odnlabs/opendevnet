@@ -5,7 +5,7 @@
   "sourceRoot": "apps/api/src",
   "targets": {
     "build": {
-      "executor": "@monodon/rust:build",
+      "executor": "nx-rust:build",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
@@ -17,7 +17,7 @@
       }
     },
     "test": {
-      "executor": "@monodon/rust:test",
+      "executor": "nx-rust:test",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
@@ -29,14 +29,28 @@
       }
     },
     "lint": {
-      "executor": "@monodon/rust:lint",
+      "executor": "nx-rust:lint",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
       }
     },
+    "format": {
+      "executor": "nx-rust:format",
+      "outputs": ["{options.target-dir}"],
+      "options": {
+        "target-dir": "dist/target/api"
+      }
+    },
+    "install": {
+      "executor": "nx-rust:install",
+      "outputs": ["{options.path}"],
+      "options": {
+        "path": "apps/api"
+      }
+    },
     "dev": {
-      "executor": "@monodon/rust:run",
+      "executor": "nx-rust:run",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/test"

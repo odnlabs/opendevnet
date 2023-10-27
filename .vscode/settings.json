@@ -1,19 +1,4 @@
 {
-  "rust-analyzer.linkedProjects": [".\\apps\\api\\Cargo.toml"],
-  "eslint.workingDirectories": [
-    {
-      "pattern": "./apps/*"
-    },
-    {
-      "pattern": "./libs/*"
-    }
-  ],
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -26,8 +11,31 @@
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n",
+  "rust-analyzer.linkedProjects": [".\\apps\\api\\Cargo.toml"],
+  "rust-analyzer.showUnlinkedFileNotification": false,
+  "eslint.workingDirectories": [
+    {
+      "pattern": "./apps/*"
+    },
+    {
+      "pattern": "./libs/*"
+    }
+  ],
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "json"
+  ],
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": "file:///d%3A/github/opendevnet/.github/workflows/deploy.yml",
     "https://json.schemastore.org/github-issue-config.json": "file:///d%3A/github/opendevnet/.github/ISSUE_TEMPLATE/config.yml"
-  }
+  },
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "host": "http://localhost:5000/api"
+    }
+  },
+  "rest-client.showResponseInDifferentTab": true
 }
