@@ -2,6 +2,8 @@ import { Poppins } from 'next/font/google';
 
 import { Metadata } from 'next';
 
+import { Footer, Header, Sidebar } from '@components/layout';
+
 import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
 
@@ -22,7 +24,18 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <link rel="icon" href="/favicon.ico" sizes="any" />
     </head>
 
-    <body className={font.className}>{children}</body>
+    <body className={font.className}>
+      <Header />
+
+      <div className="flex">
+        <Sidebar />
+
+        <div>
+          {children}
+          <Footer />
+        </div>
+      </div>
+    </body>
   </html>
 );
 

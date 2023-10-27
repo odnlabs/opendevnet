@@ -21,7 +21,7 @@ module.exports = {
     //   presets: [require.resolve('next/babel')],
     // },
   },
-  ignorePatterns: ['*.js', '*.cjs', '*.json'],
+  ignorePatterns: ['*.js', '*.cjs', '*.mjs', '*.json'],
   rules: {
     // Import plugin rules
     'import/no-unresolved': 0, // Ensures that all imports are resolvable to a module on the local filesystem

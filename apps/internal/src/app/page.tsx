@@ -5,5 +5,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home(): JSX.Element {
-  return <div></div>;
+  return <div>Welcome to Internal Docs</div>;
 }

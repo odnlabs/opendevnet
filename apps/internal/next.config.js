@@ -1,4 +1,3 @@
-const withMDX = require('@next/mdx')();
 const { join } = require('path');
 
 /** @type {import('next').NextConfig} */
@@ -19,4 +18,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withMDX(nextConfig);
+module.exports = nextConfig;
