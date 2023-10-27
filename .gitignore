@@ -29,7 +29,6 @@ tmp/
 .env.production.local
 
 # Production
-build
 dist/
 /docker/production/nginx.conf
 /docker/production/ssl/*

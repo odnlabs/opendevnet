@@ -1,5 +1,4 @@
 {
-  // VS Code
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -12,10 +11,8 @@
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n",
-  // Rust Analyzer
   "rust-analyzer.linkedProjects": [".\\apps\\api\\Cargo.toml"],
   "rust-analyzer.showUnlinkedFileNotification": false,
-  // Eslint
   "eslint.workingDirectories": [
     {
       "pattern": "./apps/*"
@@ -28,14 +25,13 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact"
+    "typescriptreact",
+    "json"
   ],
-  // YAML
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": "file:///d%3A/github/opendevnet/.github/workflows/deploy.yml",
     "https://json.schemastore.org/github-issue-config.json": "file:///d%3A/github/opendevnet/.github/ISSUE_TEMPLATE/config.yml"
   },
-  // Rest Client
   "rest-client.environmentVariables": {
     "$shared": {
       "host": "http://localhost:5000/api"
