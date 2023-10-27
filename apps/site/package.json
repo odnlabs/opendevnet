@@ -12,7 +12,7 @@
   "dependencies": {
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
-    "@next/mdx": "^13.5.6",
+    "@next/mdx": "^14.0.0",
     "@odnlabs/ui": "workspace:*",
     "@odnlabs/utils": "workspace:*",
     "@react-icons/all-files": "^4.1.0",
