@@ -219,6 +219,10 @@ tbody tr:nth-child(odd) {
   background: rgb(var(--background-secondary));
 }
 
+tbody tr:last-child {
+  border-bottom: 1px solid rgb(var(--border));
+}
+
 th,
 td {
   border: 1px solid rgb(var(--border));

@@ -6,9 +6,9 @@ const config: Config = {
   mode: 'jit',
   content: [
     // App content
-    `src/**/*.{js,ts,jsx,tsx}`,
+    `src/**/*.{js,ts,jsx,tsx,mdx}`,
     // UI package
-    '../../libs/ui/src/**/*.{js,ts,jsx,tsx}',
+    '../../libs/ui/src/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     colors: {

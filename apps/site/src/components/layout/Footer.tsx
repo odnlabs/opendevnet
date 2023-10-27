@@ -206,7 +206,7 @@ export const Footer: React.FC = () => {
       </div>
       <div className="py-8 border-t border-border/50 bg-[rgb(var(--footer))] text-sm">
         <p className="text-center text-sm text-text-faint">
-          © {new Date().getFullYear()},{' '}
+          &copy; {new Date().getFullYear()},{' '}
           <Link href="/" className="hover:text-text">
             OpenDevNet.com
           </Link>

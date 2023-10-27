@@ -1,0 +1,24 @@
+---
+title: Authentication Endpoints
+lastUpdated: '2023-10-28'
+---
+
+Open Dev Net uses JWT tokens for authentication. All endpoints that require authentication can only be used with a valid JWT token in the `Authorization` header.
+
+### Base Path
+
+```
+/auth
+```
+
+## Endpoints
+
+| Path                    | Method | Description                                                      |
+| ----------------------- | ------ | ---------------------------------------------------------------- |
+| `/auth/login`           | POST   | Login a user                                                     |
+| `/auth/signup`          | POST   | Register a new user account                                      |
+| `/auth/logout`          | POST   | Logout the current user                                          |
+| `/auth/refresh`         | POST   | Refresh the current user's JWT token                             |
+| `/auth/access`          | POST   | Get the current user's access token                              |
+| `/verify/resend`        | POST   | Resend the current user's email verification                     |
+| `/verify/resend/:email` | POST   | Resend the current user's email verification to a specific email |
