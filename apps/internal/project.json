@@ -1,0 +1,77 @@
+{
+  "name": "internal",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/internal",
+  "projectType": "application",
+  "options": {
+    "outputPath": "dist/internal"
+  },
+  "targets": {
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/internal",
+        "outputPath": "dist/apps/internal",
+        "debug": true
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "dist/apps"
+        },
+        "production": {}
+      }
+    },
+    "dev": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4200,
+        "buildTarget": "internal:build",
+        "dev": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "internal:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "internal:build:production",
+          "dev": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "production",
+      "options": {
+        "port": 4200,
+        "buildTarget": "internal:build",
+        "dev": false
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/internal/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/internal/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}
