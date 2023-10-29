@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 import { DocumentContent } from '@components';
 import { getDocFromSlug } from '@utils/mdxApi';
@@ -14,12 +15,18 @@ export const generateMetadata = async ({
 }: {
   params: Params;
 }): Promise<Metadata> => {
-  const { meta } = await getDocFromSlug(
+  const doc = await getDocFromSlug(
     params.slug,
     `mdx/${params.category}/${params.subcategory}`
   );
+
+  if (!doc)
+    return {
+      title: 'Not Found',
+    };
+
   return {
-    title: `${meta.title} | Open Dev Net`,
+    title: `${doc.meta.title} | Open Dev Net`,
   };
 };
 
@@ -28,6 +35,8 @@ const Page = async ({ params }: { params: Params }): Promise<JSX.Element> => {
     params.slug,
     `mdx/${params.category}/${params.subcategory}`
   );
+
+  if (!doc) redirect('/404');
 
   return <DocumentContent doc={doc} />;
 };

@@ -1,6 +1,7 @@
 // NOTE - Subcategory can also be a slug for a page, so we need to check if the subcategory is a page or not
 
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 import { DocumentContent } from '@components';
 import { getDocFromSlug } from '@utils/mdxApi';
@@ -15,12 +16,18 @@ export const generateMetadata = async ({
 }: {
   params: Params;
 }): Promise<Metadata> => {
-  const { meta } = await getDocFromSlug(
+  const doc = await getDocFromSlug(
     params.subcategory,
     `mdx/${params.category}`
   );
+
+  if (!doc)
+    return {
+      title: 'Not Found',
+    };
+
   return {
-    title: `${meta.title} | Open Dev Net`,
+    title: `${doc.meta.title} | Open Dev Net`,
   };
 };
 
@@ -29,6 +36,8 @@ const Page = async ({ params }: { params: Params }): Promise<JSX.Element> => {
     params.subcategory,
     `mdx/${params.category}`
   );
+
+  if (!doc) redirect('/404');
 
   return <DocumentContent doc={doc} />;
 };
