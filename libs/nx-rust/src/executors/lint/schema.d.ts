@@ -1,4 +1,4 @@
-import { BaseOptions } from '../../utils/build-command';
+import { BaseOptions } from '../../utils/formatOptions';
 
 export interface LintExecutorSchema extends BaseOptions {
   fix?: boolean;
