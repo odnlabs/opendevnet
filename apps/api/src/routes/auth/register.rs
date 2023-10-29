@@ -70,10 +70,8 @@ pub async fn register_user_handler(
         (StatusCode::INTERNAL_SERVER_ERROR, Json(error_response))
     })?;
 
-    // Return user
-    let user_response = serde_json::json!({"status": "success","data": serde_json::json!({
-        "user": filter_user_record(&user)
-    })});
+    // Return success response
+    let user_response = serde_json::json!({"status": "success"});
 
     Ok(Json(user_response))
 }

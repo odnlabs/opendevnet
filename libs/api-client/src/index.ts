@@ -25,14 +25,16 @@ export class Client extends Base {
 
     super({
       instance,
-      tokenKey: options.tokenKey,
+      accessToken: options.accessToken,
+      refreshToken: options.refreshToken,
       baseApiUrl: options.baseApiUrl,
       baseWebUrl: options.baseWebUrl,
     });
 
     this.auth = new Auth({
       instance,
-      tokenKey: this.tokenKey,
+      accessToken: this.accessToken,
+      refreshToken: options.refreshToken,
       baseApiUrl: this.baseApiUrl,
       baseWebUrl: this.baseWebUrl,
     });
