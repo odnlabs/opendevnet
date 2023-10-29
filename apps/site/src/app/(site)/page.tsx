@@ -65,8 +65,8 @@ const Home: NextPage = () => {
       text: 'Connect with developers from around the world',
     },
     {
-      image: '/home/innovation.svg',
-      text: 'Collaborate on projects and share ideas',
+      image: '/home/innovate.svg',
+      text: "Innovate, team up, solve today's problems",
     },
     {
       image: '/home/workflow.svg',
@@ -98,8 +98,8 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="py-10 bg-background-secondary text-center">
-          <p className="font-medium text-text-secondary text-xl">
+        <div className="py-10 bg-background-secondary text-center border-y border-border">
+          <p className="font-medium text-text-primary text-xl">
             &quot;The social platform for creators, innovators, and
             developers.&quot;
           </p>
