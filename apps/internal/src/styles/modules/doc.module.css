@@ -1,59 +1,52 @@
 /* Styling for Posts */
 /* Headings */
-.content h1,
-.content h2,
-.content h3,
-.content h4,
-.content h5,
-.content h6 {
+.content:not(.ignore) h1,
+.content:not(.ignore) h2,
+.content:not(.ignore) h3,
+.content:not(.ignore) h4,
+.content:not(.ignore) h5,
+.content:not(.ignore) h6 {
   display: block;
-  margin-bottom: 1.25rem;
+  /* margin-bottom: 1.25rem; */
+  margin: 0;
   font-weight: 600;
   text-transform: capitalize;
 }
 
-.content h1 {
-  font-size: 2.25rem;
+.content:not(.ignore) h1 {
+  font-size: 2rem;
   line-height: 2.5rem;
-  margin-top: 2rem;
-}
-.content h2 {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-  margin-top: 1.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgb(var(--border));
 }
 
-.content h3 {
+.content:not(.ignore) h2 {
   font-size: 1.5rem;
   line-height: 2rem;
-  margin-top: 1.25rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid rgb(var(--border));
 }
 
-.content h4 {
+.content:not(.ignore) h3 {
   font-size: 1.25rem;
-  line-height: 1.75rem;
-  margin-top: 1.25rem;
+  line-height: 1.5rem;
 }
 
-.content h5 {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-  margin-top: 0.75rem;
-}
-
-.content h6 {
-  font-size: 16px;
-  margin-top: 0.75rem;
+.content:not(.ignore) h4,
+.content:not(.ignore) h5,
+.content:not(.ignore) h6 {
+  line-height: 1.25rem;
 }
 
 /* Paragraph */
-.content p {
-  margin: 0.75rem 0;
+.content:not(.ignore) > p {
+  margin: 1rem 0;
+  font-size: 1rem;
   color: rgb(var(--text-secondary));
 }
 
 /* Code Blocks */
-.content pre code {
+.content:not(.ignore) pre code {
   display: block;
   overflow: hidden;
   border-radius: 0.375rem;
@@ -62,13 +55,13 @@
   cursor: text;
 }
 
-.content pre code span:last-of-type {
+.content:not(.ignore) pre code span:last-of-type {
   margin-right: -1.25rem;
   padding-right: 1.25rem;
 }
 
 /* Quotes */
-.content blockquote p {
+.content:not(.ignore) blockquote p {
   display: block;
   max-width: 36rem;
   width: calc((10 / 12) * 100%); /* 83.333333% */
@@ -84,10 +77,10 @@
 }
 
 /* Code bit in paragraph */
-.content p code,
-.content ul code,
-.content ol code,
-.content td code {
+.content:not(.ignore) p code,
+.content:not(.ignore) ul code,
+.content:not(.ignore) ol code,
+.content:not(.ignore) td code {
   font-size: 14px;
   margin-top: 0.125rem;
   margin-bottom: 0.125rem;
@@ -100,7 +93,7 @@
 }
 
 /* Unordered Lists */
-.content ul {
+.content:not(.ignore) ul {
   display: block;
   list-style-type: disc;
   padding: 0 1.25rem;
@@ -109,7 +102,7 @@
 }
 
 /* Ordered Lists */
-.content ol {
+.content:not(.ignore) ol {
   display: block;
   list-style-type: decimal;
   padding: 0 1.25rem;
@@ -118,37 +111,37 @@
 }
 
 /* List Point */
-.content li {
+.content:not(.ignore) li {
   padding: 0 0.5rem;
 }
 
-.content a {
+.content:not(.ignore) a {
   color: rgb(var(--link));
 }
 
-.content a:hover {
+.content:not(.ignore) a:hover {
   text-decoration: underline;
 }
 
-.content h1 a,
-.content h2 a,
-.content h3 a,
-.content h4 a,
-.content h5 a,
-.content h6 a {
-  color: rgb(var(--text-primary));
+.content:not(.ignore) h1 a,
+.content:not(.ignore) h2 a,
+.content:not(.ignore) h3 a,
+.content:not(.ignore) h4 a,
+.content:not(.ignore) h5 a,
+.content:not(.ignore) h6 a {
+  color: rgb(var(--text));
 }
 
-.content h1 a:hover,
-.content h2 a:hover,
-.content h3 a:hover,
-.content h4 a:hover,
-.content h5 a:hover,
-.content h6 a:hover {
+.content:not(.ignore) h1 a:hover,
+.content:not(.ignore) h2 a:hover,
+.content:not(.ignore) h3 a:hover,
+.content:not(.ignore) h4 a:hover,
+.content:not(.ignore) h5 a:hover,
+.content:not(.ignore) h6 a:hover {
   text-decoration-color: transparent;
 }
 
-.content hr {
+.content:not(.ignore) hr {
   border: 0;
   border-top: 1px solid rgb(var(--border));
   margin: 2.5rem 0;
