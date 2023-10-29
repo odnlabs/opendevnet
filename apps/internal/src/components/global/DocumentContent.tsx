@@ -48,7 +48,7 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
             {doc.meta.lastUpdated}
           </p>
           <div className="mt-5 h-px w-full bg-border"></div>
-          <div className={`mb-24 mt-8 text-text-secondary ${styles.content}`}>
+          <div className={`mb-10 mt-8 text-text-secondary ${styles.content}`}>
             {doc.source && (
               <MDXRemote
                 {...doc.source}
@@ -56,7 +56,8 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
               />
             )}
           </div>
-          <div className="py-10 flex">
+
+          <div className="pt-10 border-t border-border flex">
             <div className="w-1/2 pr-2">
               {doc.meta.prev && (
                 <Link

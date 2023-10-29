@@ -441,7 +441,7 @@ export const getDocFromSlug = async (
             location: [
               prev.category.title,
               prev.subCategory?.title ?? undefined,
-              next.title,
+              prev.title,
             ].filter((loc) => loc !== undefined) as string[],
           }
         : undefined,
