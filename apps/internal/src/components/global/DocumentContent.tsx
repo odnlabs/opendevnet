@@ -5,6 +5,8 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 // import rehypeHighlight from 'rehype-highlight';
 
+import { HiChevronUp } from 'react-icons/hi';
+
 import styles from '@styles/modules/doc.module.css';
 import { ReturnedDoc } from '@utils/mdxApi';
 import * as uiComponents from './uiClientComponents';
@@ -53,6 +55,63 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
                 components={{ Link, ...uiComponents, Alert }}
               />
             )}
+          </div>
+          <div className="py-10 flex">
+            <div className="w-1/2 pr-2">
+              {doc.meta.prev && (
+                <Link
+                  href={doc.meta.prev.slug}
+                  className="block h-full p-5 rounded-lg bg-background border border-border hover:bg-background-secondary active:bg-background-tertiary transition duration-300 hover:border-link active:border-link text-left"
+                >
+                  <p className="text-text-secondary text-sm font-medium">
+                    Previous
+                  </p>
+                  <p className="mt-2 text-link font-medium text-base">
+                    <HiChevronUp className="h-6 w-6 -rotate-90 inline-block -ml-2 -mt-0.5" />
+                    {doc.meta.prev.title}
+                  </p>
+                  <p className="mt-3 text-xs text-text-faint font-medium">
+                    {doc.meta.prev.location.map((part, index) => (
+                      <span key={index}>
+                        {part}
+                        {doc.meta.prev?.location &&
+                          index !== doc.meta.prev.location.length - 1 && (
+                            <span className="mx-1">/</span>
+                          )}
+                      </span>
+                    ))}
+                  </p>
+                </Link>
+              )}
+            </div>
+
+            <div className="w-1/2 pl-2">
+              {doc.meta.next && (
+                <Link
+                  href={doc.meta.next.slug}
+                  className="block h-full p-5 rounded-lg bg-background border border-border hover:bg-background-secondary active:bg-background-tertiary transition duration-300 hover:border-link active:border-link text-right"
+                >
+                  <p className="text-text-secondary text-sm font-medium">
+                    Next
+                  </p>
+                  <p className="mt-2 text-link font-medium text-base">
+                    {doc.meta.next.title}
+                    <HiChevronUp className="h-6 w-6 rotate-90 inline-block -mr-2 -mt-0.5" />
+                  </p>
+                  <p className="mt-3 text-xs text-text-faint font-medium">
+                    {doc.meta.next.location.map((part, index) => (
+                      <span key={index}>
+                        {part}
+                        {doc.meta.next?.location &&
+                          index !== doc.meta.next.location.length - 1 && (
+                            <span className="mx-1">/</span>
+                          )}
+                      </span>
+                    ))}
+                  </p>
+                </Link>
+              )}
+            </div>
           </div>
         </div>
         <TableOfContents />
