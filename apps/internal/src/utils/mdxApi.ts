@@ -6,6 +6,7 @@ import path from 'path';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -380,7 +381,7 @@ export const getDocFromSlug = async (
     mdxOptions: {
       rehypePlugins: [
         rehypeSlug,
-        // rehypeHighlight,
+        rehypeHighlight as unknown as () => void,
         [rehypeAutolinkHeadings, { behavior: 'wrap' }],
       ],
       remarkPlugins: [remarkGfm],

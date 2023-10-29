@@ -37,11 +37,11 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
   return (
     <div className="mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-5xl mx-auto w-11/12">
       <div className="flex">
-        <div id="mdx-content">
+        <div id="mdx-content" className="w-full">
           <h1 className="my-3 block text-4xl font-bold leading-[1.2] text-text md:text-5xl">
             {doc.meta.title}
           </h1>
-          <p className="block mt-2 text-sm text-text-secondary">
+          <p className="block mt-5 text-sm text-text-secondary">
             <b className="font-semibold">Last Updated: </b>
             {doc.meta.lastUpdated}
           </p>

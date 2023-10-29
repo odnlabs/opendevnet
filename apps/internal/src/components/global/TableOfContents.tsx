@@ -83,7 +83,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = () => {
                   }}
                   className={`text-sm ${
                     activeId === heading.id
-                      ? 'font-bold link'
+                      ? 'font-semibold link'
                       : 'text-text-primary hover:underline'
                   }`}
                 >

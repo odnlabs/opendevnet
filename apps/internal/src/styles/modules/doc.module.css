@@ -7,7 +7,6 @@
 .content:not(.ignore) h5,
 .content:not(.ignore) h6 {
   display: block;
-  /* margin-bottom: 1.25rem; */
   margin: 0;
   font-weight: 600;
   text-transform: capitalize;
@@ -18,6 +17,7 @@
   line-height: 2.5rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid rgb(var(--border));
+  margin-bottom: 1.25rem;
 }
 
 .content:not(.ignore) h2 {
@@ -25,11 +25,13 @@
   line-height: 2rem;
   padding: 0.75rem 0;
   border-bottom: 1px solid rgb(var(--border));
+  margin-bottom: 1.25rem;
 }
 
 .content:not(.ignore) h3 {
   font-size: 1.25rem;
   line-height: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .content:not(.ignore) h4,
@@ -77,19 +79,11 @@
 }
 
 /* Code bit in paragraph */
-.content:not(.ignore) p code,
-.content:not(.ignore) ul code,
-.content:not(.ignore) ol code,
-.content:not(.ignore) td code {
-  font-size: 14px;
-  margin-top: 0.125rem;
-  margin-bottom: 0.125rem;
-  padding: 0 0.25rem;
-  border-radius: 4px;
+.content:not(.ignore) code:not(pre code) {
+  border-radius: 5px;
+  padding: 0.125rem 0.25rem;
   background: rgb(var(--secondary-hover));
-  font-weight: 600;
-  cursor: auto;
-  transition: background-color 150ms ease;
+  border: 1px solid rgb(var(--border));
 }
 
 /* Unordered Lists */
