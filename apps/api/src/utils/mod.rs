@@ -7,6 +7,7 @@ pub mod config;
 pub mod jwt_auth;
 pub mod token;
 pub mod user;
+pub mod ws;
 
 use crate::AppState;
 use token::TokenDetails;

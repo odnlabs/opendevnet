@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "axios": "^1.6.0",
-    "builder-validation": "^0.0.3"
+    "builder-validation": "^0.0.3",
+    "ws": "^8.14.2"
   },
   "devDependencies": {
     "@types/node": "^20.8.9",

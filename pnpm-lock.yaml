@@ -383,6 +383,9 @@ importers:
       builder-validation:
         specifier: ^0.0.3
         version: 0.0.3
+      ws:
+        specifier: ^8.14.2
+        version: 8.14.2
     devDependencies:
       '@types/node':
         specifier: ^20.8.9
