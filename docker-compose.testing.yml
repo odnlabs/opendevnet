@@ -34,7 +34,7 @@ services:
     container_name: internal
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile.webinternal
+      dockerfile: ./docker/production/Dockerfile.internal
       args:
         DOCKER_BUILDKIT: 1
     env_file:
