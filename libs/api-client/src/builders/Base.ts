@@ -2,7 +2,8 @@ import axios, { AxiosInstance } from 'axios';
 
 export interface BaseOptions {
   instance: AxiosInstance;
-  tokenKey: string;
+  accessToken?: string | undefined;
+  refreshToken?: string | undefined;
   baseApiUrl: string;
   baseWebUrl: string;
 }
@@ -14,7 +15,8 @@ export class Base {
   protected axios = axios;
 
   protected instance: AxiosInstance;
-  protected tokenKey: string;
+  protected accessToken?: string | undefined;
+  protected refreshToken?: string | undefined;
 
   protected baseApiUrl: string;
   protected baseWebUrl: string;
@@ -25,7 +27,8 @@ export class Base {
    */
   public constructor(options: BaseOptions) {
     this.instance = options.instance;
-    this.tokenKey = options.tokenKey;
+    this.accessToken = options.accessToken;
+    this.refreshToken = options.refreshToken;
     this.baseApiUrl = options.baseApiUrl;
     this.baseWebUrl = options.baseWebUrl;
   }

@@ -11,7 +11,7 @@ use axum::{
 use axum_extra::extract::cookie::CookieJar;
 use serde::{Deserialize, Serialize};
 
-use crate::{model::User, utils::token, AppState};
+use crate::{models::user::User, utils::token, AppState};
 use redis::AsyncCommands;
 
 #[derive(Debug, Serialize)]

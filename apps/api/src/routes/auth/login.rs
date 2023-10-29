@@ -11,7 +11,7 @@ use axum_extra::extract::cookie::{Cookie, SameSite};
 use serde_json::json;
 
 use crate::{
-    model::{LoginUserSchema, User},
+    models::{auth::LoginUserSchema, user::User},
     utils::{generate_token, save_token_data_to_redis},
     AppState,
 };
