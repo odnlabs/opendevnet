@@ -1,7 +1,7 @@
 import { ExecutorContext } from '@nx/devkit';
 
-import { buildCommand } from '../../utils/build-command';
 import { cargoCommand } from '../../utils/cargo';
+import { buildCommand } from '../../utils/formatOptions';
 import { BuildExecutorSchema } from './schema';
 
 /**

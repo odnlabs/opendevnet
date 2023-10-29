@@ -50,15 +50,15 @@
       }
     },
     "dev": {
-      "executor": "nx-rust:run",
-      "outputs": ["{options.target-dir}"],
+      "executor": "nx-rust:watch",
       "options": {
-        "target-dir": "dist/target/test"
-      },
-      "configurations": {
-        "production": {
-          "release": true
-        }
+        "watch": "apps/api/src"
+      }
+    },
+    "run": {
+      "executor": "nx-rust:run",
+      "options": {
+        "verbose": true
       }
     }
   },

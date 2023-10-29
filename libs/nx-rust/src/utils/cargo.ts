@@ -1,5 +1,5 @@
 import { joinPathFragments, workspaceRoot } from '@nx/devkit';
-import { ChildProcess, StdioOptions, execSync, spawn } from 'child_process';
+import { StdioOptions, execSync } from 'child_process';
 import * as colors from 'colors';
 
 import { CargoMetadata } from '../models/cargo-metadata';
@@ -13,8 +13,6 @@ interface RunCargoOptions {
   stdio: StdioOptions;
   env: NodeJS.ProcessEnv | undefined;
 }
-
-export let childProcess: ChildProcess | null;
 
 /**
  * Spawn a cargo command synchronously.
@@ -84,12 +82,6 @@ export function runProcess(
     joinPathFragments(workspaceRoot, 'dist', 'cargo');
 
   return new Promise((resolve) => {
-    if (process.env.VERCEL) {
-      // Vercel doesnt have support for cargo atm, so auto success builds
-      resolve({ success: true });
-      return;
-    }
-
     execSync(`${processCmd} ${args.join(' ')}`, {
       cwd: process.cwd(),
       env: {
@@ -99,8 +91,10 @@ export function runProcess(
         CARGO_BUILD_TARGET_DIR: targetDir,
       },
       windowsHide: true,
+      // detached: true,
       stdio: ['inherit', 'inherit', 'inherit'],
     });
+
     resolve({ success: true });
   });
 }
@@ -114,46 +108,6 @@ export async function cargoCommand(
   ...args: string[]
 ): Promise<{ success: boolean }> {
   console.log(colors.dim(`> cargo ${args.join(' ')}`));
-  args.push('--color', 'always');
+  // args.push('--color', 'always');
   return runProcess('cargo', ...args);
-}
-
-/**
- * Spawn a cargo run command.
- * @param args The args to pass to the cargo command.
- * @returns The return value of the cargo command.
- */
-export function cargoRunCommand(
-  ...args: string[]
-): Promise<{ success: boolean }> {
-  console.log(colors.dim(`> cargo ${args.join(' ')}`));
-  return new Promise((resolve, reject) => {
-    childProcess = spawn('cargo', [...args, '--color', 'always'], {
-      cwd: process.cwd(),
-      windowsHide: true,
-      detached: true,
-      shell: false,
-      stdio: ['inherit', 'inherit', 'inherit'],
-    });
-
-    // Ensure the child process is killed when the parent exits
-    process.on('exit', () => childProcess?.kill());
-    process.on('SIGTERM', () => childProcess?.kill());
-    process.on('SIGINT', () => childProcess?.kill());
-
-    childProcess.on('error', () => {
-      // eslint-disable-next-line prefer-promise-reject-errors
-      reject({ success: false });
-    });
-
-    childProcess.on('exit', (code) => {
-      childProcess = null;
-      if (code === 0) {
-        resolve({ success: true });
-      } else {
-        // eslint-disable-next-line prefer-promise-reject-errors
-        reject({ success: false });
-      }
-    });
-  });
 }

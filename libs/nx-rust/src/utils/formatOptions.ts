@@ -15,12 +15,14 @@ export interface BaseOptions {
  * @param baseCommand The base command to run.
  * @param options The options passed to the executor.
  * @param context The context of the executor.
+ * @param replaceOptions The options to replace.
  * @returns The command to run.
  */
 export const buildCommand = (
   baseCommand: string,
   options: BaseOptions,
-  context: ExecutorContext
+  context: ExecutorContext,
+  replaceOptions: Record<string, string> = {}
 ): string[] => {
   const args: string[] = [];
 
@@ -35,6 +37,10 @@ export const buildCommand = (
       continue;
     }
 
+    if (replaceOptions[key]) {
+      args.push(replaceOptions[key], value as string);
+      continue;
+    }
     if (typeof value === 'boolean') {
       // false flags should not be added to the cargo args
       if (value) {
@@ -51,6 +57,8 @@ export const buildCommand = (
 
   if (['build', 'lint', 'run', 'test'].includes(baseCommand))
     args.push('-p', context.projectName);
+
+  if (baseCommand === 'watch') args.push('-x', 'run');
 
   return args;
 };

@@ -19,7 +19,7 @@ body {
   background-attachment: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
-  break-word: break-word;
+  break-after: break-word;
   box-sizing: border-box;
   -webkit-overflow-scrolling: touch;
   -webkit-font-smoothing: antialiased;
@@ -166,6 +166,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .range-container input {
   -webkit-appearance: none;
+  appearance: none;
   cursor: pointer;
 }
 
@@ -190,6 +191,7 @@ input[type='number']::-webkit-outer-spin-button {
   border-radius: 999px;
   cursor: pointer;
   -webkit-appearance: none;
+  appearance: none;
 }
 
 .range-container input:active {
@@ -207,6 +209,7 @@ button:focus-visible {
 table {
   margin: 20px 0;
   border: 1px solid rgb(var(--border));
+  border-color: rgb(var(--border)) !important;
   border-bottom: none;
   border-right: none;
   border-collapse: collapse;

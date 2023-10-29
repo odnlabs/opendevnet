@@ -6,6 +6,7 @@ import path from 'path';
 import { MDXRemoteSerializeResult } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
@@ -97,7 +98,7 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
   const catDirs = await fs.readdir(docsPath, { withFileTypes: true });
 
   // Filter out directories that don't exist
-  for (const cat of catDirs) {
+  for (const cat of catDirs.reverse()) {
     if (!cat.isDirectory()) continue;
 
     const categorySlugs = sync(
@@ -110,7 +111,7 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
       withFileTypes: true,
     });
 
-    for (const subCat of subCatDirs) {
+    for (const subCat of subCatDirs.reverse()) {
       if (!subCat.isDirectory()) continue;
 
       const subCategorySlugs = sync(
@@ -189,7 +190,7 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
   }
 
   return {
-    slugs: returnedSlugs,
+    slugs: returnedSlugs.reverse(),
   };
 };
 
@@ -315,6 +316,16 @@ export interface DocMetadata {
   slug: string;
   title: string;
   lastUpdated: string;
+  next?: {
+    slug: string;
+    title: string;
+    location: string[];
+  };
+  prev?: {
+    slug: string;
+    title: string;
+    location: string[];
+  };
 }
 
 export interface ReturnedDoc {
@@ -325,7 +336,7 @@ export interface ReturnedDoc {
 export const getDocFromSlug = async (
   slug: string,
   docsDir: string
-): Promise<ReturnedDoc> => {
+): Promise<ReturnedDoc | undefined> => {
   /**
    * The `docsDir` paramter provided does not include the position prefix (01, 02, etc) in the directory name. This value is assigned to correctPath and is updated as the function progresses.
    */
@@ -340,7 +351,8 @@ export const getDocFromSlug = async (
       return dir.name.split('-').slice(1).join('-') === docsSplit[idx];
     });
     if (!foundDir) {
-      throw new Error(`No directory found: ${docsSplit[idx]}`);
+      // throw new Error(`No directory found: ${docsSplit[idx]}`);
+      return undefined;
     }
     if (correctPath === './') correctPath = foundDir.name;
     else correctPath = `${correctPath}/${foundDir.name}`;
@@ -380,12 +392,63 @@ export const getDocFromSlug = async (
     mdxOptions: {
       rehypePlugins: [
         rehypeSlug,
-        // rehypeHighlight,
+        rehypeHighlight as unknown as () => void,
         [rehypeAutolinkHeadings, { behavior: 'wrap' }],
       ],
       remarkPlugins: [remarkGfm],
     },
   });
+
+  const getNextAndPrev = async (
+    slug: string,
+    docsDir: string
+  ): Promise<{
+    next: DocMetadata['next'] | undefined;
+    prev: DocMetadata['prev'] | undefined;
+  }> => {
+    const slugs = await getSlugs(docsDir.split('/')[0]);
+    const index = slugs.slugs.findIndex((slg) => slg.slug === slug);
+    if (index === -1) {
+      throw new Error(`No slug found: ${slug}`);
+    }
+    const next = slugs.slugs[index + 1] || undefined;
+    const prev = slugs.slugs[index - 1] || undefined;
+
+    return {
+      next: next
+        ? {
+            slug: `/${removePos(next.category.slug)}${
+              next.subCategory?.slug
+                ? `/${removePos(next.subCategory.slug)}`
+                : ''
+            }/${next.slug}`,
+            title: next.title,
+            location: [
+              next.category.title,
+              next.subCategory?.title ?? undefined,
+              next.title,
+            ].filter((loc) => loc !== undefined) as string[],
+          }
+        : undefined,
+      prev: prev
+        ? {
+            slug: `/${removePos(prev.category.slug)}${
+              prev.subCategory?.slug
+                ? `/${removePos(prev.subCategory.slug)}`
+                : ''
+            }/${prev.slug}`,
+            title: prev.title,
+            location: [
+              prev.category.title,
+              prev.subCategory?.title ?? undefined,
+              prev.title,
+            ].filter((loc) => loc !== undefined) as string[],
+          }
+        : undefined,
+    };
+  };
+
+  const { next, prev } = await getNextAndPrev(slug, docsDir);
 
   // Return all data to display doc
   return {
@@ -394,6 +457,8 @@ export const getDocFromSlug = async (
       slug,
       title: data.title as string,
       lastUpdated: data.lastUpdated as string,
+      next,
+      prev,
     },
   };
 };
@@ -409,5 +474,5 @@ export const getAllDocs = async (
     )
   );
   // Return meta data of last {docsDir} docs - not markdown
-  return docs.slice(0, results || 999).map((doc) => doc.meta);
+  return docs.slice(0, results || 999).map((doc) => doc?.meta as DocMetadata);
 };

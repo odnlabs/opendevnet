@@ -1,6 +1,6 @@
 import { ExecutorContext } from '@nx/devkit';
-import { buildCommand } from '../../utils/build-command';
-import { cargoRunCommand } from '../../utils/cargo';
+import { cargoCommand } from '../../utils/cargo';
+import { buildCommand } from '../../utils/formatOptions';
 import { RunExecutorSchema } from './schema';
 
 /**
@@ -15,7 +15,7 @@ export default async function runExecutor(
 ): Promise<{ success: boolean }> {
   const command = buildCommand('run', options, context);
 
-  const { success } = await cargoRunCommand(...command);
+  const { success } = await cargoCommand(...command);
 
   return {
     success,

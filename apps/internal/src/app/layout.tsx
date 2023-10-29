@@ -5,6 +5,7 @@ import { Metadata } from 'next';
 import { Footer, Header, Sidebar } from '@components/layout';
 
 import '@odnlabs/ui/styles.css';
+import '@odnlabs/ui/styles/code.css';
 import '../styles/globals.css';
 
 const font = Poppins({
@@ -30,7 +31,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <div className="flex">
         <Sidebar />
 
-        <div className="relative top-0 right-0 w-full">
+        <div className="relative top-0 right-0 md:w-[calc(100vw-280px)]">
           {children}
           <Footer />
         </div>

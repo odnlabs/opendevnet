@@ -1,4 +1,4 @@
-import { buildCommand } from './build-command';
+import { buildCommand } from './formatOptions';
 
 describe('build command', () => {
   const context = {

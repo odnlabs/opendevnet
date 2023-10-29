@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 export const metadata: Metadata = {
   title: 'Internal Docs | Open Dev Net',
@@ -10,11 +11,11 @@ import { getDocFromSlug } from '@utils/mdxApi';
 const Home = async (): Promise<JSX.Element> => {
   const doc = await getDocFromSlug('introduction', 'mdx/introduction');
 
-  return (
-    <div className="mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-3xl mx-auto w-11/12">
-      <DocumentContent doc={doc} />
-    </div>
-  );
+  if (!doc) {
+    redirect('/404');
+  }
+
+  return <DocumentContent doc={doc} />;
 };
 
 export default Home;
