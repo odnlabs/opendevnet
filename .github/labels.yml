@@ -46,6 +46,8 @@
   color: fbca04
 - name: libs:eslint-config-odn
   color: fbca04
+- name: libs:nx-rust
+  color: fbca04
 - name: libs:tailwind-config
   color: fbca04
 - name: libs:tsconfig
