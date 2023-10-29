@@ -1,10 +1,9 @@
 # NOTE Refer to the README for more information how to use this file
 
-@host = {{host}}/users
+# @prompt access_token "Enter your access token: "
 
-###
-
-GET {{host}} HTTP/1.1
+GET {{host}}/users/me HTTP/1.1
 Content-Type: application/json
+Authorization: Bearer {{access_token}}
 
 ###

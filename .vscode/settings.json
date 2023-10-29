@@ -34,7 +34,10 @@
   },
   "rest-client.environmentVariables": {
     "$shared": {
-      "host": "http://localhost:5000/api"
+      "host": "http://localhost:5000/api",
+      "username": "test_user",
+      "password": "12341234",
+      "email": "test_user@opendevnet.com"
     }
   },
   "rest-client.showResponseInDifferentTab": true

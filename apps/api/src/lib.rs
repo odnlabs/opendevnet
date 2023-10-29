@@ -8,8 +8,7 @@ use redis::Client;
 use sqlx::{postgres::PgPoolOptions, Pool, Postgres};
 use tower_http::cors::CorsLayer;
 
-pub mod model;
-pub mod response;
+pub mod models;
 mod routes;
 pub mod utils;
 

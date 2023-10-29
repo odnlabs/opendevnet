@@ -14,7 +14,7 @@ use redis::AsyncCommands;
 use serde_json::json;
 
 use crate::{
-    model::User,
+    models::user::User,
     utils::{generate_token, save_token_data_to_redis, token},
     AppState,
 };

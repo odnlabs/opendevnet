@@ -5,7 +5,7 @@ use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
 use rand_core::OsRng;
 
 use crate::{
-    model::{RegisterUserSchema, User},
+    models::{auth::RegisterUserSchema, user::User},
     utils::user::filter_user_record,
     AppState,
 };
@@ -55,8 +55,8 @@ pub async fn register_user_handler(
     // Insert user into database
     let user = sqlx::query_as!(
         User,
-        "INSERT INTO users (name,email,password) VALUES ($1, $2, $3) RETURNING *",
-        body.name.to_string(),
+        "INSERT INTO users (username,email,password) VALUES ($1, $2, $3) RETURNING *",
+        body.username.to_string(),
         body.email.to_string().to_ascii_lowercase(),
         hashed_password
     )
