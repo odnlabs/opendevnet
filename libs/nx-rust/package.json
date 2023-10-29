@@ -11,5 +11,8 @@
     "nx": "^17.0.2",
     "tslib": "^2.6.2"
   },
-  "executors": "./executors.json"
+  "executors": "./executors.json",
+  "devDependencies": {
+    "jsonc-eslint-parser": "^2.4.0"
+  }
 }

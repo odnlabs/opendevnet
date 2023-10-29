@@ -7,7 +7,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     project: [path.resolve(__dirname, 'tsconfig.lib.json')],
   },
-  ignorePatterns: ['tsup.config.ts', 'dist/'],
+  ignorePatterns: ['jest.config.ts', '*.spec.ts', 'tsup.config.ts', 'dist/'],
   // ignorePatterns: ['!**/*'],
   rules: {
     'no-console': 0,
