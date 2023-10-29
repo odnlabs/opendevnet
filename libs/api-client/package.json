@@ -15,7 +15,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsup",
-    "dev": "pnpm run build -- --watch",
+    "dev": "tsup --watch",
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {

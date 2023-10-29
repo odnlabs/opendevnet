@@ -8,7 +8,7 @@ interface RegisterParams {
 }
 
 interface RegisterResponse {
-  success: boolean;
+  status: 'success' | 'error';
 }
 
 interface LoginParams {

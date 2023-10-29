@@ -9,6 +9,6 @@ export interface IToast {
   id?: string;
   title: string;
   description?: string;
-  type: ToastType;
+  type: `${ToastType}`;
   time?: number;
 }

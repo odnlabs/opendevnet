@@ -1,25 +1,69 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 
 import { Button, Checkbox, Input } from '@odnlabs/ui';
-import Link from 'next/link';
+import { addToast } from '@store';
+import client from '@utils/apiClient';
 
 export const RegisterForm: React.FC = () => {
   // TODO: Remove the rule below when the component is implemented
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
-  const [name, setName] = useState<string>('');
-  const [password, setPasswored] = useState<string>('');
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
   const [retypePassword, setRetypePassword] = useState<string>('');
   const [sendEmails, setSendEmails] = useState<boolean>(true);
 
-  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>): void => {
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault();
+
+    if (password !== retypePassword) {
+      addToast({
+        type: 'error',
+        message: 'Passwords do not match',
+      });
+      return;
+    }
+
+    try {
+      addToast({
+        type: 'info',
+        message: 'Registering...',
+      });
+
+      const result = await client.auth.register({
+        email,
+        username,
+        password,
+      });
+
+      if (result.status === 'success') {
+        addToast({
+          type: 'success',
+          message: 'Registration successful',
+        });
+      }
+
+      window.location.href = '/login';
+    } catch (error) {
+      addToast({
+        type: 'error',
+        message: `${error as string}`,
+      });
+    }
   };
 
   return (
-    <form className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
+    <form
+      className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8"
+      onSubmit={(event) => {
+        handleSubmit(event);
+      }}
+    >
       <div className="border-b border-border pb-5">
         <h1 className="text-3xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
@@ -45,7 +89,7 @@ export const RegisterForm: React.FC = () => {
             id="name"
             label="Name"
             placeholder="This will be your display name"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             required
           />
         </div>
@@ -55,7 +99,7 @@ export const RegisterForm: React.FC = () => {
             id="password"
             label="Password"
             placeholder="Choose a strong password"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             required
           />
         </div>
@@ -65,7 +109,7 @@ export const RegisterForm: React.FC = () => {
             id="retype-password"
             label="Retype Password"
             placeholder="Retype password"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setUsername(event.target.value)}
             required
           />
         </div>
@@ -82,12 +126,7 @@ export const RegisterForm: React.FC = () => {
         </div>
 
         <div className="mt-5">
-          <Button
-            label="Create Account"
-            size="lg"
-            width="full"
-            onSubmit={handleSubmit}
-          />
+          <Button label="Create Account" size="lg" width="full" />
         </div>
 
         <div className="mt-3">
