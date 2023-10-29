@@ -62,7 +62,7 @@
     "tslib": "^2.6.2",
     "typescript": "^5.2.2"
   },
-  "packageManager": "pnpm@8.9.2",
+  "packageManager": "pnpm@8.10.0",
   "engines": {
     "node": ">=21.0.0"
   },
