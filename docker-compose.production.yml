@@ -29,6 +29,21 @@ services:
     networks:
       - app-network
 
+  internal:
+    container_name: internal
+    image: slekup/opendevnet-internal:main
+    env_file:
+      - .env.production
+    restart: always
+    environment:
+      NEXT_PUBLIC_APP_NODE_ENV: production
+    ports:
+      - '4200:4200'
+    # depends_on:
+    #   - api
+    networks:
+      - app-network
+
   web:
     container_name: web
     image: slekup/opendevnet-web:main
@@ -55,6 +70,7 @@ services:
       # - api
       - site
       - web
+      - internal
     networks:
       - app-network
 
