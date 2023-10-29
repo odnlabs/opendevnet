@@ -30,6 +30,21 @@ services:
     networks:
       - app-network
 
+  internal:
+    container_name: internal
+    build:
+      context: .
+      dockerfile: ./docker/production/Dockerfile.webinternal
+      args:
+        DOCKER_BUILDKIT: 1
+    env_file:
+      - .env.local
+    restart: always
+    ports:
+      - '4100:4100'
+    networks:
+      - app-network
+
   nginx:
     container_name: nginx
     image: nginx:latest
@@ -40,6 +55,7 @@ services:
     depends_on:
       - site
       - web
+      - internal
     networks:
       - app-network
 

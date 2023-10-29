@@ -30,7 +30,6 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: false
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -71,7 +70,6 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: false
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -115,7 +113,6 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: false
 
       - name: Get pnpm store directory
         id: pnpm-cache
@@ -156,7 +153,6 @@ jobs:
         uses: pnpm/action-setup@v2
         with:
           version: latest
-          run_install: false
 
       - name: Get pnpm store directory
         id: pnpm-cache

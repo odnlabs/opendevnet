@@ -16,6 +16,9 @@ libs:api-client:
 libs:eslint-config-odn:
   - libs/eslint-config-odn/*
   - libs/eslint-config-odn/**/*
+libs:nx-rust:
+  - libs/nx-rust/*
+  - libs/nx-rust/**/*
 libs:tailwind-config:
   - libs/tailwind-config/*
   - libs/tailwind-config/**/*
