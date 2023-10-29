@@ -1,3 +1,14 @@
+dependencies:
+  - package.json
+  - pnpm-lock.yaml
+  - apps/**/package.json
+  - libs/**/package.json
+  - Cargo.toml
+  - Cargo.lock
+  - apps/**/Cargo.toml
+  - libs/**/Cargo.toml
+  - apps/**/Cargo.lock
+  - libs/**/Cargo.lock
 apps:api:
   - apps/api/*
   - apps/api/**/*
