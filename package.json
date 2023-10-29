@@ -26,8 +26,8 @@
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
-    "preinstall": "nx run api:install",
     "postinstall": "manypkg check",
+    "install:api": "nx run api:install",
     "lint": "nx run-many --target=lint --all",
     "lint:fix": "nx run-many --target=lint --all -- --fix",
     "test": "nx run-many --target=test --all"
