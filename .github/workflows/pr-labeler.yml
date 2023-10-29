@@ -11,6 +11,12 @@ jobs:
     name: PR Labeler
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
       - name: Run Labeler
         uses: actions/labeler@v4
         with:
