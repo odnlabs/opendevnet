@@ -51,7 +51,7 @@
   --tooltip-text: 255, 255, 255;
   /* Layout components */
   --header: 18, 18, 28;
-  --navigation-bar: var(--header);
+  --navigation-bar: var(--footer);
   --sidebar: 23, 23, 36;
   --footer: 13, 13, 19;
 }

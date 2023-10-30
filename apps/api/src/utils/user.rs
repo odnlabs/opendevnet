@@ -16,6 +16,18 @@ pub struct FilteredUser {
     pub updatedAt: DateTime<Utc>,
 }
 
+#[allow(non_snake_case)]
+#[derive(Debug, Serialize)]
+pub struct PublicUser {
+    pub id: String,
+    pub username: String,
+    pub email: String,
+    pub avatar: String,
+    pub verified: bool,
+    pub role: String,
+    pub createdAt: DateTime<Utc>,
+}
+
 // #[derive(Serialize, Debug)]
 // pub struct UserData {
 //     pub user: FilteredUser,

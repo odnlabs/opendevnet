@@ -1,0 +1,44 @@
+---
+title: Internal Docs
+last_updated: '2023-10-30'
+---
+
+- Location: `apps/internal`.
+- Primary Technologies: [TypeScript](https://www.typescriptlang.org/), [Next.js](https://nextjs.org/), and [MDX](https://mdxjs.com/).
+
+Internal docs is the application you are looking right now. It contains documentation to help developers understand how Open Dev Net works under the good and guide them to how they can contribute to the codebase.
+
+## Project Structure
+
+MDX files are located in `apps/internal/mdx`. The application will read these files and automatically parse them to display on the website.
+
+Each folder under the `mdx` directory is a category, any folders inside those are subcategories, the application does not support going any deeper than this.
+
+### Positions
+
+Every folder and file is prefixed with a position. An example of a position would be `01`. This example would mean that this category, sub-category, or document, should be shown first in it's respective scope on the navigation UI. So, if you wanted the "Introduction" category to be shown before "Contributing" in the navigation, the folder for "Introduction" could be named `01-introduction` and the folder for "Contributing" could be named `02-contributing`.
+
+> Positions are important for the sidebar navigation, which displays links to documents as a list. They are also important to show links to the correct previous and next pages at the bottom of the document.
+
+## Contributing Guidelines
+
+### Folders (categories and sub-categories)
+
+Folders must be named using the format `[position]-[slug]`. An example would be `05-other-apps`. In this example, every folder with a position under `05`, such as `02`, would show before in navigation, and folders with higher positions would show after. `other-apps` would then be the slug.
+
+Every folder must have a `index.mdx` containing the following frontmatter:
+
+| Property | Type   | Description                                     |
+| -------- | ------ | ----------------------------------------------- |
+| title    | string | The display title for the category/sub-category |
+
+### Files (documents)
+
+Every file, excluding `index.mdx` files, must be named using the format `[position]-[slug].mdx`. An example would be `01-internal.mdx`.
+
+Every document must contain the following frontmatter:
+
+| Property    | Type   | Description                                                                                                                                  |
+| ----------- | ------ | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| title       | string | The display title for the document.                                                                                                          |
+| lastUpdated | string | When the document was last modified. It must be wrapped in quotation marks (otherwise it will become an object), in the format `YYYY-MM-DD`. |

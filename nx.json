@@ -80,5 +80,5 @@
       "!{projectRoot}/test-setup.[jt]s"
     ]
   },
-  "plugins": ["nx-rust"]
+  "plugins": ["@odnlabs/nx-rust"]
 }

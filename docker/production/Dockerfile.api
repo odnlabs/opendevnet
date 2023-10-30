@@ -1,0 +1,17 @@
+FROM rust:alpine3.18 as base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+# Install the latest pnpm version with corepack
+RUN corepack enable
+RUN corepack prepare pnpm@latest --activate
+
+FROM base as builder
+WORKDIR /usr/src/api
+COPY . .
+RUN pnpm api:install
+
+FROM base as release
+WORKDIR /usr/src/api
+COPY --from=builder /usr/src/api .
+RUN pnpm api:build
+CMD ["pnpm", "nx", "run", "api:run"]

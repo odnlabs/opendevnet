@@ -1,6 +1,6 @@
 ---
 title: Setup Environment
-lastUpdated: '2023-10-28'
+last_updated: '2023-10-28'
 ---
 
 <Alert
@@ -8,3 +8,43 @@ lastUpdated: '2023-10-28'
   label="In Progress"
   content="This page is a work in progress. It may be incomplete or contain inaccuracies. Check back later for updates."
 />
+
+## Tools
+
+| Tool and Installation Link                                                                                     | Do you need it?                                                                                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [pnpm](https://pnpm.io/installation)                                                                           | As the monorepo tool is NX and pnpm is our chosen node package manager, you will need it installed. It is also required for frontend development.                                                 |
+| [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)                                     | Cargo is required for backend development.                                                                                                                                                        |
+| [Docker](https://docs.docker.com/engine/install/) & [Docker Compose](https://docs.docker.com/compose/install/) | To run Postgres and Redis without installing them manually, docker can run images for these for development, but it is option. However, to run everything in production smoothly, it is required. |
+
+## Installation
+
+To install all node packages in the monorepo, run:
+
+```bash
+pnpm i
+```
+
+This will recursively install all the packages for the apps and libraries, as well as at root.
+
+To install api libraries:
+
+```bash
+pnpm run install:api
+```
+
+## Execution
+
+You can find all of the npm scripts <Link href="/contributing/contributing#npm-scripts">here</Link>.
+
+However, to run the applications in production, we use docker compose.
+
+In the root directory, there is a `run.sh` file.
+
+This can be used with the following options:
+
+```bash
+./run.sh [prod|dev] [update|restart|start|stop|logs]
+```
+
+> If you don't have the correct perms to run it, you might need to run this first: `chmod +x run.sh`.

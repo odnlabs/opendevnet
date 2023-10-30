@@ -1,5 +1,5 @@
 {
-  "name": "nx-rust",
+  "name": "@odnlabs/nx-rust",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/nx-rust/src",
   "projectType": "library",

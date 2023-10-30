@@ -1,16 +1,34 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { HiChevronDown } from 'react-icons/hi';
-import { RiNotification3Line } from 'react-icons/ri';
+import { RiNotification3Line } from '@react-icons/all-files/ri/RiNotification3Line';
+import { RiSearchLine } from '@react-icons/all-files/ri/RiSearchLine';
 
-import { config } from '@odnlabs/utils';
+import Link from 'next/link';
+import { AccountDropdown } from './Header/AccountDropdown';
 
 export const Header: React.FC = () => (
   <>
-    <div className="fixed top-0 left-0 w-full h-14 bg-[rgb(var(--header))]">
+    <div className="fixed top-0 left-0 w-full h-14 bg-[rgb(var(--header))] border-b border-border">
       <div className="flex justify-between">
         {/* Branding */}
+        <Link
+          href="/"
+          className="relative sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:left-0 lg:translate-x-0 lg:relative flex py-1 px-1.5 ring-inset focus-visible:ring"
+        >
+          <Image
+            src={`/app/logo-trans.png`}
+            height={100}
+            width={100}
+            alt="Logo"
+            className="w-11 h-11 mr-1 rounded-full"
+          />
+          <p className="font-medium text-lg sm:text-xl text-text my-2 sm:ml-1">
+            <span className="hidden sm:inline-block">Open Dev Net</span>
+            <span className="sm:hidden">ODN</span>
+          </p>
+        </Link>
+
         <div className="flex p-1.5">
           <Image
             src="/app/logo.png"
@@ -25,11 +43,15 @@ export const Header: React.FC = () => (
         </div>
 
         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-full max-w-xl">
-          <input
-            type="text"
-            placeholder="Search for networks, events, and users..."
-            className="py-2 px-3 h-10 rounded-lg bg-[rgb(var(--input))] border border-border w-full focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm text-text-secondary"
-          />
+          <div className="relative w-full">
+            <RiSearchLine className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-text-faint" />
+            <input
+              type="text"
+              placeholder="Search for networks, events, and users..."
+              className="py-2 pl-9 pr-3 h-9 rounded-lg bg-background border border-border w-full focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm text-text-secondary focus:text-text focus:ring-2 ring-primary"
+              maxLength={100}
+            />
+          </div>
         </div>
 
         <div className="flex">
@@ -40,19 +62,7 @@ export const Header: React.FC = () => (
           </div>
 
           {/* Account Dropdown */}
-          <div className="py-1.5 mr-3">
-            <button className="flex text-text-secondary">
-              <Image
-                src={`/app${config.defaultAvatar}`}
-                alt="User Avatar"
-                height={100}
-                width={100}
-                className="h-10 w-10 rounded-full"
-              />
-              <span className="ml-2.5 mr-1.5 py-2 font-medium">User</span>
-              <HiChevronDown className="h-5 w-5 my-2.5" />
-            </button>
-          </div>
+          <AccountDropdown />
         </div>
       </div>
     </div>

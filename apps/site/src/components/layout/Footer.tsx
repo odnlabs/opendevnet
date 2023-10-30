@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { IconType } from 'react-icons';
 
 import { MdEmail } from '@react-icons/all-files/md/MdEmail';
 import { RiGithubFill } from '@react-icons/all-files/ri/RiGithubFill';
@@ -65,22 +64,22 @@ const socialMediaLinks = [
   {
     name: 'GitHub',
     url: config.social.github,
-    icon: RiGithubFill as IconType,
+    icon: RiGithubFill,
   },
   {
     name: 'LinkedIn',
     url: config.social.linkedin,
-    icon: RiLinkedinFill as IconType,
+    icon: RiLinkedinFill,
   },
   {
     name: 'YouTube',
     url: config.social.youtube,
-    icon: SiYoutube as IconType,
+    icon: SiYoutube,
   },
   {
     name: 'Email',
     url: config.social.email,
-    icon: MdEmail as IconType,
+    icon: MdEmail,
   },
 ];
 

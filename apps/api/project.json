@@ -5,7 +5,7 @@
   "sourceRoot": "apps/api/src",
   "targets": {
     "build": {
-      "executor": "nx-rust:build",
+      "executor": "@odnlabs/nx-rust:build",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
@@ -17,7 +17,7 @@
       }
     },
     "test": {
-      "executor": "nx-rust:test",
+      "executor": "@odnlabs/nx-rust:test",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
@@ -29,34 +29,34 @@
       }
     },
     "lint": {
-      "executor": "nx-rust:lint",
+      "executor": "@odnlabs/nx-rust:lint",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
       }
     },
     "format": {
-      "executor": "nx-rust:format",
+      "executor": "@odnlabs/nx-rust:format",
       "outputs": ["{options.target-dir}"],
       "options": {
         "target-dir": "dist/target/api"
       }
     },
     "install": {
-      "executor": "nx-rust:install",
+      "executor": "@odnlabs/nx-rust:install",
       "outputs": ["{options.path}"],
       "options": {
         "path": "apps/api"
       }
     },
     "dev": {
-      "executor": "nx-rust:watch",
+      "executor": "@odnlabs/nx-rust:watch",
       "options": {
         "watch": "apps/api/src"
       }
     },
     "run": {
-      "executor": "nx-rust:run",
+      "executor": "@odnlabs/nx-rust:run",
       "options": {
         "verbose": true
       }

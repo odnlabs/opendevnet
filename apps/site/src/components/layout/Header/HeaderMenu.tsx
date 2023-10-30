@@ -12,6 +12,7 @@ import { RiMenuFill } from 'react-icons/ri';
 interface HeaderLink {
   title: string;
   href: string;
+  external?: boolean;
 }
 
 export const HeaderMenu: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
@@ -57,20 +58,31 @@ export const HeaderMenu: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
           </button>
         </div>
         <div className="px-2 py-5">
-          {links.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className={`block my-1 py-2 px-5 text-sm ${
-                pathname === link.href
-                  ? 'text-text font-bold'
-                  : 'text-text-secondary font-medium'
-              }`}
-              onClick={() => setOpen(false)}
-            >
-              {link.title}
-            </Link>
-          ))}
+          {links.map((link, index) =>
+            link.external ? (
+              <a
+                key={index}
+                href={link.href}
+                rel="noopener noreferrer"
+                className="block my-1 py-2 px-5 text-sm text-text-secondary font-medium"
+              >
+                {link.title}
+              </a>
+            ) : (
+              <Link
+                key={index}
+                href={link.href}
+                className={`block my-1 py-2 px-5 text-sm ${
+                  pathname === link.href
+                    ? 'text-text font-bold'
+                    : 'text-text-secondary font-medium'
+                }`}
+                onClick={() => setOpen(false)}
+              >
+                {link.title}
+              </Link>
+            )
+          )}
         </div>
       </div>
     </>

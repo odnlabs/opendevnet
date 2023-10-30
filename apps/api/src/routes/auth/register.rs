@@ -6,7 +6,6 @@ use rand_core::OsRng;
 
 use crate::{
     models::{auth::RegisterUserSchema, user::User},
-    utils::user::filter_user_record,
     AppState,
 };
 
@@ -53,7 +52,7 @@ pub async fn register_user_handler(
         .map(|hash| hash.to_string())?;
 
     // Insert user into database
-    let user = sqlx::query_as!(
+    sqlx::query_as!(
         User,
         "INSERT INTO users (username,email,password) VALUES ($1, $2, $3) RETURNING *",
         body.username.to_string(),
@@ -65,8 +64,9 @@ pub async fn register_user_handler(
     .map_err(|e| {
         let error_response = serde_json::json!({
             "status": "fail",
-            "message": format!("Database error: {}", e),
+            "message": "Database error",
         });
+        tracing::error!("Database error: {}", e);
         (StatusCode::INTERNAL_SERVER_ERROR, Json(error_response))
     })?;
 

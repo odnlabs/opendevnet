@@ -1,9 +1,13 @@
-use std::sync::Arc;
+use std::{path::PathBuf, sync::Arc};
 
 use axum::{
     middleware,
     routing::{get, post},
     Router,
+};
+use tower_http::{
+    services::ServeDir,
+    trace::{DefaultMakeSpan, TraceLayer},
 };
 
 mod auth;
@@ -17,10 +21,18 @@ use auth::{
 use info::root::root_handler;
 use users::get_me::get_me_handler;
 
-use crate::{utils::jwt_auth::auth, AppState};
+use crate::{utils::jwt_auth::auth, utils::ws::ws_handler, AppState};
+
+use self::users::list_users::list_users;
 
 pub fn create_router(app_state: Arc<AppState>) -> Router {
+    let assets_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets");
+
     Router::new()
+        // Static files
+        .fallback_service(ServeDir::new(assets_dir).append_index_html_on_directories(true))
+        // WebSocket
+        .route("/ws", get(ws_handler))
         // Auth
         .route("/api/auth/register", post(register_user_handler))
         .route("/api/auth/login", post(login_user_handler))
@@ -38,5 +50,10 @@ pub fn create_router(app_state: Arc<AppState>) -> Router {
             get(get_me_handler)
                 .route_layer(middleware::from_fn_with_state(app_state.clone(), auth)),
         )
+        .route("/api/users", get(list_users))
         .with_state(app_state)
+        .layer(
+            TraceLayer::new_for_http()
+                .make_span_with(DefaultMakeSpan::default().include_headers(false)),
+        )
 }

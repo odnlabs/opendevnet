@@ -7,7 +7,7 @@
   },
   "editor.trimAutoWhitespace": false,
   "files.associations": {
-    "*.mdx": "markdown"
+    "*.mdx": "mdx"
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n",

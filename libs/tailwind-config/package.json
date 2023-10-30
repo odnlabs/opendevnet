@@ -1,13 +1,14 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "tailwind-config",
+  "name": "@odnlabs/tailwind-config",
   "version": "0.0.0",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "main": "index.js",
   "dependencies": {
     "tailwindcss": "^3.3.5"
   },
   "devDependencies": {
-    "tsconfig": "workspace:*"
+    "@odnlabs/tsconfig": "workspace:*"
   }
 }

@@ -137,19 +137,19 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
       const requiredFrontmatter: RequiredFrontmatter = [['title', 'string']];
       verifyFrontmatter(path, data, requiredFrontmatter);
 
-      if (parts.length === 3) {
+      if (parts.length === 2 + mdxDir.split('/').length) {
         categoryFrontmatter.set(parts[parts.length - 2], data);
       }
-      if (parts.length === 4) {
+      if (parts.length === 3 + mdxDir.split('/').length) {
         subCategoryFrontmatter.set(parts[parts.length - 2], data);
       }
       continue;
     }
     let fileCategory: string;
     let fileSubCategory: string | undefined;
-    if (parts.length === 3) {
+    if (parts.length === 2 + mdxDir.split('/').length) {
       fileCategory = parts[parts.length - 2];
-    } else if (parts.length === 4) {
+    } else if (parts.length === 3 + mdxDir.split('/').length) {
       fileCategory = parts[parts.length - 3];
       fileSubCategory = parts[parts.length - 2];
     } else {
@@ -159,13 +159,13 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
     // Verify frontmatter
     const requiredFrontmatter: RequiredFrontmatter = [
       ['title', 'string'],
-      ['lastUpdated', 'string'],
+      ['last_updated', 'string'],
     ];
     verifyFrontmatter(path, data, requiredFrontmatter);
 
-    const { title, lastUpdated } = data as {
+    const { title, last_updated: lastUpdated } = data as {
       title: string;
-      lastUpdated: string;
+      last_updated: string;
     };
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -379,16 +379,17 @@ export const getDocFromSlug = async (
 
   // Extract content and meta data from file
   const source = await fs.readFile(docPath);
-  const { content, data } = matter(source);
+  const result = matter(source);
+  const data = result.data as { title: string; last_updated: string };
 
   // Verify frontmatter
   const requiredFrontmatter: RequiredFrontmatter = [
     ['title', 'string'],
-    ['lastUpdated', 'string'],
+    ['last_updated', 'string'],
   ];
   verifyFrontmatter(docPath, data, requiredFrontmatter);
 
-  const mdxSource = await serialize(content, {
+  const mdxSource = await serialize(result.content, {
     mdxOptions: {
       rehypePlugins: [
         rehypeSlug,
@@ -455,8 +456,8 @@ export const getDocFromSlug = async (
     source: mdxSource,
     meta: {
       slug,
-      title: data.title as string,
-      lastUpdated: data.lastUpdated as string,
+      title: data.title,
+      lastUpdated: data.last_updated,
       next,
       prev,
     },

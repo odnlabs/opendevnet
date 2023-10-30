@@ -4,6 +4,5 @@
   "extends": "./base.json",
   "compilerOptions": {
     "paths": {}
-  },
-  "include": ["../../libs/tsconfig/environment.d.ts"]
+  }
 }

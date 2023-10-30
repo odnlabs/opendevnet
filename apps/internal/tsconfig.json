@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "tsconfig/nextjs.json",
+  "extends": "@odnlabs/tsconfig/nextjs.json",
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
@@ -12,7 +12,8 @@
       "@slices/*": ["src/slices/*"],
       "@typings/*": ["src/typings/*"],
       "@utils/*": ["src/utils/*"]
-    }
+    },
+    "moduleResolution": "node"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]

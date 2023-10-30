@@ -3,6 +3,7 @@
   "name": "@odnlabs/utils",
   "version": "0.0.0",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -22,9 +23,9 @@
     "axios": "^1.6.0"
   },
   "devDependencies": {
+    "@odnlabs/tsconfig": "workspace:*",
     "@types/node": "^20.8.9",
     "eslint-config-odn": "workspace:*",
-    "tsconfig": "workspace:*",
     "tsup": "^7.2.0"
   },
   "publishConfig": {

@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { BiLink } from '@react-icons/all-files/bi/BiLink';
 import { RiExternalLinkLine } from '@react-icons/all-files/ri/RiExternalLinkLine';
-import { IconType } from 'react-icons';
 
 export const metadata: Metadata = {
   title: 'Sitemap | Open Dev Net',
@@ -49,9 +48,7 @@ const Content: React.FC<BoxProps & { marginLeft: number }> = ({
     'text-[rgba(234,179,8,0.75)] group-hover:text-[rgb(234,179,8)]',
   ];
 
-  const Icon = layer.path?.startsWith('/app')
-    ? (RiExternalLinkLine as IconType)
-    : (BiLink as IconType);
+  const Icon = layer.path?.startsWith('/app') ? RiExternalLinkLine : BiLink;
 
   return (
     <>

@@ -6,6 +6,7 @@ export * from './typings/core';
 
 // Components
 export * from './components/Accordian';
+export * from './components/Alert';
 export * from './components/Button';
 export * from './components/Checkbox';
 export * from './components/Input';

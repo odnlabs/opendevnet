@@ -2,8 +2,9 @@ import axios from 'axios';
 import { Base, BaseOptions } from './builders/Base';
 
 import { Auth } from './auth';
+import { Users } from './users';
 
-// export * from './typings';
+export * from './typings';
 
 interface ClientOptions extends Omit<BaseOptions, 'instance'> {}
 
@@ -12,6 +13,7 @@ interface ClientOptions extends Omit<BaseOptions, 'instance'> {}
  */
 export class Client extends Base {
   public auth: Auth;
+  public users: Users;
 
   /**
    * Creates a new client instance.
@@ -32,6 +34,14 @@ export class Client extends Base {
     });
 
     this.auth = new Auth({
+      instance,
+      accessToken: this.accessToken,
+      refreshToken: options.refreshToken,
+      baseApiUrl: this.baseApiUrl,
+      baseWebUrl: this.baseWebUrl,
+    });
+
+    this.users = new Users({
       instance,
       accessToken: this.accessToken,
       refreshToken: options.refreshToken,

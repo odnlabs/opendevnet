@@ -8,6 +8,7 @@ import { HeaderMenu } from './Header/HeaderMenu';
 interface HeaderLink {
   title: string;
   href: string;
+  external?: boolean;
 }
 
 const links: HeaderLink[] = [
@@ -20,12 +21,9 @@ const links: HeaderLink[] = [
     href: '/about',
   },
   {
-    title: 'Blog',
-    href: '/blog',
-  },
-  {
-    title: 'Docs',
-    href: '/docs',
+    title: 'Internal',
+    href: '/internal',
+    external: true,
   },
   {
     title: 'Help',
@@ -34,6 +32,10 @@ const links: HeaderLink[] = [
   {
     title: 'Changelog',
     href: '/changelog',
+  },
+  {
+    title: 'Sitemap',
+    href: '/sitemap',
   },
 ];
 

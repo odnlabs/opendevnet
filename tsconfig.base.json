@@ -16,7 +16,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "nx-rust": ["libs/nx-rust/src/index.ts"]
+      "@odnlabs/nx-rust": ["libs/nx-rust/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

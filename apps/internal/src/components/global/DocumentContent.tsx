@@ -7,11 +7,10 @@ import { useEffect } from 'react';
 
 import { HiChevronUp } from 'react-icons/hi';
 
-import styles from '@styles/modules/doc.module.css';
+import styles from '@odnlabs/ui/styles/modules/doc.module.css';
 import { ReturnedDoc } from '@utils/mdxApi';
 import * as uiComponents from './uiClientComponents';
 
-import { Alert } from './Alert';
 import { TableOfContents } from './TableOfContents';
 
 const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
@@ -52,7 +51,7 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
             {doc.source && (
               <MDXRemote
                 {...doc.source}
-                components={{ Link, ...uiComponents, Alert }}
+                components={{ Link, ...uiComponents }}
               />
             )}
           </div>

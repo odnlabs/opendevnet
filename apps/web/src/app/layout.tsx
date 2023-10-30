@@ -1,13 +1,10 @@
-import '@odnlabs/ui/styles.css';
 import { Poppins } from 'next/font/google';
 
-import {
-  Header,
-  NavigationBar,
-  Sidebar,
-  ToastWrapper,
-} from '@components/layout';
-import { Providers } from 'src/components/layout/Providers';
+import { Header, NavigationBar } from '@components/layout';
+import { DataLayer } from '@components/layout/DataLayer';
+import { Providers } from '@components/layout/Providers';
+
+import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
 
 const font = Poppins({
@@ -24,25 +21,21 @@ export const metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
     <head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/app/favicon.ico" sizes="any" />
     </head>
     <Providers>
-      <body className={font.className}>
-        <ToastWrapper />
+      <DataLayer>
+        <body className={font.className}>
+          <div className="relative h-14"></div>
+          <div className="flex">
+            <Header />
 
-        <div className="relative h-14"></div>
-        <div className="flex">
-          <Header />
+            <NavigationBar />
 
-          <NavigationBar />
-
-          <Sidebar />
-
-          <div className="flex-grow">
-            <div className="min-h-[80vh]">{children}</div>
+            {children}
           </div>
-        </div>
-      </body>
+        </body>
+      </DataLayer>
     </Providers>
   </html>
 );
