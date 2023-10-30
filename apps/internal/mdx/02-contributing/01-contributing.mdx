@@ -12,6 +12,7 @@ lastUpdated: '2023-10-28'
 We are always looking for ways to improve Open Dev Net. You are more than welcome to contribute, whether it's fixing a bug, improving documentation, or adding new features, we welcome all contributions.
 
 ## GitHub Issues
+
 ### Bug Reports
 
 If you encounter a bug while using Open Dev Net, please [create an issue](https://github.com/odnlabs/opendevnet/issues/new/choose). Please include as much detail as possible, including steps to reproduce the bug and any relevant code or error messages.
@@ -22,7 +23,11 @@ If you'd like to request a new feature for Open Dev Net, please [create an issue
 
 ## GitHub Pull Requests
 
-<Alert type="note" label="Which branch do I merge to?" content='Always merge your pull requests into the "dev" branch' />
+<Alert
+  type="note"
+  label="Which branch do I merge to?"
+  content='Always merge your pull requests into the "dev" branch'
+/>
 
 When contributing code to Open Dev net, please submit a pull request to the [official repository](https://github.com/odnlabs/opendevnet), into the `dev` branch.
 
@@ -42,22 +47,22 @@ You can run any NPM script from the root directory with pnpm like:
 pnpm run <script>
 ```
 
-| Script | Description |
-| - | - |
-| `build` | Build all applications and their dependencies. |
-| `dev` | Build and run all applications and their dependencies in development (watch mode). |
-| `dev:api` | Build and run the api application and its dependencies in development (watch mode). |
+| Script         | Description                                                                                  |
+| -------------- | -------------------------------------------------------------------------------------------- |
+| `build`        | Build all applications and their dependencies.                                               |
+| `dev`          | Build and run all applications and their dependencies in development (watch mode).           |
+| `dev:api`      | Build and run the api application and its dependencies in development (watch mode).          |
 | `dev:internal` | Build and run the internal docs application and its dependencies in development (watch mode) |
-| `dev:site` | Build and run the site application and its dependencies in development (watch mode). |
-| `dev:web` | Build and run the web application and its dependencies in development (watch mode) |
-| `fix`| Fix packages issues in the monorepo with `manypkg` |
-| `format` | Formats all source files with `prettier` and `cargo fmt` |
-| `format:check` | Check if all source files are properly formatted, without modifying them. |
-| `postinstall` | Run `manypkg check` each time after `install` is run |
-| `install:api` | Install dependencies for the api using `cargo install` |
-| `lint` | Lint all applications and their dependencies. |
-| `lint:fix` | Lint all applications and their dependencies, and fix any fixable warnings/errors. |
-| `test` | Run tests for all applications and their dependencies. |
+| `dev:site`     | Build and run the site application and its dependencies in development (watch mode).         |
+| `dev:web`      | Build and run the web application and its dependencies in development (watch mode)           |
+| `fix`          | Fix packages issues in the monorepo with `manypkg`                                           |
+| `format`       | Formats all source files with `prettier` and `cargo fmt`                                     |
+| `format:check` | Check if all source files are properly formatted, without modifying them.                    |
+| `postinstall`  | Run `manypkg check` each time after `install` is run                                         |
+| `install:api`  | Install dependencies for the api using `cargo install`                                       |
+| `lint`         | Lint all applications and their dependencies.                                                |
+| `lint:fix`     | Lint all applications and their dependencies, and fix any fixable warnings/errors.           |
+| `test`         | Run tests for all applications and their dependencies.                                       |
 
 ## Automation
 
@@ -65,17 +70,17 @@ pnpm run <script>
 
 We use GitHub workflows to automate repetitive tasks. Our workflows are:
 
-| Workflow | Description |
-| - | - |
-| [CI](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml) | Formats, builds, lints, and tests code. |
-| [Cleanup Cache](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/cleanup-cache.yml) | Cleans up cache from the workflows.  |
-| [Close Stale Issues and PR](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/close-stale.yml) | Closes issues and pull  requests that haven't had any activity for a certain period of time. |
-| [CodeQL](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/codeql.yml) | Checks the quality of the code. |
-| [Deploy](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/deploy.yml) | Builds and tests the images locally, pushes images to docker hub, and pulls the new images on the production server via ssh. |
-| [Issue Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/issue-labeler.yml) | Automatically assigns labels to issues. |
-| [Label Sync](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/label-sync.yml) | Syncs the labels on GitHub with the ones defined in `.github/labels.yml`.  |
-| [Lighthouse](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/lighthouse.yml) | Creates performance reports on websites using lighthouse. |
-| [PR Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml) | Automatically adds labels to pull requests based on the files changed. |
+| Workflow                                                                                                       | Description                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [CI](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml)                                 | Formats, builds, lints, and tests code.                                                                                      |
+| [Cleanup Cache](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/cleanup-cache.yml)           | Cleans up cache from the workflows.                                                                                          |
+| [Close Stale Issues and PR](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/close-stale.yml) | Closes issues and pull requests that haven't had any activity for a certain period of time.                                  |
+| [CodeQL](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/codeql.yml)                         | Checks the quality of the code.                                                                                              |
+| [Deploy](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/deploy.yml)                         | Builds and tests the images locally, pushes images to docker hub, and pulls the new images on the production server via ssh. |
+| [Issue Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/issue-labeler.yml)           | Automatically assigns labels to issues.                                                                                      |
+| [Label Sync](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/label-sync.yml)                 | Syncs the labels on GitHub with the ones defined in `.github/labels.yml`.                                                    |
+| [Lighthouse](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/lighthouse.yml)                 | Creates performance reports on websites using lighthouse.                                                                    |
+| [PR Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml)                         | Automatically adds labels to pull requests based on the files changed.                                                       |
 
 ### Husky
 

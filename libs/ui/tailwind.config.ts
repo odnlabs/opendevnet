@@ -1,6 +1,6 @@
 import type { Config } from 'tailwindcss';
 
-import sharedConfig from 'tailwind-config/tailwind.config.js';
+import sharedConfig from '@odnlabs/tailwind-config/tailwind.config.js';
 
 const config: Omit<Config, 'content'> = {
   // prefix: 'ui-',

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "api-client",
+  "name": "@odnlabs/api-client",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -24,9 +24,10 @@
     "ws": "^8.14.2"
   },
   "devDependencies": {
+    "@odnlabs/tsconfig": "workspace:*",
     "@types/node": "^20.8.9",
+    "@types/ws": "^8.5.8",
     "eslint-config-odn": "workspace:*",
-    "tsconfig": "workspace:*",
     "tsup": "^7.2.0"
   },
   "publishConfig": {

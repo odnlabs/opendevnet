@@ -1,4 +1,4 @@
-import { Client } from 'api-client';
+import { Client } from '@odnlabs/api-client';
 
 if (!process.env.NEXT_PUBLIC_API_URL) {
   throw new Error('API_URL environment variable is not set');

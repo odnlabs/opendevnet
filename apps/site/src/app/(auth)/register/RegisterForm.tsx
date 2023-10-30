@@ -24,7 +24,7 @@ export const RegisterForm: React.FC = () => {
     if (password !== retypePassword) {
       addToast({
         type: 'error',
-        message: 'Passwords do not match',
+        title: 'Passwords do not match',
       });
       return;
     }
@@ -32,7 +32,7 @@ export const RegisterForm: React.FC = () => {
     try {
       addToast({
         type: 'info',
-        message: 'Registering...',
+        title: 'Registering...',
       });
 
       const result = await client.auth.register({
@@ -44,7 +44,7 @@ export const RegisterForm: React.FC = () => {
       if (result.status === 'success') {
         addToast({
           type: 'success',
-          message: 'Registration successful',
+          title: 'Registration successful',
         });
       }
 
@@ -52,7 +52,7 @@ export const RegisterForm: React.FC = () => {
     } catch (error) {
       addToast({
         type: 'error',
-        message: `${error as string}`,
+        title: `${error as string}`,
       });
     }
   };

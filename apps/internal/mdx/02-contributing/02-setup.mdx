@@ -11,14 +11,14 @@ lastUpdated: '2023-10-28'
 
 ## Tools
 
-| Tool and Installation Link | Do you need it? |
-| - | - |
-| [pnpm](https://pnpm.io/installation) | As the monorepo tool is NX and pnpm is our chosen node package manager, you will need it installed. It is also required for frontend development. |
-| [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html) | Cargo is required for backend development. |
+| Tool and Installation Link                                                                                     | Do you need it?                                                                                                                                                                                   |
+| -------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [pnpm](https://pnpm.io/installation)                                                                           | As the monorepo tool is NX and pnpm is our chosen node package manager, you will need it installed. It is also required for frontend development.                                                 |
+| [Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html)                                     | Cargo is required for backend development.                                                                                                                                                        |
 | [Docker](https://docs.docker.com/engine/install/) & [Docker Compose](https://docs.docker.com/compose/install/) | To run Postgres and Redis without installing them manually, docker can run images for these for development, but it is option. However, to run everything in production smoothly, it is required. |
 
-
 ## Installation
+
 To install all node packages in the monorepo, run:
 
 ```bash
@@ -28,6 +28,7 @@ pnpm i
 This will recursively install all the packages for the apps and libraries, as well as at root.
 
 To install api libraries:
+
 ```bash
 pnpm run install:api
 ```

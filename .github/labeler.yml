@@ -21,24 +21,24 @@ apps:site:
 apps:web:
   - apps/web/*
   - apps/web/**/*
-libs:api-client:
+libs:@odnlabs/api-client:
   - libs/api-client/*
   - libs/api-client/**/*
 libs:eslint-config-odn:
   - libs/eslint-config-odn/*
   - libs/eslint-config-odn/**/*
-libs:nx-rust:
+libs:@odnlabs/nx-rust:
   - libs/nx-rust/*
   - libs/nx-rust/**/*
-libs:tailwind-config:
+libs:@odnlabs/tailwind-config:
   - libs/tailwind-config/*
   - libs/tailwind-config/**/*
-libs:tsconfig:
+libs:@odnlabs/tsconfig:
   - libs/tsconfig/*
   - libs/tsconfig/**/*
-libs:ui:
+libs:@odnlabs/ui:
   - libs/ui/*
   - libs/ui/**/*
-libs:utils:
+libs:@odnlabs/utils:
   - libs/utils/*
   - libs/utils/**/*

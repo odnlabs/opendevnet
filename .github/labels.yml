@@ -42,19 +42,19 @@
   color: aed5fc
 - name: invalid
   color: e4e669
-- name: libs:api-client
+- name: libs:@odnlabs/api-client
   color: fbca04
 - name: libs:eslint-config-odn
   color: fbca04
-- name: libs:nx-rust
+- name: libs:@odnlabs/nx-rust
   color: fbca04
-- name: libs:tailwind-config
+- name: libs:@odnlabs/tailwind-config
   color: fbca04
-- name: libs:tsconfig
+- name: libs:@odnlabs/tsconfig
   color: fbca04
-- name: libs:ui
+- name: libs:@odnlabs/ui
   color: fbca04
-- name: libs:utils
+- name: libs:@odnlabs/utils
   color: fbca04
 - name: performance
   color: 80c042
