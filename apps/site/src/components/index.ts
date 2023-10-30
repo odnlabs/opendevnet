@@ -1,3 +1,6 @@
-export { default as DocumentContent } from './global/DocumentContent';
+// Internal UI Library
+export * from './uiClientComponents';
 
-export * from './global/uiClientComponents';
+// Global
+export * from './global/ComingSoon';
+export * from './global/DocumentContent';

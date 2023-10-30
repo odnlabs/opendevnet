@@ -38,7 +38,6 @@
       "inputs": ["default", "^production"]
     },
     "dev": {
-      "dependsOn": ["^build"],
       "outputs": [
         "{projectRoot}/dist",
         "{projectRoot}/.next",
@@ -81,5 +80,5 @@
       "!{projectRoot}/test-setup.[jt]s"
     ]
   },
-  "plugins": ["@odnlabs/"]
+  "plugins": ["@odnlabs/nx-rust"]
 }

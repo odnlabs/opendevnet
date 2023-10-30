@@ -20,12 +20,8 @@ const links: HeaderLink[] = [
     href: '/about',
   },
   {
-    title: 'Blog',
-    href: '/blog',
-  },
-  {
-    title: 'Docs',
-    href: '/docs',
+    title: 'Internal',
+    href: '/internal',
   },
   {
     title: 'Help',
@@ -34,6 +30,10 @@ const links: HeaderLink[] = [
   {
     title: 'Changelog',
     href: '/changelog',
+  },
+  {
+    title: 'Sitemap',
+    href: '/sitemap',
   },
 ];
 

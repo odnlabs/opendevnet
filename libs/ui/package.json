@@ -9,7 +9,8 @@
   "exports": {
     ".": "./dist/index.mjs",
     "./styles.css": "./dist/index.css",
-    "./styles/code.css": "./src/styles/code.css"
+    "./styles/code.css": "./src/styles/code.css",
+    "./styles/modules/code.css": "./src/styles/code.css"
   },
   "types": "./dist/index.d.mts",
   "scripts": {
