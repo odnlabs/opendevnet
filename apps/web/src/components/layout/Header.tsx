@@ -8,7 +8,7 @@ import { config } from '@odnlabs/utils';
 
 export const Header: React.FC = () => (
   <>
-    <div className="fixed top-0 left-0 w-full h-14 bg-[rgb(var(--header))]">
+    <div className="fixed top-0 left-0 w-full h-14 bg-[rgb(var(--header))] border-b border-border">
       <div className="flex justify-between">
         {/* Branding */}
         <div className="flex p-1.5">
@@ -28,7 +28,7 @@ export const Header: React.FC = () => (
           <input
             type="text"
             placeholder="Search for networks, events, and users..."
-            className="py-2 px-3 h-10 rounded-lg bg-[rgb(var(--input))] border border-border w-full focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm text-text-secondary"
+            className="py-2 px-3 h-10 rounded-lg bg-background border border-border w-full focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm text-text-secondary focus:text-text focus:ring-2 ring-primary"
           />
         </div>
 

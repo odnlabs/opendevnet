@@ -301,6 +301,9 @@ importers:
 
   apps/web:
     dependencies:
+      '@odnlabs/api-client':
+        specifier: workspace:*
+        version: link:../../libs/api-client
       '@odnlabs/tailwind-config':
         specifier: workspace:*
         version: link:../../libs/tailwind-config

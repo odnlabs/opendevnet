@@ -11,6 +11,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@odnlabs/api-client": "workspace:*",
     "@odnlabs/tailwind-config": "workspace:*",
     "@odnlabs/ui": "workspace:*",
     "@odnlabs/utils": "workspace:*",

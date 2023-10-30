@@ -67,6 +67,7 @@ export class Auth extends Base {
       .addString({
         name: 'password',
         required: true,
+        test: 'passwordStrength',
       });
 
     const result = await schema.validate({ ...params });
@@ -79,7 +80,7 @@ export class Auth extends Base {
       const response = await this.instance.post('/auth/register', params);
       return response.data as RegisterResponse;
     } catch (error) {
-      throw new Error(error as string);
+      throw new Error(this.getErrorMessage(error));
     }
   }
 
@@ -100,7 +101,6 @@ export class Auth extends Base {
       .addString({
         name: 'password',
         required: true,
-        test: 'passwordStrength',
       });
 
     const result = await schema.validate({ ...params });
@@ -116,7 +116,7 @@ export class Auth extends Base {
       this.setRefreshToken(refreshToken);
       return result.data as LoginResponse;
     } catch (error) {
-      throw new Error(error as string);
+      throw new Error(this.getErrorMessage(error));
     }
   }
 }

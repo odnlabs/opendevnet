@@ -6,15 +6,16 @@ import { useState } from 'react';
 import { Button, Checkbox, Input } from '@odnlabs/ui';
 import { addToast } from '@store';
 import client from '@utils/apiClient';
+import { useDispatch } from 'react-redux';
 
 export const RegisterForm: React.FC = () => {
-  // TODO: Remove the rule below when the component is implemented
-  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [retypePassword, setRetypePassword] = useState<string>('');
   const [sendEmails, setSendEmails] = useState<boolean>(true);
+
+  const dispatch = useDispatch();
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
@@ -22,18 +23,23 @@ export const RegisterForm: React.FC = () => {
     event.preventDefault();
 
     if (password !== retypePassword) {
-      addToast({
-        type: 'error',
-        title: 'Passwords do not match',
-      });
+      dispatch(
+        addToast({
+          type: 'error',
+          title: 'Error registering',
+          description: 'Passwords do not match.',
+        })
+      );
       return;
     }
 
     try {
-      addToast({
-        type: 'info',
-        title: 'Registering...',
-      });
+      dispatch(
+        addToast({
+          type: 'info',
+          title: 'Registering account...',
+        })
+      );
 
       const result = await client.auth.register({
         email,
@@ -42,18 +48,27 @@ export const RegisterForm: React.FC = () => {
       });
 
       if (result.status === 'success') {
-        addToast({
-          type: 'success',
-          title: 'Registration successful',
-        });
-      }
+        dispatch(
+          addToast({
+            type: 'success',
+            title: 'Registration successful',
+            description:
+              'You can now login to your account. You will be redirect to the login page within 3 seconds.',
+          })
+        );
 
-      window.location.href = '/login';
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 3000);
+      }
     } catch (error) {
-      addToast({
-        type: 'error',
-        title: `${error as string}`,
-      });
+      dispatch(
+        addToast({
+          type: 'error',
+          title: 'Error registering',
+          description: `${error as string}`,
+        })
+      );
     }
   };
 
@@ -86,9 +101,9 @@ export const RegisterForm: React.FC = () => {
         <div className="mt-3">
           <Input
             type="text"
-            id="name"
-            label="Name"
-            placeholder="This will be your display name"
+            id="username"
+            label="Username"
+            placeholder="This will be your username"
             onChange={(event) => setUsername(event.target.value)}
             required
           />
@@ -99,7 +114,7 @@ export const RegisterForm: React.FC = () => {
             id="password"
             label="Password"
             placeholder="Choose a strong password"
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             required
           />
         </div>
@@ -109,7 +124,7 @@ export const RegisterForm: React.FC = () => {
             id="retype-password"
             label="Retype Password"
             placeholder="Retype password"
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) => setRetypePassword(event.target.value)}
             required
           />
         </div>
@@ -126,7 +141,7 @@ export const RegisterForm: React.FC = () => {
         </div>
 
         <div className="mt-5">
-          <Button label="Create Account" size="lg" width="full" />
+          <Button label="Create Account" type="submit" size="lg" width="full" />
         </div>
 
         <div className="mt-3">

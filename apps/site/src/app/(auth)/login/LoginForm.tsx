@@ -3,20 +3,64 @@
 import { useState } from 'react';
 
 import { Button, Input } from '@odnlabs/ui';
+import { addToast } from '@store';
+import client from '@utils/apiClient';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
 
 export const LoginForm: React.FC = () => {
-  // TODO: disable the rule below when component is implemented
-  /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
-  const [name, setName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
 
-  const handleSubmit = (event: React.FormEvent<HTMLButtonElement>): void => {
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (
+    event: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     event.preventDefault();
-  };
 
+    try {
+      dispatch(
+        addToast({
+          type: 'info',
+          title: 'Authenticating user...',
+        })
+      );
+
+      const result = await client.auth.login({
+        email,
+        password,
+      });
+
+      if (result.status === 'success') {
+        dispatch(
+          addToast({
+            type: 'success',
+            title: 'Login successful',
+            description:
+              'You have successfully authenticated. You will now be redirected to the app page.',
+          })
+        );
+
+        window.location.href = '/app';
+      }
+    } catch (error) {
+      dispatch(
+        addToast({
+          type: 'error',
+          title: 'Error authenticating',
+          description: `${error as string}`,
+        })
+      );
+    }
+  };
   return (
-    <form className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8">
+    <form
+      className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8"
+      onSubmit={(event) => {
+        handleSubmit(event);
+      }}
+    >
       <div className="border-b border-border pb-5">
         <h1 className="text-3xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
@@ -42,7 +86,7 @@ export const LoginForm: React.FC = () => {
             id="password"
             label="Password"
             placeholder="Choose a strong password"
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setPassword(event.target.value)}
             required
           />
           <div className="mt-2 text-xs">
@@ -53,12 +97,7 @@ export const LoginForm: React.FC = () => {
         </div>
 
         <div className="mt-5">
-          <Button
-            label="Login"
-            size="lg"
-            width="full"
-            onSubmit={handleSubmit}
-          />
+          <Button label="Login" type="submit" size="lg" width="full" />
         </div>
 
         <div className="mt-5">

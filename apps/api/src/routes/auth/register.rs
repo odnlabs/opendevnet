@@ -64,8 +64,9 @@ pub async fn register_user_handler(
     .map_err(|e| {
         let error_response = serde_json::json!({
             "status": "fail",
-            "message": format!("Database error: {}", e),
+            "message": "Database error",
         });
+        tracing::error!("Database error: {}", e);
         (StatusCode::INTERNAL_SERVER_ERROR, Json(error_response))
     })?;
 

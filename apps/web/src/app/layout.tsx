@@ -21,30 +21,34 @@ export const metadata = {
     'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
 };
 
-const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <html lang="en">
-    <head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
-    </head>
-    <Providers>
-      <body className={font.className}>
-        <ToastWrapper />
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  console.log('user');
 
-        <div className="relative h-14"></div>
-        <div className="flex">
-          <Header />
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/app/favicon.ico" sizes="any" />
+      </head>
+      <Providers>
+        <body className={font.className}>
+          <ToastWrapper />
 
-          <NavigationBar />
+          <div className="relative h-14"></div>
+          <div className="flex">
+            <Header />
 
-          <Sidebar />
+            <NavigationBar />
 
-          <div className="flex-grow">
-            <div className="min-h-[80vh]">{children}</div>
+            <Sidebar />
+
+            <div className="flex-grow">
+              <div className="min-h-[80vh]">{children}</div>
+            </div>
           </div>
-        </div>
-      </body>
-    </Providers>
-  </html>
-);
+        </body>
+      </Providers>
+    </html>
+  );
+};
 
 export default RootLayout;

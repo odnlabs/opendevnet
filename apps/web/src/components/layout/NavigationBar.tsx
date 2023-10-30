@@ -86,7 +86,7 @@ export const NavigationBar: React.FC = () => {
     <>
       <div className="relative w-14 h-full"></div>
 
-      <div className="fixed z-60 left-0 w-14 h-full top-14 bg-[rgb(var(--navigation-bar))]">
+      <div className="fixed z-60 left-0 w-14 h-full top-14 bg-[rgb(var(--navigation-bar))] border-r border-border">
         <div className="">
           {defaultButtons.map((section, index) => (
             <React.Fragment key={index}>

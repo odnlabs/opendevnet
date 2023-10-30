@@ -43,7 +43,7 @@ export const Sidebar: React.FC = () => {
     <>
       <div className="relative w-56 h-full"></div>
 
-      <div className="fixed w-56 z-50 h-full left-14 top-14 bg-[rgb(var(--sidebar))]">
+      <div className="fixed w-56 z-50 h-full left-14 top-14 bg-[rgb(var(--sidebar))] border-r border-border">
         <div className="">
           {defaultButtons.map((btn) => (
             <button
