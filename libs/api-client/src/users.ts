@@ -1,14 +1,9 @@
 import { Base, BaseOptions } from './builders/Base';
+import { IUser } from './typings';
 
-export interface IUser {
-  id: string;
-  email: string;
-  username: string;
-  avatar: string;
-  verified: boolean;
-  role: string;
-  createdAt: string;
-  updatedAt: string;
+interface GetMeResponse {
+  status: 'success' | 'error' | 'fail';
+  data: { user: IUser };
 }
 
 /**
@@ -30,8 +25,8 @@ export class Me extends Base {
    */
   public async get(): Promise<IUser> {
     try {
-      const response = await this.instance.post('/users/me');
-      return response.data as IUser;
+      const response = await this.instance.get('/users/me');
+      return (response.data as GetMeResponse).data.user;
     } catch (error) {
       throw new Error(this.getErrorMessage(error));
     }

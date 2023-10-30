@@ -1,16 +1,33 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { HiChevronDown } from 'react-icons/hi';
 import { RiNotification3Line } from 'react-icons/ri';
 
-import { config } from '@odnlabs/utils';
+import Link from 'next/link';
+import { AccountDropdown } from './Header/AccountDropdown';
 
 export const Header: React.FC = () => (
   <>
     <div className="fixed top-0 left-0 w-full h-14 bg-[rgb(var(--header))] border-b border-border">
       <div className="flex justify-between">
         {/* Branding */}
+        <Link
+          href="/"
+          className="relative sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:left-0 lg:translate-x-0 lg:relative flex py-1 px-1.5 ring-inset focus-visible:ring"
+        >
+          <Image
+            src={`/app/logo-trans.png`}
+            height={100}
+            width={100}
+            alt="Logo"
+            className="w-11 h-11 mr-1 rounded-full"
+          />
+          <p className="font-medium text-lg sm:text-xl text-text my-2 sm:ml-1">
+            <span className="hidden sm:inline-block">Open Dev Net</span>
+            <span className="sm:hidden">ODN</span>
+          </p>
+        </Link>
+
         <div className="flex p-1.5">
           <Image
             src="/app/logo.png"
@@ -40,19 +57,7 @@ export const Header: React.FC = () => (
           </div>
 
           {/* Account Dropdown */}
-          <div className="py-1.5 mr-3">
-            <button className="flex text-text-secondary">
-              <Image
-                src={`/app${config.defaultAvatar}`}
-                alt="User Avatar"
-                height={100}
-                width={100}
-                className="h-10 w-10 rounded-full"
-              />
-              <span className="ml-2.5 mr-1.5 py-2 font-medium">User</span>
-              <HiChevronDown className="h-5 w-5 my-2.5" />
-            </button>
-          </div>
+          <AccountDropdown />
         </div>
       </div>
     </div>

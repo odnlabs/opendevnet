@@ -12,6 +12,7 @@
       "@store": ["./src/store.ts"],
       "@constants/*": ["./src/constants/*"],
       "@components": ["./src/components"],
+      "@components/*": ["./src/components/*"],
       "@components/layout": ["./src/components/layout"],
       "@styles/*": ["./src/styles/*"],
       "@slices/*": ["./src/slices/*"],

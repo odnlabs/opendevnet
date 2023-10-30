@@ -28,22 +28,22 @@ pub async fn start_http_server(config: Config) {
         .await
     {
         Ok(pool) => {
-            println!("✅ Connection to the database is successful!");
+            tracing::info!("✅ Connection to the database is successful!");
             pool
         }
         Err(err) => {
-            println!("❌ Failed to connect to the database: {:?}", err);
+            tracing::info!("❌ Failed to connect to the database: {:?}", err);
             std::process::exit(1);
         }
     };
 
     let redis_client = match Client::open(config.redis_url.to_owned()) {
         Ok(client) => {
-            println!("✅ Connection to the redis is successful!");
+            tracing::info!("✅ Connection to the redis is successful!");
             client
         }
         Err(e) => {
-            println!("❌ Error connecting to Redis: {}", e);
+            tracing::info!("❌ Error connecting to Redis: {}", e);
             std::process::exit(1);
         }
     };
@@ -68,7 +68,7 @@ pub async fn start_http_server(config: Config) {
     }))
     .layer(cors);
 
-    println!("🚀 API server started successfully");
+    tracing::info!("🚀 API server started successfully");
 
     // Run it with hyper on localhost:5000
     axum::Server::bind(&"0.0.0.0:5000".parse().unwrap())

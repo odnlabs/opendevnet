@@ -60,9 +60,10 @@ pub async fn auth<B>(
         match token::verify_jwt_token(data.env.access_token_public_key.to_owned(), &access_token) {
             Ok(token_details) => token_details,
             Err(e) => {
+                tracing::error!("Error verifying access token: {}", e);
                 let error_response = ErrorResponse {
                     status: "fail",
-                    message: format!("{:?}", e),
+                    message: "Token is invalid or session has expired".to_string(),
                 };
                 return Err((StatusCode::UNAUTHORIZED, Json(error_response)));
             }

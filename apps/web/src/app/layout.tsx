@@ -1,4 +1,3 @@
-import '@odnlabs/ui/styles.css';
 import { Poppins } from 'next/font/google';
 
 import {
@@ -7,7 +6,10 @@ import {
   Sidebar,
   ToastWrapper,
 } from '@components/layout';
-import { Providers } from 'src/components/layout/Providers';
+import { DataLayer } from '@components/layout/DataLayer';
+import { Providers } from '@components/layout/Providers';
+
+import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
 
 const font = Poppins({
@@ -21,15 +23,13 @@ export const metadata = {
     'The open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
 };
 
-const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  console.log('user');
-
-  return (
-    <html lang="en">
-      <head>
-        <link rel="icon" href="/app/favicon.ico" sizes="any" />
-      </head>
-      <Providers>
+const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <html lang="en">
+    <head>
+      <link rel="icon" href="/app/favicon.ico" sizes="any" />
+    </head>
+    <Providers>
+      <DataLayer>
         <body className={font.className}>
           <ToastWrapper />
 
@@ -46,9 +46,9 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </div>
           </div>
         </body>
-      </Providers>
-    </html>
-  );
-};
+      </DataLayer>
+    </Providers>
+  </html>
+);
 
 export default RootLayout;

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { IconType } from 'react-icons';
 import { BiDotsHorizontalRounded } from 'react-icons/bi';
@@ -13,6 +13,7 @@ import { RxDashboard } from 'react-icons/rx';
 import MoreNavLinks from './MoreNavLinks';
 
 interface DefaultButton {
+  id?: string;
   label: string;
   route?: string;
   onClick?: () => void;
@@ -26,8 +27,9 @@ const NavButton: React.FC<{
 
   return btn.route ? (
     <Link
+      id={btn.id}
       href={btn.route}
-      className={`relative block w-full h-14 p-4 ${
+      className={`group relative block w-full h-14 p-4 ${
         pathname === btn.route
           ? 'text-text bg-secondary/50'
           : 'text-text/50 hover:text-text hover:bg-secondary/20 active:text-text active:bg-secondary/30 focus:bg-secondary/30'
@@ -46,7 +48,8 @@ const NavButton: React.FC<{
     </Link>
   ) : (
     <button
-      className="relative block w-full h-14 px-4 py-4 mx-0 mt-1 transition-[background] duration-300 text-text/50 hover:text-text active:text-text"
+      id={btn.id}
+      className="group relative block w-full h-14 px-4 py-4 mx-0 mt-1 transition-[background] duration-300 text-text/50 hover:text-text active:text-text"
       onClick={btn.onClick}
     >
       <btn.icon className="w-6 h-6" />
@@ -55,29 +58,31 @@ const NavButton: React.FC<{
 };
 
 export const NavigationBar: React.FC = () => {
+  const [moreLinksOpen, setMoreLinksOpen] = useState<boolean>(false);
+
   const defaultButtons: DefaultButton[][] = [
     [
       {
         label: 'Dashboard',
         route: '/',
-        icon: RxDashboard as IconType,
+        icon: RxDashboard,
       },
       {
         label: 'Friends',
         route: '/friends',
-        icon: BsPeople as IconType,
+        icon: BsPeople,
       },
       {
         label: 'Network',
         route: '/networks',
-        icon: IoPlanetOutline as IconType,
+        icon: IoPlanetOutline,
       },
     ],
     [
       {
         label: 'Create Guild',
         route: '/guilds/create',
-        icon: HiOutlinePlus as IconType,
+        icon: HiOutlinePlus,
       },
     ],
   ];
@@ -86,7 +91,7 @@ export const NavigationBar: React.FC = () => {
     <>
       <div className="relative w-14 h-full"></div>
 
-      <div className="fixed z-60 left-0 w-14 h-full top-14 bg-[rgb(var(--navigation-bar))] border-r border-border">
+      <div className="fixed z-60 left-0 w-14 h-full top-14 bg-[rgb(var(--navigation-bar))]">
         <div className="">
           {defaultButtons.map((section, index) => (
             <React.Fragment key={index}>
@@ -103,12 +108,16 @@ export const NavigationBar: React.FC = () => {
         <div className="absolute bottom-14 left-0 h-14">
           <NavButton
             btn={{
+              id: 'more-links-dropdown-btn',
               label: 'Account',
-              onClick: () => console.log('Account'),
-              icon: BiDotsHorizontalRounded as IconType,
+              onClick: () => setMoreLinksOpen(!moreLinksOpen),
+              icon: BiDotsHorizontalRounded,
             }}
           />
-          <MoreNavLinks />
+          <MoreNavLinks
+            moreLinksOpen={moreLinksOpen}
+            setMoreLinksOpen={setMoreLinksOpen}
+          />
         </div>
       </div>
     </>

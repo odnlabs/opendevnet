@@ -51,6 +51,6 @@ pub fn create_router(app_state: Arc<AppState>) -> Router {
         .with_state(app_state)
         .layer(
             TraceLayer::new_for_http()
-                .make_span_with(DefaultMakeSpan::default().include_headers(true)),
+                .make_span_with(DefaultMakeSpan::default().include_headers(false)),
         )
 }

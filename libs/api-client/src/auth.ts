@@ -119,4 +119,32 @@ export class Auth extends Base {
       throw new Error(this.getErrorMessage(error));
     }
   }
+
+  /**
+   * Logs the user out.
+   * @returns The response from the API.
+   */
+  public async logout(): Promise<void> {
+    try {
+      await this.instance.post('/auth/logout');
+      this.setAccessToken(undefined);
+      this.setRefreshToken(undefined);
+    } catch (error) {
+      throw new Error(this.getErrorMessage(error));
+    }
+  }
+
+  /**
+   * Refreshes the access token.
+   * @returns The response from the API.
+   */
+  public async refresh(): Promise<void> {
+    try {
+      const result = await this.instance.get('/auth/refresh');
+      const { accessToken } = result.data as LoginResponse;
+      this.setAccessToken(accessToken);
+    } catch (error) {
+      throw new Error(this.getErrorMessage(error));
+    }
+  }
 }
