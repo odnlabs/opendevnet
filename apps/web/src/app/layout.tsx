@@ -1,11 +1,6 @@
 import { Poppins } from 'next/font/google';
 
-import {
-  Header,
-  NavigationBar,
-  Sidebar,
-  ToastWrapper,
-} from '@components/layout';
+import { Header, NavigationBar } from '@components/layout';
 import { DataLayer } from '@components/layout/DataLayer';
 import { Providers } from '@components/layout/Providers';
 

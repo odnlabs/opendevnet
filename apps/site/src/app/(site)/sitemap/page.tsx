@@ -4,7 +4,6 @@ import Link from 'next/link';
 
 import { BiLink } from '@react-icons/all-files/bi/BiLink';
 import { RiExternalLinkLine } from '@react-icons/all-files/ri/RiExternalLinkLine';
-import { IconType } from 'react-icons';
 
 export const metadata: Metadata = {
   title: 'Sitemap | Open Dev Net',

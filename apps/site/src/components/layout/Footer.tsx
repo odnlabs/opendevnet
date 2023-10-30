@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
-import { IconType } from 'react-icons';
 
 import { MdEmail } from '@react-icons/all-files/md/MdEmail';
 import { RiGithubFill } from '@react-icons/all-files/ri/RiGithubFill';
