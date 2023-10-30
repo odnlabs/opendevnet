@@ -10,7 +10,7 @@
     ".": "./dist/index.mjs",
     "./styles.css": "./dist/index.css",
     "./styles/code.css": "./src/styles/code.css",
-    "./styles/modules/code.css": "./src/styles/code.css"
+    "./styles/modules/doc.module.css": "./src/styles/modules/doc.module.css"
   },
   "types": "./dist/index.d.mts",
   "scripts": {

@@ -18,7 +18,7 @@ export const generateMetadata = async ({
   const doc = await getDocFromSlug(
     params.slug,
     `mdx/help/${params.category}/${params.subcategory}`
-  );
+  ).catch(() => undefined);
 
   if (!doc)
     return {
@@ -38,7 +38,7 @@ const Document = async ({
   const doc = await getDocFromSlug(
     params.slug,
     `mdx/help/${params.category}/${params.subcategory}`
-  );
+  ).catch(() => undefined);
 
   if (!doc) redirect('/404');
 

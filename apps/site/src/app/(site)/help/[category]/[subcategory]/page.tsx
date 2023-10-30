@@ -9,14 +9,45 @@ import {
   getOrderedSlugs,
 } from '@utils/helpDocApi';
 
-export const metadata: Metadata = {
-  title: 'Help Center | Open Dev Net',
-};
-
 interface Params {
   category: string;
   subcategory: string;
 }
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> => {
+  const doc = await getDocFromSlug(
+    params.subcategory,
+    `mdx/help/${params.category}`
+  ).catch(() => undefined);
+
+  if (doc)
+    return {
+      title: `${doc.meta.title} | Open Dev Net`,
+    };
+
+  const ordered = await getOrderedSlugs('mdx/help');
+  const category = ordered.find((cat) => cat.slug === params.category);
+  if (!category)
+    return {
+      title: 'Not Found',
+    };
+  const subcategory = category?.items.find(
+    (subcat) => subcat.slug === params.subcategory
+  );
+
+  if (subcategory)
+    return {
+      title: `Help Center - ${subcategory.name} | Open Dev Net`,
+    };
+
+  return {
+    title: 'Not Found',
+  };
+};
 
 const Section: React.FC<{
   name: string;
@@ -48,7 +79,7 @@ const HelpCategory = async ({
   const doc = await getDocFromSlug(
     params.subcategory,
     `mdx/help/${params.category}`
-  );
+  ).catch(() => undefined);
 
   if (doc) return <DocumentContent doc={doc} />;
 
@@ -80,7 +111,7 @@ const HelpCategory = async ({
         <div className="">
           <Section
             name={subcategory.name}
-            slug={subcategory.slug}
+            slug={`${category.slug}/${subcategory.slug}`}
             description={subcategory.description as string}
             items={subcategory.items}
           />

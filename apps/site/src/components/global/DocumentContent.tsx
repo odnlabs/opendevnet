@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 
 import { HiChevronUp } from 'react-icons/hi';
 
-import styles from '@styles/modules/doc.module.css';
+import styles from '@odnlabs/ui/styles/modules/doc.module.css';
 import { ReturnedDoc } from '@utils/helpDocApi';
 import * as uiComponents from '../uiClientComponents';
 

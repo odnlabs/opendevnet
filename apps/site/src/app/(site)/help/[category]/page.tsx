@@ -4,13 +4,26 @@ import Link from 'next/link';
 import { Button } from '@components';
 import { Item, SubItem, getOrderedSlugs } from '@utils/helpDocApi';
 
-export const metadata: Metadata = {
-  title: 'Help Center | Open Dev Net',
-};
-
 interface Params {
   category: string;
 }
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Params;
+}): Promise<Metadata> => {
+  const ordered = await getOrderedSlugs('mdx/help');
+  const category = ordered.find((cat) => cat.slug === params.category);
+  if (!category)
+    return {
+      title: 'Not Found',
+    };
+
+  return {
+    title: `Help Center - ${category.name} | Open Dev Net`,
+  };
+};
 
 const Section: React.FC<{
   name: string;
