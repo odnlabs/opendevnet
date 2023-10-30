@@ -21,11 +21,7 @@
     },
     "toolchain": {
       "type": "string",
-      "enum": [
-        "stable",
-        "beta",
-        "nightly"
-      ],
+      "enum": ["stable", "beta", "nightly"],
       "default": "stable"
     },
     "features": {

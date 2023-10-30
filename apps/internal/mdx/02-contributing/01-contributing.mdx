@@ -9,17 +9,22 @@ lastUpdated: '2023-10-28'
   content="This page is a work in progress. It may be incomplete or contain inaccuracies. Check back later for updates."
 />
 
-We are always looking for ways to improve Open Dev Net. Whether it's fixing a bug, improving the documentation, or adding new features, we welcome all contributions.
+We are always looking for ways to improve Open Dev Net. You are more than welcome to contribute, whether it's fixing a bug, improving documentation, or adding new features, we welcome all contributions.
 
-## Bug Reports
+## GitHub Issues
+### Bug Reports
 
 If you encounter a bug while using Open Dev Net, please [create an issue](https://github.com/odnlabs/opendevnet/issues/new/choose). Please include as much detail as possible, including steps to reproduce the bug and any relevant code or error messages.
 
-## Feature Requests
+### Feature Requests
 
 If you'd like to request a new feature for Open Dev Net, please [create an issue](https://github.com/odnlabs/opendevnet/issues/new/choose). Please describe the feature you would like to see, and explain how it would benefit the project.
 
-## Pull Requests
+## GitHub Pull Requests
+
+<Alert type="note" label="Which branch do I merge to?" content='Always merge your pull requests into the "dev" branch' />
+
+When contributing code to Open Dev net, please submit a pull request to the [official repository](https://github.com/odnlabs/opendevnet), into the `dev` branch.
 
 If you'd like to contribute code to Open Dev Net, please submit a pull request to the respective repository. Please make sure your code adheres to our coding standards, and include tests to ensure that your code works as expected.
 
@@ -29,8 +34,51 @@ We look forward to your contributions!
 
 When updating npm packages, use the `pnpm up -r -i -L` command or `pnpm update --recursive --interactive --latest` command to update all packages in the monorepo. This will allow you to select which packages to update and will update the package.json files for you.
 
-## NPM Scripts (package.json)
+## NPM Scripts
 
-| Script  | Description        |
-| ------- | ------------------ |
-| `build` | Build all packages |
+You can run any NPM script from the root directory with pnpm like:
+
+```bash
+pnpm run <script>
+```
+
+| Script | Description |
+| - | - |
+| `build` | Build all applications and their dependencies. |
+| `dev` | Build and run all applications and their dependencies in development (watch mode). |
+| `dev:api` | Build and run the api application and its dependencies in development (watch mode). |
+| `dev:internal` | Build and run the internal docs application and its dependencies in development (watch mode) |
+| `dev:site` | Build and run the site application and its dependencies in development (watch mode). |
+| `dev:web` | Build and run the web application and its dependencies in development (watch mode) |
+| `fix`| Fix packages issues in the monorepo with `manypkg` |
+| `format` | Formats all source files with `prettier` and `cargo fmt` |
+| `format:check` | Check if all source files are properly formatted, without modifying them. |
+| `postinstall` | Run `manypkg check` each time after `install` is run |
+| `install:api` | Install dependencies for the api using `cargo install` |
+| `lint` | Lint all applications and their dependencies. |
+| `lint:fix` | Lint all applications and their dependencies, and fix any fixable warnings/errors. |
+| `test` | Run tests for all applications and their dependencies. |
+
+## Automation
+
+### GitHub Actions/Workflows
+
+We use GitHub workflows to automate repetitive tasks. Our workflows are:
+
+| Workflow | Description |
+| - | - |
+| [CI](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml) | Formats, builds, lints, and tests code. |
+| [Cleanup Cache](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/cleanup-cache.yml) | Cleans up cache from the workflows.  |
+| [Close Stale Issues and PR](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/close-stale.yml) | Closes issues and pull  requests that haven't had any activity for a certain period of time. |
+| [CodeQL](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/codeql.yml) | Checks the quality of the code. |
+| [Deploy](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/deploy.yml) | Builds and tests the images locally, pushes images to docker hub, and pulls the new images on the production server via ssh. |
+| [Issue Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/issue-labeler.yml) | Automatically assigns labels to issues. |
+| [Label Sync](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/label-sync.yml) | Syncs the labels on GitHub with the ones defined in `.github/labels.yml`.  |
+| [Lighthouse](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/lighthouse.yml) | Creates performance reports on websites using lighthouse. |
+| [PR Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml) | Automatically adds labels to pull requests based on the files changed. |
+
+### Husky
+
+Husky installs git hooks that allow us to execute commands before commits.
+
+With husky, commitlint will ensure that your commits follow [conventional commits](https://www.conventionalcommits.org/en/v1.0.0-beta.2/). The structure for the commit message is: `<type>[optional scope]: <description>`.
