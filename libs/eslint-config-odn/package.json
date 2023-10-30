@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "eslint-config-odn",
   "version": "0.0.0",
+  "license": "CC-BY-NC-SA-4.0",
   "main": "index.js",
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",

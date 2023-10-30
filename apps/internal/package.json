@@ -3,6 +3,7 @@
   "name": "internal",
   "version": "0.0.0",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 4200",

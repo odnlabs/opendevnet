@@ -3,6 +3,7 @@
   "name": "web",
   "version": "1.0.0",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "scripts": {
     "build": "next build",
     "dev": "next dev -p 3500",

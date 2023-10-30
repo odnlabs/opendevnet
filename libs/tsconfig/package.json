@@ -3,6 +3,7 @@
   "name": "@odnlabs/tsconfig",
   "version": "0.0.0",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "publishConfig": {
     "access": "public"
   }

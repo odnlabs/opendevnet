@@ -2,6 +2,7 @@
   "$schema": "https://json.schemastore.org/package.json",
   "name": "@odnlabs/ui",
   "version": "0.0.0",
+  "license": "CC-BY-NC-SA-4.0",
   "sideEffects": [
     "**/*.css"
   ],

@@ -3,6 +3,7 @@
   "name": "@odnlabs/utils",
   "version": "0.0.0",
   "private": true,
+  "license": "CC-BY-NC-SA-4.0",
   "exports": {
     ".": {
       "require": "./dist/index.js",
