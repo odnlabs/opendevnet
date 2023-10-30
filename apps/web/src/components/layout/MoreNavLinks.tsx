@@ -1,3 +1,4 @@
+import { config } from '@odnlabs/utils';
 import React, { useEffect, useState } from 'react';
 
 interface DefaultLink {
@@ -108,7 +109,8 @@ export default function MoreNavLinks({
           {section.map((btn, btnIndex) =>
             btn.route ? (
               <a
-                href={btn.route}
+                href={`${config.site}${btn.route}`}
+                target="_blank"
                 rel="noopener noreferrer"
                 key={btnIndex}
                 className={linkClass}

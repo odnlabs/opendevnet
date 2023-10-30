@@ -17,6 +17,6 @@
     "strict": true,
     "paths": {}
   },
-  "include": ["../../libs/tsconfig/environment.d.ts"],
+  "include": ["../../environment.d.ts"],
   "exclude": ["node_modules"]
 }

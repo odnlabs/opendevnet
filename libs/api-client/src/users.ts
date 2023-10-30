@@ -1,9 +1,12 @@
 import { Base, BaseOptions } from './builders/Base';
-import { IUser } from './typings';
+import { IUser, Response } from './typings';
 
-interface GetMeResponse {
-  status: 'success' | 'error' | 'fail';
+interface GetMeResponse extends Response {
   data: { user: IUser };
+}
+
+interface ListUsersResponse extends Response {
+  data: { users: IUser[] };
 }
 
 /**
@@ -46,5 +49,18 @@ export class Users extends Base {
   public constructor(parent: BaseOptions) {
     super(parent);
     this.me = new Me(parent);
+  }
+
+  /**
+   * Get user list.
+   * @returns The user list.
+   */
+  public async list(): Promise<ListUsersResponse> {
+    try {
+      const response = await this.instance.get('/users');
+      return response.data as ListUsersResponse;
+    } catch (error) {
+      throw new Error(this.getErrorMessage(error));
+    }
   }
 }

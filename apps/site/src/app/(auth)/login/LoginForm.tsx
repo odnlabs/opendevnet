@@ -3,6 +3,8 @@
 import { useState } from 'react';
 
 import { Button, Input } from '@odnlabs/ui';
+import { config } from '@odnlabs/utils';
+
 import { addToast } from '@store';
 import client from '@utils/apiClient';
 import Link from 'next/link';
@@ -42,7 +44,7 @@ export const LoginForm: React.FC = () => {
           })
         );
 
-        window.location.href = '/app';
+        window.location.href = config.web;
       }
     } catch (error) {
       dispatch(

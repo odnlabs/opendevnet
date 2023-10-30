@@ -15,6 +15,7 @@
     "@odnlabs/tailwind-config": "workspace:*",
     "@odnlabs/ui": "workspace:*",
     "@odnlabs/utils": "workspace:*",
+    "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.7",
     "@splidejs/react-splide": "^0.7.12",
     "builder-validation": "^0.0.3",

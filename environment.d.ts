@@ -4,10 +4,10 @@ declare global {
       ENVIRONMENT: string;
       DEBUG: string;
 
-      API_HTTP_PORT: string;
-      API_URL: string;
-      SITE_URL: string;
-      WEB_URL: string;
+      PUBLIC_API_URL: string;
+      PUBLIC_WS_URL: string;
+      PUBLIC_SITE_URL: string;
+      PUBLIC_WEB_URL: string;
 
       MONGODB_URI: string;
     }

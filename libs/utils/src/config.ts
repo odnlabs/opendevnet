@@ -7,4 +7,8 @@ export default {
     youtube: 'https://www.youtube.com/@odnlabs',
     email: 'mailto:slekupvimplyrataqq@protonmail.com',
   },
+  api: process.env.PUBLIC_API_URL,
+  ws: process.env.PUBLIC_WS_URL,
+  site: process.env.PUBLIC_SITE_URL,
+  web: process.env.PUBLIC_WEB_URL,
 };

@@ -7,6 +7,7 @@
   "typings": "./src/index.d.ts",
   "dependencies": {
     "@nx/devkit": "17.0.2",
+    "@odnlabs/tsconfig": "workspace:*",
     "colors": "^1.4.0",
     "eslint-config-odn": "workspace:*",
     "nx": "^17.0.2",

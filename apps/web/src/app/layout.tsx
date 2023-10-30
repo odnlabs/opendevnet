@@ -31,19 +31,13 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <Providers>
       <DataLayer>
         <body className={font.className}>
-          <ToastWrapper />
-
           <div className="relative h-14"></div>
           <div className="flex">
             <Header />
 
             <NavigationBar />
 
-            <Sidebar />
-
-            <div className="flex-grow">
-              <div className="min-h-[80vh]">{children}</div>
-            </div>
+            {children}
           </div>
         </body>
       </DataLayer>

@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { RiNotification3Line } from 'react-icons/ri';
+import { RiNotification3Line } from '@react-icons/all-files/ri/RiNotification3Line';
+import { RiSearchLine } from '@react-icons/all-files/ri/RiSearchLine';
 
 import Link from 'next/link';
 import { AccountDropdown } from './Header/AccountDropdown';
@@ -42,11 +43,15 @@ export const Header: React.FC = () => (
         </div>
 
         <div className="absolute top-2 left-1/2 -translate-x-1/2 w-full max-w-xl">
-          <input
-            type="text"
-            placeholder="Search for networks, events, and users..."
-            className="py-2 px-3 h-10 rounded-lg bg-background border border-border w-full focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm text-text-secondary focus:text-text focus:ring-2 ring-primary"
-          />
+          <div className="relative w-full">
+            <RiSearchLine className="h-4 w-4 absolute left-3 top-1/2 -translate-y-1/2 text-text-faint" />
+            <input
+              type="text"
+              placeholder="Search for networks, events, and users..."
+              className="py-2 pl-9 pr-3 h-9 rounded-lg bg-background border border-border w-full focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm text-text-secondary focus:text-text focus:ring-2 ring-primary"
+              maxLength={100}
+            />
+          </div>
         </div>
 
         <div className="flex">

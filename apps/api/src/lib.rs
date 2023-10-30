@@ -49,7 +49,7 @@ pub async fn start_http_server(config: Config) {
     };
 
     let cors = CorsLayer::new()
-        .allow_origin("http://localhost:3000".parse::<HeaderValue>().unwrap())
+        .allow_origin("http://localhost:000".parse::<HeaderValue>().unwrap())
         .allow_methods([
             Method::GET,
             Method::POST,

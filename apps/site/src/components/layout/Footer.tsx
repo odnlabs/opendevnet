@@ -65,22 +65,22 @@ const socialMediaLinks = [
   {
     name: 'GitHub',
     url: config.social.github,
-    icon: RiGithubFill as IconType,
+    icon: RiGithubFill,
   },
   {
     name: 'LinkedIn',
     url: config.social.linkedin,
-    icon: RiLinkedinFill as IconType,
+    icon: RiLinkedinFill,
   },
   {
     name: 'YouTube',
     url: config.social.youtube,
-    icon: SiYoutube as IconType,
+    icon: SiYoutube,
   },
   {
     name: 'Email',
     url: config.social.email,
-    icon: MdEmail as IconType,
+    icon: MdEmail,
   },
 ];
 

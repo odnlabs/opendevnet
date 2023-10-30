@@ -1,5 +1,6 @@
 import { Schema } from 'builder-validation';
 import { Base } from './builders/Base';
+import { ResponseStatus } from './typings';
 
 interface RegisterParams {
   email: string;
@@ -8,7 +9,7 @@ interface RegisterParams {
 }
 
 interface RegisterResponse {
-  status: 'success' | 'error';
+  status: ResponseStatus;
 }
 
 interface LoginParams {
@@ -19,6 +20,7 @@ interface LoginParams {
 interface LoginResponse {
   accessToken: string;
   refreshToken: string;
+  status: ResponseStatus;
 }
 
 /**

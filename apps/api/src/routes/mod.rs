@@ -23,6 +23,8 @@ use users::get_me::get_me_handler;
 
 use crate::{utils::jwt_auth::auth, utils::ws::ws_handler, AppState};
 
+use self::users::list_users::list_users;
+
 pub fn create_router(app_state: Arc<AppState>) -> Router {
     let assets_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets");
 
@@ -48,6 +50,7 @@ pub fn create_router(app_state: Arc<AppState>) -> Router {
             get(get_me_handler)
                 .route_layer(middleware::from_fn_with_state(app_state.clone(), auth)),
         )
+        .route("/api/users", get(list_users))
         .with_state(app_state)
         .layer(
             TraceLayer::new_for_http()

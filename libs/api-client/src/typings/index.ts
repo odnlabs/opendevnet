@@ -1,3 +1,10 @@
+export type ResponseStatus = 'success' | 'error' | 'fail';
+
+export interface Response {
+  status: ResponseStatus;
+  message?: string;
+}
+
 export interface IUser {
   id: string;
   email: string;
