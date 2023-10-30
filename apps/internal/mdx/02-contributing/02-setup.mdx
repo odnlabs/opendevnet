@@ -31,3 +31,19 @@ To install api libraries:
 ```bash
 pnpm run install:api
 ```
+
+## Execution
+
+You can find all of the npm scripts <Link href="/contributing/contributing#npm-scripts">here</Link>.
+
+However, to run the applications in production, we use docker compose.
+
+In the root directory, there is a `run.sh` file.
+
+This can be used with the following options:
+
+```bash
+./run.sh [prod|dev] [update|restart|start|stop|logs]
+```
+
+> If you don't have the correct perms to run it, you might need to run this first: `chmod +x run.sh`.
