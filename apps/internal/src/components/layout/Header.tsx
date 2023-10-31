@@ -11,7 +11,7 @@ export const Header: React.FC = () => (
         className="flex font-medium text-2xl px-3 py-3 focus-visible:ring ring-inset"
       >
         <Image
-          src="/logo.png"
+          src="/internal/logo.png"
           alt="Open Dev Net logo"
           height={30}
           width={30}

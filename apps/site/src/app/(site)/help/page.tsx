@@ -2,7 +2,7 @@ import { Metadata, NextPage } from 'next';
 import Link from 'next/link';
 
 import { Button, Input } from '@components';
-import { getOrderedSlugs } from '@utils/helpDocApi';
+import { getOrderedSlugs } from '@utils/mdxApi';
 
 export const metadata: Metadata = {
   title: 'Help Center | Open Dev Net',

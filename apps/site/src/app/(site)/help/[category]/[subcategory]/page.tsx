@@ -2,12 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button, DocumentContent } from '@components';
-import {
-  Item,
-  SubItem,
-  getDocFromSlug,
-  getOrderedSlugs,
-} from '@utils/helpDocApi';
+import { Item, SubItem, getDocFromSlug, getOrderedSlugs } from '@utils/mdxApi';
 
 interface Params {
   category: string;

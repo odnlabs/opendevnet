@@ -8,7 +8,7 @@ import { useEffect } from 'react';
 import { HiChevronUp } from 'react-icons/hi';
 
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
-import { ReturnedDoc } from '@utils/helpDocApi';
+import { ReturnedDoc } from '@utils/mdxApi';
 import * as uiComponents from '../uiClientComponents';
 
 import { TableOfContents } from './TableOfContents';

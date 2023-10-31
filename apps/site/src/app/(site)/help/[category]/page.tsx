@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button } from '@components';
-import { Item, SubItem, getOrderedSlugs } from '@utils/helpDocApi';
+import { Item, SubItem, getOrderedSlugs } from '@utils/mdxApi';
 
 interface Params {
   category: string;

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import { DocumentContent } from '@components';
-import { getDocFromSlug } from '@utils/helpDocApi';
+import { getDocFromSlug } from '@utils/mdxApi';
 
 interface Params {
   category: string;

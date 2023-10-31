@@ -2,6 +2,7 @@
 
 export {
   Accordian,
+  Alert,
   Button,
   Checkbox,
   Input,
