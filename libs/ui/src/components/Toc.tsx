@@ -1,8 +1,6 @@
-'use client';
-
 import { useEffect, useRef, useState } from 'react';
 
-interface TableOfContentsProps {}
+interface TocProps {}
 
 const useHeadsObserver = (): { activeId: string } => {
   const observer = useRef<IntersectionObserver | undefined>();
@@ -31,7 +29,11 @@ const useHeadsObserver = (): { activeId: string } => {
   return { activeId };
 };
 
-export const TableOfContents: React.FC<TableOfContentsProps> = () => {
+/**
+ * Table of Contents.
+ * @returns The Table of Contents component.
+ */
+export const Toc: React.FC<TocProps> = () => {
   const [headings, setHeadings] = useState<
     {
       id: string;

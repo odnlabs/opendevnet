@@ -10,7 +10,6 @@ import { HiChevronUp } from 'react-icons/hi';
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
 import { mdxApi } from '@odnlabs/utils';
 
-import { TableOfContents } from './TableOfContents';
 import * as uiComponents from './uiClientComponents';
 
 const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({ doc }) => {
@@ -118,7 +117,7 @@ const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({ doc }) => {
             </div>
           </div>
         </div>
-        <TableOfContents />
+        <uiComponents.Toc />
       </div>
     </div>
   );

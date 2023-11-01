@@ -14,3 +14,4 @@ export * from './components/Select/Select';
 export * from './components/TextArea';
 export * from './components/Toasts/Toast';
 export * from './components/Toasts/Toasts';
+export * from './components/Toc';

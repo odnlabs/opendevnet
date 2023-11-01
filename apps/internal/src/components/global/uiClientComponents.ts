@@ -9,4 +9,5 @@ export {
   Select,
   TextArea,
   Toast,
+  Toc,
 } from '@odnlabs/ui';

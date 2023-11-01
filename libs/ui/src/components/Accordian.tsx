@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 
 import { FaChevronDown } from 'react-icons/fa';
 
-export interface FAQ {
+export interface Faq {
   question: string;
   answer: string | JSX.Element;
 }
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  data: FAQ[];
+  data: Faq[];
   autoClose?: boolean;
 }
 

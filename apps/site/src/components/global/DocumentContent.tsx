@@ -10,7 +10,6 @@ import styles from '@odnlabs/ui/styles/modules/doc.module.css';
 import { mdxApi } from '@odnlabs/utils';
 
 import * as uiComponents from '../uiClientComponents';
-import { TableOfContents } from './TableOfContents';
 
 export const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({
   doc,
@@ -119,7 +118,7 @@ export const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({
             </div>
           </div>
         </div>
-        <TableOfContents />
+        <uiComponents.Toc />
       </div>
     </div>
   );
