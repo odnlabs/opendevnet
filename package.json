@@ -33,7 +33,7 @@
     "install:api": "nx run api:install",
     "lint": "nx run-many --target=lint --all --exclude=api",
     "lint:api": "nx run api:lint",
-    "lint:fix": "nx run-many --target=lint --all -- --fix --exclude=api",
+    "lint:fix": "nx run-many --target=lint --all --exclude=api -- --fix",
     "test": "nx run-many --target=test --all"
   },
   "dependencies": {
