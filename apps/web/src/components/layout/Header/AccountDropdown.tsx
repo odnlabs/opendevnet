@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 
-import { HiChevronDown } from 'react-icons/hi';
+import { HiChevronDown } from '@react-icons/all-files/hi/HiChevronDown';
 
 import { config } from '@odnlabs/utils';
 

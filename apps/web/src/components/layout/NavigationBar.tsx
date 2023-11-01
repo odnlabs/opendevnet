@@ -4,12 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 
-import { IconType } from 'react-icons';
-import { BiDotsHorizontalRounded } from 'react-icons/bi';
-import { BsPeople } from 'react-icons/bs';
-import { HiOutlinePlus } from 'react-icons/hi';
-import { IoPlanetOutline } from 'react-icons/io5';
-import { RxDashboard } from 'react-icons/rx';
+import { BiDotsHorizontalRounded } from '@react-icons/all-files/bi/BiDotsHorizontalRounded';
+import { BsPeople } from '@react-icons/all-files/bs/BsPeople';
+import { HiOutlinePlus } from '@react-icons/all-files/hi/HiOutlinePlus';
+import { IoPlanetOutline } from '@react-icons/all-files/io5/IoPlanetOutline';
+import { IconType } from '@react-icons/all-files/lib';
+import { RiDashboard2Line } from '@react-icons/all-files/ri/RiDashboard2Line';
+
 import MoreNavLinks from './MoreNavLinks';
 
 interface DefaultButton {
@@ -76,7 +77,7 @@ export const NavigationBar: React.FC = () => {
         label: 'Dashboard',
         route: '/',
         isActive: ['/', '/library', '/events', '/favorites'].includes(pathname),
-        icon: RxDashboard,
+        icon: RiDashboard2Line,
       },
       {
         label: 'Friends',

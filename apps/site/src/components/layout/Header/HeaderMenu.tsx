@@ -6,8 +6,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { MdClose } from 'react-icons/md';
-import { RiMenuFill } from 'react-icons/ri';
+import { MdClose } from '@react-icons/all-files/md/MdClose';
+import { RiMenuFill } from '@react-icons/all-files/ri/RiMenuFill';
 
 interface HeaderLink {
   title: string;

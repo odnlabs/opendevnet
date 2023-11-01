@@ -1,8 +1,9 @@
 'use client';
 
-import { FiRadio } from 'react-icons/fi';
-import { MdOutlineEvent, MdOutlineFavoriteBorder } from 'react-icons/md';
-import { PiBooks } from 'react-icons/pi';
+import { BiBookBookmark } from '@react-icons/all-files/bi/BiBookBookmark';
+import { FiRadio } from '@react-icons/all-files/fi/FiRadio';
+import { MdEvent } from '@react-icons/all-files/md/MdEvent';
+import { MdFavoriteBorder } from '@react-icons/all-files/md/MdFavoriteBorder';
 
 import { Sidebar, SidebarButton } from '@components/layout';
 
@@ -17,17 +18,17 @@ export const SidebarWrapper: React.FC = () => {
       {
         label: 'Library',
         href: '/library',
-        icon: PiBooks,
+        icon: BiBookBookmark,
       },
       {
         label: 'Events',
         href: '/events',
-        icon: MdOutlineEvent,
+        icon: MdEvent,
       },
       {
         label: 'Favorites',
         href: '/favorites',
-        icon: MdOutlineFavoriteBorder,
+        icon: MdFavoriteBorder,
       },
     ],
   ];

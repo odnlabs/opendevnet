@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 
 export interface Faq {
   question: string;

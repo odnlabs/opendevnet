@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { HiChevronRight } from 'react-icons/hi';
+import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight';
 
 import { mdxApi } from '@odnlabs/utils';
 

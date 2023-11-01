@@ -4,7 +4,7 @@ import { MDXRemote } from 'next-mdx-remote';
 import Link from 'next/link';
 import { useEffect } from 'react';
 
-import { HiChevronUp } from 'react-icons/hi';
+import { HiChevronUp } from '@react-icons/all-files/hi/HiChevronUp';
 
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
 import { mdxApi } from '@odnlabs/utils';
