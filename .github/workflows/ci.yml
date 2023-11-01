@@ -87,12 +87,12 @@ jobs:
 
       - name: Create Environment Variables
         run: |
-          echo "ENVIRONMENT=production" >> .env.local
-          echo "DEBUG=true" >> .env.local
-          echo "API_URL=http://localhost:5000" >> .env.local
-          echo "WS_URL=http://localhost:5000/ws" >> .env.local
-          echo "SITE_URL=http://localhost:4000" >> .env.local
-          echo "WEB_URL=http://localhost:4100/app" >> .env.local
+          echo "ENVIRONMENT=production" >> .env.production
+          echo "DEBUG=true" >> .env.production
+          echo "API_URL=http://localhost:5000" >> .env.production
+          echo "WS_URL=http://localhost:5000/ws" >> .env.production
+          echo "SITE_URL=http://localhost:4000" >> .env.production
+          echo "WEB_URL=http://localhost:4100/app" >> .env.production
 
       - name: Build
         run: pnpm run build
