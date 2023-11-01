@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
     <head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link rel="icon" href="/internal/favicon.ico" sizes="any" />
     </head>
 
     <body className={font.className}>
