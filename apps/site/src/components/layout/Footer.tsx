@@ -16,48 +16,6 @@ interface Link {
   href: string;
 }
 
-const links: { title: string; items: Link[] }[] = [
-  {
-    title: 'Website',
-    items: [
-      { label: 'Homepage', href: '/' },
-      { label: 'Contact Us', href: '/contact' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Login', href: '/login' },
-      { label: 'Register', href: '/register' },
-    ],
-  },
-  {
-    title: 'About Us',
-    items: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Our Story', href: '/about' },
-      { label: 'The Vision Ahead', href: '/about/vision' },
-      { label: 'Meet the Team', href: '/about/team' },
-    ],
-  },
-  {
-    title: 'Resources',
-    items: [
-      { label: 'Documentation', href: '/docs' },
-      { label: 'Help Center', href: '/help' },
-      { label: 'Feedback', href: '/feedback' },
-      { label: 'Changelog', href: '/changelog' },
-      { label: 'Sitemap', href: '/sitemap' },
-    ],
-  },
-  {
-    title: 'Policies',
-    items: [
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Community Guidelines', href: '/guidelines' },
-      { label: 'Accessibility', href: '/accessibility' },
-      { label: 'Licenses', href: '/licenses' },
-    ],
-  },
-];
-
 interface FooterProps {
   socialUrls: {
     github: string;
@@ -65,9 +23,10 @@ interface FooterProps {
     youtube: string;
     email: string;
   };
+  internal?: string | undefined;
 }
 
-export const Footer: React.FC<FooterProps> = ({ socialUrls }) => {
+export const Footer: React.FC<FooterProps> = ({ socialUrls, internal }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const socialMediaLinks = [
@@ -90,6 +49,48 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls }) => {
       name: 'Email',
       url: socialUrls.email,
       icon: MdEmail,
+    },
+  ];
+
+  const links: { title: string; items: Link[] }[] = [
+    {
+      title: 'Website',
+      items: [
+        { label: 'Homepage', href: '/' },
+        { label: 'Contact Us', href: '/contact' },
+        { label: 'Blog', href: '/blog' },
+        { label: 'Login', href: '/login' },
+        { label: 'Register', href: '/register' },
+      ],
+    },
+    {
+      title: 'About Us',
+      items: [
+        { label: 'About Us', href: '/about' },
+        { label: 'Our Story', href: '/about' },
+        { label: 'The Vision Ahead', href: '/about/vision' },
+        { label: 'Meet the Team', href: '/about/team' },
+      ],
+    },
+    {
+      title: 'Resources',
+      items: [
+        { label: 'Internal Docs', href: internal ?? '/404' },
+        { label: 'Help Center', href: '/help' },
+        { label: 'Feedback', href: '/feedback' },
+        { label: 'Changelog', href: '/changelog' },
+        { label: 'Sitemap', href: '/sitemap' },
+      ],
+    },
+    {
+      title: 'Policies',
+      items: [
+        { label: 'Terms of Service', href: '/terms' },
+        { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Community Guidelines', href: '/guidelines' },
+        { label: 'Accessibility', href: '/accessibility' },
+        { label: 'Licenses', href: '/licenses' },
+      ],
     },
   ];
 

@@ -1,6 +1,7 @@
+import { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
-import { Metadata } from 'next';
+import { config } from '@odnlabs/utils';
 
 import { Footer, Header, Sidebar } from '@components/layout';
 
@@ -19,6 +20,13 @@ export const metadata: Metadata = {
     'Internal docs for the open-source social platform for developers to collaborate, find opportunities, and streamline workflows.',
 };
 
+const socialUrls = {
+  github: config.social.github,
+  linkedin: config.social.linkedin,
+  youtube: config.social.youtube,
+  email: config.social.email,
+};
+
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
     <head>
@@ -33,7 +41,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
         <div className="relative top-0 right-0 md:w-[calc(100vw-280px)]">
           {children}
-          <Footer />
+          <Footer socialUrls={socialUrls} site={config.site} />
         </div>
       </div>
     </body>
