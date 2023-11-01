@@ -1,9 +1,9 @@
-import { getOrderedSlugs } from '@utils/mdxApi';
+import { mdxApi } from '@odnlabs/utils';
 
 import { SidebarGroup } from './SidebarGroup';
 
 export const Sidebar: React.FC = async () => {
-  const ordered = await getOrderedSlugs('mdx');
+  const ordered = await mdxApi.getOrderedSlugs('mdx');
 
   return (
     <>

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button, DocumentContent } from '@components';
-import { Item, SubItem, getDocFromSlug, getOrderedSlugs } from '@utils/mdxApi';
+import { mdxApi } from '@odnlabs/utils';
 
 interface Params {
   category: string;
@@ -14,17 +14,16 @@ export const generateMetadata = async ({
 }: {
   params: Params;
 }): Promise<Metadata> => {
-  const doc = await getDocFromSlug(
-    params.subcategory,
-    `mdx/help/${params.category}`
-  ).catch(() => undefined);
+  const doc = await mdxApi
+    .getDocFromSlug(params.subcategory, `mdx/help/${params.category}`)
+    .catch(() => undefined);
 
   if (doc)
     return {
       title: `${doc.meta.title} | Open Dev Net`,
     };
 
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category)
     return {
@@ -48,7 +47,7 @@ const Section: React.FC<{
   name: string;
   description: string;
   slug: string;
-  items: (SubItem | Item)[] | undefined;
+  items: (mdxApi.SubItem | mdxApi.Item)[] | undefined;
 }> = ({ name, slug, description, items }) =>
   items && (
     <div className="bg-background-secondary p-8 mt-8 rounded-lg border border-border">
@@ -71,14 +70,13 @@ const HelpCategory = async ({
 }: {
   params: Params;
 }): Promise<JSX.Element> => {
-  const doc = await getDocFromSlug(
-    params.subcategory,
-    `mdx/help/${params.category}`
-  ).catch(() => undefined);
+  const doc = await mdxApi
+    .getDocFromSlug(params.subcategory, `mdx/help/${params.category}`)
+    .catch(() => undefined);
 
   if (doc) return <DocumentContent doc={doc} />;
 
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category) return <div>404</div>;
   const subcategory = category?.items.find(

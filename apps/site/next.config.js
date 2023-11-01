@@ -23,6 +23,10 @@ const nextConfig = {
     PUBLIC_SITE_URL: process.env.PUBLIC_SITE_URL,
     PUBLIC_WEB_URL: process.env.PUBLIC_WEB_URL,
   },
+  webpack: (config, { isServer }) => {
+    config.resolve.fallback = { fs: false };
+    return config;
+  },
 };
 
 module.exports = withMDX(nextConfig);

@@ -6,10 +6,10 @@ export const metadata: Metadata = {
 };
 
 import { DocumentContent } from '@components';
-import { getDocFromSlug } from '@utils/mdxApi';
+import { mdxApi } from '@odnlabs/utils';
 
 const Home = async (): Promise<JSX.Element> => {
-  const doc = await getDocFromSlug('introduction', 'mdx/introduction');
+  const doc = await mdxApi.getDocFromSlug('introduction', 'mdx/introduction');
 
   if (!doc) {
     redirect('/404');

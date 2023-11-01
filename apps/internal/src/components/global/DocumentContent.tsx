@@ -8,12 +8,12 @@ import { useEffect } from 'react';
 import { HiChevronUp } from 'react-icons/hi';
 
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
-import { ReturnedDoc } from '@utils/mdxApi';
-import * as uiComponents from './uiClientComponents';
+import { mdxApi } from '@odnlabs/utils';
 
 import { TableOfContents } from './TableOfContents';
+import * as uiComponents from './uiClientComponents';
 
-const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
+const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({ doc }) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
     const links = document
@@ -25,12 +25,16 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
       index < linksLength;
       index += 1
     ) {
-      if (links[index].href.indexOf('#') === -1) {
-        if (links[index].hostname !== window.location.hostname) {
-          links[index].target = '_blank';
-          links[index].rel = 'noreferrer';
+      const link = links[index];
+
+      if (!link) continue;
+
+      if (link.href.indexOf('#') === -1) {
+        if (link.hostname !== window.location.hostname) {
+          link.target = '_blank';
+          link.rel = 'noreferrer';
         }
-        links[index].classList.add('link-200');
+        link.classList.add('link-200');
       }
     }
   }, []);

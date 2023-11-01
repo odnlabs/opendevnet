@@ -9,8 +9,6 @@ import { RiGithubFill } from '@react-icons/all-files/ri/RiGithubFill';
 import { RiLinkedinFill } from '@react-icons/all-files/ri/RiLinkedinFill';
 import { SiYoutube } from '@react-icons/all-files/si/SiYoutube';
 
-import { config } from '@odnlabs/utils';
-
 import { Button } from '@components';
 
 interface Link {
@@ -60,31 +58,40 @@ const links: { title: string; items: Link[] }[] = [
   },
 ];
 
-const socialMediaLinks = [
-  {
-    name: 'GitHub',
-    url: config.social.github,
-    icon: RiGithubFill,
-  },
-  {
-    name: 'LinkedIn',
-    url: config.social.linkedin,
-    icon: RiLinkedinFill,
-  },
-  {
-    name: 'YouTube',
-    url: config.social.youtube,
-    icon: SiYoutube,
-  },
-  {
-    name: 'Email',
-    url: config.social.email,
-    icon: MdEmail,
-  },
-];
+interface FooterProps {
+  socialUrls: {
+    github: string;
+    linkedin: string;
+    youtube: string;
+    email: string;
+  };
+}
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<FooterProps> = ({ socialUrls }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const socialMediaLinks = [
+    {
+      name: 'GitHub',
+      url: socialUrls.github,
+      icon: RiGithubFill,
+    },
+    {
+      name: 'LinkedIn',
+      url: socialUrls.linkedin,
+      icon: RiLinkedinFill,
+    },
+    {
+      name: 'YouTube',
+      url: socialUrls.youtube,
+      icon: SiYoutube,
+    },
+    {
+      name: 'Email',
+      url: socialUrls.email,
+      icon: MdEmail,
+    },
+  ];
 
   return (
     <>
