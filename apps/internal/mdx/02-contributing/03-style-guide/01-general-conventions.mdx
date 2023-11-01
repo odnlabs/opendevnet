@@ -1,0 +1,41 @@
+---
+title: General Conventions
+last_updated: '2023-11-01'
+---
+
+All workspaces should follow the conventions outlined in this document.
+
+## Commit Messages
+
+Commit messages should be written in the present tense, and should be short and descriptive.
+
+The workspace uses [Commitlint](https://commitlint.js.org/) to enforce a consistent commit message format. Commit messages should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification. Husky will automatically lint your commit messages when you run `git commit`. A GitHub Action will also lint your commit messages when you push to GitHub.
+
+**Example commit messages:**
+
+```bash
+git commit -m "feat: add new feature"
+git commit -m "fix(api): fix bug"
+git commit -m "docs(internal): update documentation"
+```
+
+## Naming Conventions
+
+### Branch Names
+
+Branch names should be written in `kebab-case`. For example, `my-branch-name`.
+
+### Folder Names
+
+Folder names should be written in `kebab-case`. For example, `my-folder-name`.
+
+### File Names
+
+File names should be written in `kebab-case`. For example, `my-file-name.ts`.
+
+## Language-specific Conventions
+
+Since the workspace contains multiple languages, each language has its own set of conventions that can override the general conventions. See the following pages for language-specific conventions:
+
+- <Link href="/contributing/style-guide/typescript">TypeScript</Link>
+- <Link href="/contributing/style-guide/rust">Rust</Link>
