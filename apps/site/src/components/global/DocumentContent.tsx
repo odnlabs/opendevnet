@@ -40,26 +40,23 @@ export const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({
   }, []);
 
   return (
-    <div className="mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-5xl mx-auto w-11/12">
-      <div className="flex">
-        <div id="mdx-content" className="w-full">
-          <h1 className="my-3 block text-4xl font-bold leading-[1.2] text-text md:text-5xl">
-            {doc.meta.title}
-          </h1>
-          <p className="block mt-5 text-sm text-text-secondary">
-            <b className="font-semibold">Last Updated: </b>
-            {doc.meta.lastUpdated}
-          </p>
-          <div className="mt-5 h-px w-full bg-border"></div>
-          <div className={`mb-10 mt-8 text-text-secondary ${styles.content}`}>
-            {doc.source && (
-              <MDXRemote
-                {...doc.source}
-                components={{ Link, ...uiComponents }}
-              />
-            )}
-          </div>
+    <div className="flex mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-5xl mx-auto w-11/12">
+      <div id="mdx-content" className="w-full">
+        <h1 className="my-3 block text-4xl font-bold leading-[1.2] text-text md:text-5xl">
+          {doc.meta.title}
+        </h1>
+        <p className="block mt-5 text-sm text-text-secondary">
+          <b className="font-semibold">Last Updated: </b>
+          {doc.meta.lastUpdated}
+        </p>
+        <div className="mt-5 h-px w-full bg-border"></div>
+        <div className={`mb-10 mt-8 text-text-secondary ${styles.content}`}>
+          {doc.source && (
+            <MDXRemote {...doc.source} components={{ Link, ...uiComponents }} />
+          )}
+        </div>
 
+        {(doc.meta.prev || doc.meta.next) && (
           <div className="pt-10 border-t border-border flex">
             <div className="w-1/2 pr-2">
               {doc.meta.prev && (
@@ -117,9 +114,10 @@ export const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({
               )}
             </div>
           </div>
-        </div>
-        <uiComponents.Toc />
+        )}
       </div>
+
+      <uiComponents.Toc />
     </div>
   );
 };

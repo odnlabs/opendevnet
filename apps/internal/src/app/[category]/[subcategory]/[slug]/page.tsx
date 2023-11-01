@@ -16,8 +16,8 @@ export const generateMetadata = async ({
   params: Params;
 }): Promise<Metadata> => {
   const doc = await mdxApi.getDocFromSlug(
-    params.slug,
-    `mdx/${params.category}/${params.subcategory}`
+    'mdx',
+    `${params.category}/${params.subcategory}/${params.slug}`
   );
 
   if (!doc)
@@ -32,8 +32,9 @@ export const generateMetadata = async ({
 
 const Page = async ({ params }: { params: Params }): Promise<JSX.Element> => {
   const doc = await mdxApi.getDocFromSlug(
-    params.slug,
-    `mdx/${params.category}/${params.subcategory}`
+    'mdx',
+    `${params.category}/${params.subcategory}/${params.slug}`,
+    { nextAndPrev: true }
   );
 
   if (!doc) redirect('/404');

@@ -4,11 +4,8 @@ import { redirect } from 'next/navigation';
 import { DocumentContent } from '@components';
 import { mdxApi } from '@odnlabs/utils';
 
-const fileName = 'terms';
-const fileDir = 'mdx/policies';
-
 export const generateMetadata = async (): Promise<Metadata> => {
-  const doc = await mdxApi.getDocFromSlug(fileName, fileDir);
+  const doc = await mdxApi.getDocFromSlug('mdx', 'policies/terms');
 
   if (!doc) {
     return {
@@ -22,7 +19,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const Terms = async (): Promise<JSX.Element> => {
-  const doc = await mdxApi.getDocFromSlug(fileName, fileDir);
+  const doc = await mdxApi.getDocFromSlug('mdx', 'policies/terms');
 
   if (!doc) return redirect('/404');
 

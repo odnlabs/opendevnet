@@ -391,21 +391,41 @@ export interface ReturnedDoc {
 
 /**
  * Get a doc from a slug.
+ * @param rootDir The root directory of the project.
  * @param slug The slug of the doc to get.
- * @param docsDir The root directory containing the mdx files.
+ * @param options The options for the function.
+ * @param options.nextAndPrev Whether to get the next and previous slugs metadata.
  * @returns The doc.
  */
 export const getDocFromSlug = async (
+  rootDir: string,
   slug: string,
-  docsDir: string
+  { nextAndPrev = false }: { nextAndPrev?: boolean } = {}
 ): Promise<ReturnedDoc | undefined> => {
   /**
-   * The `docsDir` paramter provided does not include the position prefix (01, 02, etc) in the directory name. This value is assigned to correctPath and is updated as the function progresses.
+   * The `slug` paramter provided does not include the position prefix (01, 02, etc) in the directory name. This value is assigned to correctPath and is updated as the function progresses.
    */
 
   let correctPath = './';
-  const docsSplit = docsDir.split('/');
 
+  /**
+   * Example: "mdx/docs/introduction" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "introduction/getting-started".
+   * Example: "mdx/docs" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "getting-started".
+   */
+  const docDir = `${rootDir}/${slug.split('/').slice(0, -1).join('/')}`;
+  if (!docDir) throw new Error(`No doc dir found: ${rootDir}`);
+
+  /**
+   * Example: "getting-started" would be the value of `onlySlug` if `slug` is "introduction/getting-started".
+   */
+  const onlySlug = slug.split('/').slice(-1)[0];
+
+  if (!onlySlug) throw new Error(`No only slug found: ${slug} at ${rootDir}`);
+
+  const docsSplit = docDir.split('/');
+
+  // This loop will find the correct directory to get the doc from based on the `slug` parameter.
+  // The correct directory just includes the position prefix (01, 02, etc) in the directory name.
   for (let idx = 0; idx < docsSplit.length; idx += 1) {
     const foundDirs = await fs.readdir(correctPath, { withFileTypes: true });
     const foundDir = foundDirs.find((dir) => {
@@ -429,12 +449,12 @@ export const getDocFromSlug = async (
       .split('/')
       .slice(-1)[0]
       ?.split('.')[0];
-    if (realSlug?.split('-').length === 1 && realSlug === slug) return true;
-    return realSlug?.split('-').slice(1).join('-') === slug;
+    if (realSlug?.split('-').length === 1 && realSlug === onlySlug) return true;
+    return realSlug?.split('-').slice(1).join('-') === onlySlug;
   });
 
   if (!foundSlug) {
-    throw new Error(`No slug found: ${slug} at path ${correctPath}`);
+    throw new Error(`No slug found: ${onlySlug} at path ${correctPath}`);
   }
 
   // Use receieved directory and slug (url) to get the doc file
@@ -465,24 +485,19 @@ export const getDocFromSlug = async (
 
   /**
    * Get the next and previous slugs metadata.
-   * @param slug The current slug.
+   * @param fullSlug The current slug.
    * @returns The next and previous slugs metadata.
    */
   const getNextAndPrev = async (
-    slug: string
+    fullSlug: string
   ): Promise<{
     next: DocMetadata['next'] | undefined;
     prev: DocMetadata['prev'] | undefined;
   }> => {
-    const baseDir = docsDir
-      .split('/')
-      .slice(0, docsDir.split('/').length - 1)
-      .join('/');
-
-    const slugs = await getSlugs(baseDir);
-    const index = slugs.slugs.findIndex((slg) => slg.slug === slug);
+    const slugs = await getSlugs(rootDir);
+    const index = slugs.slugs.findIndex((slg) => slg.slug === fullSlug);
     if (index === -1)
-      throw new Error(`No slug found: ${slug} at path ${docsDir}`);
+      throw new Error(`No slug found: "${fullSlug}" at path "${rootDir}"`);
 
     const next = slugs.slugs[index + 1] || undefined;
     const prev = slugs.slugs[index - 1] || undefined;
@@ -521,17 +536,21 @@ export const getDocFromSlug = async (
     };
   };
 
-  const { next, prev } = await getNextAndPrev(slug);
+  let next;
+  let prev;
+  if (nextAndPrev) {
+    ({ next, prev } = await getNextAndPrev(onlySlug));
+  }
 
   // Return all data to display doc
   return {
     source: mdxSource,
     meta: {
-      slug,
+      slug: onlySlug,
       title: data.title,
       lastUpdated: data.last_updated,
-      next,
-      prev,
+      next: nextAndPrev ? next : undefined,
+      prev: nextAndPrev ? prev : undefined,
     },
   };
 };
