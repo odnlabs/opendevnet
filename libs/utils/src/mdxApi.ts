@@ -3,7 +3,13 @@ import { sync } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
 
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import {
+  DocMetadata,
+  OrderedSlugs,
+  ReturnedDoc,
+  Slug,
+  SubItem,
+} from '@odnlabs/utils-client';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';
@@ -79,25 +85,6 @@ const verifyFrontmatter = (
     }
   }
 };
-
-interface Slug {
-  title: string;
-  slug: string;
-  category: {
-    title: string;
-    description: string;
-    slug: string;
-  };
-  subCategory?:
-    | {
-        title: string;
-        description: string;
-        slug: string;
-      }
-    | undefined;
-  position: number;
-  lastUpdated: string;
-}
 
 /**
  * Get all slugs from a directory.
@@ -231,29 +218,6 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
   };
 };
 
-export interface SubItem {
-  name: string;
-  slug: string;
-  position: number;
-  lastUpdated: string;
-}
-export interface Item {
-  name: string;
-  description?: string | undefined;
-  slug: string;
-  items?: SubItem[] | undefined;
-  position: number;
-  lastUpdated?: string | undefined;
-}
-
-export interface OrderedSlugs {
-  name: string;
-  description: string;
-  slug: string;
-  items: Item[];
-  position: number;
-}
-
 /**
  * Returns the list of slugs in a structured format.
  * @param mdxDir The root directory containing the mdx files.
@@ -363,32 +327,6 @@ export const getOrderedSlugs = async (
 
   return ordered;
 };
-
-export interface DocMetadata {
-  slug: string;
-  title: string;
-  lastUpdated: string;
-  next?:
-    | {
-        slug: string;
-        title: string;
-        location: string[];
-      }
-    | undefined;
-  prev?:
-    | {
-        slug: string;
-        title: string;
-        location: string[];
-      }
-    | undefined;
-  path: string;
-}
-
-export interface ReturnedDoc {
-  source: MDXRemoteSerializeResult;
-  meta: DocMetadata;
-}
 
 /**
  * Get a doc from a slug.

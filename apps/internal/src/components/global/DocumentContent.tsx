@@ -3,16 +3,15 @@
 import { MDXRemote } from 'next-mdx-remote';
 import Link from 'next/link';
 import { useEffect } from 'react';
-// import rehypeHighlight from 'rehype-highlight';
 
 import { HiChevronUp } from '@react-icons/all-files/hi/HiChevronUp';
 
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
-import { mdxApi } from '@odnlabs/utils';
+import { ReturnedDoc } from '@odnlabs/utils-client';
 
 import * as uiComponents from './uiClientComponents';
 
-const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({ doc }) => {
+const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
     const links = document

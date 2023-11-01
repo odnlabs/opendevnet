@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { Button, DocumentContent } from '@components';
 import { mdxApi } from '@odnlabs/utils';
+import { Item, SubItem } from '@odnlabs/utils-client';
 
 interface Params {
   category: string;
@@ -47,7 +48,7 @@ const Section: React.FC<{
   name: string;
   description: string;
   slug: string;
-  items: (mdxApi.SubItem | mdxApi.Item)[] | undefined;
+  items: (SubItem | Item)[] | undefined;
 }> = ({ name, slug, description, items }) =>
   items && (
     <div className="bg-background-secondary p-8 mt-8 rounded-lg border border-border">

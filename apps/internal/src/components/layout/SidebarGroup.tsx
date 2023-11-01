@@ -4,14 +4,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
+import { Item, OrderedSlugs } from '@odnlabs/utils-client';
 import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight';
 
-import { mdxApi } from '@odnlabs/utils';
-
 const SidebarLink: React.FC<{
-  cat: mdxApi.OrderedSlugs;
-  item: mdxApi.Item;
-  subItem?: mdxApi.Item;
+  cat: OrderedSlugs;
+  item: Item;
+  subItem?: Item;
 }> = ({ cat, item, subItem }) => {
   const pathname = usePathname();
 
@@ -34,9 +33,7 @@ const SidebarLink: React.FC<{
   );
 };
 
-export const SidebarGroup: React.FC<{ cat: mdxApi.OrderedSlugs }> = ({
-  cat,
-}) => {
+export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
   const [open, setOpen] = useState<number[]>([]);
 
   const pathname = usePathname();

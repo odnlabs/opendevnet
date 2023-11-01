@@ -2,11 +2,12 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-
-import { Button, Checkbox, Input } from '@odnlabs/ui';
-import { addToast } from '@store';
-import client from '@utils/apiClient';
 import { useDispatch } from 'react-redux';
+
+import { Button, Checkbox, Input } from '@components';
+import client from '@utils/apiClient';
+
+import { addToast } from '@store';
 
 export const RegisterForm: React.FC = () => {
   const [email, setEmail] = useState<string>('');

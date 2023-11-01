@@ -1,10 +1,12 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import { RiNotification3Line } from '@react-icons/all-files/ri/RiNotification3Line';
 import { RiSearchLine } from '@react-icons/all-files/ri/RiSearchLine';
 
-import Link from 'next/link';
+import { config } from '@odnlabs/utils';
+
 import { AccountDropdown } from './Header/AccountDropdown';
 
 export const Header: React.FC = () => (
@@ -62,7 +64,7 @@ export const Header: React.FC = () => (
           </div>
 
           {/* Account Dropdown */}
-          <AccountDropdown />
+          <AccountDropdown defaultAvatar={config.defaultAvatar} />
         </div>
       </div>
     </div>

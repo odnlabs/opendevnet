@@ -5,12 +5,18 @@ const { join } = require('path');
 const nextConfig = {
   basePath: '/app',
   reactStrictMode: false, // Prevent multiple refreshes in dev mode
-  transpilePackages: ['@odnlabs/api-client', '@odnlabs/ui', '@odnlabs/utils'],
+  transpilePackages: [
+    '@odnlabs/api-client',
+    '@odnlabs/ui',
+    '@odnlabs/utils-client',
+    '@odnlabs/utils',
+  ],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // distDir: '../../dist/apps/web/.next', // commented out, because it should not leave the project directory
   experimental: {
     // this includes files from the monorepo base two directories up
     outputFileTracingRoot: join(__dirname, '../../'),
+    webpackBuildWorker: true,
   },
   typescript: {
     ignoreBuildErrors: true,
@@ -23,6 +29,10 @@ const nextConfig = {
     PUBLIC_WS_URL: process.env.PUBLIC_WS_URL,
     PUBLIC_SITE_URL: process.env.PUBLIC_SITE_URL,
     PUBLIC_WEB_URL: process.env.PUBLIC_WEB_URL,
+  },
+  webpack: (config, { isServer }) => {
+    config.resolve.fallback = { fs: false };
+    return config;
   },
 };
 

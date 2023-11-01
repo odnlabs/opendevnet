@@ -1,16 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-
-import { Button, Input } from '@odnlabs/ui';
-import { config } from '@odnlabs/utils';
-
-import { addToast } from '@store';
-import client from '@utils/apiClient';
-import Link from 'next/link';
 import { useDispatch } from 'react-redux';
 
-export const LoginForm: React.FC = () => {
+import client from '@utils/apiClient';
+
+import { Button, Input } from '@components';
+import { addToast } from '@store';
+import Link from 'next/link';
+
+interface LoginFormProps {
+  web?: string | undefined;
+}
+
+export const LoginForm: React.FC<LoginFormProps> = ({ web }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -44,7 +47,8 @@ export const LoginForm: React.FC = () => {
           })
         );
 
-        window.location.href = config.web;
+        if (web) window.location.href = web;
+        else window.location.href = '/';
       }
     } catch (error) {
       dispatch(

@@ -7,13 +7,11 @@ import { useEffect } from 'react';
 import { HiChevronUp } from '@react-icons/all-files/hi/HiChevronUp';
 
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
-import { mdxApi } from '@odnlabs/utils';
+import { ReturnedDoc } from '@odnlabs/utils-client';
 
 import * as uiComponents from '../uiClientComponents';
 
-export const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({
-  doc,
-}) => {
+export const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
     const links = document

@@ -1,8 +1,10 @@
 'use client';
 
-import { Toasts } from '@odnlabs/ui';
-import { removeToast, toastsState } from '@store';
 import { useDispatch, useSelector } from 'react-redux';
+
+import { Toasts } from '@odnlabs/ui';
+
+import { removeToast, toastsState } from '@store';
 
 export const ToastWrapper: React.FC = () => {
   const dispatch = useDispatch();

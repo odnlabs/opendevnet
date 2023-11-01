@@ -1,5 +1,7 @@
 import { Poppins } from 'next/font/google';
 
+import { config } from '@odnlabs/utils';
+
 import { Header, NavigationBar } from '@components/layout';
 import { DataLayer } from '@components/layout/DataLayer';
 import { Providers } from '@components/layout/Providers';
@@ -24,13 +26,13 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <link rel="icon" href="/app/favicon.ico" sizes="any" />
     </head>
     <Providers>
-      <DataLayer>
+      <DataLayer site={config.site}>
         <body className={font.className}>
           <div className="relative h-14"></div>
           <div className="flex">
             <Header />
 
-            <NavigationBar />
+            <NavigationBar site={config.site} />
 
             {children}
           </div>

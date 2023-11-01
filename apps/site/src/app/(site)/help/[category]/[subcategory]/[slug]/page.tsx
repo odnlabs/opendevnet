@@ -39,7 +39,7 @@ const Document = async ({
 }): Promise<JSX.Element> => {
   const doc = await mdxApi
     .getDocFromSlug(
-     'mdx/help',
+      'mdx/help',
       `${params.category}/${params.subcategory}/${params.slug}`,
       { nextAndPrev: true }
     )

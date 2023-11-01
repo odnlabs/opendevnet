@@ -1,10 +1,11 @@
 'use client';
 
-import { Button } from '@components';
-import { ToastType } from '@odnlabs/ui';
-import { addToast } from '@store';
 import { NextPage } from 'next';
 import { useDispatch } from 'react-redux';
+
+import { Button, ToastType } from '@odnlabs/ui';
+
+import { addToast } from '@store';
 
 const CreateGuild: NextPage = () => {
   const dispatch = useDispatch();

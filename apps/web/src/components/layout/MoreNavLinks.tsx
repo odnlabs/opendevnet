@@ -1,4 +1,3 @@
-import { config } from '@odnlabs/utils';
 import React, { useEffect, useState } from 'react';
 
 interface DefaultLink {
@@ -10,9 +9,11 @@ interface DefaultLink {
 export default function MoreNavLinks({
   moreLinksOpen,
   setMoreLinksOpen,
+  site,
 }: {
   moreLinksOpen: boolean;
   setMoreLinksOpen: (open: boolean) => void;
+  site?: string | undefined;
 }): JSX.Element {
   const links: DefaultLink[][] = [
     [
@@ -109,7 +110,7 @@ export default function MoreNavLinks({
           {section.map((btn, btnIndex) =>
             btn.route ? (
               <a
-                href={`${config.site}${btn.route}`}
+                href={`${site ?? ''}${btn.route}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 key={btnIndex}
