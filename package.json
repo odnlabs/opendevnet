@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "dotenv -e .env.production -- nx run-many --target=build --all",
+    "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all",
     "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
     "dev:api": "dotenv -e .env.local -- nx run api:dev",
     "dev:internal": "dotenv -e .env.local -- nx run-many --target=dev --projects=@odnlabs/ui,@odnlabs/utils,internal --parallel --maxParallel=3",
