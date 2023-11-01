@@ -31,3 +31,6 @@ libs:@odnlabs/ui:
 libs:@odnlabs/utils:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/utils\\n"
+libs:@odnlabs/utils-client:
+  - "### Which (application|library|application or library) is this (bug
+    report|feature request) for\\?\\n\\n@odnlabs/utils-client\\n"

@@ -56,6 +56,8 @@
   color: fbca04
 - name: libs:@odnlabs/utils
   color: fbca04
+- name: libs:@odnlabs/utils-client
+  color: fbca04
 - name: performance
   color: 80c042
 - name: priority:high
