@@ -117,7 +117,9 @@ const DocumentContent: React.FC<{ doc: mdxApi.ReturnedDoc }> = ({ doc }) => {
             </div>
           </div>
         </div>
-        <uiComponents.Toc />
+        <uiComponents.Toc
+          editLink={`https://github.com/odnlabs/opendevnet/tree/dev/apps/internal/${doc.meta.path}`}
+        />
       </div>
     </div>
   );

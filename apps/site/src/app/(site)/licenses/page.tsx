@@ -49,6 +49,8 @@ const Licenses: NextPage = async () => {
       if (packageJson.name === name) return dir;
       else continue;
     }
+
+    return undefined;
   };
 
   const addNpmPackage = async (

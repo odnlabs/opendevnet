@@ -33,7 +33,7 @@ export const Header: React.FC = () => (
 
       <div className="flex m-2">
         <a
-          href={`${config.social.github}/opendevnet/tree/main/apps/internal/mdx`}
+          href={`${config.social.github}/opendevnet/tree/dev/apps/internal/mdx`}
           target="_blank"
           rel="noreferrer"
           className="my-2 -translate-y-px mr-3 text-text-secondary hover:text-text active:text-text"
@@ -41,13 +41,13 @@ export const Header: React.FC = () => (
           <RiGithubFill className="h-6 w-6" />
         </a>
         {/* Main Website */}
-        <Link
-          href="/"
+        <a
+          href={config.site}
           className="flex items-center px-3 py-1.5 text-sm rounded-lg border border-border bg-secondary hover:bg-secondary-hover active:bg-secondary-active transition duration-200 hover:ease-out focus-visible:ring"
         >
           <IoExitOutline className="h-5 w-5" />
           <p className="ml-2">Main Website</p>
-        </Link>
+        </a>
       </div>
     </div>
   </>

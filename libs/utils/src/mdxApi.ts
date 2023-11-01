@@ -382,6 +382,7 @@ export interface DocMetadata {
         location: string[];
       }
     | undefined;
+  path: string;
 }
 
 export interface ReturnedDoc {
@@ -551,6 +552,7 @@ export const getDocFromSlug = async (
       lastUpdated: data.last_updated,
       next: nextAndPrev ? next : undefined,
       prev: nextAndPrev ? prev : undefined,
+      path: foundSlug,
     },
   };
 };
