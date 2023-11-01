@@ -61,12 +61,15 @@ export const SidebarGroup: React.FC<{ cat: mdxApi.OrderedSlugs }> = ({
           {item.name}
           <HiChevronRight
             className={`h-5 w-5 mt-px transition duration-300 ${
-              open.includes(itemIndex) && 'rotate-90'
+              (pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
+                open.includes(itemIndex)) &&
+              'rotate-90'
             }`}
           />
         </button>
         <div
           className={`grid transition-all duration-300 ${
+            pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
             open.includes(itemIndex)
               ? 'grid-rows-[1fr] mt-1'
               : 'grid-rows-[0fr]'
