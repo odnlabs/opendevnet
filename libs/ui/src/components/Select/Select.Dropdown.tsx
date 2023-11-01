@@ -26,7 +26,7 @@ export interface SharedProps {
    * @param params The parameters to be passed to the function.
    * @returns Nothing.
    */
-  onChange?: (...params: unknown[]) => void | Promise<void>;
+  onChange?: ((...params: unknown[]) => void | Promise<void>) | undefined;
 }
 
 interface Props extends SharedProps {

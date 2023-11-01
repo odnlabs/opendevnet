@@ -44,6 +44,7 @@
 .content:not(.ignore) > p {
   margin: 1rem 0;
   font-size: 1rem;
+  line-height: 1.75rem;
   color: rgb(var(--text-secondary));
 }
 
@@ -76,9 +77,10 @@
 
 /* Code bit in paragraph */
 .content:not(.ignore) code:not(pre code) {
-  border-radius: 5px;
+  border-radius: 8px;
   padding: 0.125rem 0.25rem;
-  background: rgb(var(--secondary-hover));
+  background: rgb(var(--secondary));
+  color: rgb(var(--text-primary));
   border: 1px solid rgb(var(--border));
 }
 
@@ -103,6 +105,7 @@
 /* List Point */
 .content:not(.ignore) li {
   padding: 0 0.5rem;
+  margin: 0.5rem 0;
 }
 
 .content:not(.ignore) a {

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import { DocumentContent } from '@components';
-import { getDocFromSlug } from '@utils/mdxApi';
+import { mdxApi } from '@odnlabs/utils';
 
 interface Params {
   category: string;
@@ -15,9 +15,9 @@ export const generateMetadata = async ({
 }: {
   params: Params;
 }): Promise<Metadata> => {
-  const doc = await getDocFromSlug(
-    params.slug,
-    `mdx/${params.category}/${params.subcategory}`
+  const doc = await mdxApi.getDocFromSlug(
+    'mdx',
+    `${params.category}/${params.subcategory}/${params.slug}`
   );
 
   if (!doc)
@@ -31,9 +31,10 @@ export const generateMetadata = async ({
 };
 
 const Page = async ({ params }: { params: Params }): Promise<JSX.Element> => {
-  const doc = await getDocFromSlug(
-    params.slug,
-    `mdx/${params.category}/${params.subcategory}`
+  const doc = await mdxApi.getDocFromSlug(
+    'mdx',
+    `${params.category}/${params.subcategory}/${params.slug}`,
+    { nextAndPrev: true }
   );
 
   if (!doc) redirect('/404');

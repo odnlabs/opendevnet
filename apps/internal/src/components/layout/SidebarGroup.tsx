@@ -4,9 +4,8 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
-import { HiChevronRight } from 'react-icons/hi';
-
-import { Item, OrderedSlugs } from '@utils/mdxApi';
+import { Item, OrderedSlugs } from '@odnlabs/utils-client';
+import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight';
 
 const SidebarLink: React.FC<{
   cat: OrderedSlugs;
@@ -59,12 +58,15 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
           {item.name}
           <HiChevronRight
             className={`h-5 w-5 mt-px transition duration-300 ${
-              open.includes(itemIndex) && 'rotate-90'
+              (pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
+                open.includes(itemIndex)) &&
+              'rotate-90'
             }`}
           />
         </button>
         <div
           className={`grid transition-all duration-300 ${
+            pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
             open.includes(itemIndex)
               ? 'grid-rows-[1fr] mt-1'
               : 'grid-rows-[0fr]'

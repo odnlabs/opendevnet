@@ -85,6 +85,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Create Environment Variables
+        run: |
+          touch .env.production
+          echo "ENVIRONMENT=production" >> .env.production
+          echo "DEBUG=true" >> .env.production
+          echo "PUBLIC_API_URL=http://localhost:5000" >> .env.production
+          echo "PUBLIC_WS_URL=http://localhost:5000/ws" >> .env.production
+          echo "PUBLIC_SITE_URL=http://localhost:4000" >> .env.production
+          echo "PUBLIC_WEB_URL=http://localhost:4100/app" >> .env.production
+
       - name: Build
         run: pnpm run build
 

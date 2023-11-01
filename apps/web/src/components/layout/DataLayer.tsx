@@ -3,17 +3,17 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { config } from '@odnlabs/utils';
+import client from '@utils/apiClient';
 
 import { addToast, setUser } from '@store';
-import client from '@utils/apiClient';
 import { ServerMessage, useWebSocket } from '@utils/socket';
 
 interface DataLayerProps {
   children: React.ReactNode;
+  site?: string | undefined;
 }
 
-export const DataLayer: React.FC<DataLayerProps> = ({ children }) => {
+export const DataLayer: React.FC<DataLayerProps> = ({ children, site }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,18 +45,14 @@ export const DataLayer: React.FC<DataLayerProps> = ({ children }) => {
               })
             );
 
-            window.location.href = `${config.site}/login`;
+            if (site) window.location.href = `${site}/login`;
+            else window.location.href = `/login`;
           });
       }
     };
 
     fetchUserData();
-  }, [dispatch]);
-
-  // interface SocketMessage {
-  //   type: string;
-  //   payload: unknown;
-  // }
+  }, [dispatch, site]);
 
   const onConnect = (): void => {
     dispatch(

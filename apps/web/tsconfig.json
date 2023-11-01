@@ -2,12 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@odnlabs/tsconfig/nextjs.json",
   "compilerOptions": {
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "@store": ["./src/store.ts"],
       "@constants/*": ["./src/constants/*"],
@@ -26,6 +21,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
+    "../../dist/apps/web/.next/types/**/*.ts",
     "../../environment.d.ts"
   ],
   "exclude": ["node_modules"]

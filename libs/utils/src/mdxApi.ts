@@ -3,30 +3,48 @@ import { sync } from 'glob';
 import matter from 'gray-matter';
 import path from 'path';
 
-import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import {
+  DocMetadata,
+  OrderedSlugs,
+  ReturnedDoc,
+  Slug,
+  SubItem,
+} from '@odnlabs/utils-client';
 import { serialize } from 'next-mdx-remote/serialize';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 
+/**
+ * Remove the positon prefix from a slug.
+ * @param slug The original slug to remove the prefix from.
+ * @returns The refomatted slug.
+ */
 const removePos = (slug: string): string => slug.split('-').slice(1).join('-');
 
-const getCorrectSlug = (slug: string): string => {
-  const correctSlug = slug.split('-').slice(1).join('-');
-  return correctSlug;
-};
-
+/**
+ * Get the position from a slug.
+ * @param slug The original slug to get the position from.
+ * @returns The position.
+ * @throws If the position is not a number.
+ */
 const getSlugPosition = (slug: string): number => {
-  const position = parseInt(slug.split('-')[0], 10);
-  if (Number.isNaN(position)) {
-    throw new Error(`Invalid slug position: ${slug}`);
-  }
+  const pos = slug.split('-')[0];
+  if (!pos) throw new Error(`No slug position found: ${slug}`);
+  const position = parseInt(pos, 10);
+  if (Number.isNaN(position)) throw new Error(`Invalid slug position: ${slug}`);
   return position;
 };
 
 type RequiredFrontmatter = [string, 'string' | 'number' | 'boolean'][];
 
+/**
+ * Verifies all of the required frontmatter for a file is provided.
+ * @param path The path of the file.
+ * @param data The frontmatter data.
+ * @param requiredFrontmatter The required frontmatter and their types.
+ */
 const verifyFrontmatter = (
   path: string,
   data: Record<string, unknown>,
@@ -68,29 +86,20 @@ const verifyFrontmatter = (
   }
 };
 
-interface Slug {
-  title: string;
-  slug: string;
-  category: {
-    title: string;
-    slug: string;
-  };
-  subCategory?: {
-    title: string;
-    slug: string;
-  };
-  position: number;
-  lastUpdated: string;
-}
-
 /**
  * Get all slugs from a directory.
  * @param mdxDir A directory containing mdx files.
  * @returns An array of slugs.
  */
 export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
-  const categoryFrontmatter = new Map<string, { title: string }>();
-  const subCategoryFrontmatter = new Map<string, { title: string }>();
+  const categoryFrontmatter = new Map<
+    string,
+    { title: string; description?: string | undefined }
+  >();
+  const subCategoryFrontmatter = new Map<
+    string,
+    { title: string; description?: string | undefined }
+  >();
 
   // Recieve directory and get all mdx files in the directory
   const docsPath = path.join(process.cwd(), mdxDir);
@@ -126,7 +135,9 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
   for (const path of paths) {
     // Get the file slug (name without extension)
     const source = await fs.readFile(path);
-    const { data } = matter(source) as unknown as { data: { title: string } };
+    const { data } = matter(source) as unknown as {
+      data: { title: string; description?: string | undefined };
+    };
 
     // Parts
     const parts = path.replaceAll('\\', '/').split('/');
@@ -138,14 +149,18 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
       verifyFrontmatter(path, data, requiredFrontmatter);
 
       if (parts.length === 2 + mdxDir.split('/').length) {
-        categoryFrontmatter.set(parts[parts.length - 2], data);
+        const part = parts[parts.length - 2];
+        if (!part) throw new Error(`No part found: ${path}`);
+        categoryFrontmatter.set(part, data);
       }
       if (parts.length === 3 + mdxDir.split('/').length) {
-        subCategoryFrontmatter.set(parts[parts.length - 2], data);
+        const part = parts[parts.length - 2];
+        if (!part) throw new Error(`No part found: ${path}`);
+        subCategoryFrontmatter.set(part, data);
       }
       continue;
     }
-    let fileCategory: string;
+    let fileCategory: string | undefined;
     let fileSubCategory: string | undefined;
     if (parts.length === 2 + mdxDir.split('/').length) {
       fileCategory = parts[parts.length - 2];
@@ -155,6 +170,9 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
     } else {
       throw new Error(`Invalid path (part length): ${parts.length}`);
     }
+
+    if (!fileName) throw new Error(`No file name found: ${path}`);
+    if (!fileCategory) throw new Error(`No category found: ${path}`);
 
     // Verify frontmatter
     const requiredFrontmatter: RequiredFrontmatter = [
@@ -171,16 +189,22 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [slug, _ext] = fileName.split('.');
 
+    if (!slug) throw new Error(`No slug found: ${path} at path ${fileName}`);
+
     returnedSlugs.push({
       title,
-      slug: getCorrectSlug(slug),
+      slug: removePos(slug),
       category: {
         title: categoryFrontmatter.get(fileCategory)?.title as string,
+        description: categoryFrontmatter.get(fileCategory)
+          ?.description as string,
         slug: fileCategory,
       },
       subCategory: fileSubCategory
         ? {
             title: subCategoryFrontmatter.get(fileSubCategory)?.title as string,
+            description: subCategoryFrontmatter.get(fileSubCategory)
+              ?.description as string,
             slug: fileSubCategory,
           }
         : undefined,
@@ -194,27 +218,11 @@ export const getSlugs = async (mdxDir: string): Promise<{ slugs: Slug[] }> => {
   };
 };
 
-interface SubItem {
-  name: string;
-  slug: string;
-  position: number;
-  lastUpdated: string;
-}
-export interface Item {
-  name?: string;
-  slug: string;
-  items?: SubItem[];
-  position: number;
-  lastUpdated?: string;
-}
-
-export interface OrderedSlugs {
-  name: string;
-  slug: string;
-  items: Item[];
-  position: number;
-}
-
+/**
+ * Returns the list of slugs in a structured format.
+ * @param mdxDir The root directory containing the mdx files.
+ * @returns The list of slugs in a structured format.
+ */
 export const getOrderedSlugs = async (
   mdxDir: string
 ): Promise<OrderedSlugs[]> => {
@@ -231,12 +239,14 @@ export const getOrderedSlugs = async (
       // If category doesn't exist, add it - for a subcategory doc
       ordered.push({
         name: doc.category.title,
-        slug: getCorrectSlug(doc.category.slug),
+        description: doc.category.description,
+        slug: removePos(doc.category.slug),
         position: getSlugPosition(doc.category.slug),
         items: [
           {
             name: doc.subCategory.title,
-            slug: getCorrectSlug(doc.subCategory.slug),
+            description: doc.subCategory.description,
+            slug: removePos(doc.subCategory.slug),
             position: getSlugPosition(doc.subCategory.slug),
             items: [
               {
@@ -253,7 +263,8 @@ export const getOrderedSlugs = async (
       // If category doesn't exist, add it - for a category doc
       ordered.push({
         name: doc.category.title,
-        slug: getCorrectSlug(doc.category.slug),
+        description: doc.category.description,
+        slug: removePos(doc.category.slug),
         position: getSlugPosition(doc.category.slug),
         items: [
           {
@@ -264,16 +275,21 @@ export const getOrderedSlugs = async (
         ],
       });
     } else if (doc.subCategory) {
+      const cat = ordered[catIndex];
+
+      if (!cat) throw new Error(`No category found: ${doc.category.slug}`);
+
       // If category exists, add subcategory - for a subcategory doc
-      const subCatIndex = ordered[catIndex].items.findIndex(
+      const subCatIndex = cat.items.findIndex(
         (subCat) => subCat.slug === removePos(doc.subCategory?.slug as string)
       );
 
       if (subCatIndex === -1) {
         // If subcategory doesn't exist, add it
-        ordered[catIndex].items.push({
+        cat.items.push({
           name: doc.subCategory.title,
-          slug: getCorrectSlug(doc.subCategory.slug),
+          description: doc.category.description,
+          slug: removePos(doc.subCategory.slug),
           position: getSlugPosition(doc.subCategory.slug),
           items: [
             {
@@ -284,9 +300,9 @@ export const getOrderedSlugs = async (
             },
           ],
         });
-      } else if (ordered[catIndex].items[subCatIndex].items) {
+      } else if (cat.items[subCatIndex]?.items) {
         // If subcategory exists, add doc
-        (ordered[catIndex].items[subCatIndex].items as SubItem[]).push({
+        (cat.items[subCatIndex]?.items as SubItem[]).push({
           name: doc.title,
           slug: doc.slug,
           position: doc.position,
@@ -295,7 +311,7 @@ export const getOrderedSlugs = async (
       }
     } else {
       // If category exists, add doc - for a category doc
-      ordered[catIndex].items.push({
+      ordered[catIndex]?.items.push({
         name: doc.title,
         slug: doc.slug,
         position: doc.position,
@@ -312,37 +328,43 @@ export const getOrderedSlugs = async (
   return ordered;
 };
 
-export interface DocMetadata {
-  slug: string;
-  title: string;
-  lastUpdated: string;
-  next?: {
-    slug: string;
-    title: string;
-    location: string[];
-  };
-  prev?: {
-    slug: string;
-    title: string;
-    location: string[];
-  };
-}
-
-export interface ReturnedDoc {
-  source: MDXRemoteSerializeResult;
-  meta: DocMetadata;
-}
-
+/**
+ * Get a doc from a slug.
+ * @param rootDir The root directory of the project.
+ * @param slug The slug of the doc to get.
+ * @param options The options for the function.
+ * @param options.nextAndPrev Whether to get the next and previous slugs metadata.
+ * @returns The doc.
+ */
 export const getDocFromSlug = async (
+  rootDir: string,
   slug: string,
-  docsDir: string
+  { nextAndPrev = false }: { nextAndPrev?: boolean } = {}
 ): Promise<ReturnedDoc | undefined> => {
   /**
-   * The `docsDir` paramter provided does not include the position prefix (01, 02, etc) in the directory name. This value is assigned to correctPath and is updated as the function progresses.
+   * The `slug` paramter provided does not include the position prefix (01, 02, etc) in the directory name. This value is assigned to correctPath and is updated as the function progresses.
    */
-  let correctPath = './';
-  const docsSplit = docsDir.split('/');
 
+  let correctPath = './';
+
+  /**
+   * Example: "mdx/docs/introduction" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "introduction/getting-started".
+   * Example: "mdx/docs" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "getting-started".
+   */
+  const docDir = `${rootDir}/${slug.split('/').slice(0, -1).join('/')}`;
+  if (!docDir) throw new Error(`No doc dir found: ${rootDir}`);
+
+  /**
+   * Example: "getting-started" would be the value of `onlySlug` if `slug` is "introduction/getting-started".
+   */
+  const onlySlug = slug.split('/').slice(-1)[0];
+
+  if (!onlySlug) throw new Error(`No only slug found: ${slug} at ${rootDir}`);
+
+  const docsSplit = docDir.split('/');
+
+  // This loop will find the correct directory to get the doc from based on the `slug` parameter.
+  // The correct directory just includes the position prefix (01, 02, etc) in the directory name.
   for (let idx = 0; idx < docsSplit.length; idx += 1) {
     const foundDirs = await fs.readdir(correctPath, { withFileTypes: true });
     const foundDir = foundDirs.find((dir) => {
@@ -365,13 +387,13 @@ export const getDocFromSlug = async (
       .replaceAll('\\', '/')
       .split('/')
       .slice(-1)[0]
-      .split('.')[0];
-    if (realSlug.split('-').length === 1 && realSlug === slug) return true;
-    return realSlug.split('-').slice(1).join('-') === slug;
+      ?.split('.')[0];
+    if (realSlug?.split('-').length === 1 && realSlug === onlySlug) return true;
+    return realSlug?.split('-').slice(1).join('-') === onlySlug;
   });
 
   if (!foundSlug) {
-    throw new Error(`No slug found: ${slug}`);
+    throw new Error(`No slug found: ${onlySlug} at path ${correctPath}`);
   }
 
   // Use receieved directory and slug (url) to get the doc file
@@ -400,18 +422,22 @@ export const getDocFromSlug = async (
     },
   });
 
+  /**
+   * Get the next and previous slugs metadata.
+   * @param fullSlug The current slug.
+   * @returns The next and previous slugs metadata.
+   */
   const getNextAndPrev = async (
-    slug: string,
-    docsDir: string
+    fullSlug: string
   ): Promise<{
     next: DocMetadata['next'] | undefined;
     prev: DocMetadata['prev'] | undefined;
   }> => {
-    const slugs = await getSlugs(docsDir.split('/')[0]);
-    const index = slugs.slugs.findIndex((slg) => slg.slug === slug);
-    if (index === -1) {
-      throw new Error(`No slug found: ${slug}`);
-    }
+    const slugs = await getSlugs(rootDir);
+    const index = slugs.slugs.findIndex((slg) => slg.slug === fullSlug);
+    if (index === -1)
+      throw new Error(`No slug found: "${fullSlug}" at path "${rootDir}"`);
+
     const next = slugs.slugs[index + 1] || undefined;
     const prev = slugs.slugs[index - 1] || undefined;
 
@@ -449,31 +475,22 @@ export const getDocFromSlug = async (
     };
   };
 
-  const { next, prev } = await getNextAndPrev(slug, docsDir);
+  let next;
+  let prev;
+  if (nextAndPrev) {
+    ({ next, prev } = await getNextAndPrev(onlySlug));
+  }
 
   // Return all data to display doc
   return {
     source: mdxSource,
     meta: {
-      slug,
+      slug: onlySlug,
       title: data.title,
       lastUpdated: data.last_updated,
-      next,
-      prev,
+      next: nextAndPrev ? next : undefined,
+      prev: nextAndPrev ? prev : undefined,
+      path: foundSlug,
     },
   };
-};
-
-export const getAllDocs = async (
-  docsDir: string,
-  results: number
-): Promise<DocMetadata[]> => {
-  // Sort blogs by dates - from most recent to oldest
-  const docs = await Promise.all(
-    (await getSlugs(docsDir)).slugs.map((slug) =>
-      getDocFromSlug(slug.slug, docsDir)
-    )
-  );
-  // Return meta data of last {docsDir} docs - not markdown
-  return docs.slice(0, results || 999).map((doc) => doc?.meta as DocMetadata);
 };

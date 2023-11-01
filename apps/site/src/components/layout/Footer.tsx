@@ -9,8 +9,6 @@ import { RiGithubFill } from '@react-icons/all-files/ri/RiGithubFill';
 import { RiLinkedinFill } from '@react-icons/all-files/ri/RiLinkedinFill';
 import { SiYoutube } from '@react-icons/all-files/si/SiYoutube';
 
-import { config } from '@odnlabs/utils';
-
 import { Button } from '@components';
 
 interface Link {
@@ -18,73 +16,83 @@ interface Link {
   href: string;
 }
 
-const links: { title: string; items: Link[] }[] = [
-  {
-    title: 'Website',
-    items: [
-      { label: 'Homepage', href: '/' },
-      { label: 'Contact Us', href: '/contact' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Login', href: '/login' },
-      { label: 'Register', href: '/register' },
-    ],
-  },
-  {
-    title: 'About Us',
-    items: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Our Story', href: '/about' },
-      { label: 'The Vision Ahead', href: '/about/vision' },
-      { label: 'Meet the Team', href: '/about/team' },
-    ],
-  },
-  {
-    title: 'Resources',
-    items: [
-      { label: 'Documentation', href: '/docs' },
-      { label: 'Help Center', href: '/help' },
-      { label: 'Feedback', href: '/feedback' },
-      { label: 'Changelog', href: '/changelog' },
-      { label: 'Sitemap', href: '/sitemap' },
-    ],
-  },
-  {
-    title: 'Policies',
-    items: [
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Community Guidelines', href: '/guidelines' },
-      { label: 'Accessibility', href: '/accessibility' },
-      { label: 'Licenses', href: '/licenses' },
-    ],
-  },
-];
+interface FooterProps {
+  socialUrls: {
+    github: string;
+    linkedin: string;
+    youtube: string;
+    email: string;
+  };
+  internal?: string | undefined;
+}
 
-const socialMediaLinks = [
-  {
-    name: 'GitHub',
-    url: config.social.github,
-    icon: RiGithubFill,
-  },
-  {
-    name: 'LinkedIn',
-    url: config.social.linkedin,
-    icon: RiLinkedinFill,
-  },
-  {
-    name: 'YouTube',
-    url: config.social.youtube,
-    icon: SiYoutube,
-  },
-  {
-    name: 'Email',
-    url: config.social.email,
-    icon: MdEmail,
-  },
-];
-
-export const Footer: React.FC = () => {
+export const Footer: React.FC<FooterProps> = ({ socialUrls, internal }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const socialMediaLinks = [
+    {
+      name: 'GitHub',
+      url: socialUrls.github,
+      icon: RiGithubFill,
+    },
+    {
+      name: 'LinkedIn',
+      url: socialUrls.linkedin,
+      icon: RiLinkedinFill,
+    },
+    {
+      name: 'YouTube',
+      url: socialUrls.youtube,
+      icon: SiYoutube,
+    },
+    {
+      name: 'Email',
+      url: socialUrls.email,
+      icon: MdEmail,
+    },
+  ];
+
+  const links: { title: string; items: Link[] }[] = [
+    {
+      title: 'Website',
+      items: [
+        { label: 'Homepage', href: '/' },
+        { label: 'Contact Us', href: '/contact' },
+        { label: 'Blog', href: '/blog' },
+        { label: 'Login', href: '/login' },
+        { label: 'Register', href: '/register' },
+      ],
+    },
+    {
+      title: 'About Us',
+      items: [
+        { label: 'About Us', href: '/about' },
+        { label: 'Our Story', href: '/about' },
+        { label: 'The Vision Ahead', href: '/about/vision' },
+        { label: 'Meet the Team', href: '/about/team' },
+      ],
+    },
+    {
+      title: 'Resources',
+      items: [
+        { label: 'Internal Docs', href: internal ?? '/404' },
+        { label: 'Help Center', href: '/help' },
+        { label: 'Feedback', href: '/feedback' },
+        { label: 'Changelog', href: '/changelog' },
+        { label: 'Sitemap', href: '/sitemap' },
+      ],
+    },
+    {
+      title: 'Policies',
+      items: [
+        { label: 'Terms of Service', href: '/terms' },
+        { label: 'Privacy Policy', href: '/privacy' },
+        { label: 'Community Guidelines', href: '/guidelines' },
+        { label: 'Accessibility', href: '/accessibility' },
+        { label: 'Licenses', href: '/licenses' },
+      ],
+    },
+  ];
 
   return (
     <>

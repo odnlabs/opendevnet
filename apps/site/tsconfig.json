@@ -20,7 +20,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "../../dist/apps/site/.next/types/**/*.ts"
+    "../../dist/apps/site/.next/types/**/*.ts",
+    "../../environment.d.ts"
   ],
   "exclude": ["node_modules"]
 }

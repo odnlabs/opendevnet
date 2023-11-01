@@ -1,0 +1,85 @@
+---
+title: Rust Style Guide
+last_updated: '2023-11-01'
+---
+
+This document outlines the conventions, standards, and best practices for working with Rust on Open Dev Net.
+
+## Automated Code Formatting
+
+The workspace uses [rustfmt](https://github.com/rust-lang/rustfmt) to format Rust code. Rustfmt will automatically format your code when you run `pnpm run format` in the root directory.
+
+If you use VS Code, you can install [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) extension to automatically format your code when you save a file.
+
+## Linting
+
+The workspace uses [Clippy](https://github.com/rust-lang/rust-clippy) to lint Rust code. Clippy will automatically lint your code when you run `pnpm run lint` in the root directory.
+
+If you use VS Code, you can install the [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer) extension to automatically lint your code as you type.
+
+## Naming Conventions
+
+### File Names
+
+File names should be written in `snake_case`. For example:
+
+```text
+my_file_name.rs
+```
+
+### Variable Names
+
+Variable names should be written in `snake_case`. For example:
+
+```rs
+let my_variable = "Hello World";
+```
+
+Constants should be written in `SCREAMING_SNAKE_CASE`. For example:
+
+```rs
+const MY_CONSTANT: &str = "Hello World";
+```
+
+## Imports
+
+Rust Imports should be grouped in the following order:
+
+1. **External libraries** (e.g. `serde`, `serde_json`)
+2. **Internal libraries** (e.g. `crate::utils`, `crate::models`)
+3. **Internal files** (e.g. `my_file`, `crate::utils::my_file`)
+
+## Code Formatting
+
+The workspace uses [rustfmt](https://github.com/rust-lang/rustfmt) to format Rust code. Rustfmt will automatically format your code when you run `cargo fmt`.
+
+## Comments and Documentation
+
+### Comments
+
+Comments should be written in `// ...` format. For example:
+
+```rs
+// This is a comment
+```
+
+### Documentation
+
+Documentation should be written in `/// ...` format. For example:
+
+````rs
+/// This is a function
+/// # Arguments
+/// * `my_param` - This is a param
+/// # Returns
+/// * `String` - This is a return value
+/// # Example
+/// ```
+/// let my_param = "Hello World";
+/// let my_function = my_function(my_param);
+/// assert_eq!(my_function, "Hello World");
+/// ```
+fn my_function(my_param: &str) -> String {
+  my_param.to_string()
+}
+````

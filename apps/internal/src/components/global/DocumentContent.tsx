@@ -3,15 +3,13 @@
 import { MDXRemote } from 'next-mdx-remote';
 import Link from 'next/link';
 import { useEffect } from 'react';
-// import rehypeHighlight from 'rehype-highlight';
 
-import { HiChevronUp } from 'react-icons/hi';
+import { HiChevronUp } from '@react-icons/all-files/hi/HiChevronUp';
 
 import styles from '@odnlabs/ui/styles/modules/doc.module.css';
-import { ReturnedDoc } from '@utils/mdxApi';
-import * as uiComponents from './uiClientComponents';
+import { ReturnedDoc } from '@odnlabs/utils-client';
 
-import { TableOfContents } from './TableOfContents';
+import * as uiComponents from './uiClientComponents';
 
 const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
@@ -25,12 +23,16 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
       index < linksLength;
       index += 1
     ) {
-      if (links[index].href.indexOf('#') === -1) {
-        if (links[index].hostname !== window.location.hostname) {
-          links[index].target = '_blank';
-          links[index].rel = 'noreferrer';
+      const link = links[index];
+
+      if (!link) continue;
+
+      if (link.href.indexOf('#') === -1) {
+        if (link.hostname !== window.location.hostname) {
+          link.target = '_blank';
+          link.rel = 'noreferrer';
         }
-        links[index].classList.add('link-200');
+        link.classList.add('link-200');
       }
     }
   }, []);
@@ -114,7 +116,9 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
             </div>
           </div>
         </div>
-        <TableOfContents />
+        <uiComponents.Toc
+          editLink={`https://github.com/odnlabs/opendevnet/tree/dev/apps/internal/${doc.meta.path}`}
+        />
       </div>
     </div>
   );

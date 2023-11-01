@@ -1,26 +1,29 @@
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 import { DocumentContent } from '@components';
-import { getDocFromSlug } from '@utils/docsApi';
-
-const fileName = 'accessibility';
-const fileDir = 'src/markdown/policies';
+import { mdxApi } from '@odnlabs/utils';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const { meta } = await getDocFromSlug(fileName, fileDir);
+  const doc = await mdxApi.getDocFromSlug('mdx', 'policies/accessibility');
+
+  if (!doc) {
+    return {
+      title: 'Not Found | Open Dev Net',
+    };
+  }
+
   return {
-    title: `${meta.title} | Open Dev Net`,
+    title: `${doc.meta.title} | Open Dev Net`,
   };
 };
 
 const Accessibility = async (): Promise<JSX.Element> => {
-  const doc = await getDocFromSlug(fileName, fileDir);
+  const doc = await mdxApi.getDocFromSlug('mdx', 'policies/accessibility');
 
-  return (
-    <div className="mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-3xl mx-auto w-11/12">
-      <DocumentContent doc={{ source: doc.source, title: doc.meta.title }} />
-    </div>
-  );
+  if (!doc) return redirect('/404');
+
+  return <DocumentContent doc={doc} />;
 };
 
 export default Accessibility;

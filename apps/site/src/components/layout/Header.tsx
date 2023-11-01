@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { config } from '@odnlabs/utils';
+
 import { HeaderBrand } from './Header/HeaderBrand';
 import { HeaderButtons } from './Header/HeaderButtons';
 import { HeaderLinks } from './Header/HeaderLinks';
@@ -22,7 +24,7 @@ const links: HeaderLink[] = [
   },
   {
     title: 'Internal',
-    href: '/internal',
+    href: `${config.internal}`,
     external: true,
   },
   {

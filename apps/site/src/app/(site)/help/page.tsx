@@ -2,14 +2,14 @@ import { Metadata, NextPage } from 'next';
 import Link from 'next/link';
 
 import { Button, Input } from '@components';
-import { getOrderedSlugs } from '@utils/helpDocApi';
+import { mdxApi } from '@odnlabs/utils';
 
 export const metadata: Metadata = {
   title: 'Help Center | Open Dev Net',
 };
 
 const Help: NextPage = async () => {
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
 
   return (
     <>

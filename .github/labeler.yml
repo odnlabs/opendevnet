@@ -42,3 +42,6 @@ libs:@odnlabs/ui:
 libs:@odnlabs/utils:
   - libs/utils/*
   - libs/utils/**/*
+libs:@odnlabs/utils-client:
+  - libs/utils-client/*
+  - libs/utils-client/**/*

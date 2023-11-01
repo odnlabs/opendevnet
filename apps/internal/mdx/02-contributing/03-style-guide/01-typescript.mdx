@@ -1,0 +1,97 @@
+---
+title: TypeScript Style Guide
+last_updated: '2023-11-01'
+---
+
+This document outlines the conventions, standards, and best practices for working with TypeScript on Open Dev Net.
+
+The TypeScript config files are located in `libs/tsconfig` and are the base config files for the workspace. The tsconfig config files are extended by the tsconfig files in each package. The rules defined in the tsconfig files are mostly as strict as necessary to ensure code quality and consistency.
+
+## Automated Code Formatting
+
+The workspace uses [Prettier](https://prettier.io/) to format TypeScript code. Prettier will automatically format your code when you run `pnpm run format` in the root directory.
+
+If you use VS Code, you can install the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) extension to automatically format your code when you save a file.
+
+## Linting
+
+The workspace uses [ESLint](https://eslint.org/) to lint TypeScript code. ESLint will automatically lint your code when you run `pnpm run lint` in the root directory.
+
+If you use VS Code, you can install the [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension to automatically lint your code as you type.
+
+The base ESLint config file is located in `libs/eslint-config-odn`. The ESLint config file is extended by the ESLint config files in each package and app.
+
+The rules defined in the ESLint config file are same as the tsconfig rules, in the sense that they are quite strict. However, they can be overridden in the ESLint config files in each package and app.
+
+For example, Next.js apps do not require jsdoc/tsdoc comments, so the jsdoc/tsdoc rules are disabled in the ESLint config files for Next.js apps.
+
+## Naming Conventions
+
+### File Names
+
+TypeScript file names should be named in `kebab-case`. For example:
+
+```text
+my-file-name.ts
+my-component.tsx
+```
+
+> This convention should also be followed for other file types by default.
+
+### Variable Names
+
+Variable names should be written in `camelCase`. For example:
+
+```ts
+const myVariable = 'Hello World';
+const myFunction = () => {};
+```
+
+Component names should be written in `PascalCase`. For example:
+
+```tsx
+const MyComponent = () => {
+  return <div>Hello World</div>;
+};
+```
+
+## Imports
+
+TypeScript Imports should be grouped in the following order:
+
+1. **External libraries** (e.g. `react`, `react-dom`)
+2. **React Icons** (e.g. `react-icons/ri`, `@react-icons/all-files/ri/RiCheck`)
+3. **Internal libraries** (e.g. `@odnlabs/ui`, `@odnlabs/api-client`)
+4. **Internal files** (e.g. `./my-file.ts`, `@components/Button.tsx`)
+
+## Code Formatting
+
+The workspace uses [Prettier](https://prettier.io/) to format TypeScript code. Prettier will automatically format your code when you run `yarn format`.
+
+## Comments and Documentation
+
+### Comments
+
+Comments should be written in `/** ... */` format. For example:
+
+```ts
+/**
+ * This is a comment
+ */
+```
+
+### Documentation
+
+Documentation should be written in `/** ... */` format. For example:
+
+```ts
+/**
+ * This is a function
+ * @param {string} myParam - This is a param
+ * @returns {string} This is a return value
+ */
+
+const myFunction = (myParam: string): string => {
+  return myParam;
+};
+```

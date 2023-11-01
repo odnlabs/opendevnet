@@ -3,15 +3,17 @@
 import Image from 'next/image';
 import { useSelector } from 'react-redux';
 
-import { HiChevronDown } from 'react-icons/hi';
-
-import { config } from '@odnlabs/utils';
+import { HiChevronDown } from '@react-icons/all-files/hi/HiChevronDown';
 
 import { userState } from '@store';
 
-interface AccountDropdownProps {}
+interface AccountDropdownProps {
+  defaultAvatar: string;
+}
 
-export const AccountDropdown: React.FC<AccountDropdownProps> = () => {
+export const AccountDropdown: React.FC<AccountDropdownProps> = ({
+  defaultAvatar,
+}) => {
   const user = useSelector(userState);
 
   return (
@@ -19,7 +21,7 @@ export const AccountDropdown: React.FC<AccountDropdownProps> = () => {
       <div className="py-1.5 mr-3">
         <button className="flex text-text-secondary">
           <Image
-            src={`/app${config.defaultAvatar}`}
+            src={`/app${defaultAvatar}`}
             alt="User Avatar"
             height={100}
             width={100}

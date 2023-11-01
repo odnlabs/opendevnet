@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 
-import { FaChevronDown } from 'react-icons/fa';
+import { FaChevronDown } from '@react-icons/all-files/fa/FaChevronDown';
 
-export interface FAQ {
+export interface Faq {
   question: string;
   answer: string | JSX.Element;
 }
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  data: FAQ[];
+  data: Faq[];
   autoClose?: boolean;
 }
 

@@ -2,12 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button, DocumentContent } from '@components';
-import {
-  Item,
-  SubItem,
-  getDocFromSlug,
-  getOrderedSlugs,
-} from '@utils/helpDocApi';
+import { mdxApi } from '@odnlabs/utils';
+import { Item, SubItem } from '@odnlabs/utils-client';
 
 interface Params {
   category: string;
@@ -19,17 +15,16 @@ export const generateMetadata = async ({
 }: {
   params: Params;
 }): Promise<Metadata> => {
-  const doc = await getDocFromSlug(
-    params.subcategory,
-    `mdx/help/${params.category}`
-  ).catch(() => undefined);
+  const doc = await mdxApi
+    .getDocFromSlug('mdx/help', `${params.category}/${params.subcategory}`)
+    .catch(() => undefined);
 
   if (doc)
     return {
       title: `${doc.meta.title} | Open Dev Net`,
     };
 
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category)
     return {
@@ -76,14 +71,15 @@ const HelpCategory = async ({
 }: {
   params: Params;
 }): Promise<JSX.Element> => {
-  const doc = await getDocFromSlug(
-    params.subcategory,
-    `mdx/help/${params.category}`
-  ).catch(() => undefined);
+  const doc = await mdxApi
+    .getDocFromSlug('mdx/help', `${params.category}/${params.subcategory}`, {
+      nextAndPrev: true,
+    })
+    .catch(() => undefined);
 
   if (doc) return <DocumentContent doc={doc} />;
 
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category) return <div>404</div>;
   const subcategory = category?.items.find(

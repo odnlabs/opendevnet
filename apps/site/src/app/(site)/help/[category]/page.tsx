@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button } from '@components';
-import { Item, SubItem, getOrderedSlugs } from '@utils/helpDocApi';
+import { mdxApi } from '@odnlabs/utils';
+import { Item, SubItem } from '@odnlabs/utils-client';
 
 interface Params {
   category: string;
@@ -13,7 +14,7 @@ export const generateMetadata = async ({
 }: {
   params: Params;
 }): Promise<Metadata> => {
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category)
     return {
@@ -54,7 +55,7 @@ const HelpCategory = async ({
 }: {
   params: Params;
 }): Promise<JSX.Element> => {
-  const ordered = await getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
 
   if (!category) return <div>404</div>;

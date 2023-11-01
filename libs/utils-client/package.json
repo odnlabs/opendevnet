@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "name": "@odnlabs/utils-client",
+  "version": "0.0.0",
+  "private": true,
+  "license": "CC-BY-NC-SA-4.0",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint \"**/*.ts*\""
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "next-mdx-remote": "^4.4.1"
+  },
+  "devDependencies": {
+    "@odnlabs/tsconfig": "workspace:*",
+    "@types/node": "^20.8.10",
+    "eslint-config-odn": "workspace:*",
+    "tsup": "^7.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,5 +1,7 @@
 import { Metadata, NextPage } from 'next';
 
+import { config } from '@odnlabs/utils';
+
 import { LoginForm } from './LoginForm';
 
 export const metadata: Metadata = {
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
 
 const Login: NextPage = () => (
   <div className="py-5 sm:py-10 md:py-20 min-h-screen bg-background-secondary">
-    <LoginForm />
+    <LoginForm web={config.web} />
   </div>
 );
 

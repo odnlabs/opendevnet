@@ -1,7 +1,8 @@
 'use client';
 
-import { Button } from '@odnlabs/ui';
 import Link from 'next/link';
+
+import { Button } from '@odnlabs/ui';
 
 export const HomepageButtons: React.FC = () => (
   <>

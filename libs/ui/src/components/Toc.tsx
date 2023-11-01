@@ -1,8 +1,6 @@
-'use client';
-
 import { useEffect, useRef, useState } from 'react';
 
-interface TableOfContentsProps {}
+import { HiOutlineExternalLink } from '@react-icons/all-files/hi/HiOutlineExternalLink';
 
 const useHeadsObserver = (): { activeId: string } => {
   const observer = useRef<IntersectionObserver | undefined>();
@@ -31,7 +29,17 @@ const useHeadsObserver = (): { activeId: string } => {
   return { activeId };
 };
 
-export const TableOfContents: React.FC<TableOfContentsProps> = () => {
+interface TocProps {
+  editLink?: string | undefined;
+}
+
+/**
+ * Table of Contents.
+ * @param options The options for the Table of Contents.
+ * @param options.editLink The link to the edit page.
+ * @returns The Table of Contents component.
+ */
+export const Toc: React.FC<TocProps> = ({ editLink }) => {
   const [headings, setHeadings] = useState<
     {
       id: string;
@@ -74,13 +82,6 @@ export const TableOfContents: React.FC<TableOfContentsProps> = () => {
               <li key={heading.id} className={styles[heading.level - 1]}>
                 <a
                   href={`#${heading.id}`}
-                  onClick={(event) => {
-                    event.preventDefault();
-
-                    document.getElementById(`#${heading.id}`)?.scrollIntoView({
-                      behavior: 'smooth',
-                    });
-                  }}
                   className={`text-sm ${
                     activeId === heading.id
                       ? 'font-semibold link'
@@ -92,6 +93,19 @@ export const TableOfContents: React.FC<TableOfContentsProps> = () => {
               </li>
             ))}
           </ul>
+          {editLink && (
+            <div className="border-t border-border mt-3 text-sm">
+              <a
+                href={editLink}
+                target="_blank"
+                rel="noreferrer"
+                className="flex my-2 text-text-secondary hover:text-text active:text-text"
+              >
+                Edit this page on GitHub
+                <HiOutlineExternalLink className="mt-1 translate-y-px ml-1.5 h-3 w-3" />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </>

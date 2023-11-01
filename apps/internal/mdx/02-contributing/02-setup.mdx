@@ -3,12 +3,6 @@ title: Setup Environment
 last_updated: '2023-10-28'
 ---
 
-<Alert
-  type="warning"
-  label="In Progress"
-  content="This page is a work in progress. It may be incomplete or contain inaccuracies. Check back later for updates."
-/>
-
 ## Tools
 
 | Tool and Installation Link                                                                                     | Do you need it?                                                                                                                                                                                   |
@@ -48,3 +42,9 @@ This can be used with the following options:
 ```
 
 > If you don't have the correct perms to run it, you might need to run this first: `chmod +x run.sh`.
+
+## Environment Variables
+
+In the root of the workspace, there is a `.env.example` file. This contains all of the environment variables that are required for the applications to run.
+
+Development commands require that all of the environment variables are provided in a `.env.local` file in the root of the workspace. Production commands, such as `build`, require that all of the environment variables are provided in a `.env.production` file in the root of the workspace.

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import { IconType } from 'react-icons';
+import { IconType } from '@react-icons/all-files/lib';
 
 export interface SidebarButton {
   label: string;
