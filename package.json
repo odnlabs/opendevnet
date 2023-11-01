@@ -31,8 +31,9 @@
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "postinstall": "manypkg check",
     "install:api": "nx run api:install",
-    "lint": "nx run-many --target=lint --all",
-    "lint:fix": "nx run-many --target=lint --all -- --fix",
+    "lint": "nx run-many --target=lint --all --exclude=api",
+    "lint:api": "nx run api:lint",
+    "lint:fix": "nx run-many --target=lint --all -- --fix --exclude=api",
     "test": "nx run-many --target=test --all"
   },
   "dependencies": {
