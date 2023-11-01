@@ -1,6 +1,49 @@
 ---
-title: '@odnlabs/utils'
+title: 'Overview'
 last_updated: '2023-10-30'
 ---
 
-...
+The `@odnlabs/utils` library is a collection of utility functions used for TypeScript projects in Open Dev Net.
+
+<Alert
+  type="important"
+  label="Server Side Only"
+  content="The utils library cannot be used on the client side at all because it uses Node.js specific APIs. To utilize the utils library on the client side, it must be used on the server side and any data that needs to be sent to the client must passed as a prop to a client side component."
+/>
+
+## Constants
+
+### `config`
+
+The `config` function is used to get the configuration for the current environment. The `.env` is loaded from `.env.local` at the root of the workspace.
+
+```ts
+// config properties
+{
+  name: string;
+  defaultAvatar: string;
+  social: {
+    github: string;
+    linkedin: string;
+    youtube: string;
+    email: string;
+  }
+  api: string | undefined;
+  ws: string | undefined;
+  site: string | undefined;
+  web: string | undefined;
+  internal: string | undefined;
+}
+```
+
+## functions
+
+### `mdxApi.getSlugs`
+
+The `mdxApi.getSlugs` function is used to get the slugs for all the MDX files in a directory recursively.
+
+```ts
+import { mdxApi } from '@odnlabs/utils';
+
+const slugs = await mdxApi.getSlugs('mdx/docs');
+```

@@ -84,14 +84,6 @@
   border: 1px solid rgb(var(--border));
 }
 
-.content:not(.ignore) a code:not(pre code) {
-  color: rgb(var(--link));
-}
-
-.content:not(.ignore) a code:not(pre code):hover {
-  text-decoration: underline;
-}
-
 /* Unordered Lists */
 .content:not(.ignore) ul {
   display: block;
