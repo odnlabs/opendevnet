@@ -17,8 +17,10 @@
     "libs/*"
   ],
   "scripts": {
-    "build": "dotenv -e .env.production -- nx run-many --target=build --all",
-    "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all",
+    "build": "dotenv -e .env.production -- nx run-many --target=build --all --exclude=api",
+    "build:api": "dotenv -e .env.production -- nx run-many --target=build --projects=api --parallel --maxParallel=1",
+    "build:api:dev": "dotenv -e .env.local -- nx run-many --target=build --projects=api --parallel --maxParallel=1",
+    "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all --exclude=api",
     "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
     "dev:api": "dotenv -e .env.local -- nx run api:dev",
     "dev:internal": "dotenv -e .env.local -- nx run-many --target=dev --projects=@odnlabs/ui,@odnlabs/utils-client,@odnlabs/utils,internal --parallel --maxParallel=4",
