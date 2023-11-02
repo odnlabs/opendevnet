@@ -93,7 +93,7 @@ export const SelectDropdown: React.FC<Props> = ({
             id="select-dropdown"
           >
             <div
-              className={`thin-scroll top-2 z-[100] max-h-60 origin-top cursor-default overflow-y-auto overflow-x-hidden rounded-sm border border-border bg-background p-1 shadow-xl drop-shadow-lg transition-all duration-200 ${
+              className={`thin-scroll border-border bg-background top-2 z-[100] max-h-60 origin-top cursor-default overflow-y-auto overflow-x-hidden rounded-sm border p-1 shadow-xl drop-shadow-lg transition-all duration-200 ${
                 focused ? '' : 'invisible h-0 -translate-y-3 opacity-0'
               }`}
             >
@@ -132,15 +132,15 @@ export const SelectDropdown: React.FC<Props> = ({
                       closeSelect();
                     }
                   }}
-                  className={`text-sm rounded-sm flex w-full justify-between py-2.5 px-4 text-left ring-primary ring-inset focus-visible:ring-2 hover:bg-secondary/50 active:bg-secondary transition duration-200 ${
+                  className={`ring-primary hover:bg-secondary/50 active:bg-secondary flex w-full justify-between rounded-sm px-4 py-2.5 text-left text-sm ring-inset transition duration-200 focus-visible:ring-2 ${
                     state === option.value &&
-                    'bg-secondary font-medium text-text'
+                    'bg-secondary text-text font-medium'
                   }`}
                   id={`select-dropdown-item-${index.toString()}`}
                 >
                   {option.label}
                   {state === option.value && (
-                    <BsCheckCircle className="mt-0.5 h-4 w-4 text-text-secondary" />
+                    <BsCheckCircle className="text-text-secondary mt-0.5 h-4 w-4" />
                   )}
                 </button>
               ))}

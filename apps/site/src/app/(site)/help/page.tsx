@@ -13,9 +13,9 @@ const Help: NextPage = async () => {
 
   return (
     <>
-      <div className="py-20 bg-gradient-to-tr from-brand-gradient-3/50 to-transparent">
-        <div className="text-center max-w-xl w-10/12 mx-auto">
-          <h1 className="font-bold text-5xl drop-shadow-md">Help Center</h1>
+      <div className="from-brand-gradient-3/50 bg-gradient-to-tr to-transparent py-20">
+        <div className="mx-auto w-10/12 max-w-xl text-center">
+          <h1 className="text-5xl font-bold drop-shadow-md">Help Center</h1>
           <Input
             placeholder="What do you need help with?"
             size="lg"
@@ -25,20 +25,20 @@ const Help: NextPage = async () => {
         </div>
       </div>
 
-      <div className="max-w-7xl w-11/12 mx-auto pt-14 pb-24">
-        <h1 className="font-bold text-2xl px-5">Categories</h1>
+      <div className="mx-auto w-11/12 max-w-7xl pb-24 pt-14">
+        <h1 className="px-5 text-2xl font-bold">Categories</h1>
         <div className="mt-2 flex flex-wrap justify-start">
           {ordered.map((category, index) => (
             <div key={index} className={`w-1/3 p-5`}>
-              <div className="relative bg-background-secondary h-full border border-border p-10 rounded-lg">
+              <div className="bg-background-secondary border-border relative h-full rounded-lg border p-10">
                 <h1 className="text-lg font-medium">{category.name}</h1>
-                <p className="mt-2 text-sm text-text-faint mb-16">
+                <p className="text-text-faint mb-16 mt-2 text-sm">
                   {category.description}
                 </p>
                 <div className="absolute bottom-10 left-10">
                   <Link
                     href={`/help/${category.slug}`}
-                    className="inline-block group"
+                    className="group inline-block"
                   >
                     <Button label="View All" variant="primary-outline" link />
                   </Link>

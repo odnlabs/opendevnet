@@ -51,10 +51,10 @@ const Section: React.FC<{
   items: (SubItem | Item)[] | undefined;
 }> = ({ name, slug, description, items }) =>
   items && (
-    <div className="bg-background-secondary p-8 mt-8 rounded-lg border border-border">
-      <h2 className="font-semibold text-2xl">{name}</h2>
-      <p className="mt-3 text-text-secondary">{description}</p>
-      <div className="mt-5 pt-2 border-t border-border">
+    <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
+      <h2 className="text-2xl font-semibold">{name}</h2>
+      <p className="text-text-secondary mt-3">{description}</p>
+      <div className="border-border mt-5 border-t pt-2">
         {items.map((item, index) => (
           <div key={index} className="my-2">
             <Link href={`/help/${slug}/${item.slug}`} className="link">
@@ -89,18 +89,18 @@ const HelpCategory = async ({
 
   return (
     <>
-      <div className="py-20 bg-gradient-to-tr from-brand-gradient-3/50 to-transparent">
-        <div className="max-w-7xl w-10/12 mx-auto">
-          <h1 className="font-bold text-5xl drop-shadow-md">
+      <div className="from-brand-gradient-3/50 bg-gradient-to-tr to-transparent py-20">
+        <div className="mx-auto w-10/12 max-w-7xl">
+          <h1 className="text-5xl font-bold drop-shadow-md">
             {subcategory.name}
           </h1>
-          <p className="mt-5 text-text-primary text-lg">
+          <p className="text-text-primary mt-5 text-lg">
             {subcategory.description}
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl w-11/12 mx-auto pt-8 pb-24">
+      <div className="mx-auto w-11/12 max-w-7xl pb-24 pt-8">
         <Link href={`/help/${category.slug}`}>
           <Button label="Back" variant="primary-outline" />
         </Link>

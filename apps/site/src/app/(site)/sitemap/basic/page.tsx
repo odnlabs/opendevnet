@@ -20,11 +20,11 @@ interface BoxProps {
 
 const Content: React.FC<{ layer: Layer }> = ({ layer }) => (
   <>
-    <span className="h-1 w-1 rounded-xl bg-white/50 absolute top-2 left-0"></span>
-    <p className="font-medium text-sm">{layer.name}</p>
+    <span className="absolute left-0 top-2 h-1 w-1 rounded-xl bg-white/50"></span>
+    <p className="text-sm font-medium">{layer.name}</p>
 
     {layer.description && (
-      <p className="text-xs text-text-secondary">{layer.description}</p>
+      <p className="text-text-secondary text-xs">{layer.description}</p>
     )}
   </>
 );
@@ -36,7 +36,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
     <div className="relative block">
       {!layer.path ? (
         <div
-          className="relative inline-block my-0.5 px-4"
+          className="relative my-0.5 inline-block px-4"
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -46,7 +46,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
       ) : layer.path.startsWith('/app') ? (
         <a
           href={layer.path}
-          className="group relative inline-block my-0.5 px-4 link"
+          className="link group relative my-0.5 inline-block px-4"
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -56,7 +56,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
       ) : (
         <Link
           href={layer.path}
-          className="group relative inline-block my-0.5 px-4 link"
+          className="link group relative my-0.5 inline-block px-4"
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -79,10 +79,10 @@ const SitemapBasic: NextPage = async () => {
   ) as Layer[];
 
   return (
-    <div className="my-10 bg-black/50 rounded-xl max-w-5xl w-11/12 mx-auto">
-      <div className="py-10 px-16 max-w-5xl mx-auto">
+    <div className="mx-auto my-10 w-11/12 max-w-5xl rounded-xl bg-black/50">
+      <div className="mx-auto max-w-5xl px-16 py-10">
         <div className="text-center">
-          <h1 className="font-bold text-3xl text-center">
+          <h1 className="text-center text-3xl font-bold">
             Sitemap - Basic View
           </h1>
           <div className="mt-2">
@@ -91,7 +91,7 @@ const SitemapBasic: NextPage = async () => {
             </Link>
           </div>
         </div>
-        <div className="columns-1 md:columns-2 gap-10 mt-8">
+        <div className="mt-8 columns-1 gap-10 md:columns-2">
           {layers.map((layer, index) => (
             <div key={index} className="inline-block w-full">
               <Box layer={layer} deep={0} />

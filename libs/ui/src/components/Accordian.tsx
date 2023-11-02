@@ -21,13 +21,13 @@ export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
       {data.map((set, index) => (
         <div
           key={index}
-          className={`h-full overflow-hidden border border-border text-sm md:text-base text-text-primary ${
+          className={`border-border text-text-primary h-full overflow-hidden border text-sm md:text-base ${
             index === 0 ? 'rounded-t-lg' : 'border-t-0'
           } ${index === data.length - 1 && 'rounded-b-lg'}`}
         >
           {/* Question - button */}
           <button
-            className="no-selection block w-full cursor-pointer bg-background-secondary px-5 py-5 ring-inset text-left"
+            className="no-selection bg-background-secondary block w-full cursor-pointer px-5 py-5 text-left ring-inset"
             onClick={() => {
               if (autoClose) setFocused(focused === index ? null : index);
               else
@@ -60,7 +60,7 @@ export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
             }`}
           >
             <div
-              className={`overflow-hidden border-border bg-background text-text-secondary ${
+              className={`border-border bg-background text-text-secondary overflow-hidden ${
                 (autoClose ? focused === index : focusedArr.includes(index)) &&
                 'border-t'
               }`}

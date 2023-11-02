@@ -20,9 +20,9 @@ export const Sidebar: React.FC<SidebarProps> = ({ buttons }) => {
 
   return (
     <>
-      <div className="relative w-60 h-full"></div>
+      <div className="relative h-full w-60"></div>
 
-      <div className="fixed w-60 z-50 h-full left-16 top-14 bg-[rgb(var(--sidebar))] border-r border-border/50">
+      <div className="border-border/50 fixed left-16 top-14 z-50 h-full w-60 border-r bg-[rgb(var(--sidebar))]">
         <div className="px-3 pt-3">
           {buttons.map((section, index) => (
             <div key={index}>
@@ -30,17 +30,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ buttons }) => {
                 <Link
                   key={btnIndex}
                   href={btn.href}
-                  className={`flex w-full px-3 py-3 my-0.5 text-sm rounded-md border-l-2 transition duration-200 hover:ease-out ${
+                  className={`my-0.5 flex w-full rounded-md border-l-2 px-3 py-3 text-sm transition duration-200 hover:ease-out ${
                     pathname === btn.href
                       ? 'text-text bg-primary-glass/20 border-primary-glass'
                       : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text border-transparent'
                   }`}
                 >
-                  <btn.icon className="w-5 h-5 mr-3 mt-0" />
+                  <btn.icon className="mr-3 mt-0 h-5 w-5" />
                   <span className="tracking-wide">{btn.label}</span>
                 </Link>
               ))}
-              <div className="w-full h-px mx-auto my-3 bg-text/10"></div>
+              <div className="bg-text/10 mx-auto my-3 h-px w-full"></div>
             </div>
           ))}
         </div>

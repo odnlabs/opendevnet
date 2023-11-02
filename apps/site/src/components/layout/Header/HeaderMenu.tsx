@@ -24,34 +24,34 @@ export const HeaderMenu: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
   return (
     <>
       <button
-        className="lg:hidden h-12 w-12 my-2 p-2.5 rounded-3xl transition duration-200 hover:bg-secondary active:bg-secondary-hover"
+        className="hover:bg-secondary active:bg-secondary-hover my-2 h-12 w-12 rounded-3xl p-2.5 transition duration-200 lg:hidden"
         onClick={() => setOpen(true)}
       >
         <RiMenuFill className="h-7 w-7" />
       </button>
 
       <div
-        className={`z-60 fixed lg:hidden top-0 left-0 h-screen w-screen bg-black/75 transition-[visibility,opacity] duration-500 ${
+        className={`z-60 fixed left-0 top-0 h-screen w-screen bg-black/75 transition-[visibility,opacity] duration-500 lg:hidden ${
           !open && 'invisible opacity-0'
         }`}
         onClick={() => setOpen(false)}
       ></div>
 
       <div
-        className={`z-60 fixed lg:hidden top-0 left-0 h-screen w-full max-w-60 bg-[rgb(var(--navigation-bar))] transition-[transform] duration-500 ${
+        className={`z-60 max-w-60 fixed left-0 top-0 h-screen w-full bg-[rgb(var(--navigation-bar))] transition-[transform] duration-500 lg:hidden ${
           !open && '-translate-x-full'
         }`}
       >
-        <div className="p-3 flex justify-between border-b border-border h-16">
+        <div className="border-border flex h-16 justify-between border-b p-3">
           <Link href="/" className="flex" onClick={() => setOpen(false)}>
             <Image
               src={`/logo-trans${theme === 'light' ? 'light' : ''}.png`}
               height={100}
               width={100}
               alt="Logo"
-              className="w-10 h-10 rounded-full"
+              className="h-10 w-10 rounded-full"
             />
-            <p className="font-medium text-lg text-text my-1.5 ml-1">ODN</p>
+            <p className="text-text my-1.5 ml-1 text-lg font-medium">ODN</p>
           </Link>
           <button className="mr-1" onClick={() => setOpen(false)}>
             <MdClose className="h-6 w-6" />
@@ -64,7 +64,7 @@ export const HeaderMenu: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
                 key={index}
                 href={link.href}
                 rel="noopener noreferrer"
-                className="block my-1 py-2 px-5 text-sm text-text-secondary font-medium"
+                className="text-text-secondary my-1 block px-5 py-2 text-sm font-medium"
               >
                 {link.title}
               </a>
@@ -72,7 +72,7 @@ export const HeaderMenu: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
               <Link
                 key={index}
                 href={link.href}
-                className={`block my-1 py-2 px-5 text-sm ${
+                className={`my-1 block px-5 py-2 text-sm ${
                   pathname === link.href
                     ? 'text-text font-bold'
                     : 'text-text-secondary font-medium'

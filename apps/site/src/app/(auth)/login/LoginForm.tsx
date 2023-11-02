@@ -62,14 +62,14 @@ export const LoginForm: React.FC<LoginFormProps> = ({ web }) => {
   };
   return (
     <form
-      className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8"
+      className="bg-background mx-auto w-11/12 max-w-md rounded-3xl p-8"
       onSubmit={(event) => {
         handleSubmit(event);
       }}
     >
-      <div className="border-b border-border pb-5">
+      <div className="border-border border-b pb-5">
         <h1 className="text-3xl font-bold">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
+          <span className="from-brand-gradient-1 to-brand-gradient-2 bg-gradient-to-r bg-clip-text text-transparent">
             Login to ODN
           </span>
         </h1>
@@ -107,7 +107,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ web }) => {
         </div>
 
         <div className="mt-5">
-          <p className="text-sm text-text-secondary">
+          <p className="text-text-secondary text-sm">
             Don&apos;t have an account?{' '}
             <Link href="/register" className="link">
               Register

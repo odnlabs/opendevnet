@@ -10,7 +10,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ label, ...props }) => (
     {label && (
       <label
         htmlFor={props.id}
-        className="inline-block text-sm text-text-primary font-medium mb-2 ml-1"
+        className="text-text-primary mb-2 ml-1 inline-block text-sm font-medium"
       >
         {label}
         {props.required && <span className="text-danger ml-1">*</span>}
@@ -18,7 +18,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ label, ...props }) => (
     )}
     <textarea
       {...props}
-      className={`block w-full px-3 py-2 rounded-md bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))] transition duration-200 placeholder:text-sm border-2 border-transparent focus:border-primary ${props.className}`}
+      className={`focus:border-primary block w-full rounded-md border-2 border-transparent bg-[rgb(var(--input))] px-3 py-2 transition duration-200 placeholder:text-sm focus:bg-[rgb(var(--input-focus))] ${props.className}`}
     />
   </div>
 );

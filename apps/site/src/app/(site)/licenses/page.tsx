@@ -117,14 +117,14 @@ const Licenses: NextPage = async () => {
 
   return (
     <>
-      <div className="max-w-xl w-10/12 mx-auto mt-10 lg:mt-20 mb-20 lg:mb-28">
+      <div className="mx-auto mb-20 mt-10 w-10/12 max-w-xl lg:mb-28 lg:mt-20">
         <h1 className="text-4xl font-bold">Licenses</h1>
         <p className="mt-4">
           All software and documentation in the Open Dev Net is released under
           one of the following licenses:
         </p>
         <p className="mt-4 font-medium">Rust Crates:</p>
-        <ul className="mt-1 list-disc list-inside">
+        <ul className="mt-1 list-inside list-disc">
           {filteredLicenses.rust.map((license, index) => (
             <li key={index} className="text-text-secondary">
               <a
@@ -150,7 +150,7 @@ const Licenses: NextPage = async () => {
         </ul>
 
         <p className="mt-4 font-medium">Internal Libraries:</p>
-        <ul className="mt-1 list-disc list-inside">
+        <ul className="mt-1 list-inside list-disc">
           {filteredLicenses.internal.map((license, index) => (
             <li key={index} className="text-text-secondary">
               <a
@@ -176,7 +176,7 @@ const Licenses: NextPage = async () => {
         </ul>
 
         <p className="mt-4 font-medium">NPM Packages:</p>
-        <ul className="mt-1 list-disc list-inside">
+        <ul className="mt-1 list-inside list-disc">
           {filteredLicenses.js.map((license, index) => (
             <li key={index} className="text-text-secondary">
               <a

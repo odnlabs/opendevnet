@@ -7,16 +7,16 @@ export const Sidebar: React.FC = async () => {
 
   return (
     <>
-      <div className="relative w-72 h-[calc(100vh-3.5rem)]"></div>
+      <div className="relative h-[calc(100vh-3.5rem)] w-72"></div>
 
-      <div className="fixed z-40 bottom-0 left-0 w-72 h-[calc(100vh-3.5rem)] bg-[rgb(var(--header))] border-r border-border overflow-y-auto hover-thin-scroll pb-20">
+      <div className="border-border hover-thin-scroll fixed bottom-0 left-0 z-40 h-[calc(100vh-3.5rem)] w-72 overflow-y-auto border-r bg-[rgb(var(--header))] pb-20">
         <div className="pt-2">
           {ordered.map((cat, index) => (
             <div
               key={index}
-              className={`py-5 mx-3 ${index !== 0 && 'border-t border-border'}`}
+              className={`mx-3 py-5 ${index !== 0 && 'border-border border-t'}`}
             >
-              <p className="font-semibold text-sm text-text mb-2 mx-2.5">
+              <p className="text-text mx-2.5 mb-2 text-sm font-semibold">
                 {cat.name}
               </p>
 

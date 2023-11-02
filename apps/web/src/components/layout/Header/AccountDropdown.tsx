@@ -18,8 +18,8 @@ export const AccountDropdown: React.FC<AccountDropdownProps> = ({
 
   return (
     user && (
-      <div className="py-1.5 mr-3">
-        <button className="flex text-text-secondary">
+      <div className="mr-3 py-1.5">
+        <button className="text-text-secondary flex">
           <Image
             src={`/app${defaultAvatar}`}
             alt="User Avatar"
@@ -30,7 +30,7 @@ export const AccountDropdown: React.FC<AccountDropdownProps> = ({
           <span className="ml-2.5 mr-1.5 py-2 font-medium">
             {user.username}
           </span>
-          <HiChevronDown className="h-5 w-5 my-2.5" />
+          <HiChevronDown className="my-2.5 h-5 w-5" />
         </button>
       </div>
     )

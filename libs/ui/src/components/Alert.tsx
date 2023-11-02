@@ -21,12 +21,12 @@ export const Alert: React.FC<AlertProps> = ({ type, label, content }) => {
 
   return (
     <div
-      className={`ignore px-6 py-5 my-5 rounded-lg border bg-background-secondary ${typeStyles[type]}`}
+      className={`ignore bg-background-secondary my-5 rounded-lg border px-6 py-5 ${typeStyles[type]}`}
     >
       <p className="font-semibold tracking-wide">
         {label ?? type.charAt(0).toUpperCase() + type.slice(1)}
       </p>
-      <p className="block mt-2 text-sm">{content}</p>
+      <p className="mt-2 block text-sm">{content}</p>
     </div>
   );
 };

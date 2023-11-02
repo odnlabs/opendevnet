@@ -30,8 +30,8 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const linkRefs = useRef<HTMLAnchorElement[]>([]);
 
   return (
-    <div className="max-w-7xl w-11/12 mx-auto mb-20">
-      <div className="relative flex justify-center bg-background-secondary max-w-3xl w-11/12 mx-auto rounded-b-3xl">
+    <div className="mx-auto mb-20 w-11/12 max-w-7xl">
+      <div className="bg-background-secondary relative mx-auto flex w-11/12 max-w-3xl justify-center rounded-b-3xl">
         <div className="relative">
           <span
             style={{
@@ -39,7 +39,7 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                 links.findIndex((link) => link.href === pathname) * 100
               }%)`,
             }}
-            className={`absolute left-0 bottom-0 h-0.5 rounded-lg w-24 bg-text transition duration-500`}
+            className={`bg-text absolute bottom-0 left-0 h-0.5 w-24 rounded-lg transition duration-500`}
           ></span>
         </div>
 
@@ -50,7 +50,7 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             ref={(el) => {
               linkRefs.current[index] = el as HTMLAnchorElement;
             }}
-            className={`group relative py-4 w-24 text-center font-medium transition duration-200 ${
+            className={`group relative w-24 py-4 text-center font-medium transition duration-200 ${
               pathname === link.href
                 ? 'text-text'
                 : 'text-text-faint hover:text-text-secondary focus:text-text-primary'
