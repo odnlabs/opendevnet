@@ -14,16 +14,10 @@ const Team: NextPage = () => {
       title: 'Founder & Lead Developer',
     },
     {
-      name: 'Abdullah Alharbi',
-      username: 'A-alharbi9 ',
-      avatar: 'https://avatars.githubusercontent.com/u/82731458?v=4',
-      title: 'Fullstack Developer',
-    },
-    {
-      name: 'Brian Kungu ',
-      username: 'brianKungu',
-      avatar: 'https://avatars.githubusercontent.com/u/49023180?v=4',
-      title: 'Frontend Developer',
+      name: 'ODN Admin',
+      username: 'odn-admin',
+      avatar: 'https://avatars.githubusercontent.com/u/137981468?v=4',
+      title: 'Admin Account',
     },
   ];
 
