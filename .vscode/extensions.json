@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ExodiusStudios.comment-anchors",
+    "EditorConfig.EditorConfig",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "humao.rest-client",
+    "rust-lang.rust-analyzer"
+  ]
+}
