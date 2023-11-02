@@ -1,43 +1,64 @@
 # Dependencies
-node_modules
-.pnp
-.pnp.js
+**/node_modules
+
+# Logs
+**/logs
+**/*.log
+**/npm-debug.log*
 
 # Testing
-coverage
+**/coverage
 
 # Next.js
-.next/
-out/
+**/.next/
+**/out/
 
-# Misc
-.DS_Store
-*.pem
-
-# Debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-tmp/
-
-# Environment files
-.env
-.env.production
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Production
-build
-dist/
-nginx.conf
-odn.crt
-odn.key
+# Dist
+**/dist/
+**/build/
 
 # Rust
 **/target/
 
 # Docker
-docker/postgres-data
-docker/redis-data
+**/docker/postgres-data
+**/docker/redis-data
+**/docker/production/nginx.conf
+**/docker/production/ssl/*
+
+# Cache
+**/tmp/
+**/.nx/
+**/.prettiercache
+**/.eslintcache
+
+# Environment
+**/.env.*
+
+# Miscellaneous
+**/.tmp
+**/.vscode/*
+**/.idea
+**/.DS_Store
+**/tsup.config.bundled*
+
+# Docker specific
+**/.husky/
+**/.git/
+**/.github/
+**/.commitlintrc.json
+**/.editorconfig
+**/.eslintrc.js
+**/.gitattributes
+**/.gitignore
+**/.lintstagedrc
+**/.prettierignore
+**/.prettierrc
+**/docker-compose.yml
+**/docker-compose.*.yml
+**/Dockerfile
+**/Dockerfile.*
+**/LICENSE
+**/README.md
+**/CHANGELOG.md
+**/run.sh
