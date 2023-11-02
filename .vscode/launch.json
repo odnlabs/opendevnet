@@ -1,0 +1,57 @@
+{
+  "version": "0.2.0",
+  "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
+  "configurations": [
+    {
+      "name": "Launch apps/internal development",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["nx", "run", "internal:dev", "--verbose"],
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "env": {
+        "DEBUG": "true",
+        "TS_NODE_IGNORE": "false",
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/internal/tsconfig.json"
+      }
+    },
+    {
+      "name": "Launch apps/site development",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["nx", "run", "site:dev", "--verbose"],
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "env": {
+        "DEBUG": "true",
+        "TS_NODE_IGNORE": "false",
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/site/tsconfig.json"
+      }
+    },
+    {
+      "name": "Launch apps/web development",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["nx", "run", "web:dev", "--verbose"],
+      "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
+      "outputCapture": "std",
+      "internalConsoleOptions": "openOnSessionStart",
+      "console": "internalConsole",
+      "env": {
+        "DEBUG": "true",
+        "TS_NODE_IGNORE": "false",
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/web/tsconfig.json"
+      }
+    }
+  ]
+}
