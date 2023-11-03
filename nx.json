@@ -38,6 +38,7 @@
       "inputs": ["default", "^production"]
     },
     "dev": {
+      "dependsOn": ["^build"],
       "outputs": [
         "{projectRoot}/dist",
         "{projectRoot}/.next",
