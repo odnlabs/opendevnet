@@ -2,47 +2,75 @@
 
 # Update the codebase and restart Docker container(s)
 function update() {
-  echo "Updating docker services..."
   git pull
-  # docker-compose -f "$COMPOSE_FILE" down --rmi all"$SERVICE"
-  docker-compose -f "$COMPOSE_FILE" up --build -d"$SERVICE"
+  if [ -n "$SERVICE" ]; then
+    echo "Updating docker service $SERVICE..."
+  # docker compose -f "$COMPOSE_FILE" down --rmi all "$SERVICE"
+    docker compose -f "$COMPOSE_FILE" up --build -d "$SERVICE"
+  else
+    echo "Updating all docker services..."
+    docker compose -f "$COMPOSE_FILE" up --build -d
+  fi
 }
 
 # Restart Docker container(s)
 function restart() {
-  echo "Restarting docker services..."
-  docker-compose -f "$COMPOSE_FILE" restart"$SERVICE"
+  if [ -n "$SERVICE" ]; then
+    echo "Restarting docker service $SERVICE..."
+    docker compose -f "$COMPOSE_FILE" restart "$SERVICE"
+  else
+    echo "Restarting all docker services..."
+    docker compose -f "$COMPOSE_FILE" restart
+  fi
 }
 
 # Stop Docker container(s)
 function stop() {
-  echo "Stopping docker services..."
-  docker-compose -f "$COMPOSE_FILE" down"$SERVICE"
+  if [ -n "$SERVICE" ]; then
+    echo "Stopping docker service $SERVICE..."
+    docker compose -f "$COMPOSE_FILE" down "$SERVICE"
+  else
+    echo "Stopping all docker services..."
+    docker compose -f "$COMPOSE_FILE" down
+  fi
 }
 
 # Build Docker container(s)
 function build() {
-  echo "Building docker services..."
-  docker-compose -f "$COMPOSE_FILE" build"$SERVICE"
+  if [ -n "$SERVICE" ]; then
+    echo "Building docker $SERVICE..."
+    docker compose -f "$COMPOSE_FILE" build "$SERVICE"
+  else
+    echo "Building all docker services..."
+    docker compose -f "$COMPOSE_FILE" build
+  fi
 }
 
 # Start Docker container(s)
 function start() {
   echo "Starting docker services..."
-  docker-compose -f "$COMPOSE_FILE" up --build -d"$SERVICE"
+  if [ -n "$SERVICE" ]; then
+    docker compose -f "$COMPOSE_FILE" up --build -d "$SERVICE"
+  else
+    docker compose -f "$COMPOSE_FILE" up --build -d
+  fi
 }
 
 # View logs for Docker container(s)
 function logs() {
   echo "Showing logs for docker services..."
-  docker-compose -f "$COMPOSE_FILE" logs -t -f --tail 1000"$SERVICE"
+  if [ -n "$SERVICE" ]; then
+    docker compose -f "$COMPOSE_FILE" logs -t -f --tail 1000 "$SERVICE"
+  else
+    docker compose -f "$COMPOSE_FILE" logs -t -f --tail 1000
+  fi
 }
 
 # Specify the service to run, if provided
 if [ -z "$3" ]; then
   SERVICE=""
 else
-  SERVICE=" $3"
+  SERVICE="$3"
 fi
 
 # Handle command-line arguments
