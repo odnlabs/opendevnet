@@ -4,38 +4,38 @@
 function update() {
   echo "Updating docker services..."
   git pull
-  # docker compose -f "$COMPOSE_FILE" down --rmi all"$SERVICE"
-  docker compose -f "$COMPOSE_FILE" up --build -d"$SERVICE"
+  # docker-compose -f "$COMPOSE_FILE" down --rmi all"$SERVICE"
+  docker-compose -f "$COMPOSE_FILE" up --build -d"$SERVICE"
 }
 
 # Restart Docker container(s)
 function restart() {
   echo "Restarting docker services..."
-  docker compose -f "$COMPOSE_FILE" restart"$SERVICE"
+  docker-compose -f "$COMPOSE_FILE" restart"$SERVICE"
 }
 
 # Stop Docker container(s)
 function stop() {
   echo "Stopping docker services..."
-  docker compose -f "$COMPOSE_FILE" down"$SERVICE"
+  docker-compose -f "$COMPOSE_FILE" down"$SERVICE"
 }
 
 # Build Docker container(s)
 function build() {
   echo "Building docker services..."
-  docker compose -f "$COMPOSE_FILE" build"$SERVICE"
+  docker-compose -f "$COMPOSE_FILE" build"$SERVICE"
 }
 
 # Start Docker container(s)
 function start() {
   echo "Starting docker services..."
-  docker compose -f "$COMPOSE_FILE" up --build -d"$SERVICE"
+  docker-compose -f "$COMPOSE_FILE" up --build -d"$SERVICE"
 }
 
 # View logs for Docker container(s)
 function logs() {
   echo "Showing logs for docker services..."
-  docker compose -f "$COMPOSE_FILE" logs -t -f --tail 1000"$SERVICE"
+  docker-compose -f "$COMPOSE_FILE" logs -t -f --tail 1000"$SERVICE"
 }
 
 # Specify the service to run, if provided
