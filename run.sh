@@ -1,72 +1,55 @@
 #!/bin/bash
 
-# Function to update Docker images
-function update() {
-  echo "Updating docker services..."
-  docker compose -f "$COMPOSE_FILE" down --rmi all
-  git pull
-  docker compose -f "$COMPOSE_FILE" up --build -d
+# ANSI color codes
+export BOLD='\033[1m'
+export RESET='\033[0m' # No color or formatting
+export RED='\033[0;31m'
+export YELLOW='\033[0;33m'
+export GREEN='\033[0;32m'
+export BLUE='\033[0;34m'
+
+# Enable the "exit on error" option, so that if any command fails the script will exit
+set -e
+
+function run_script() {
+  local script="$1"
+  local args=("${@:2}")
+  chmod +x tools/scripts/"$script".sh
+  ./tools/scripts/"$script".sh "${args[@]}"
 }
 
-# Function to restart Docker containers
-function restart() {
-  echo "Restarting docker services..."
-  docker compose -f "$COMPOSE_FILE" restart
-}
-
-# Function to stop Docker containers
-function stop() {
-  echo "Stopping docker services..."
-  docker compose -f "$COMPOSE_FILE" down
-}
-
-# Function to start Docker containers
-function start() {
-  echo "Starting docker services..."
-  docker compose -f "$COMPOSE_FILE" up --build -d
-}
-
-# Function to view Docker container logs
-function logs() {
-  echo "Showing logs for docker services..."
-  docker compose -f "$COMPOSE_FILE" logs -t -f --tail 1000
+function help() {
+  awk -v BOLD="$BOLD" -v BLUE="$BLUE" -v YELLOW="$YELLOW" -v RESET="$RESET" \
+  '{gsub(/{{BOLD}}/, BOLD); gsub(/{{BLUE}}/, BLUE); gsub(/{{YELLOW}}/, YELLOW); gsub(/{{RESET}}/, RESET); print}' \
+  ./tools/scripts/help.txt
 }
 
 # Check if the environment argument is specified
 if [ -z "$1" ]; then
-  echo "Usage: ./run.sh [prod|dev] [update|restart|start|stop|logs]"
+  help
   exit 1
 fi
+
+args=("$@")
 
 # Set the environment file based on the argument
 if [ "$1" == "prod" ]; then
-  COMPOSE_FILE="docker compose.production.yml"
+  run_script check
+  export COMPOSE_FILE="docker-compose.production.yml"
+  run_script docker "${args[@]}"
 elif [ "$1" == "dev" ]; then
-  COMPOSE_FILE="docker compose.development.yml"  # Adjust the filename for development, if necessary
+  run_script check
+  export COMPOSE_FILE="docker-compose.development.yml"
+  run_script docker "${args[@]}"
+elif [ "$1" == "test" ]; then
+  run_script check
+  export COMPOSE_FILE="docker-compose.test.yml"
+  run_script docker "${args[@]}"
+elif [ "$1" == "check" ]; then
+  run_script check
+  exit 0
 else
-  echo "Unknown environment '$1'. Please use 'prod' or 'dev'."
+  help
   exit 1
 fi
 
-# Handle command-line arguments
-case "$2" in
-  "update")
-    update
-    ;;
-  "restart")
-    restart
-    ;;
-  "start")
-    start
-    ;;
-  "stop")
-    stop
-    ;;
-  "logs")
-    logs
-    ;;
-  *)
-    echo "Usage: ./run.sh [prod|dev] [update|restart|start|stop|logs]"
-    exit 1
-    ;;
-esac
