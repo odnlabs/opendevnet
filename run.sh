@@ -45,7 +45,6 @@ elif [ "$1" == "test" ]; then
   if [ -e .env.production ]; then
     echo -e "${YELLOW}WARNING${RESET} .env.production already exists"
   else
-    touch .env.production
     echo "ENVIRONMENT=production" >> .env.production
     echo "DEBUG=true" >> .env.production
     echo "PUBLIC_API_URL=https://opendevnet.com/api" >> .env.production

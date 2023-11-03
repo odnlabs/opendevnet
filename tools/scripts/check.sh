@@ -75,12 +75,6 @@ function env_check() {
 }
 
 function repo_sync_check() {
-  local env="$1"
-  # If the environment is test, skip this check
-  if [ "$env" == "test" ]; then
-    return
-  fi
-
   # Check if the repository is in sync with origin
   echo -e "${BLUE}CHECK${RESET} If the repository is in sync with origin"
   repo_synced=true
@@ -95,10 +89,14 @@ function repo_sync_check() {
   fi
 }
 
-software_check
-file_check
+# If the environment is not test, run these checks
+if [ "$env" != "test" ]; then
+  software_check
+  file_check
+  repo_sync_check
+fi
+
 env_check
-repo_sync_check "$1"
 
 echo ""
 
