@@ -90,7 +90,7 @@ function repo_sync_check() {
 }
 
 # If the environment is not test, run these checks
-if [ "$env" != "test" ]; then
+if [ "$1" != "test" ]; then
   software_check
   file_check
   repo_sync_check
