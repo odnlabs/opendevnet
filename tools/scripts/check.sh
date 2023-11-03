@@ -75,11 +75,15 @@ function env_check() {
 }
 
 function repo_sync_check() {
+  local env="$1"
   # Check if the repository is in sync with origin
   echo -e "${BLUE}CHECK${RESET} If the repository is in sync with origin"
   repo_synced=true
   repo_url="https://github.com/odnlabs/opendevnet.git"
   branch="main"
+  if [ "$env" == "dev" ]; then
+    branch="dev"
+  fi
   if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/$branch)" ]; then
       echo -e "${GREEN}PASS${RESET} Repository is in sync with origin/$branch"
   else
@@ -93,7 +97,7 @@ function repo_sync_check() {
 if [ "$1" != "test" ]; then
   software_check
   file_check
-  repo_sync_check
+  repo_sync_check "$1"
 fi
 
 env_check

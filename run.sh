@@ -34,11 +34,11 @@ args=("$@")
 
 # Set the environment file based on the argument
 if [ "$1" == "prod" ]; then
-  run_script check
+  run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.production.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "dev" ]; then
-  run_script check
+  run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.development.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "test" ]; then
@@ -58,7 +58,7 @@ elif [ "$1" == "test" ]; then
   export COMPOSE_FILE="docker-compose.test.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
-  run_script check
+  run_script check "${args[@]}"
 else
   help
   exit 1
