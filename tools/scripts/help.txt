@@ -6,7 +6,7 @@
           args: [update|restart|build|start|stop|logs] (service)
 {{BOLD}}dev{{RESET}}     run the development docker-compose file
           args: [update|restart|build|start|stop|logs] (service)
-{{BOLD}}test{{RESET}}    run the test docker-compose file
+{{BOLD}}ci{{RESET}}    run the CI docker-compose file
           args: [update|restart|build|start|stop|logs] (service)
 
 For more information, see: {{BLUE}}https://opendevnet.com/internal/contributing/setup#execution{{RESET}}

@@ -202,7 +202,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run Site image
-        run: chmod +x run.sh && ./run.sh test start site
+        run: chmod +x run.sh && ./run.sh ci start site
 
   build_and_run_web_image:
     name: Build and Run Web Image
@@ -217,7 +217,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run Web Image
-        run: chmod +x run.sh && ./run.sh test start web
+        run: chmod +x run.sh && ./run.sh ci start web
 
   build_and_run_internal_image:
     name: Build and Run Internal Image
@@ -232,7 +232,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run Internal Image
-        run: chmod +x run.sh && ./run.sh run start internal
+        run: chmod +x run.sh && ./run.sh ci start internal
 
   tests:
     name: Tests

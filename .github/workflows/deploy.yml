@@ -68,7 +68,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Site image
-        run: chmod +x run.sh && ./run.sh test build site
+        run: chmod +x run.sh && ./run.sh ci build site
 
   build_web_image:
     name: Build Web Image
@@ -83,7 +83,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Web Image
-        run: chmod +x run.sh && ./run.sh test build web
+        run: chmod +x run.sh && ./run.sh ci build web
 
   build_internal_image:
     name: Build Internal Image
@@ -98,10 +98,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Internal Image
-        run: chmod +x run.sh && ./run.sh test build internal
+        run: chmod +x run.sh && ./run.sh ci build internal
 
-  test_site_image:
-    name: Test Site Image
+  build_and_run_site_image:
+    name: Build and Run Site Image
     runs-on: ubuntu-latest
     needs: filter_check
     if: needs.filter_check.outputs.site == 'true'
@@ -113,10 +113,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Site image
-        run: chmod +x run.sh && ./run.sh test start site
+        run: chmod +x run.sh && ./run.sh ci start site
 
-  test_web_image:
-    name: Test Web Image
+  build_and_run_web_image:
+    name: Build and Run Web Image
     runs-on: ubuntu-latest
     needs: filter_check
     if: needs.filter_check.outputs.web == 'true'
@@ -128,10 +128,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Web Image
-        run: chmod +x run.sh && ./run.sh test start web
+        run: chmod +x run.sh && ./run.sh ci start web
 
-  test_internal_image:
-    name: Test Internal Image
+  build_and_run_internal_image:
+    name: Build and Run Internal Image
     runs-on: ubuntu-latest
     needs: filter_check
     if: needs.filter_check.outputs.internal == 'true'
@@ -143,12 +143,12 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Internal Image
-        run: chmod +x run.sh && ./run.sh test start internal
+        run: chmod +x run.sh && ./run.sh ci start internal
 
   push_site_to_registry:
     name: Publish Site to Docker Hub
     runs-on: ubuntu-latest
-    needs: ['filter_check', 'build_site_image', 'test_site_image']
+    needs: ['filter_check', 'build_site_image', 'build_and_run_site_image']
     if: needs.filter_check.outputs.site == 'true'
     steps:
       - name: Checkout
@@ -185,7 +185,7 @@ jobs:
   push_web_to_registry:
     name: Publish Web to Docker Hub
     runs-on: ubuntu-latest
-    needs: ['filter_check', 'build_web_image', 'test_web_image']
+    needs: ['filter_check', 'build_web_image', 'build_and_run_web_image']
     if: needs.filter_check.outputs.web == 'true'
     steps:
       - name: Checkout
@@ -222,7 +222,7 @@ jobs:
   push_internal_to_registry:
     name: Publish Internal to Docker Hub
     runs-on: ubuntu-latest
-    needs: ['filter_check', 'build_internal_image', 'test_internal_image']
+    needs: ['filter_check', 'build_internal_image', 'build_and_run_internal_image']
     if: needs.filter_check.outputs.internal == 'true'
     steps:
       - name: Checkout

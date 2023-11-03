@@ -85,10 +85,10 @@ elif [ "$1" == "dev" ]; then
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.development.yml"
   run_script docker "${args[@]}"
-elif [ "$1" == "test" ]; then
+elif [ "$1" == "ci" ]; then
   setup_prod_env
   run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.test.yml"
+  export COMPOSE_FILE="docker-compose.ci.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
   run_script check "${args[@]}"
