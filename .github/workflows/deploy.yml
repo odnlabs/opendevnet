@@ -169,6 +169,9 @@ jobs:
         with:
           images: docker.io/slekup/opendevnet-site
 
+      - name: Set Production Environment
+        run: chmod +x run.sh && ./run.sh prod setup env
+
       - name: Publish Site
         uses: docker/build-push-action@v5
         with:
@@ -202,6 +205,9 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: docker.io/slekup/opendevnet-web
+
+      - name: Set Production Environment
+        run: chmod +x run.sh && ./run.sh prod setup env
 
       - name: Publish Web App
         uses: docker/build-push-action@v5
