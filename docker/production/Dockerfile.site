@@ -12,6 +12,7 @@ RUN apk update
 # Set working directory
 WORKDIR /app
 
+
 # Install dependencies
 FROM base AS installer
 COPY . .
@@ -38,12 +39,12 @@ COPY --from=installer --chown=nextjs:nodejs /app/package.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
-COPY --from=installer --chown=nextjs:nodejs /app/tsconfig.base.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
+# NX will throw an error if these files/dirs are not present
+COPY --from=installer --chown=nextjs:nodejs /app/tsconfig.base.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/libs/nx-rust ./libs/nx-rust
 # Config, dep, and built files that the app needs
 COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/site  ./dist/apps/site
-COPY --from=installer --chown=nextjs:nodejs /app/apps/site/tsconfig.json  ./dist/apps/site/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/project.json  ./dist/apps/site/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/tailwind.config.ts  ./dist/apps/site/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/postcss.config.js  ./dist/apps/site/
