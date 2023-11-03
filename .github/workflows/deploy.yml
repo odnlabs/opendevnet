@@ -236,6 +236,9 @@ jobs:
         with:
           images: docker.io/slekup/opendevnet-internal
 
+      - name: Set Production Environment
+        run: chmod +x run.sh && ./run.sh prod setup env
+
       - name: Publish Internal App
         uses: docker/build-push-action@v5
         with:
