@@ -15,7 +15,8 @@ WORKDIR /app
 # Install dependencies
 FROM base AS installer
 COPY . .
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --frozen-lockfile
 # Build the project
 RUN pnpm nx run site:build --prod
 
@@ -27,6 +28,9 @@ FROM base as runner
 RUN addgroup -g 1001 -S nodejs
 # Add a new user called nextjs, with UID/GID 1001, to run as a non-root user
 RUN adduser -S nextjs -u 1001 -G nodejs
+# Create the nx directory
+RUN mkdir -p .nx/cache
+RUN chown -R nextjs:nodejs .nx
 # Switch to the `nextjs` user
 USER nextjs
 # Root files
@@ -34,9 +38,12 @@ COPY --from=installer --chown=nextjs:nodejs /app/package.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/tsconfig.base.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
+COPY --from=installer --chown=nextjs:nodejs /app/libs/nx-rust ./libs/nx-rust
 # Config, dep, and built files that the app needs
 COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/site  ./dist/apps/site
+COPY --from=installer --chown=nextjs:nodejs /app/apps/site/tsconfig.json  ./dist/apps/site/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/project.json  ./dist/apps/site/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/tailwind.config.ts  ./dist/apps/site/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/postcss.config.js  ./dist/apps/site/
@@ -44,6 +51,5 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/site/node_modules ./dist/a
 COPY --from=installer --chown=nextjs:nodejs /app/apps/site/.next ./dist/apps/site/.next
 # Expose port 4000
 EXPOSE 4000
-
 # Start the app on port 4000
 CMD ["pnpm", "nx", "run", "site:serve", "--prod", "--verbose"]
