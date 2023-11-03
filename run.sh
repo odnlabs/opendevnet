@@ -34,6 +34,7 @@ args=("$@")
 
 # Set the environment file based on the argument
 if [ "$1" == "prod" ]; then
+  git pull
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.production.yml"
   run_script docker "${args[@]}"
