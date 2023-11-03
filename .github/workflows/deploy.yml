@@ -25,6 +25,7 @@ jobs:
             all: &all
               - '.github/workflows/deploy.yml'
               - 'tools/scripts/docker.sh'
+              - '.dockerignore'
               - 'run.sh'
             frontend: &frontend
               - 'libs/tailwind-config/**'
