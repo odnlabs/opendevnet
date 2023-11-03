@@ -35,7 +35,7 @@ function setup_prod_env() {
     echo "PUBLIC_WS_URL=ws://opendevnet.com/ws" >> .env.production
     echo "PUBLIC_SITE_URL=https://opendevnet.com" >> .env.production
     echo "PUBLIC_WEB_URL=https://opendevnet.com/app" >> .env.production
-    echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/app" >> .env.production
+    echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/internal" >> .env.production
   fi
 }
 
