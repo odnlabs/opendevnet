@@ -31,7 +31,7 @@ RUN addgroup -g 1001 -S nodejs
 RUN adduser -S nextjs -u 1001 -G nodejs
 # Create the nx directory
 RUN mkdir -p .nx/cache
-RUN chown -R nextjs:nodejs .nx--frozen-lockfile
+RUN chown -R nextjs:nodejs .nx
 # Switch to the `nextjs` user
 USER nextjs
 # Root files

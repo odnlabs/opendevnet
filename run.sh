@@ -24,24 +24,7 @@ function help() {
   ./tools/scripts/help.txt
 }
 
-# Check if the environment argument is specified
-if [ -z "$1" ]; then
-  help
-  exit 1
-fi
-
-args=("$@")
-
-# Set the environment file based on the argument
-if [ "$1" == "prod" ]; then
-  run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.production.yml"
-  run_script docker "${args[@]}"
-elif [ "$1" == "dev" ]; then
-  run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.development.yml"
-  run_script docker "${args[@]}"
-elif [ "$1" == "test" ]; then
+function setup_prod_env() {
   if [ -e .env.production ]; then
     echo -e "${YELLOW}WARNING${RESET} .env.production already exists"
   else
@@ -54,6 +37,56 @@ elif [ "$1" == "test" ]; then
     echo "PUBLIC_WEB_URL=https://opendevnet.com/app" >> .env.production
     echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/app" >> .env.production
   fi
+}
+
+function setup_dev_env() {
+  if [ -e .env.local ]; then
+    echo -e "${YELLOW}WARNING${RESET} .env.local already exists"
+  else
+    echo "Setting environment variables in .env.local"
+    echo "ENVIRONMENT=development" >> .env.local
+    echo "DEBUG=true" >> .env.local
+    echo "PUBLIC_API_URL=http://localhost:5000/api" >> .env.local
+    echo "PUBLIC_WS_URL=ws://localhost:5000/ws" >> .env.local
+    echo "PUBLIC_SITE_URL=http://localhost:4000" >> .env.local
+    echo "PUBLIC_WEB_URL=http://localhost:4100/app" >> .env.local
+    echo "PUBLIC_INTERNAL_URL=http://localhost:4200/internal" >> .env.local
+  fi
+}
+
+# Check if the environment argument is specified
+if [ -z "$1" ]; then
+  help
+  exit 1
+fi
+
+args=("$@")
+
+# Set the environment file based on the argument
+if [ "$1" == "prod" ]; then
+  if [ "$2" == "setup" ]; then
+    if [ "$3" == "env" ]; then
+      setup_prod_env
+      exit 0
+    fi
+  fi
+  git reset --hard
+  git pull
+  run_script check "${args[@]}"
+  export COMPOSE_FILE="docker-compose.production.yml"
+  run_script docker "${args[@]}"
+elif [ "$1" == "dev" ]; then
+  if [ "$2" == "setup" ]; then
+    if [ "$3" == "env" ]; then
+      setup_dev_env
+      exit 0
+    fi
+  fi
+  run_script check "${args[@]}"
+  export COMPOSE_FILE="docker-compose.development.yml"
+  run_script docker "${args[@]}"
+elif [ "$1" == "test" ]; then
+  setup_prod_env
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.test.yml"
   run_script docker "${args[@]}"

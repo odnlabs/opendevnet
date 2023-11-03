@@ -5,7 +5,7 @@ function update() {
   git pull
   if [ -n "$SERVICE" ]; then
     echo "Updating docker service $SERVICE..."
-  # docker compose -f "$COMPOSE_FILE" down --rmi all "$SERVICE"
+  docker compose -f "$COMPOSE_FILE" down --rmi all "$SERVICE"
     docker compose -f "$COMPOSE_FILE" up --build -d "$SERVICE"
   else
     echo "Updating all docker services..."
