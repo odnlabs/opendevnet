@@ -36,22 +36,51 @@ function file_check() {
 }
 
 function env_check() {
-  echo -e "${BLUE}CHECK${RESET} If required environment variables are set"
+  echo -e "${BLUE}CHECK${RESET} If required environment variables are set amd and valid"
   variables=("ENVIRONMENT" "DEBUG" "PUBLIC_API_URL" "PUBLIC_WS_URL" "PUBLIC_SITE_URL" "PUBLIC_WEB_URL" "PUBLIC_INTERNAL_URL")
+
+  required_http_vars=("PUBLIC_API_URL" "PUBLIC_SITE_URL" "PUBLIC_WEB_URL", "PUBLIC_INTERNAL_URL")
+  valid_environments=("development" "production")
+
   missing_variables=()
+  invalid_variables=()
   source .env.production
   for var in "${variables[@]}"; do
-  if [[ -n "${!var}" ]]; then
-    echo -e "${GREEN}PASS${RESET} $var environment variable is set"
-  else
-    echo -e "${RED}FAIL${RESET} $var environment variable is not set"
-    missing_variables+=("$var")
-    passed=false
-  fi
-done
+    if [[ -n "${!var}" ]]; then
+      if [[ " ${required_http_vars[*]} " =~ " $var " && ! ( "${!var}" == http://* || "${!var}" == https://* ) ]]; then
+        echo -e "${RED}FAIL${RESET} $var environment variable does not start with 'http://' or 'https://'"
+        invalid_variables+=(""$var" does not start with not 'http://' or 'https://'")
+        passed=false
+      elif [[ "$var" == "DEBUG" && !(" true false " =~ " ${!var} ") ]]; then
+        echo -e "${RED}FAIL${RESET} $var environment variable is not 'true' or 'false'"
+        invalid_variables+=(""$var" is not 'true' or 'false'")
+        passed=false
+      elif [[ "$var" == "PUBLIC_WS_URL" && ! ( "${!var}" == ws://* || "${!var}" == wss://* ) ]]; then
+        echo -e "${RED}FAIL${RESET} $var environment variable does not start with 'ws://' or 'wss://'"
+        invalid_variables+=(""$var" does not start with 'ws://' or 'wss://'")
+        passed=false
+      elif [[ "$var" == "ENVIRONMENT" && ! " ${valid_environments[*]} " =~ " ${!var} " ]]; then
+        echo -e "${RED}FAIL${RESET} $var environment variable is not 'development' or 'production'"
+        invalid_variables+=(""$var" is not 'development' or 'production'")
+        passed=false
+      else
+        echo -e "${GREEN}PASS${RESET} $var environment variable is set and valid"
+      fi
+    else
+      echo -e "${RED}FAIL${RESET} $var environment variable is not set"
+      missing_variables+=("$var")
+      passed=false
+    fi
+  done
 }
 
 function repo_sync_check() {
+  local env="$1"
+  # If the environment is test, skip this check
+  if [ "$env" == "test" ]; then
+    return
+  fi
+
   # Check if the repository is in sync with origin
   echo -e "${BLUE}CHECK${RESET} If the repository is in sync with origin"
   repo_synced=true
@@ -69,7 +98,7 @@ function repo_sync_check() {
 software_check
 file_check
 env_check
-repo_sync_check
+repo_sync_check "$1"
 
 echo ""
 
@@ -99,8 +128,15 @@ else
     done
   fi
 
+  # Invalid environment variables
+  if [ ! ${#invalid_variables[@]} -eq 0 ]; then
+    for invalid_variable in "${invalid_variables[@]}"; do
+      echo -e "  • "$invalid_variable""
+    done
+  fi
+
   # Outdated repository
-  if [ $repo_synced == false ]; then
+  if [ "$repo_synced" == false ]; then
     echo -e "  • Repository is not in sync with origin/${branch}"
   fi
 

@@ -42,12 +42,23 @@ elif [ "$1" == "dev" ]; then
   export COMPOSE_FILE="docker-compose.development.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "test" ]; then
-  run_script check
+  if [ -e .env.production ]; then
+    echo -e "${YELLOW}WARNING${RESET} .env.production already exists"
+  else
+    touch .env.production
+    echo "ENVIRONMENT=production" >> .env.production
+    echo "DEBUG=true" >> .env.production
+    echo "PUBLIC_API_URL=https://opendevnet.com/api" >> .env.production
+    echo "PUBLIC_WS_URL=ws://opendevnet.com/ws" >> .env.production
+    echo "PUBLIC_SITE_URL=https://opendevnet.com" >> .env.production
+    echo "PUBLIC_WEB_URL=https://opendevnet.com/app" >> .env.production
+    echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/app" >> .env.production
+  fi
+  run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.test.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
   run_script check
-  exit 0
 else
   help
   exit 1
