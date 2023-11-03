@@ -33,7 +33,7 @@
 **/.eslintcache
 
 # Environment
-**/.env.*
+# **/.env.*
 
 # Miscellaneous
 **/.tmp
