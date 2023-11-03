@@ -74,7 +74,7 @@ export const Button = ({
 
   return link ? (
     <p
-      className={`transition duration-200 rounded-sm group-focus-visible:ring group-focus-visible:transition-none ${
+      className={`rounded-sm transition duration-200 group-focus-visible:ring group-focus-visible:transition-none ${
         sizeStyle[size]
       } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'
@@ -86,7 +86,7 @@ export const Button = ({
   ) : (
     <button
       {...props}
-      className={`transition duration-200 rounded-sm focus-visible:ring focus-visible:transition-none ${
+      className={`rounded-sm transition duration-200 focus-visible:ring focus-visible:transition-none ${
         sizeStyle[size]
       } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'

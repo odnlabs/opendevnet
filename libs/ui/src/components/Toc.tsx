@@ -72,9 +72,9 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
 
   return (
     <>
-      <div className="relative min-w-60 max-w-60 ml-20">
-        <div className="fixed top-40 min-w-60 max-w-60">
-          <p className="border-b border-border py-2 font-semibold">
+      <div className="min-w-60 max-w-60 relative ml-20">
+        <div className="min-w-60 max-w-60 fixed top-40">
+          <p className="border-border border-b py-2 font-semibold">
             Table of Contents
           </p>
           <ul className="pt-2">
@@ -84,7 +84,7 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
                   href={`#${heading.id}`}
                   className={`text-sm ${
                     activeId === heading.id
-                      ? 'font-semibold link'
+                      ? 'link font-semibold'
                       : 'text-text-primary hover:underline'
                   }`}
                 >
@@ -94,15 +94,15 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
             ))}
           </ul>
           {editLink && (
-            <div className="border-t border-border mt-3 text-sm">
+            <div className="border-border mt-3 border-t text-sm">
               <a
                 href={editLink}
                 target="_blank"
                 rel="noreferrer"
-                className="flex my-2 text-text-secondary hover:text-text active:text-text"
+                className="text-text-secondary hover:text-text active:text-text my-2 flex"
               >
                 Edit this page on GitHub
-                <HiOutlineExternalLink className="mt-1 translate-y-px ml-1.5 h-3 w-3" />
+                <HiOutlineExternalLink className="ml-1.5 mt-1 h-3 w-3 translate-y-px" />
               </a>
             </div>
           )}

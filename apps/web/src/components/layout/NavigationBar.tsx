@@ -28,12 +28,12 @@ const NavButton: React.FC<{
   const pathname = usePathname();
 
   return (
-    <div className="w-full h-14 relative">
+    <div className="relative h-14 w-full">
       {btn.route ? (
         <Link
           id={btn.id}
           href={btn.route}
-          className={`group block w-12 h-12 p-3 my-0 mx-1.5 rounded-lg transition duration-200 hover:ease-out focus-visible:ring ${
+          className={`group mx-1.5 my-0 block h-12 w-12 rounded-lg p-3 transition duration-200 hover:ease-out focus-visible:ring ${
             (btn.route && !btn.isActive && pathname === btn.route) ||
             btn.isActive
               ? 'text-text bg-primary'
@@ -46,7 +46,7 @@ const NavButton: React.FC<{
             }`}
           ></span> */}
           <btn.icon
-            className={`w-6 h-6 ${
+            className={`h-6 w-6 ${
               (btn.route && !btn.isActive && pathname === btn.route) ||
               (btn.isActive && 'drop-shadow-[0_0_3px_rgba(var(--text),0.5)]')
             }`}
@@ -55,10 +55,10 @@ const NavButton: React.FC<{
       ) : (
         <button
           id={btn.id}
-          className="group block w-12 h-12 p-3 my-0.5 mx-1.5 rounded-lg transition duration-200 hover:ease-out text-text-secondary hover:text-text active:text-text hover:bg-background-secondary active:bg-background-tertiary focus-visible:ring"
+          className="text-text-secondary hover:text-text active:text-text hover:bg-background-secondary active:bg-background-tertiary group mx-1.5 my-0.5 block h-12 w-12 rounded-lg p-3 transition duration-200 hover:ease-out focus-visible:ring"
           onClick={btn.onClick}
         >
-          <btn.icon className="w-6 h-6" />
+          <btn.icon className="h-6 w-6" />
         </button>
       )}
     </div>
@@ -104,14 +104,14 @@ export const NavigationBar: React.FC<{ site?: string | undefined }> = ({
 
   return (
     <>
-      <div className="relative w-16 h-full"></div>
+      <div className="relative h-full w-16"></div>
 
-      <div className="fixed z-60 left-0 w-16 h-full top-14 bg-[rgb(var(--navigation-bar))] border-r border-border/50">
+      <div className="z-60 border-border/50 fixed left-0 top-14 h-full w-16 border-r bg-[rgb(var(--navigation-bar))]">
         <div className="pt-3">
           {defaultButtons.map((section, index) => (
             <React.Fragment key={index}>
               {index !== 0 && (
-                <div className="w-8 h-px mx-auto my-2 bg-background-secondary"></div>
+                <div className="bg-background-secondary mx-auto my-2 h-px w-8"></div>
               )}
               {section.map((btn, index) => (
                 <NavButton btn={btn} key={index} />

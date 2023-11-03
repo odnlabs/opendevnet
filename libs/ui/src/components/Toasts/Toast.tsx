@@ -25,10 +25,10 @@ const typeBackground = {
 };
 
 const typeIcon = {
-  [ToastType.Info]: <MdInfo className="w-6 h-6 text-blue-400" />,
-  [ToastType.Success]: <HiCheckCircle className="w-6 h-6 text-green-400" />,
-  [ToastType.Warning]: <IoWarning className="w-6 h-6 text-orange-400" />,
-  [ToastType.Error]: <MdError className="w-6 h-6 text-red-400" />,
+  [ToastType.Info]: <MdInfo className="h-6 w-6 text-blue-400" />,
+  [ToastType.Success]: <HiCheckCircle className="h-6 w-6 text-green-400" />,
+  [ToastType.Warning]: <IoWarning className="h-6 w-6 text-orange-400" />,
+  [ToastType.Error]: <MdError className="h-6 w-6 text-red-400" />,
 };
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
@@ -90,14 +90,14 @@ export const Toast: React.FC<Props> = ({ toast, removeToast, ...props }) => {
             className="rounded-3xl p-1.5 text-gray-300 hover:text-white"
             onClick={handleClose}
           >
-            <MdClose className="w-5 h-5" />
+            <MdClose className="h-5 w-5" />
           </button>
         </div>
 
         {/* Content */}
         {toast.description && (
           <div
-            className={`px-4 pb-4 pt-3 rounded-b-lg ${
+            className={`rounded-b-lg px-4 pb-4 pt-3 ${
               typeBackground[toast.type]
             }`}
           >

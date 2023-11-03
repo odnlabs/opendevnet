@@ -54,19 +54,19 @@ const Content: React.FC<BoxProps & { marginLeft: number }> = ({
     <>
       <div className="flex">
         {layer.path && (
-          <Icon className={`h-4 w-4 mr-1.5 mt-0.5 ${textStyles[deep]}`} />
+          <Icon className={`mr-1.5 mt-0.5 h-4 w-4 ${textStyles[deep]}`} />
         )}
-        <p className="font-medium text-sm">{layer.name}</p>
+        <p className="text-sm font-medium">{layer.name}</p>
       </div>
 
       {layer.description && (
-        <p className="text-xs text-text-secondary">{layer.description}</p>
+        <p className="text-text-secondary text-xs">{layer.description}</p>
       )}
 
       {/* Horizontal line */}
       <div
-        className={`absolute left-0 top-1/2 -translate-y-1/2 h-px w-full transition-all duration-500 hover:duration-300 ${
-          layer.path && 'group-hover:bg-left bg-[length:200%]'
+        className={`absolute left-0 top-1/2 h-px w-full -translate-y-1/2 transition-all duration-500 hover:duration-300 ${
+          layer.path && 'bg-[length:200%] group-hover:bg-left'
         } ${lineStyles[deep]}`}
         style={{
           left: `-${marginLeft}px`,
@@ -76,7 +76,7 @@ const Content: React.FC<BoxProps & { marginLeft: number }> = ({
 
       {/* Vertical line */}
       <div
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-px h-[calc(100%+0.75rem*2+2px)]"
+        className="absolute left-0 top-1/2 h-[calc(100%+0.75rem*2+2px)] w-px -translate-y-1/2"
         style={{
           left: `-${marginLeft}px`,
           background: `rgba(${rgb[deep]},0.75)`,
@@ -120,7 +120,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
     <div className="relative block">
       {!layer.path ? (
         <div
-          className={`group relative inline-block my-3 py-3 px-4 rounded-lg border bg-left bg-[length:200%] ${boxStyles[deep][0]}`}
+          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 ${boxStyles[deep][0]}`}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -130,7 +130,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
       ) : layer.path.startsWith('/app') ? (
         <a
           href={layer.path}
-          className={`group relative inline-block my-3 py-3 px-4 rounded-lg border ease-out transition-all duration-500 hover:duration-200 focus:ring focus:transition-none bg-left hover:bg-right bg-[length:200%] ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
+          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -140,7 +140,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
       ) : (
         <Link
           href={layer.path}
-          className={`group relative inline-block my-3 py-3 px-4 rounded-lg border transition-all duration-500 ease-out hover:duration-200 focus:ring focus:transition-none bg-left hover:bg-right bg-[length:200%] ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
+          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -163,17 +163,17 @@ const Sitemap: NextPage = async () => {
   ) as Layer[];
 
   return (
-    <div className="my-10 bg-black/50 rounded-xl max-w-5xl w-11/12 mx-auto">
-      <div className="py-10 px-16 max-w-5xl mx-auto">
+    <div className="mx-auto my-10 w-11/12 max-w-5xl rounded-xl bg-black/50">
+      <div className="mx-auto max-w-5xl px-16 py-10">
         <div className="text-center">
-          <h1 className="font-bold text-3xl text-center">Sitemap</h1>
+          <h1 className="text-center text-3xl font-bold">Sitemap</h1>
           <div className="mt-2">
             <Link href="/sitemap/basic" className="link">
               Switch to Basic View
             </Link>
           </div>
         </div>
-        <div className="columns-1 md:columns-2 gap-10 mt-8">
+        <div className="mt-8 columns-1 gap-10 md:columns-2">
           {layers.map((layer, index) => (
             <div key={index} className="inline-block w-full">
               <Box layer={layer} deep={0} />

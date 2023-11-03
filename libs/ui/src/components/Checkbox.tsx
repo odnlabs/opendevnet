@@ -18,7 +18,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   ...props
 }) => (
   <div
-    className={`min-h-5 min-w-5 max-h-5 max-w-5 cursor-default rounded-sm border transition duration-200 ${
+    className={`min-h-5 min-w-5 max-w-5 max-h-5 cursor-default rounded-sm border transition duration-200 ${
       checked
         ? 'border-primary bg-primary'
         : `border-border bg-[rgb(var(--input))] ${
@@ -29,7 +29,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     onClick={() => setChecked(!checked)}
   >
     <FaCheck
-      className={`m-0.5 translate-x-px translate-y-px h-3 w-3 text-text-button transition-[opacity,visibility] duration-200 ${
+      className={`text-text-button m-0.5 h-3 w-3 translate-x-px translate-y-px transition-[opacity,visibility] duration-200 ${
         !checked && 'invisible opacity-0'
       }`}
     />

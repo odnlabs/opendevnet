@@ -38,10 +38,10 @@ export const FeedbackForm: React.FC = () => {
   const [content, setContent] = useState<string>('');
 
   return (
-    <div className="max-w-lg w-11/12 mx-auto rounded-3xl bg-background-secondary border border-border shadow-xl p-8">
-      <div className="border-b border-border pb-5">
+    <div className="bg-background-secondary border-border mx-auto w-11/12 max-w-lg rounded-3xl border p-8 shadow-xl">
+      <div className="border-border border-b pb-5">
         <h1 className="text-2xl font-bold">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-3 to-brand-gradient-4">
+          <span className="from-brand-gradient-3 to-brand-gradient-4 bg-gradient-to-r bg-clip-text text-transparent">
             Send us your feedback! ❤️
           </span>
         </h1>

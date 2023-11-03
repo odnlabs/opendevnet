@@ -21,7 +21,7 @@ const SidebarLink: React.FC<{
   return (
     <Link
       href={itemPath}
-      className={`block px-2.5 py-1.5 my-1 text-sm rounded-md ${
+      className={`my-1 block rounded-md px-2.5 py-1.5 text-sm ${
         itemPath === pathname ||
         (pathname === '/' && itemPath === '/introduction/introduction')
           ? 'bg-primary font-medium'
@@ -42,7 +42,7 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
     item.items && item.items?.length > 0 ? (
       <div className="h-full overflow-hidden" key={itemIndex}>
         <button
-          className={`flex w-full justify-between text-left px-2.5 py-1.5 text-sm rounded-md ${
+          className={`flex w-full justify-between rounded-md px-2.5 py-1.5 text-left text-sm ${
             pathname.startsWith(`/${cat.slug}/${item.slug}`)
               ? 'bg-secondary font-medium'
               : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
@@ -57,7 +57,7 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
         >
           {item.name}
           <HiChevronRight
-            className={`h-5 w-5 mt-px transition duration-300 ${
+            className={`mt-px h-5 w-5 transition duration-300 ${
               (pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
                 open.includes(itemIndex)) &&
               'rotate-90'
@@ -68,11 +68,11 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
           className={`grid transition-all duration-300 ${
             pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
             open.includes(itemIndex)
-              ? 'grid-rows-[1fr] mt-1'
+              ? 'mt-1 grid-rows-[1fr]'
               : 'grid-rows-[0fr]'
           }`}
         >
-          <div className={`overflow-hidden mx-2 px-2 border-l border-border`}>
+          <div className={`border-border mx-2 overflow-hidden border-l px-2`}>
             {item.items.map((subItem, subItemIndex) => (
               <SidebarLink
                 cat={cat}

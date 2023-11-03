@@ -39,7 +39,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <div className="flex">
         <Sidebar />
 
-        <div className="relative top-0 right-0 md:w-[calc(100vw-280px)]">
+        <div className="relative right-0 top-0 md:w-[calc(100vw-280px)]">
           {children}
           <Footer socialUrls={socialUrls} site={config.site} />
         </div>

@@ -97,10 +97,10 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
 
   return (
     <>
-      <div className="max-w-7xl w-11/12 mx-auto rounded-lg shadow-xl mb-8 sm:mb-10 lg:mb-20 bg-gradient-to-tr from-blue-700 to-[#0B1D50]">
-        <div className="p-10 md:p-12 lg:p-20 md:flex justify-between">
+      <div className="mx-auto mb-8 w-11/12 max-w-7xl rounded-lg bg-gradient-to-tr from-blue-700 to-[#0B1D50] shadow-xl sm:mb-10 lg:mb-20">
+        <div className="justify-between p-10 md:flex md:p-12 lg:p-20">
           <div className="drop-shadow-lg">
-            <h1 className="text-2xl lg:text-3xl font-semibold">
+            <h1 className="text-2xl font-semibold lg:text-3xl">
               Wanting to Contribute?
             </h1>
             <p className="mt-3">
@@ -109,11 +109,11 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
             </p>
           </div>
 
-          <div className="pt-5 md:py-5 flex md:justify-end min-w-72">
+          <div className="min-w-72 flex pt-5 md:justify-end md:py-5">
             <div>
               <Link
                 href={`/contributing/contributing`}
-                className="inline-block group shadow-sm rounded-sm"
+                className="group inline-block rounded-sm shadow-sm"
               >
                 <Button
                   label="More Info"
@@ -129,7 +129,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
                 href={socialUrls.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-block group shadow-sm rounded-sm"
+                className="group inline-block rounded-sm shadow-sm"
               >
                 <Button
                   label="GitHub"
@@ -143,9 +143,9 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
         </div>
       </div>
 
-      <div className="md:py-10 border-t border-border bg-[rgb(var(--footer))] text-sm">
-        <div className="max-w-7xl pt-10 md:py-5 lg:py-10 mx-auto md:w-10/12 lg:flex justify-between">
-          <div className="mx-auto text-center mb-10 lg:mx-0 lg:text-left w-80 lg:mb-0">
+      <div className="border-border border-t bg-[rgb(var(--footer))] text-sm md:py-10">
+        <div className="mx-auto max-w-7xl justify-between pt-10 md:w-10/12 md:py-5 lg:flex lg:py-10">
+          <div className="mx-auto mb-10 w-80 text-center lg:mx-0 lg:mb-0 lg:text-left">
             <Image
               height={50}
               width={50}
@@ -153,16 +153,16 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
               alt="Footer Logo"
               className="mx-auto lg:mx-0"
             />
-            <p className="mt-4 font-medium text-xl text-text-primary">
+            <p className="text-text-primary mt-4 text-xl font-medium">
               Open Dev Net
             </p>
 
-            <div className="flex justify-center lg:justify-start mt-5 text-text-faint">
+            <div className="text-text-faint mt-5 flex justify-center lg:justify-start">
               {socialMediaLinks.map((link, index) => (
                 <a
                   key={index}
                   href={link.url}
-                  className="hover:text-text-secondary active:text-text transition duration-200 mr-3"
+                  className="hover:text-text-secondary active:text-text mr-3 transition duration-200"
                   target="_black"
                   rel="noreferrer"
                 >
@@ -172,15 +172,15 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
             </div>
           </div>
 
-          <div className="max-w-4xl w-full md:flex justify-between">
+          <div className="w-full max-w-4xl justify-between md:flex">
             {links.map((category, index) => (
               <div className="md:w-1/4" key={index}>
                 {/* Category */}
-                <p className="mb-4 font-semibold uppercase text-sm hidden md:block">
+                <p className="mb-4 hidden text-sm font-semibold uppercase md:block">
                   {category.title}
                 </p>
                 <button
-                  className={`block md:hidden w-full border-t border-border/50 py-5 font-semibold uppercase text-text-secondary text-sm transition duration-200 ${
+                  className={`border-border/50 text-text-secondary block w-full border-t py-5 text-sm font-semibold uppercase transition duration-200 md:hidden ${
                     openIndex !== index &&
                     'hover:bg-secondary active:bg-secondary-active'
                   }`}
@@ -193,10 +193,10 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
 
                 {/* Links */}
                 <div
-                  className={`transition-[max-height,transform,opacity] duration-300 origin-top ${
+                  className={`origin-top transition-[max-height,transform,opacity] duration-300 ${
                     openIndex === index
                       ? 'max-h-96 md:max-h-full'
-                      : 'max-h-0 scale-y-90 opacity-0 overflow-y-hidden md:max-h-full md:scale-y-100 md:overflow-y-auto md:opacity-100'
+                      : 'max-h-0 scale-y-90 overflow-y-hidden opacity-0 md:max-h-full md:scale-y-100 md:overflow-y-auto md:opacity-100'
                   }`}
                 >
                   {category.items.map((item, itemIndex) => (
@@ -225,8 +225,8 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
           </div>
         </div>
       </div>
-      <div className="py-8 border-t border-border/50 bg-[rgb(var(--footer))] text-sm">
-        <p className="text-center text-sm text-text-faint">
+      <div className="border-border/50 border-t bg-[rgb(var(--footer))] py-8 text-sm">
+        <p className="text-text-faint text-center text-sm">
           &copy; {new Date().getFullYear()},{' '}
           <Link
             href={site ?? 'https://opendevnet.com'}

@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { Button } from '@components';
 
 export const HeaderButtons: React.FC = () => (
-  <div className="flex my-3">
-    <Link href="/register" className="mr-2 hidden md:inline-block group">
+  <div className="my-3 flex">
+    <Link href="/register" className="group mr-2 hidden md:inline-block">
       <Button label="Register" variant="secondary" link />
     </Link>
     <Link href="/login" className="group">

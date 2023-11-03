@@ -88,10 +88,10 @@ export const Select: React.FC<Props> = ({
       onScroll={handleScroll}
     >
       <button
-        className={`flex w-full cursor-pointer justify-between rounded-sm py-3 pl-4 pr-3 text-sm font-medium text-text-primary ring-primary/30 transition ${
+        className={`text-text-primary ring-primary/30 flex w-full cursor-pointer justify-between rounded-sm py-3 pl-4 pr-3 text-sm font-medium transition ${
           disabled
             ? 'cursor-default'
-            : 'bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))] border-2 border-transparent focus:border-primary'
+            : 'focus:border-primary border-2 border-transparent bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))]'
         } ${loading && 'bg-secondary-active text-transparent'}`}
         onClick={(evt) => toggleSelect(evt)}
         onFocus={(evt) => toggleSelect(evt, true)}

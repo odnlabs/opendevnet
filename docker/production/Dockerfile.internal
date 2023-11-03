@@ -12,10 +12,12 @@ RUN apk update
 # Set working directory
 WORKDIR /app
 
+
 # Install dependencies
 FROM base AS installer
 COPY . .
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --frozen-lockfile
 # Build the project
 RUN pnpm nx run internal:build --prod
 
@@ -27,6 +29,9 @@ FROM base as runner
 RUN addgroup -g 1001 -S nodejs
 # Add a new user called nextjs, with UID/GID 1001, to run as a non-root user
 RUN adduser -S nextjs -u 1001 -G nodejs
+# Create the nx directory
+RUN mkdir -p .nx/cache
+RUN chown -R nextjs:nodejs .nx
 # Switch to the `nextjs` user
 USER nextjs
 # Root files
@@ -35,6 +40,9 @@ COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
+# NX will throw an error if these files/dirs are not present
+COPY --from=installer --chown=nextjs:nodejs /app/tsconfig.base.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/libs/nx-rust ./libs/nx-rust
 # Config, dep, and built files that the app needs
 COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/internal  ./dist/apps/internal
 COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/project.json  ./dist/apps/internal/
@@ -44,6 +52,5 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/node_modules ./di
 COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/.next ./dist/apps/internal/.next
 # Expose port 4200
 EXPOSE 4200
-
 # Start the app on port 4200
 CMD ["pnpm", "nx", "run", "internal:serve", "--prod", "--verbose"]

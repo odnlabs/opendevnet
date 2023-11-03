@@ -99,14 +99,14 @@ export default function MoreNavLinks({
 
   return (
     <div
-      className={`absolute bottom-2 left-12 w-48 p-1 text-sm bg-background-secondary rounded-md border border-border origin-bottom-left transition-[visibility,opacity,transform] duration-300 ${
-        !moreLinksOpen && 'invisible opacity-0 scale-95'
+      className={`bg-background-secondary border-border absolute bottom-2 left-12 w-48 origin-bottom-left rounded-md border p-1 text-sm transition-[visibility,opacity,transform] duration-300 ${
+        !moreLinksOpen && 'invisible scale-95 opacity-0'
       }`}
       id="more-links-dropdown-container"
     >
       {links.map((section, index) => (
         <React.Fragment key={index}>
-          {index !== 0 && <div className="w-full h-px my-1 bg-text/20"></div>}
+          {index !== 0 && <div className="bg-text/20 my-1 h-px w-full"></div>}
           {section.map((btn, btnIndex) =>
             btn.route ? (
               <a

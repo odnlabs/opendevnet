@@ -75,14 +75,14 @@ export const RegisterForm: React.FC = () => {
 
   return (
     <form
-      className="max-w-md w-11/12 mx-auto rounded-3xl bg-background p-8"
+      className="bg-background mx-auto w-11/12 max-w-md rounded-3xl p-8"
       onSubmit={(event) => {
         handleSubmit(event);
       }}
     >
-      <div className="border-b border-border pb-5">
+      <div className="border-border border-b pb-5">
         <h1 className="text-3xl font-bold">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
+          <span className="from-brand-gradient-1 to-brand-gradient-2 bg-gradient-to-r bg-clip-text text-transparent">
             Register on ODN
           </span>
         </h1>
@@ -135,7 +135,7 @@ export const RegisterForm: React.FC = () => {
               <Checkbox checked={sendEmails} setChecked={setSendEmails} />
             </span>
           </div>
-          <p className="text-xs text-text-faint">
+          <p className="text-text-faint text-xs">
             It&apos;s okay to send me emails with Open Dev Net updates, tips,
             and special offers. You can opt out at any time.
           </p>
@@ -146,7 +146,7 @@ export const RegisterForm: React.FC = () => {
         </div>
 
         <div className="mt-3">
-          <p className="text-xs text-text-secondary">
+          <p className="text-text-secondary text-xs">
             By registering, you agree to Open Dev Net&apos;s{' '}
             <Link href="/terms" className="link">
               Terms of Service
@@ -157,7 +157,7 @@ export const RegisterForm: React.FC = () => {
             </Link>
             .
           </p>
-          <p className="mt-3 text-sm text-text-secondary">
+          <p className="text-text-secondary mt-3 text-sm">
             Already have an account?{' '}
             <Link href="/login" className="link">
               Login

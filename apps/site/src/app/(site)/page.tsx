@@ -77,18 +77,18 @@ const Home: NextPage = () => {
   return (
     <>
       <section>
-        <div className="max-w-7xl w-10/12 mx-auto py-24 sm:py-32">
+        <div className="mx-auto w-10/12 max-w-7xl py-24 sm:py-32">
           <div className="text-center">
-            <h1 className="text-5xl font-bold text-text-secondary">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-brand-gradient-1 to-brand-gradient-2">
+            <h1 className="text-text-secondary text-5xl font-bold">
+              <span className="from-brand-gradient-1 to-brand-gradient-2 bg-gradient-to-r bg-clip-text text-transparent">
                 Connecting Developers
               </span>
             </h1>
-            <h1 className="mt-5 text-3xl md:text-5xl font-bold">
+            <h1 className="mt-5 text-3xl font-bold md:text-5xl">
               <span>Across the World</span>
             </h1>
-            <div className="max-w-2xl mx-auto">
-              <p className="text-sm sm:text-base text-text-secondary my-8">
+            <div className="mx-auto max-w-2xl">
+              <p className="text-text-secondary my-8 text-sm sm:text-base">
                 Welcome to Open Dev Net, where programmers from all corners of
                 the globe collaborate, innovate, and code for a better future.
                 Join us in connecting minds, creating solutions, and making a
@@ -98,8 +98,8 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="py-10 bg-background-secondary text-center border-y border-border">
-          <p className="font-medium text-text-primary text-xl">
+        <div className="bg-background-secondary border-border border-y py-10 text-center">
+          <p className="text-text-primary text-xl font-medium">
             &quot;The social platform for creators, innovators, and
             developers.&quot;
           </p>
@@ -107,9 +107,9 @@ const Home: NextPage = () => {
       </section>
 
       <section>
-        <div className="max-w-7xl mx-auto flex justify-center py-24">
+        <div className="mx-auto flex max-w-7xl justify-center py-24">
           {features.map((feature, index) => (
-            <div key={index} className="p-10 w-96 text-center">
+            <div key={index} className="w-96 p-10 text-center">
               <Image
                 src={feature.image}
                 alt="illustration"
@@ -117,7 +117,7 @@ const Home: NextPage = () => {
                 width={200}
                 className="mx-auto"
               />
-              <p className="block mt-10 font-medium text-lg px-2">
+              <p className="mt-10 block px-2 text-lg font-medium">
                 {feature.text}
               </p>
             </div>
@@ -126,8 +126,8 @@ const Home: NextPage = () => {
       </section>
 
       <section>
-        <div className="max-w-3xl w-11/12 mx-auto pt-10 pb-32">
-          <h1 className="font-medium text-3xl text-center">
+        <div className="mx-auto w-11/12 max-w-3xl pb-32 pt-10">
+          <h1 className="text-center text-3xl font-medium">
             Frequently Asked Questions
           </h1>
           <div className="mt-10">

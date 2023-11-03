@@ -93,7 +93,7 @@ export class Auth extends Base {
    */
   public async login(params: LoginParams): Promise<LoginResponse> {
     // Basic frontend validation
-    // NOTE this is not a replacement for backend validation.
+    // NOTE: this is not a replacement for backend validation.
     const schema = new Schema()
       .addString({
         name: 'email',

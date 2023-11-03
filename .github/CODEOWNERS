@@ -1,4 +1,20 @@
 # Learn how to add code owners here:
 # https://help.github.com/en/articles/about-code-owners
 
-* @slekup
+* @slekup @odn-admin
+
+/apps/api/** @odnlabs/api
+/apps/internal/** @odnlabs/web
+/apps/site/** @odnlabs/web
+/apps/web/** @odnlabs/web
+
+/libs/api-client/** @odnlabs/api @odnlabs/web
+/libs/eslint-config-odn/** @odnlabs/tooling
+/libs/nx-rust/** @odnlabs/tooling
+/libs/tailwind-config/** @odnlabs/web
+/libs/ui/** @odnlabs/web
+/libs/utils/** @odnlabs/web
+/libs/utils-client/** @odnlabs/web
+
+/tools/** @odnlabs/tooling
+/tools/rest/** @odnlabs/api @odnlabs/web

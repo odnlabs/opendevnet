@@ -38,18 +38,18 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
   }, []);
 
   return (
-    <div className="mt-10 lg:mt-20 mb-20 lg:mb-28 xl:mb-52 max-w-5xl mx-auto w-11/12">
+    <div className="mx-auto mb-20 mt-10 w-11/12 max-w-5xl lg:mb-28 lg:mt-20 xl:mb-52">
       <div className="flex">
         <div id="mdx-content" className="w-full">
-          <h1 className="my-3 block text-4xl font-bold leading-[1.2] text-text md:text-5xl">
+          <h1 className="text-text my-3 block text-4xl font-bold leading-[1.2] md:text-5xl">
             {doc.meta.title}
           </h1>
-          <p className="block mt-5 text-sm text-text-secondary">
+          <p className="text-text-secondary mt-5 block text-sm">
             <b className="font-semibold">Last Updated: </b>
             {doc.meta.lastUpdated}
           </p>
-          <div className="mt-5 h-px w-full bg-border"></div>
-          <div className={`mb-10 mt-8 text-text-secondary ${styles.content}`}>
+          <div className="bg-border mt-5 h-px w-full"></div>
+          <div className={`text-text-secondary mb-10 mt-8 ${styles.content}`}>
             {doc.source && (
               <MDXRemote
                 {...doc.source}
@@ -58,21 +58,21 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
             )}
           </div>
 
-          <div className="pt-10 border-t border-border flex">
+          <div className="border-border flex border-t pt-10">
             <div className="w-1/2 pr-2">
               {doc.meta.prev && (
                 <Link
                   href={doc.meta.prev.slug}
-                  className="block h-full p-5 rounded-lg bg-background border border-border hover:bg-background-secondary active:bg-background-tertiary transition duration-300 hover:border-link active:border-link text-left"
+                  className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-left transition duration-300"
                 >
                   <p className="text-text-secondary text-sm font-medium">
                     Previous
                   </p>
-                  <p className="mt-2 text-link font-medium text-base">
-                    <HiChevronUp className="h-6 w-6 -rotate-90 inline-block -ml-2 -mt-0.5" />
+                  <p className="text-link mt-2 text-base font-medium">
+                    <HiChevronUp className="-ml-2 -mt-0.5 inline-block h-6 w-6 -rotate-90" />
                     {doc.meta.prev.title}
                   </p>
-                  <p className="mt-3 text-xs text-text-faint font-medium">
+                  <p className="text-text-faint mt-3 text-xs font-medium">
                     {doc.meta.prev.location.map((part, index) => (
                       <span key={index}>
                         {part}
@@ -91,16 +91,16 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
               {doc.meta.next && (
                 <Link
                   href={doc.meta.next.slug}
-                  className="block h-full p-5 rounded-lg bg-background border border-border hover:bg-background-secondary active:bg-background-tertiary transition duration-300 hover:border-link active:border-link text-right"
+                  className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-right transition duration-300"
                 >
                   <p className="text-text-secondary text-sm font-medium">
                     Next
                   </p>
-                  <p className="mt-2 text-link font-medium text-base">
+                  <p className="text-link mt-2 text-base font-medium">
                     {doc.meta.next.title}
-                    <HiChevronUp className="h-6 w-6 rotate-90 inline-block -mr-2 -mt-0.5" />
+                    <HiChevronUp className="-mr-2 -mt-0.5 inline-block h-6 w-6 rotate-90" />
                   </p>
-                  <p className="mt-3 text-xs text-text-faint font-medium">
+                  <p className="text-text-faint mt-3 text-xs font-medium">
                     {doc.meta.next.location.map((part, index) => (
                       <span key={index}>
                         {part}

@@ -11,8 +11,8 @@ const About: NextPage = () => {
   const subheaderStyle = 'mt-8 text-xl font-medium';
 
   return (
-    <div className="max-w-2xl mx-auto py-10">
-      <h1 className="text-3xl font-semibold text-center">About Us</h1>
+    <div className="mx-auto max-w-2xl py-10">
+      <h1 className="text-center text-3xl font-semibold">About Us</h1>
 
       <div className="mt-5">
         <p className={paragraphStyle}>
@@ -27,7 +27,7 @@ const About: NextPage = () => {
           alt="About"
           height={800}
           width={1200}
-          className="object-cover max-h-80 rounded-lg mt-5"
+          className="mt-5 max-h-80 rounded-lg object-cover"
         />
         <h2 className={subheaderStyle}>The Problem</h2>
         <p className={paragraphStyle}>

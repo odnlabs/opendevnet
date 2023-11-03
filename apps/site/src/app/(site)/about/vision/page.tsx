@@ -15,8 +15,8 @@ const Vision: NextPage = () => {
   // ! The following text is AI-generated placeholder text
 
   return (
-    <div className="max-w-2xl mx-auto py-10">
-      <h1 className="text-3xl font-semibold text-center">Vision</h1>
+    <div className="mx-auto max-w-2xl py-10">
+      <h1 className="text-center text-3xl font-semibold">Vision</h1>
       <div className="mt-5">
         <p className={paragraphStyle}>
           Welcome to the heart of Open Dev Net, where we unveil our grand vision
@@ -30,7 +30,7 @@ const Vision: NextPage = () => {
           alt="About"
           height={800}
           width={1200}
-          className="object-cover max-h-80 rounded-lg mt-5"
+          className="mt-5 max-h-80 rounded-lg object-cover"
         />
         <h2 className={headerStyle}>
           Connecting Developers, Creators, and Innovators

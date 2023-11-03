@@ -45,8 +45,8 @@ export const Header: React.FC = () => (
   <>
     <div className="relative h-16 w-full"></div>
 
-    <div className="fixed z-40 h-16 w-screen top-0 left-0 bg-[rgb(var(--header))] border-b border-border backdrop-blur-lg">
-      <div className="flex justify-between max-w-7xl w-11/12 mx-auto">
+    <div className="border-border fixed left-0 top-0 z-40 h-16 w-screen border-b bg-[rgb(var(--header))] backdrop-blur-lg">
+      <div className="mx-auto flex w-11/12 max-w-7xl justify-between">
         {/* Menu */}
         <HeaderMenu links={links} />
 

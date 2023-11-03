@@ -8,44 +8,54 @@ export const metadata: Metadata = {
   title: 'Licenses | Open Dev Net',
 };
 
-const Licenses: NextPage = async () => {
-  const paths: Record<'js' | 'rust', string[]> = {
-    js: [
-      '../../package.json',
-      './package.json',
-      '../web/package.json',
-      '../../libs/api-client/package.json',
-      '../../libs/eslint-config-odn/package.json',
-      '../../libs/tailwind-config/package.json',
-      '../../libs/tsconfig/package.json',
-      '../../libs/ui/package.json',
-    ],
-    rust: ['../api/Cargo.toml'],
-  };
+// For both package.json and parsed Cargo.toml
+interface DepFile {
+  dependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+}
 
-  type LicenseList = Record<'js' | 'rust' | 'internal', string[][]>;
+interface CargoLockPackage {
+  name: string;
+  version: string;
+  source: string;
+  checksum: string;
+  dependencies: string[];
+}
 
-  const licenses: LicenseList = {
+interface CargoLock {
+  package: Record<string, CargoLockPackage>;
+}
+
+type LibraryList = Record<'js' | 'rust' | 'internal', string[][]>;
+
+/**
+ * Gets a list of all the libraries used by Open Dev Net.
+ * @returns The list of libraries.
+ */
+const getLibraries = async (): Promise<LibraryList> => {
+  const libraries: LibraryList = {
     js: [],
     rust: [],
     internal: [],
   };
 
+  /**
+   * Find the name of the internal library defined in package.json.
+   * @param name The name of the directory.
+   * @returns The name of the internal library.
+   */
   const findInternalLibDirName = async (
     name: string
   ): Promise<string | undefined> => {
-    const directories = (
-      await fs.readdir('../../libs', {
-        withFileTypes: true,
-      })
-    )
+    const libs = await fs.readdir('../../libs', { withFileTypes: true });
+    const directories = libs
       .filter((dirent) => dirent.isDirectory())
       .map((dirent) => dirent.name);
 
     for (const dir of directories) {
-      const packageJson = JSON.parse(
-        await fs.readFile(`../../libs/${dir}/package.json`, 'utf8')
-      ) as { name: string };
+      const packageJsonPath = `../../libs/${dir}/package.json`;
+      const packageJsonFile = await fs.readFile(packageJsonPath, 'utf8');
+      const packageJson = JSON.parse(packageJsonFile) as { name: string };
       if (packageJson.name === name) return dir;
       else continue;
     }
@@ -53,53 +63,92 @@ const Licenses: NextPage = async () => {
     return undefined;
   };
 
+  /**
+   * Adds an npm package to the libraries list with a link to its npm page or github link if it is an internal library.
+   * @param packages The packages to add.
+   * @returns Nothing.
+   */
   const addNpmPackage = async (
     packages: Record<string, string>
   ): Promise<void> => {
     for (const [key, value] of Object.entries(packages)) {
       if (['workspace:*', '*'].includes(value)) {
         const dirName = await findInternalLibDirName(key);
-        if (typeof dirName === 'string')
-          licenses.internal.push([
-            key,
-            `${config.social.github}/opendevnet/tree/main/libs/${dirName}`,
-          ]);
+        if (typeof dirName === 'string') {
+          const link = `${config.social.github}/opendevnet/tree/main/libs/${dirName}`;
+          libraries.internal.push([key, link]);
+        }
       } else {
-        licenses.js.push([key, `https://www.npmjs.com/package/${key}`]);
+        libraries.js.push([key, `https://www.npmjs.com/package/${key}`]);
       }
     }
   };
 
-  for (const path of paths.js) {
-    const file = JSON.parse(await fs.readFile(path, 'utf8')) as {
-      dependencies: Record<string, string>;
-      devDependencies: Record<string, string>;
-    };
-    if (file.dependencies) await addNpmPackage(file.dependencies);
-    if (file.devDependencies) await addNpmPackage(file.devDependencies);
+  /**
+   * Adds a crate to the libraries list with a link to its crates.io page.
+   * @param crates The crates to add.
+   */
+  const addCrate = (crates: Record<string, string>): void => {
+    libraries.rust.push(
+      ...Object.keys(crates).map((key) => [
+        key,
+        `https://crates.io/crates/${key}`,
+      ])
+    );
+  };
+
+  const dirs: string[] = [];
+  for (const dir of ['apps', 'libs', 'node_modules']) {
+    dirs.push(
+      ...(await fs.readdir(`../../${dir}`)).map(
+        (dirx) => `../../${dir}/${dirx}`
+      )
+    );
   }
 
-  for (const path of paths.rust) {
-    const file = await fs.readFile(path, 'utf8');
-    const parsed = toml.parse(file) as {
-      dependencies: Record<string, string>;
-      devDependencies: Record<string, string>;
-    };
-    if (parsed.dependencies)
-      licenses.rust.push(
-        ...Object.keys(parsed.dependencies).map((key) => [
-          key,
-          `https://crates.io/crates/${key}`,
-        ])
-      );
-    if (parsed.devDependencies)
-      licenses.rust.push(
-        ...Object.keys(parsed.devDependencies).map((key) => [
-          key,
-          `https://crates.io/crates/${key}`,
-        ])
-      );
+  // Loop through each of the dep files and add the libraries to the list.
+  for (const dir of [...dirs, '../../']) {
+    // package.json
+    const packageJsonFile = await fs
+      .readFile(`${dir}/package.json`, 'utf8')
+      .catch(() => undefined);
+    if (packageJsonFile) {
+      const packageJson = JSON.parse(packageJsonFile) as DepFile | undefined;
+      if (packageJson?.dependencies)
+        await addNpmPackage(packageJson.dependencies);
+      if (packageJson?.devDependencies)
+        await addNpmPackage(packageJson.devDependencies);
+    }
+    // Cargo.toml
+    const cargoTomlFile = await fs
+      .readFile(`${dir}/Cargo.toml`, 'utf8')
+      .catch(() => undefined);
+    if (cargoTomlFile) {
+      const cargoToml = toml.parse(cargoTomlFile) as DepFile | undefined;
+      if (cargoToml?.dependencies) addCrate(cargoToml.dependencies);
+      if (cargoToml?.devDependencies) addCrate(cargoToml.devDependencies);
+    }
+    // Cargo.lock
+    const cargoLockFile = await fs
+      .readFile(`${dir}/Cargo.lock`, 'utf8')
+      .catch(() => undefined);
+    if (cargoLockFile) {
+      const cargoLock = toml.parse(cargoLockFile) as CargoLock | undefined;
+      if (cargoLock?.package)
+        libraries.rust.push(
+          ...Object.values(cargoLock.package).map((pkg) => [
+            pkg.name,
+            `https://crates.io/crates/${pkg.name}`,
+          ])
+        );
+    }
   }
+
+  return libraries;
+};
+
+const Licenses: NextPage = async () => {
+  const libraries = await getLibraries();
 
   const filterAndSort = (originalArr: string[][]): string[][] =>
     originalArr
@@ -109,38 +158,38 @@ const Licenses: NextPage = async () => {
       )
       .sort();
 
-  const filteredLicenses: LicenseList = {
-    js: filterAndSort(licenses.js),
-    rust: filterAndSort(licenses.rust),
-    internal: filterAndSort(licenses.internal),
+  const filteredLibraries: LibraryList = {
+    js: filterAndSort(libraries.js),
+    rust: filterAndSort(libraries.rust),
+    internal: filterAndSort(libraries.internal),
   };
 
   return (
     <>
-      <div className="max-w-xl w-10/12 mx-auto mt-10 lg:mt-20 mb-20 lg:mb-28">
+      <div className="mx-auto mb-20 mt-10 w-10/12 max-w-xl lg:mb-28 lg:mt-20">
         <h1 className="text-4xl font-bold">Licenses</h1>
         <p className="mt-4">
-          All software and documentation in the Open Dev Net is released under
-          one of the following licenses:
+          Below is a list of all of the libraries and packages used by Open Dev
+          Net, with links to their pages where you can find their licenses:
         </p>
         <p className="mt-4 font-medium">Rust Crates:</p>
-        <ul className="mt-1 list-disc list-inside">
-          {filteredLicenses.rust.map((license, index) => (
+        <ul className="mt-1 list-inside list-disc">
+          {filteredLibraries.rust.map((library, index) => (
             <li key={index} className="text-text-secondary">
               <a
-                href={license[1]}
+                href={library[1]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link mx-1"
               >
-                {license[0]}
+                {library[0]}
               </a>
-              {licenses.rust.filter((item) => item[0] === license[0]).length >
+              {libraries.rust.filter((item) => item[0] === library[0]).length >
                 1 && (
                 <span className="text-text-faint text-xs">
                   x
                   {
-                    licenses.rust.filter((item) => item[0] === license[0])
+                    libraries.rust.filter((item) => item[0] === library[0])
                       .length
                   }
                 </span>
@@ -150,23 +199,23 @@ const Licenses: NextPage = async () => {
         </ul>
 
         <p className="mt-4 font-medium">Internal Libraries:</p>
-        <ul className="mt-1 list-disc list-inside">
-          {filteredLicenses.internal.map((license, index) => (
+        <ul className="mt-1 list-inside list-disc">
+          {filteredLibraries.internal.map((library, index) => (
             <li key={index} className="text-text-secondary">
               <a
-                href={license[1]}
+                href={library[1]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link mx-1"
               >
-                {license[0]}
+                {library[0]}
               </a>
-              {licenses.internal.filter((item) => item[0] === license[0])
+              {libraries.internal.filter((item) => item[0] === library[0])
                 .length > 1 && (
                 <span className="text-text-faint text-xs">
                   x
                   {
-                    licenses.internal.filter((item) => item[0] === license[0])
+                    libraries.internal.filter((item) => item[0] === library[0])
                       .length
                   }
                 </span>
@@ -176,21 +225,22 @@ const Licenses: NextPage = async () => {
         </ul>
 
         <p className="mt-4 font-medium">NPM Packages:</p>
-        <ul className="mt-1 list-disc list-inside">
-          {filteredLicenses.js.map((license, index) => (
+        <ul className="mt-1 list-inside list-disc">
+          {filteredLibraries.js.map((library, index) => (
             <li key={index} className="text-text-secondary">
               <a
-                href={license[1]}
+                href={library[1]}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link mx-1"
               >
-                {license[0]}
+                {library[0]}
               </a>
-              {licenses.js.filter((item) => item[0] === license[0]).length >
+              {libraries.js.filter((item) => item[0] === library[0]).length >
                 1 && (
                 <span className="text-text-faint text-xs">
-                  x{licenses.js.filter((item) => item[0] === license[0]).length}
+                  x
+                  {libraries.js.filter((item) => item[0] === library[0]).length}
                 </span>
               )}
             </li>

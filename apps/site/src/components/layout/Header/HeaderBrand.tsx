@@ -10,16 +10,16 @@ export const HeaderBrand: React.FC = () => {
   return (
     <Link
       href="/"
-      className="relative sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:left-0 lg:translate-x-0 lg:relative flex py-2.5 ring-inset focus-visible:ring"
+      className="relative flex py-2.5 ring-inset focus-visible:ring sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0"
     >
       <Image
         src={`/logo-trans${theme === 'light' ? 'light' : ''}.png`}
         height={100}
         width={100}
         alt="Logo"
-        className="w-11 h-11 mr-1 rounded-full"
+        className="mr-1 h-11 w-11 rounded-full"
       />
-      <p className="font-medium text-lg sm:text-xl text-text my-2 sm:ml-1">
+      <p className="text-text my-2 text-lg font-medium sm:ml-1 sm:text-xl">
         <span className="hidden sm:inline-block">Open Dev Net</span>
         <span className="sm:hidden">ODN</span>
       </p>

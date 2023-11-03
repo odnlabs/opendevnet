@@ -12,8 +12,8 @@ export const ContactForm: React.FC = () => {
   const [message, setMessage] = useState<string>('');
 
   return (
-    <div className="max-w-lg w-11/12 mx-auto rounded-3xl bg-background-secondary border border-border shadow-xl p-8">
-      <div className="border-b border-border pb-5">
+    <div className="bg-background-secondary border-border mx-auto w-11/12 max-w-lg rounded-3xl border p-8 shadow-xl">
+      <div className="border-border border-b pb-5">
         <h1 className="text-3xl font-bold">Get In Touch</h1>
       </div>
 

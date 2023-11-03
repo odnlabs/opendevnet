@@ -43,5 +43,14 @@
       "email": "test_user@opendevnet.com"
     }
   },
-  "rest-client.showResponseInDifferentTab": true
+  "rest-client.showResponseInDifferentTab": true,
+  "grammarly.files.include": ["**/README.md", "**/readme.md", "**/*.txt"],
+  "grammarly.selectors": [
+    {
+      "language": "markdown",
+      "scheme": "file"
+    }
+  ],
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.surveys.enabled": false
 }

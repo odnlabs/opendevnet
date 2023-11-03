@@ -66,10 +66,10 @@
   color: 1d637f
 - name: regression
   color: ea8785
-- name: sharding
-  color: 80c042
 - name: tests
   color: f06dff
+- name: tools
+  color: e01de0
 - name: typings
   color: 80c042
 - name: utility

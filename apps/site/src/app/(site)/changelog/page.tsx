@@ -62,11 +62,11 @@ const ChangeLog: NextPage = () => {
   };
 
   return (
-    <div className="py-20 max-w-3xl w-11/12 mx-auto">
+    <div className="mx-auto w-11/12 max-w-3xl py-20">
       <h1 className="text-4xl font-bold">Changelog</h1>
       <div className="mt-10">
         {changeLogData.map((changeLog, index) => (
-          <div key={index} className="py-10 border-t border-border">
+          <div key={index} className="border-border border-t py-10">
             <h2 className="text-3xl font-bold">
               <span className="">
                 {changeLog.date
@@ -76,7 +76,7 @@ const ChangeLog: NextPage = () => {
               </span>
             </h2>
             <p
-              className={`inline-block mt-5 py-1 px-3 rounded-md text-white font-semibold text-sm ${
+              className={`mt-5 inline-block rounded-md px-3 py-1 text-sm font-semibold text-white ${
                 typeColor[changeLog.type]
               }`}
             >
