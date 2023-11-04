@@ -1,4 +1,4 @@
-import { Header } from '@components/layout';
+import { Header } from '@components/layout/index';
 import { Footer } from 'src/components/layout/Footer';
 
 import { config } from '@odnlabs/utils';
