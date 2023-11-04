@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/package.json",
-  "name": "@odnlabs/utils",
+  "name": "@odnlabs/utils-server",
   "version": "0.0.0",
   "private": true,
   "license": "CC-BY-NC-SA-4.0",

@@ -8,7 +8,7 @@ const nextConfig = {
     '@odnlabs/api-client',
     '@odnlabs/ui',
     '@odnlabs/utils-client',
-    '@odnlabs/utils',
+    '@odnlabs/utils-server',
   ],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // distDir: '../../dist/apps/site/.next', // commented out, because it should not leave the project directory..

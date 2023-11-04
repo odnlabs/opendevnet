@@ -79,7 +79,7 @@ jobs:
               - 'libs/tailwind-config/**'
               - 'libs/tsconfig/**'
               - 'libs/ui/**'
-              - 'libs/utils/**'
+              - 'libs/utils-server/**'
               - 'libs/utils-client/**'
             api:
               - *all

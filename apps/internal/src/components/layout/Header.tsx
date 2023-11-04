@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { IoExitOutline } from '@react-icons/all-files/io5/IoExitOutline';
 import { RiGithubFill } from '@react-icons/all-files/ri/RiGithubFill';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 export const Header: React.FC = () => (
   <>

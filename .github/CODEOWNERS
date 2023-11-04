@@ -13,7 +13,7 @@
 /libs/nx-rust/** @odnlabs/tooling
 /libs/tailwind-config/** @odnlabs/web
 /libs/ui/** @odnlabs/web
-/libs/utils/** @odnlabs/web
+/libs/utils-server/** @odnlabs/web
 /libs/utils-client/** @odnlabs/web
 
 /tools/** @odnlabs/tooling

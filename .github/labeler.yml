@@ -45,9 +45,9 @@ libs:@odnlabs/tsconfig:
 libs:@odnlabs/ui:
   - libs/ui/*
   - libs/ui/**/*
-libs:@odnlabs/utils:
-  - libs/utils/*
-  - libs/utils/**/*
+libs:@odnlabs/utils-server:
+  - libs/utils-server/*
+  - libs/utils-server/**/*
 libs:@odnlabs/utils-client:
   - libs/utils-client/*
   - libs/utils-client/**/*

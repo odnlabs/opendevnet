@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import { DocumentContent } from '@components';
-import { mdxApi } from '@odnlabs/utils';
+import { mdxApi } from '@odnlabs/utils-server';
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const doc = await mdxApi.getDocFromSlug('mdx', 'policies/privacy');

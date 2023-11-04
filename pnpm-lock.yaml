@@ -113,12 +113,12 @@ importers:
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
-      '@odnlabs/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@odnlabs/utils-client':
         specifier: workspace:*
         version: link:../../libs/utils-client
+      '@odnlabs/utils-server':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -207,12 +207,12 @@ importers:
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
-      '@odnlabs/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@odnlabs/utils-client':
         specifier: workspace:*
         version: link:../../libs/utils-client
+      '@odnlabs/utils-server':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -319,12 +319,12 @@ importers:
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
-      '@odnlabs/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@odnlabs/utils-client':
         specifier: workspace:*
         version: link:../../libs/utils-client
+      '@odnlabs/utils-server':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)

@@ -5,7 +5,11 @@ const { join } = require('path');
 const nextConfig = {
   basePath: '/internal',
   reactStrictMode: false, // Prevent multiple refreshes in dev mode.
-  transpilePackages: ['@odnlabs/ui', '@odnlabs/utils-client', '@odnlabs/utils'],
+  transpilePackages: [
+    '@odnlabs/ui',
+    '@odnlabs/utils-client',
+    '@odnlabs/utils-server',
+  ],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   // distDir: '../../dist/apps/site/.next', // commented out, because it should not leave the project directory.
   experimental: {

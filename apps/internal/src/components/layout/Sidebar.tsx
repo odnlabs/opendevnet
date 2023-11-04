@@ -1,4 +1,4 @@
-import { mdxApi } from '@odnlabs/utils';
+import { mdxApi } from '@odnlabs/utils-server';
 
 import { SidebarGroup } from './SidebarGroup';
 

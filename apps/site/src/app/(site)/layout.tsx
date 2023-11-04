@@ -1,7 +1,7 @@
 import { Header } from '@components/layout/index';
 import { Footer } from 'src/components/layout/Footer';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 const socialUrls = {
   github: config.social.github,

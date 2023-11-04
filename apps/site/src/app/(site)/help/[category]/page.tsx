@@ -2,8 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 import { Button } from '@components';
-import { mdxApi } from '@odnlabs/utils';
 import { Item, SubItem } from '@odnlabs/utils-client';
+import { mdxApi } from '@odnlabs/utils-server';
 
 interface Params {
   category: string;
