@@ -4,8 +4,8 @@ import { HiChevronDown } from '@react-icons/all-files/hi/HiChevronDown';
 
 import { SelectDropdown, SharedProps } from './Select.Dropdown';
 
-interface Props
-  extends SharedProps,
+interface Props<T>
+  extends SharedProps<T>,
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> {
   /**
    * Additional class names to be added to the select component.
@@ -29,7 +29,7 @@ interface Props
   loading?: boolean;
 }
 
-export const Select: React.FC<Props> = ({
+export const Select = <T,>({
   options,
   state,
   setState,
@@ -39,7 +39,7 @@ export const Select: React.FC<Props> = ({
   disabled,
   loading,
   ...props
-}) => {
+}: Props<T>): JSX.Element => {
   const [focused, setFocused] = useState<boolean>(false);
 
   const [width, setWidth] = useState<number>(0);

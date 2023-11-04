@@ -1,26 +1,24 @@
-import { useEffect, useState } from 'react';
+import { ReactPortal, useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 import { BsCheckCircle } from '@react-icons/all-files/bs/BsCheckCircle';
 
-export interface SharedProps {
+export interface SharedProps<T> {
   /**
    * Array of options to be displayed in the dropdown. Each option is an object with a value and a label.
    */
   options: {
-    value: string;
+    value: T;
     label: string;
   }[];
   /**
    * The current state of the select component.
    */
-  state: string | null;
+  state: T;
   /**
    * The function to set the state of the select component.
    */
-  setState:
-    | React.Dispatch<React.SetStateAction<string>>
-    | ((props: unknown) => void);
+  setState: React.Dispatch<React.SetStateAction<T>>;
   /**
    * The function to be called when the select component's state changes.
    * @param params The parameters to be passed to the function.
@@ -29,7 +27,7 @@ export interface SharedProps {
   onChange?: ((...params: unknown[]) => void | Promise<void>) | undefined;
 }
 
-interface Props extends SharedProps {
+interface Props<T> extends SharedProps<T> {
   /**
    * Whether the select component is focused.
    */
@@ -58,7 +56,7 @@ interface Props extends SharedProps {
   closeSelect: (...params: unknown[]) => void | Promise<void>;
 }
 
-export const SelectDropdown: React.FC<Props> = ({
+export const SelectDropdown = <T,>({
   options,
   focused,
   setState,
@@ -68,7 +66,7 @@ export const SelectDropdown: React.FC<Props> = ({
   fromLeft,
   closeSelect,
   onChange,
-}) => {
+}: Props<T>): ReactPortal | undefined => {
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
@@ -149,5 +147,5 @@ export const SelectDropdown: React.FC<Props> = ({
         </>,
         document.body
       )
-    : null;
+    : undefined;
 };
