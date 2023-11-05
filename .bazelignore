@@ -1,0 +1,12 @@
+node_modules
+apps/internal/node_modules
+apps/site/node_modules
+apps/web/node_modules
+libs/api-client/node_modules
+libs/eslint-config-odn/node_modules
+libs/nx-rust/node_modules
+libs/tailwind-config/node_modules
+libs/tsconfig/node_modules
+libs/ui/node_modules
+libs/utils-server/node_modules
+libs/utils-client/node_modules

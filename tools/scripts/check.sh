@@ -6,7 +6,8 @@ passed=true
 function software_check() {
   # Check if required software is installed
   echo -e "${BLUE}CHECK${RESET} If required software is installed"
-  software=("docker" "docker-compose" "git")
+  software=("docker" "docker-compose" "git" "bazelisk" "bazel")
+  software_dev=("node" "npm" "pnpm" "cargo" "rustup" "rustc" "rustfmt" "rustdoc")
   missing_software=()
   for software_name in "${software[@]}"; do
     if [ -x "$(command -v $software_name)" ]; then

@@ -1,0 +1,7 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+
+js_library(
+    name = "mdx",
+    srcs = ["01-policies/01-terms.mdx"],
+    visibility = ["//apps/site:__subpackages__"],
+)

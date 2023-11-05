@@ -1,0 +1,6 @@
+# passes an argument `--skipLibCheck` to _every_ spawn of tsc
+
+build --@aspect_rules_ts//ts:skipLibCheck=always --enable_runfiles --sandbox_debug
+fetch --@aspect_rules_ts//ts:skipLibCheck=always --enable_runfiles --sandbox_debug
+query --@aspect_rules_ts//ts:skipLibCheck=always --enable_runfiles --sandbox_debug
+common --enable_bzlmod

@@ -1,0 +1,80 @@
+load("@aspect_rules_js//js:defs.bzl", "js_library")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_config")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+load("@npm//apps/site:next/package_json.bzl", next_bin = "bin")
+load("//apps/site:defs.bzl", "next")
+
+npm_link_all_packages(name = "node_modules")
+
+next_bin.next_binary(
+    name = "next_js_binary",
+    visibility = ["//visibility:public"],
+)
+
+ts_config(
+    name = "tsconfig",
+    src = "tsconfig.json",
+    visibility = ["//visibility:public"],
+)
+
+js_library(
+    name = "eslintrc",
+    srcs = [".eslintrc.js"],
+    visibility = ["//visibility:public"],
+    deps = [":node_modules/eslint-config-next"],
+)
+
+next(
+    name = "next",
+    srcs = [
+        "//apps/site/mdx",
+        "//apps/site/public",
+        "//apps/site/src",
+    ],
+    data = [
+        # Files
+        "next.config.js",
+        "package.json",
+        "postcss.config.js",
+        "tailwind.config.ts",
+        # Dependencies
+        ":node_modules/@next/mdx",
+        ":node_modules/@odnlabs/api-client",
+        ":node_modules/@odnlabs/tailwind-config",
+        ":node_modules/@odnlabs/ui",
+        ":node_modules/@odnlabs/utils-client",
+        ":node_modules/@odnlabs/utils-server",
+        ":node_modules/@react-icons/all-files",
+        ":node_modules/@reduxjs/toolkit",
+        ":node_modules/@splidejs/react-splide",
+        ":node_modules/builder-validation",
+        ":node_modules/glob",
+        ":node_modules/gray-matter",
+        ":node_modules/next",
+        ":node_modules/next-mdx-remote",
+        ":node_modules/next-themes",
+        ":node_modules/react",
+        ":node_modules/react-dom",
+        ":node_modules/react-redux",
+        ":node_modules/rehype-autolink-headings",
+        ":node_modules/rehype-highlight",
+        ":node_modules/rehype-slug",
+        ":node_modules/remark-gfm",
+        ":node_modules/toml",
+        # Dev dependencies
+        ":node_modules/@odnlabs/tsconfig",
+        ":node_modules/@types/mdx",
+        ":node_modules/@types/node",
+        ":node_modules/@types/react",
+        ":node_modules/@types/react-dom",
+        ":node_modules/@types/uuid",
+        ":node_modules/autoprefixer",
+        ":node_modules/eslint",
+        ":node_modules/eslint-config-odn",
+        ":node_modules/postcss",
+        ":node_modules/tailwindcss",
+        ":node_modules/typescript",
+    ],
+    next_bin = "./node_modules/next/dist/bin/next",
+    next_js_binary = ":next_js_binary",
+)

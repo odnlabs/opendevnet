@@ -1,0 +1,35 @@
+load("@aspect_rules_js//npm:defs.bzl", "npm_package")
+load("@aspect_rules_ts//ts:defs.bzl", "ts_project")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+
+npm_link_all_packages(name = "node_modules")
+
+ts_project(
+    name = "utils_client_ts",
+    # srcs = ["src/index.ts"],
+    # Runtime direct dependencies of the linked npm package
+    data = [
+        ":node_modules/axios",
+    ],
+    declaration = True,
+    transpiler = "tsc",
+    # Transpile time direct dependencies
+    deps = [
+        ":node_modules/@odnlabs/tsconfig",
+        ":node_modules/@types/node",
+        ":node_modules/eslint-config-odn",
+        ":node_modules/tsup",
+    ],
+)
+
+# Make this library available via node_modules
+npm_package(
+    name = "utils-client",
+    srcs = [
+        "package.json",
+        ":utils_client_ts",
+    ],
+    # This is a perf improvement; the default will be flipped to False in rules_js 2.0
+    include_runfiles = False,
+    visibility = ["//visibility:public"],
+)

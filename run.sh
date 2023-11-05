@@ -92,6 +92,23 @@ elif [ "$1" == "ci" ]; then
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
   run_script check "${args[@]}"
+elif [ "$1" == "clean" ]; then
+  run_script clean "${args[@]}"
+elif [ "$1" == "bazel" ]; then
+  # Source the .env.local file to load the environment variables
+  source .env.local
+
+  # Initialize an empty string to store environment arguments
+  env_args=""
+
+  # Loop through the variables and construct the environment arguments
+  for var in $(grep -E "^[A-Z_]*=" .env.local | cut -d= -f1); do
+    value="${!var}"  # Get the value of the variable
+    env_args+="--define $var=\"$value\" "
+  done
+
+  # Run the bazel build command with all environment arguments
+  bazel build $env_args //apps/site:next_dev
 else
   help
   exit 1

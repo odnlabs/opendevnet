@@ -1,0 +1,15 @@
+"""
+Root BUILD file for the workspace.
+"""
+
+load("@aspect_rules_js//js:defs.bzl", "js_binary")
+load("@npm//:defs.bzl", "npm_link_all_packages")
+
+# Create the root of the "virtual store" of npm dependencies under bazel-out.
+# This must be done in the package where the pnpm workspace is rooted.
+npm_link_all_packages(name = "node_modules")
+
+js_binary(
+    name = "hello",
+    entry_point = "tools/scripts/hello.mjs",
+)

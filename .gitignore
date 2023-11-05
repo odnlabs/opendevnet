@@ -47,3 +47,7 @@ tmp/
 .idea
 .DS_Store
 tsup.config.bundled*
+
+# Bazel
+bazel-*
+.aspect

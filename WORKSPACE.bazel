@@ -1,0 +1,20 @@
+workspace(
+    name = "opendevnet",
+)
+
+#################################################
+#################### Node.js ####################
+#################################################
+# LINK: https://github.com/aspect-build/rules_js
+
+# load("@rules_nodejs//nodejs:repositories.bzl", "node_repositories")
+
+# node_repositories(
+#     node_repositories = {
+#         "21.0.0-darwin_amd64": ("node-v21.0.0-darwin-x64.tar.gz", "node-v21.0.0-darwin-x64", "7d77bd35bc781f02ba7383779da30bd529f21849b86f14d87e097497671b0271"),
+#         "21.0.0-linux_amd64": ("node-v21.0.0-linux-x64.tar.xz", "node-v21.0.0-linux-x64", "92220638d661a43bd0fee2bf478cb283ead6524f231aabccf14c549ebc2bc338"),
+#         "21.0.0-windows_amd64": ("node-v21.0.0-win-x64.zip", "node-v21.0.0-win-x64", "936ada36cb6f09a5565571e15eb8006e45c5a513529c19e21d070acf0e50321b"),
+#     },
+#     node_urls = ["https://nodejs.org/dist/v{version}/{filename}"],
+#     node_version = "21.0.0",
+# )
