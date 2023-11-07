@@ -41,7 +41,7 @@
     "@commitlint/config-angular": "^18.1.0",
     "@manypkg/cli": "^0.21.0",
     "@nx/devkit": "17.0.2",
-    "@nx/eslint": "^17.0.2",
+    "@nx/eslint": "^17.0.3",
     "@nx/jest": "17.0.3",
     "@nx/js": "^17.0.2",
     "@nx/next": "^17.0.2",
