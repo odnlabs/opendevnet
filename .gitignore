@@ -35,6 +35,7 @@ tmp/
 .eslintcache
 
 # Environment
+.env
 .env.*
 !.env.example
 
