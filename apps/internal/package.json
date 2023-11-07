@@ -11,6 +11,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
     "@next/mdx": "^14.0.1",
     "@odnlabs/tailwind-config": "workspace:*",
     "@odnlabs/ui": "workspace:*",
