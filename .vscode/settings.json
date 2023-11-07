@@ -50,7 +50,5 @@
       "language": "markdown",
       "scheme": "file"
     }
-  ],
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.surveys.enabled": false
+  ]
 }

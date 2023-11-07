@@ -139,3 +139,10 @@
   border-top: 1px solid rgb(var(--border));
   margin: 2.5rem 0;
 }
+
+.content:not(.ignore) img {
+  display: block;
+  max-width: 100%;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+}

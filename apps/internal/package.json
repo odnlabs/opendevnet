@@ -11,10 +11,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@mdx-js/loader": "^3.0.0",
+    "@mdx-js/react": "^3.0.0",
+    "@next/mdx": "^14.0.1",
     "@odnlabs/tailwind-config": "workspace:*",
     "@odnlabs/ui": "workspace:*",
-    "@odnlabs/utils": "workspace:*",
     "@odnlabs/utils-client": "workspace:*",
+    "@odnlabs/utils-server": "workspace:*",
     "@react-icons/all-files": "^4.1.0",
     "glob": "^10.3.10",
     "gray-matter": "^4.0.3",
@@ -30,6 +33,7 @@
   },
   "devDependencies": {
     "@odnlabs/tsconfig": "workspace:*",
+    "@types/mdx": "^2.0.9",
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",

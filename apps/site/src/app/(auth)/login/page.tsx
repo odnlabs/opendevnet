@@ -1,6 +1,6 @@
 import { Metadata, NextPage } from 'next';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 import { LoginForm } from './LoginForm';
 

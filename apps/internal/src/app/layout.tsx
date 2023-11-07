@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 import { Footer, Header, Sidebar } from '@components/layout';
 

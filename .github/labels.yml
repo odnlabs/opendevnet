@@ -54,7 +54,7 @@
   color: fbca04
 - name: libs:@odnlabs/ui
   color: fbca04
-- name: libs:@odnlabs/utils
+- name: libs:@odnlabs/utils-server
   color: fbca04
 - name: libs:@odnlabs/utils-client
   color: fbca04

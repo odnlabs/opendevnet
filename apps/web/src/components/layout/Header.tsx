@@ -5,7 +5,7 @@ import React from 'react';
 import { RiNotification3Line } from '@react-icons/all-files/ri/RiNotification3Line';
 import { RiSearchLine } from '@react-icons/all-files/ri/RiSearchLine';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 import { AccountDropdown } from './Header/AccountDropdown';
 

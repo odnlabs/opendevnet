@@ -112,7 +112,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
           <div className="min-w-72 flex pt-5 md:justify-end md:py-5">
             <div>
               <Link
-                href={`/contributing/contributing`}
+                href="/contributing/contributing"
                 className="group inline-block rounded-sm shadow-sm"
               >
                 <Button
@@ -149,7 +149,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
             <Image
               height={50}
               width={50}
-              src="/logo.png"
+              src="/internal/logo.png"
               alt="Footer Logo"
               className="mx-auto lg:mx-0"
             />

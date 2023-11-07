@@ -93,8 +93,8 @@ function repo_sync_check() {
   fi
 }
 
-# If the environment is not test, run these checks
-if [ "$1" != "test" ]; then
+# If the environment is not ci, run these checks
+if [ "$1" != "ci" ]; then
   software_check
   file_check
   repo_sync_check "$1"

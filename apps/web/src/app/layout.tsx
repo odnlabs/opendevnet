@@ -1,6 +1,6 @@
 import { Poppins } from 'next/font/google';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 import { Header, NavigationBar } from '@components/layout';
 import { DataLayer } from '@components/layout/DataLayer';

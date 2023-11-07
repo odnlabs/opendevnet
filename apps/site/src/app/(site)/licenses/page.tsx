@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import { Metadata, NextPage } from 'next';
 import toml from 'toml';
 
-import { config } from '@odnlabs/utils';
+import { config } from '@odnlabs/utils-server';
 
 export const metadata: Metadata = {
   title: 'Licenses | Open Dev Net',

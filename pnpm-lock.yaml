@@ -104,18 +104,27 @@ importers:
 
   apps/internal:
     dependencies:
+      '@mdx-js/loader':
+        specifier: ^3.0.0
+        version: 3.0.0(webpack@5.89.0)
+      '@mdx-js/react':
+        specifier: ^3.0.0
+        version: 3.0.0(@types/react@18.2.34)(react@18.2.0)
+      '@next/mdx':
+        specifier: ^14.0.1
+        version: 14.0.1(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
       '@odnlabs/tailwind-config':
         specifier: workspace:*
         version: link:../../libs/tailwind-config
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
-      '@odnlabs/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@odnlabs/utils-client':
         specifier: workspace:*
         version: link:../../libs/utils-client
+      '@odnlabs/utils-server':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -156,6 +165,9 @@ importers:
       '@odnlabs/tsconfig':
         specifier: workspace:*
         version: link:../../libs/tsconfig
+      '@types/mdx':
+        specifier: ^2.0.9
+        version: 2.0.9
       '@types/node':
         specifier: ^20.8.10
         version: 20.8.10
@@ -207,12 +219,12 @@ importers:
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
-      '@odnlabs/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@odnlabs/utils-client':
         specifier: workspace:*
         version: link:../../libs/utils-client
+      '@odnlabs/utils-server':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -222,9 +234,6 @@ importers:
       '@splidejs/react-splide':
         specifier: ^0.7.12
         version: 0.7.12
-      '@types/mdx':
-        specifier: ^2.0.9
-        version: 2.0.9
       builder-validation:
         specifier: ^0.0.3
         version: 0.0.3
@@ -274,6 +283,9 @@ importers:
       '@odnlabs/tsconfig':
         specifier: workspace:*
         version: link:../../libs/tsconfig
+      '@types/mdx':
+        specifier: ^2.0.9
+        version: 2.0.9
       '@types/node':
         specifier: ^20.8.10
         version: 20.8.10
@@ -307,6 +319,12 @@ importers:
 
   apps/web:
     dependencies:
+      '@mdx-js/loader':
+        specifier: ^3.0.0
+        version: 3.0.0(webpack@5.89.0)
+      '@mdx-js/react':
+        specifier: ^3.0.0
+        version: 3.0.0(@types/react@18.2.34)(react@18.2.0)
       '@next/mdx':
         specifier: ^14.0.1
         version: 14.0.1(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
@@ -319,12 +337,12 @@ importers:
       '@odnlabs/ui':
         specifier: workspace:*
         version: link:../../libs/ui
-      '@odnlabs/utils':
-        specifier: workspace:*
-        version: link:../../libs/utils
       '@odnlabs/utils-client':
         specifier: workspace:*
         version: link:../../libs/utils-client
+      '@odnlabs/utils-server':
+        specifier: workspace:*
+        version: link:../../libs/utils
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -365,6 +383,9 @@ importers:
       '@odnlabs/tsconfig':
         specifier: workspace:*
         version: link:../../libs/tsconfig
+      '@types/mdx':
+        specifier: ^2.0.9
+        version: 2.0.9
       '@types/node':
         specifier: ^20.8.10
         version: 20.8.10
@@ -597,9 +618,6 @@ importers:
       axios:
         specifier: ^1.6.0
         version: 1.6.0
-      next-mdx-remote:
-        specifier: ^4.4.1
-        version: 4.4.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@odnlabs/tsconfig':
         specifier: workspace:*
@@ -4137,7 +4155,6 @@ packages:
 
   /@types/mdx@2.0.9:
     resolution: {integrity: sha512-OKMdj17y8Cs+k1r0XFyp59ChSOwf8ODGtMQ4mnpfz5eFDk1aO41yN3pSKGuvVzmWAkFp37seubY1tzOVpwfWwg==}
-    dev: false
 
   /@types/minimist@1.2.4:
     resolution: {integrity: sha512-Kfe/D3hxHTusnPNRbycJE1N77WHDsdS4AjUYIzlDzhDrS47NrwuL3YW4VITxwR7KCVpzwgy4Rbj829KSSQmwXQ==}
@@ -8877,7 +8894,7 @@ packages:
       devlop: 1.1.0
       mdast-util-to-string: 4.0.0
       micromark: 4.0.0
-      micromark-util-decode-numeric-character-reference: 2.0.0
+      micromark-util-decode-numeric-character-reference: 2.0.1
       micromark-util-decode-string: 2.0.0
       micromark-util-normalize-identifier: 2.0.0
       micromark-util-symbol: 2.0.0
@@ -9579,8 +9596,8 @@ packages:
       micromark-util-symbol: 1.1.0
     dev: false
 
-  /micromark-util-decode-numeric-character-reference@2.0.0:
-    resolution: {integrity: sha512-pIgcsGxpHEtTG/rPJRz/HOLSqp5VTuIIjXlPI+6JSDlK2oljApusG6KzpS8AF0ENUMCHlC/IBb5B9xdFiVlm5Q==}
+  /micromark-util-decode-numeric-character-reference@2.0.1:
+    resolution: {integrity: sha512-bmkNc7z8Wn6kgjZmVHOX3SowGmVdhYS7yBpMnuMnPzDq/6xwVA604DuOXMZTO1lvq01g+Adfa0pE2UKGlxL1XQ==}
     dependencies:
       micromark-util-symbol: 2.0.0
     dev: false
@@ -9599,7 +9616,7 @@ packages:
     dependencies:
       decode-named-character-reference: 1.0.2
       micromark-util-character: 2.0.1
-      micromark-util-decode-numeric-character-reference: 2.0.0
+      micromark-util-decode-numeric-character-reference: 2.0.1
       micromark-util-symbol: 2.0.0
     dev: false
 
@@ -9755,7 +9772,7 @@ packages:
       micromark-util-character: 2.0.1
       micromark-util-chunked: 2.0.0
       micromark-util-combine-extensions: 2.0.0
-      micromark-util-decode-numeric-character-reference: 2.0.0
+      micromark-util-decode-numeric-character-reference: 2.0.1
       micromark-util-encode: 2.0.0
       micromark-util-normalize-identifier: 2.0.0
       micromark-util-resolve-all: 2.0.0

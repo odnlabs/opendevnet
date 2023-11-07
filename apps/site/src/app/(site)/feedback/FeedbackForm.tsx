@@ -34,7 +34,7 @@ export const FeedbackForm: React.FC = () => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
   const [email, setEmail] = useState<string>('');
   const [rating, setRating] = useState<Rating | undefined>(undefined);
-  const [category, setCategory] = useState<string>(Category.Other);
+  const [category, setCategory] = useState<Category>(Category.Other);
   const [content, setContent] = useState<string>('');
 
   return (

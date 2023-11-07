@@ -28,9 +28,9 @@ libs:@odnlabs/tsconfig:
 libs:@odnlabs/ui:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/ui\\n"
-libs:@odnlabs/utils:
+libs:@odnlabs/utils-server:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\n@odnlabs/utils\\n"
+    report|feature request) for\\?\\n\\n@odnlabs/utils-server\\n"
 libs:@odnlabs/utils-client:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/utils-client\\n"
