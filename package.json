@@ -46,7 +46,7 @@
     "@nx/js": "^17.0.2",
     "@nx/next": "^17.0.2",
     "@nx/plugin": "^17.0.2",
-    "@nx/react": "^17.0.2",
+    "@nx/react": "^17.0.3",
     "@nx/workspace": "^17.0.2",
     "@swc-node/register": "~1.6.8",
     "@swc/cli": "~0.1.62",
