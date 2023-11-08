@@ -55,6 +55,9 @@ function setup_dev_env() {
     echo "PUBLIC_WEB_URL=http://localhost:4100/app" >> .env.local
     echo "PUBLIC_INTERNAL_URL=http://localhost:4200/internal" >> .env.local
   fi
+
+  rm ./apps/api/.env || true
+  ln -s ../../.env.local ./apps/api/.env || true
 }
 
 # Check if the environment argument is specified
