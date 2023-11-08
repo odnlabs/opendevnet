@@ -4,9 +4,18 @@
 passed=true
 
 function software_check() {
+  local env="$1"
   # Check if required software is installed
   echo -e "${BLUE}CHECK${RESET} If required software is installed"
-  software=("docker" "docker-compose" "git")
+  dev_software=("docker" "docker-compose" "git" "node" "npm" "pnpm" "cargo" "sqlx")
+  prod_software=("docker" "docker-compose" "git")
+  software=()
+  if [ "$env" == "dev" ]; then
+    software=("${dev_software[@]}")
+  else
+    software=("${prod_software[@]}")
+  fi
+
   missing_software=()
   for software_name in "${software[@]}"; do
     if [ -x "$(command -v $software_name)" ]; then
@@ -95,7 +104,7 @@ function repo_sync_check() {
 
 # If the environment is not ci, run these checks
 if [ "$1" != "ci" ]; then
-  software_check
+  software_check "$1"
   file_check
   repo_sync_check "$1"
 fi

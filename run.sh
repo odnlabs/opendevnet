@@ -72,6 +72,9 @@ if [ "$1" == "prod" ]; then
       setup_prod_env
       exit 0
     fi
+  elif [ "$2" == "check" ]; then
+    run_script check "${args[@]}"
+    exit 0
   fi
   git reset --hard
   git pull
