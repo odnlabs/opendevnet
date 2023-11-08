@@ -37,6 +37,9 @@ function setup_prod_env() {
     echo "PUBLIC_WEB_URL=https://opendevnet.com/app" >> .env.production
     echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/internal" >> .env.production
   fi
+
+  rm ./apps/api/.env || true
+  ln -s ../../.env.production ./apps/api/.env || true
 }
 
 function setup_dev_env() {
@@ -52,6 +55,9 @@ function setup_dev_env() {
     echo "PUBLIC_WEB_URL=http://localhost:4100/app" >> .env.local
     echo "PUBLIC_INTERNAL_URL=http://localhost:4200/internal" >> .env.local
   fi
+
+  rm ./apps/api/.env || true
+  ln -s ../../.env.local ./apps/api/.env || true
 }
 
 # Check if the environment argument is specified
@@ -69,6 +75,9 @@ if [ "$1" == "prod" ]; then
       setup_prod_env
       exit 0
     fi
+  elif [ "$2" == "check" ]; then
+    run_script check "${args[@]}"
+    exit 0
   fi
   git reset --hard
   git pull
