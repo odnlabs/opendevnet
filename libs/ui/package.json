@@ -23,7 +23,7 @@
     "@odnlabs/tailwind-config": "workspace:*",
     "@react-icons/all-files": "^4.1.0",
     "@reduxjs/toolkit": "^1.9.7",
-    "@types/react-dom": "^18.2.14",
+    "@types/react-dom": "^18.2.15",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
     "tsup": "^7.2.0"
