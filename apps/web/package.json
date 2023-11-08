@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@odnlabs/tsconfig": "workspace:*",
-    "@types/mdx": "^2.0.9",
+    "@types/mdx": "^2.0.10",
     "@types/node": "^20.8.10",
     "@types/react": "^18.2.34",
     "@types/react-dom": "^18.2.14",

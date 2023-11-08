@@ -166,8 +166,8 @@ importers:
         specifier: workspace:*
         version: link:../../libs/tsconfig
       '@types/mdx':
-        specifier: ^2.0.9
-        version: 2.0.9
+        specifier: ^2.0.10
+        version: 2.0.10
       '@types/node':
         specifier: ^20.8.10
         version: 20.8.10
@@ -284,8 +284,8 @@ importers:
         specifier: workspace:*
         version: link:../../libs/tsconfig
       '@types/mdx':
-        specifier: ^2.0.9
-        version: 2.0.9
+        specifier: ^2.0.10
+        version: 2.0.10
       '@types/node':
         specifier: ^20.8.10
         version: 20.8.10
@@ -384,8 +384,8 @@ importers:
         specifier: workspace:*
         version: link:../../libs/tsconfig
       '@types/mdx':
-        specifier: ^2.0.9
-        version: 2.0.9
+        specifier: ^2.0.10
+        version: 2.0.10
       '@types/node':
         specifier: ^20.8.10
         version: 20.8.10
@@ -2719,7 +2719,7 @@ packages:
     resolution: {integrity: sha512-jLuwRlz8DQfQNiUCJR50Y09CGPq3fLtmtUQfVrj79E0JWu3dvsVcxVIcfhR5h0iXu+/z++zDrYeiJqifRynJkA==}
     dependencies:
       '@types/estree-jsx': 1.0.2
-      '@types/mdx': 2.0.9
+      '@types/mdx': 2.0.10
       estree-util-build-jsx: 2.2.2
       estree-util-is-identifier-name: 2.1.0
       estree-util-to-js: 1.2.0
@@ -2745,7 +2745,7 @@ packages:
       '@types/estree': 1.0.4
       '@types/estree-jsx': 1.0.2
       '@types/hast': 3.0.2
-      '@types/mdx': 2.0.9
+      '@types/mdx': 2.0.10
       collapse-white-space: 2.1.0
       devlop: 1.1.0
       estree-util-build-jsx: 3.0.1
@@ -2774,7 +2774,7 @@ packages:
     peerDependencies:
       react: '>=16'
     dependencies:
-      '@types/mdx': 2.0.9
+      '@types/mdx': 2.0.10
       '@types/react': 18.2.34
       react: 18.2.0
     dev: false
@@ -2785,7 +2785,7 @@ packages:
       '@types/react': '>=16'
       react: '>=16'
     dependencies:
-      '@types/mdx': 2.0.9
+      '@types/mdx': 2.0.10
       '@types/react': 18.2.34
       react: 18.2.0
     dev: false
@@ -4627,8 +4627,8 @@ packages:
       '@types/unist': 3.0.1
     dev: false
 
-  /@types/mdx@2.0.9:
-    resolution: {integrity: sha512-OKMdj17y8Cs+k1r0XFyp59ChSOwf8ODGtMQ4mnpfz5eFDk1aO41yN3pSKGuvVzmWAkFp37seubY1tzOVpwfWwg==}
+  /@types/mdx@2.0.10:
+    resolution: {integrity: sha512-Rllzc5KHk0Al5/WANwgSPl1/CwjqCy+AZrGd78zuK+jO9aDM6ffblZ+zIjgPNAaEBmlO0RYDvLNh7wD0zKVgEg==}
 
   /@types/minimist@1.2.4:
     resolution: {integrity: sha512-Kfe/D3hxHTusnPNRbycJE1N77WHDsdS4AjUYIzlDzhDrS47NrwuL3YW4VITxwR7KCVpzwgy4Rbj829KSSQmwXQ==}
