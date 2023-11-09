@@ -31,7 +31,8 @@
   },
   "resolutions": {
     "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.0"
+    "eslint-plugin-import": "^2.29.0",
+    "next-mdx-remote": "^4.4.1"
   },
   "dependencies": {
     "@commitlint/cli": "^18.2.0",

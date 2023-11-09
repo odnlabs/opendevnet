@@ -40,7 +40,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         <Sidebar />
 
         <div className="relative right-0 top-0 md:w-[calc(100vw-280px)]">
-          {children}
+          <div className="relative min-h-[75vh]">{children}</div>
           <Footer socialUrls={socialUrls} site={config.site} />
         </div>
       </div>
