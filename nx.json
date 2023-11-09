@@ -16,6 +16,7 @@
     "appsDir": "apps",
     "libsDir": "libs"
   },
+  "parallel": 100,
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
@@ -80,6 +81,5 @@
       "!{projectRoot}/src/test-setup.[jt]s",
       "!{projectRoot}/test-setup.[jt]s"
     ]
-  },
-  "plugins": ["@odnlabs/nx-rust"]
+  }
 }

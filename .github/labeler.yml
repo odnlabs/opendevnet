@@ -33,9 +33,6 @@ libs:@odnlabs/api-client:
 libs:eslint-config-odn:
   - libs/eslint-config-odn/*
   - libs/eslint-config-odn/**/*
-libs:@odnlabs/nx-rust:
-  - libs/nx-rust/*
-  - libs/nx-rust/**/*
 libs:@odnlabs/tailwind-config:
   - libs/tailwind-config/*
   - libs/tailwind-config/**/*

@@ -10,7 +10,6 @@
 
 /libs/api-client/** @odnlabs/api @odnlabs/web
 /libs/eslint-config-odn/** @odnlabs/tooling
-/libs/nx-rust/** @odnlabs/tooling
 /libs/tailwind-config/** @odnlabs/web
 /libs/ui/** @odnlabs/web
 /libs/utils-server/** @odnlabs/web
