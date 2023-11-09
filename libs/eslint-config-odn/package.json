@@ -5,7 +5,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "main": "index.js",
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.15",
+    "@babel/eslint-parser": "^7.23.3",
     "@typescript-eslint/eslint-plugin": "^6.10.0",
     "@typescript-eslint/parser": "^6.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
