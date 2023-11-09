@@ -19,7 +19,7 @@ COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --frozen-lockfile
 # Build the project
-RUN pnpm nx run site:build --prod
+RUN pnpm nx run website:build --prod
 
 
 # Create the production-ready image - final output of build
@@ -51,4 +51,4 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/website/.next ./dist/apps/
 # Expose port 4000
 EXPOSE 4000
 # Start the app on port 4000
-CMD ["pnpm", "nx", "run", "site:serve", "--prod", "--verbose"]
+CMD ["pnpm", "nx", "run", "website:serve", "--prod", "--verbose"]

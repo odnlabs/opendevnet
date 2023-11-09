@@ -1,10 +1,10 @@
 {
-  "name": "internal",
+  "name": "internal-docs",
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/internal",
+  "sourceRoot": "apps/internal-docs",
   "projectType": "application",
   "options": {
-    "outputPath": "dist/internal"
+    "outputPath": "dist/internal-docs"
   },
   "targets": {
     "build": {
@@ -12,8 +12,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/internal",
-        "outputPath": "dist/apps/internal",
+        "root": "apps/internal-docs",
+        "outputPath": "dist/apps/internal-docs",
         "debug": true
       },
       "configurations": {
@@ -28,16 +28,16 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4200,
-        "buildTarget": "internal:build",
+        "buildTarget": "internal-docs:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "internal:build:development",
+          "buildTarget": "internal-docs:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "internal:build:production",
+          "buildTarget": "internal-docs:build:production",
           "dev": false
         }
       }

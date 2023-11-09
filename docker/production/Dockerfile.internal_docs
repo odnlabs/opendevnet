@@ -52,4 +52,4 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/mdx ./dist/a
 # Expose port 4200
 EXPOSE 4200
 # Start the app on port 4200
-CMD ["pnpm", "nx", "run", "internal:serve", "--prod", "--verbose"]
+CMD ["pnpm", "nx", "run", "internal-docs:serve", "--prod", "--verbose"]

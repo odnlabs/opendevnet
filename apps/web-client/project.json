@@ -1,10 +1,10 @@
 {
-  "name": "web",
+  "name": "web-client",
   "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/web",
+  "sourceRoot": "apps/web-client",
   "projectType": "application",
   "options": {
-    "outputPath": "dist/web"
+    "outputPath": "dist/web-client"
   },
   "targets": {
     "build": {
@@ -12,8 +12,8 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/web",
-        "outputPath": "dist/apps/web",
+        "root": "apps/web-client",
+        "outputPath": "dist/apps/web-client",
         "debug": true
       },
       "configurations": {
@@ -28,16 +28,16 @@
       "defaultConfiguration": "development",
       "options": {
         "port": 4100,
-        "buildTarget": "web:build",
+        "buildTarget": "web-client:build",
         "dev": true
       },
       "configurations": {
         "development": {
-          "buildTarget": "web:build:development",
+          "buildTarget": "web-client:build:development",
           "dev": true
         },
         "production": {
-          "buildTarget": "web:build:production",
+          "buildTarget": "web-client:build:production",
           "dev": false
         }
       }
@@ -47,7 +47,7 @@
       "defaultConfiguration": "production",
       "options": {
         "port": 4100,
-        "buildTarget": "web:build",
+        "buildTarget": "web-client:build",
         "dev": false
       }
     },

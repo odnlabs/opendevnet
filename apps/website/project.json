@@ -47,7 +47,7 @@
       "defaultConfiguration": "production",
       "options": {
         "port": 4000,
-        "buildTarget": "site:build",
+        "buildTarget": "website:build",
         "dev": false
       }
     },
