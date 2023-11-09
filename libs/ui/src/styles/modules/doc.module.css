@@ -31,6 +31,7 @@
 .content:not(.ignore) h3 {
   font-size: 1.25rem;
   line-height: 1.5rem;
+  padding-top: 0.75rem;
   margin-bottom: 1rem;
 }
 
