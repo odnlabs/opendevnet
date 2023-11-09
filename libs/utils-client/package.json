@@ -20,11 +20,11 @@
     "lint": "eslint \"**/*.ts*\""
   },
   "dependencies": {
-    "axios": "^1.6.0"
+    "axios": "^1.6.1"
   },
   "devDependencies": {
     "@odnlabs/tsconfig": "workspace:*",
-    "@types/node": "^20.8.10",
+    "@types/node": "^20.9.0",
     "eslint-config-odn": "workspace:*",
     "tsup": "^7.2.0"
   },

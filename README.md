@@ -1,8 +1,6 @@
 # Open Dev Net
 
-![CI Status](https://github.com/odnlabs/opendevnet/actions/workflows/ci.yml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/odnlabs/opendevnet) ![Github Repo Size](https://img.shields.io/github/repo-size/odnlabs/opendevnet) ![Github Repo Stars](https://img.shields.io/github/stars/odnlabs/opendevnet)
-
-### Welcome to the official Open Dev Net repository!
+![CI Status](https://github.com/odnlabs/opendevnet/actions/workflows/ci.yml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/odnlabs/opendevnet) ![Github Repo Size](https://img.shields.io/github/repo-size/odnlabs/opendevnet) ![Github Repo Stars](https://img.shields.io/github/stars/odnlabs/opendevnet) [![License: BY-NC-SA SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 Open Dev Net is the open-source social platform for developers to collaborate, find opportunities, and streamline workflows. This repository contains the source code for the Open Dev Net website, which is built primarily with TypeScript and Rust.
 
@@ -46,7 +44,7 @@ git push origin feature/your-feature-name
 
 ## License
 
-Open Dev Net is licensed under [CC BY-NC-SA 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+Open Dev Net is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Contact
 
