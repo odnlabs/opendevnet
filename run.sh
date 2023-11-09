@@ -101,6 +101,8 @@ elif [ "$1" == "ci" ]; then
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
   run_script check "${args[@]}"
+elif [ "$1" == "clean" ]; then
+  run_script clean "${args[@]}"
 else
   help
   exit 1
