@@ -15,11 +15,11 @@ services:
     networks:
       - app-network
 
-  web:
-    container_name: web
+  web_client:
+    container_name: web_client
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile.web
+      dockerfile: ./docker/production/Dockerfile.web_client
       args:
         DOCKER_BUILDKIT: 1
     env_file:
@@ -54,7 +54,7 @@ services:
       - '80:80'
     depends_on:
       - site
-      - web
+      - web_client
       - internal
     networks:
       - app-network

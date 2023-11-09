@@ -37,12 +37,12 @@
       }
     },
     {
-      "name": "Launch apps/web development",
+      "name": "Launch apps/web-client development",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["nx", "run", "web:dev", "--verbose"],
+      "runtimeArgs": ["nx", "run", "web-client:dev", "--verbose"],
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
       "outputCapture": "std",
       "internalConsoleOptions": "openOnSessionStart",
@@ -50,7 +50,7 @@
       "env": {
         "DEBUG": "true",
         "TS_NODE_IGNORE": "false",
-        "TS_NODE_PROJECT": "${workspaceFolder}/apps/web/tsconfig.json"
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/web-client/tsconfig.json"
       }
     }
   ]

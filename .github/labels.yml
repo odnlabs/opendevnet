@@ -4,7 +4,7 @@
   color: fbca04
 - name: apps:site
   color: fbca04
-- name: apps:web
+- name: apps:web-client
   color: fbca04
 - name: backlog
   color: 7ef7ef

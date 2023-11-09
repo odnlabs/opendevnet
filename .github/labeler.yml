@@ -7,9 +7,9 @@ apps:internal:
 apps:site:
   - apps/site/*
   - apps/site/**/*
-apps:web:
-  - apps/web/*
-  - apps/web/**/*
+apps:web-client:
+  - apps/web-client/*
+  - apps/web-client/**/*
 ci:
   - .github/workflows/*
   - .github/workflows/**/*

@@ -7,9 +7,9 @@ apps:internal:
 apps:site:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\nsite\\n"
-apps:web:
+apps:web-client:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\nweb\\n"
+    report|feature request) for\\?\\n\\nweb-client\\n"
 libs:@odnlabs/api-client:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/api-client\\n"

@@ -14,7 +14,7 @@ body:
         - General
         - API
         - Site
-        - Web App
+        - Web client
         - Other (specify below)
     validations:
       required: true

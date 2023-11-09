@@ -19,7 +19,7 @@ COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --frozen-lockfile
 # Build the project
-RUN pnpm nx run web:build --prod
+RUN pnpm nx run web-client:build --prod
 
 
 # Create the production-ready image - final output of build
@@ -42,13 +42,13 @@ COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
 # Config, dep, and built files that the app needs
-COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/web  ./dist/apps/web
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/project.json  ./dist/apps/web/
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/tailwind.config.ts  ./dist/apps/web/
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/postcss.config.js  ./dist/apps/web/
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/node_modules ./dist/apps/web/node_modules
-COPY --from=installer --chown=nextjs:nodejs /app/apps/web/.next ./dist/apps/web/.next
+COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/web-client  ./dist/apps/web-client
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web-client/project.json  ./dist/apps/web-client/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web-client/tailwind.config.ts  ./dist/apps/web-client/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web-client/postcss.config.js  ./dist/apps/web-client/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web-client/node_modules ./dist/apps/web-client/node_modules
+COPY --from=installer --chown=nextjs:nodejs /app/apps/web-client/.next ./dist/apps/web-client/.next
 # Expose port 4100
 EXPOSE 4100
 # Start the app on port 4100
-CMD ["pnpm", "nx", "run", "web:serve", "--prod", "--verbose"]
+CMD ["pnpm", "nx", "run", "web-client:serve", "--prod", "--verbose"]

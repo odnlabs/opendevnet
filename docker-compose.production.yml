@@ -44,9 +44,9 @@ services:
     networks:
       - app-network
 
-  web:
+  web_client:
     container_name: web
-    image: slekup/opendevnet-web:main
+    image: slekup/opendevnet-web_client:main
     env_file:
       - .env.production
     restart: always
@@ -69,7 +69,7 @@ services:
     depends_on:
       # - api
       - site
-      - web
+      - web_client
       - internal
     networks:
       - app-network

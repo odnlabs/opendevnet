@@ -13,7 +13,7 @@ updates:
     target-branch: 'dev'
 
   - package-ecosystem: 'npm'
-    directory: '/apps/web'
+    directory: '/apps/web-client'
     schedule:
       interval: 'daily'
     target-branch: 'dev'

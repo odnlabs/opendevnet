@@ -34,7 +34,7 @@ function setup_prod_env() {
     echo "PUBLIC_API_URL=https://opendevnet.com/api" >> .env.production
     echo "PUBLIC_WS_URL=ws://opendevnet.com/ws" >> .env.production
     echo "PUBLIC_SITE_URL=https://opendevnet.com" >> .env.production
-    echo "PUBLIC_WEB_URL=https://opendevnet.com/app" >> .env.production
+    echo "PUBLIC_WEB_CLIENT_URL=https://opendevnet.com/app" >> .env.production
     echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/internal" >> .env.production
   fi
 
@@ -52,7 +52,7 @@ function setup_dev_env() {
     echo "PUBLIC_API_URL=http://localhost:5000/api" >> .env.local
     echo "PUBLIC_WS_URL=ws://localhost:5000/ws" >> .env.local
     echo "PUBLIC_SITE_URL=http://localhost:4000" >> .env.local
-    echo "PUBLIC_WEB_URL=http://localhost:4100/app" >> .env.local
+    echo "PUBLIC_WEB_CLIENT_URL=http://localhost:4100/app" >> .env.local
     echo "PUBLIC_INTERNAL_URL=http://localhost:4200/internal" >> .env.local
   fi
 

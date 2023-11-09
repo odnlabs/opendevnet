@@ -38,7 +38,7 @@ const nextConfig = {
     PUBLIC_API_URL: process.env.PUBLIC_API_URL,
     PUBLIC_WS_URL: process.env.PUBLIC_WS_URL,
     PUBLIC_SITE_URL: process.env.PUBLIC_SITE_URL,
-    PUBLIC_WEB_URL: process.env.PUBLIC_WEB_URL,
+    PUBLIC_WEB_CLIENT_URL: process.env.PUBLIC_WEB_CLIENT_URL,
   },
   webpack: (config, { isServer }) => {
     config.resolve.fallback = { fs: false };
