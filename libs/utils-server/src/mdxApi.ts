@@ -10,11 +10,6 @@ import {
   Slug,
   SubItem,
 } from '@odnlabs/utils-client';
-import { serialize } from 'next-mdx-remote/serialize';
-import rehypeAutolinkHeadings from 'rehype-autolink-headings';
-import rehypeHighlight from 'rehype-highlight';
-import rehypeSlug from 'rehype-slug';
-import remarkGfm from 'remark-gfm';
 
 /**
  * Remove the positon prefix from a slug.
@@ -411,18 +406,6 @@ export const getDocFromSlug = async (
   ];
   verifyFrontmatter(docPath, data, requiredFrontmatter);
 
-  const mdxSource = await serialize(result.content, {
-    mdxOptions: {
-      rehypePlugins: [
-        rehypeSlug,
-        rehypeHighlight as unknown as () => void,
-        [rehypeAutolinkHeadings, { behavior: 'wrap' }],
-      ],
-      remarkPlugins: [remarkGfm],
-      development: process.env.ENVIRONMENT !== 'production',
-    },
-  });
-
   /**
    * Get the next and previous slugs metadata.
    * @param fullSlug The current slug.
@@ -484,7 +467,7 @@ export const getDocFromSlug = async (
 
   // Return all data to display doc
   return {
-    source: mdxSource,
+    source: result.content,
     meta: {
       slug: onlySlug,
       title: data.title,

@@ -84,6 +84,28 @@ if [ "$1" == "prod" ]; then
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.production.yml"
   run_script docker "${args[@]}"
+elif [ "$1" == "prodtest" ]; then
+  if [ "$2" == "internal" ]; then
+    run_script check ci
+    echo -e "${BLUE}BUILDING${RESET} internal"
+    pnpm nx run internal:build --prod --no-cache
+    echo -e "${BLUE}COPYING${RESET} project.json"
+    cp ./apps/internal/project.json ./dist/apps/internal || true
+    echo -e "${BLUE}COPYING${RESET} tailwind.config.ts"
+    cp ./apps/internal/tailwind.config.ts ./dist/apps/internal || true
+    echo -e "${BLUE}COPYING${RESET} postcss.config.js"
+    cp ./apps/internal/postcss.config.js ./dist/apps/internal || true
+    echo -e "${BLUE}COPYING${RESET} node_modules"
+    cp -rL ./apps/internal/node_modules ./dist/apps/internal || true
+    echo -e "${BLUE}COPYING${RESET} .next"
+    cp -rL ./apps/internal/.next ./dist/apps/internal || true
+    echo -e "${BLUE}COPYING${RESET} mdx"
+    cp -rL ./apps/internal/mdx ./dist/apps/internal || true
+    echo -e "${BLUE}SERVING${RESET} internal"
+    pnpm nx run internal:serve --prod --verbose
+  else
+    echo -e "${RED}ERROR${RESET} Invalid argument"
+  fi
 elif [ "$1" == "dev" ]; then
   if [ "$2" == "setup" ]; then
     if [ "$3" == "env" ]; then

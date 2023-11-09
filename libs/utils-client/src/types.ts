@@ -86,6 +86,6 @@ export interface DocMetadata {
 }
 
 export interface ReturnedDoc {
-  source: MDXRemoteSerializeResult;
+  source: string;
   meta: DocMetadata;
 }

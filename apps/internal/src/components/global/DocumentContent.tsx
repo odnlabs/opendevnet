@@ -1,8 +1,12 @@
 'use client';
 
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 import { HiChevronUp } from '@react-icons/all-files/hi/HiChevronUp';
 
@@ -11,7 +15,11 @@ import { ReturnedDoc } from '@odnlabs/utils-client';
 
 import * as uiComponents from './uiClientComponents';
 
-const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
+interface DocumentContentProps {
+  doc: ReturnedDoc;
+}
+
+const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
     const links = document
@@ -52,7 +60,18 @@ const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
           <div className={`text-text-secondary mb-10 mt-8 ${styles.content}`}>
             {doc.source && (
               <MDXRemote
-                {...doc.source}
+                source={doc.source}
+                options={{
+                  mdxOptions: {
+                    rehypePlugins: [
+                      rehypeSlug,
+                      rehypeHighlight as unknown as () => void,
+                      [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+                    ],
+                    remarkPlugins: [remarkGfm],
+                    development: process.env.NODE_ENV !== 'production',
+                  },
+                }}
                 components={{ Link, ...uiComponents }}
               />
             )}

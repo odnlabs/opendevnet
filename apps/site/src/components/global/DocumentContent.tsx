@@ -1,8 +1,12 @@
 'use client';
 
-import { MDXRemote } from 'next-mdx-remote';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 import { useEffect } from 'react';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeHighlight from 'rehype-highlight';
+import rehypeSlug from 'rehype-slug';
+import remarkGfm from 'remark-gfm';
 
 import { HiChevronUp } from '@react-icons/all-files/hi/HiChevronUp';
 
@@ -50,7 +54,21 @@ export const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
         <div className="bg-border mt-5 h-px w-full"></div>
         <div className={`text-text-secondary mb-10 mt-8 ${styles.content}`}>
           {doc.source && (
-            <MDXRemote {...doc.source} components={{ Link, ...uiComponents }} />
+            <MDXRemote
+              source={doc.source}
+              options={{
+                mdxOptions: {
+                  rehypePlugins: [
+                    rehypeSlug,
+                    rehypeHighlight as unknown as () => void,
+                    [rehypeAutolinkHeadings, { behavior: 'wrap' }],
+                  ],
+                  remarkPlugins: [remarkGfm],
+                  development: process.env.NODE_ENV !== 'production',
+                },
+              }}
+              components={{ Link, ...uiComponents }}
+            />
           )}
         </div>
 
