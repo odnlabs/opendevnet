@@ -20,11 +20,7 @@
   "targetDefaults": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [
-        "{projectRoot}/dist",
-        "{projectRoot}/.next",
-        "{projectRoot}/target"
-      ],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.next"],
       "inputs": ["production", "^production"]
     },
     "test": {
@@ -40,11 +36,7 @@
     },
     "dev": {
       "dependsOn": ["^build"],
-      "outputs": [
-        "{projectRoot}/dist",
-        "{projectRoot}/.next",
-        "{projectRoot}/target"
-      ],
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/.next"],
       "inputs": ["production", "^production"]
     },
     "lint": {

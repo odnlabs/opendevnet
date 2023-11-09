@@ -44,7 +44,7 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
         <button
           className={`flex w-full justify-between rounded-md px-2.5 py-1.5 text-left text-sm ${
             pathname.startsWith(`/${cat.slug}/${item.slug}`)
-              ? 'bg-secondary font-medium'
+              ? 'bg-secondary cursor-default font-medium'
               : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
           }`}
           onClick={() =>
