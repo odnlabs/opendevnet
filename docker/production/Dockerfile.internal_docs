@@ -42,7 +42,7 @@ COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
 # Config, dep, and built files that the app needs
-COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/internal  ./dist/apps/internal
+COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/internal-docs  ./dist/apps/internal-docs
 COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/project.json  ./dist/apps/internal-docs/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/tailwind.config.ts  ./dist/apps/internal-docs/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/postcss.config.js  ./dist/apps/internal-docs/
