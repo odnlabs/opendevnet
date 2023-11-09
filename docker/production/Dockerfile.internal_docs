@@ -19,7 +19,7 @@ COPY . .
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --frozen-lockfile
 # Build the project
-RUN pnpm nx run internal:build --prod
+RUN pnpm nx run internal-docs:build --prod
 
 
 # Create the production-ready image - final output of build
