@@ -3,11 +3,16 @@
 
 * @slekup @odn-admin
 
+# Apps
 /apps/api/** @odnlabs/api
-/apps/internal/** @odnlabs/web
-/apps/site/** @odnlabs/web
-/apps/web/** @odnlabs/web
+/apps/internal-docs/** @odnlabs/web
+/apps/internal-docs/mdx/** @odnlabs/docs
+/apps/website/** @odnlabs/web
+/apps/website/mdx/** @odnlabs/docs
+/apps/web-client/** @odnlabs/web
+/apps/web-client/mdx/** @odnlabs/docs
 
+# Libraries
 /libs/api-client/** @odnlabs/api @odnlabs/web
 /libs/eslint-config-odn/** @odnlabs/tooling
 /libs/tailwind-config/** @odnlabs/web
@@ -15,5 +20,6 @@
 /libs/utils-server/** @odnlabs/web
 /libs/utils-client/** @odnlabs/web
 
+# Tools
 /tools/** @odnlabs/tooling
 /tools/rest/** @odnlabs/api @odnlabs/web

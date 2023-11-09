@@ -3,12 +3,12 @@
   "resolveSourceMapLocations": ["${workspaceFolder}/**", "!**/node_modules/**"],
   "configurations": [
     {
-      "name": "Launch apps/internal development",
+      "name": "Launch apps/internal-docs development",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["nx", "run", "internal:dev", "--verbose"],
+      "runtimeArgs": ["nx", "run", "internal-docs:dev", "--verbose"],
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
       "outputCapture": "std",
       "internalConsoleOptions": "openOnSessionStart",
@@ -16,16 +16,16 @@
       "env": {
         "DEBUG": "true",
         "TS_NODE_IGNORE": "false",
-        "TS_NODE_PROJECT": "${workspaceFolder}/apps/internal/tsconfig.json"
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/internal-docs/tsconfig.json"
       }
     },
     {
-      "name": "Launch apps/site development",
+      "name": "Launch apps/website development",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["nx", "run", "site:dev", "--verbose"],
+      "runtimeArgs": ["nx", "run", "website:dev", "--verbose"],
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
       "outputCapture": "std",
       "internalConsoleOptions": "openOnSessionStart",
@@ -33,16 +33,16 @@
       "env": {
         "DEBUG": "true",
         "TS_NODE_IGNORE": "false",
-        "TS_NODE_PROJECT": "${workspaceFolder}/apps/site/tsconfig.json"
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/website/tsconfig.json"
       }
     },
     {
-      "name": "Launch apps/web development",
+      "name": "Launch apps/web-client development",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["nx", "run", "web:dev", "--verbose"],
+      "runtimeArgs": ["nx", "run", "web-client:dev", "--verbose"],
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
       "outputCapture": "std",
       "internalConsoleOptions": "openOnSessionStart",
@@ -50,7 +50,7 @@
       "env": {
         "DEBUG": "true",
         "TS_NODE_IGNORE": "false",
-        "TS_NODE_PROJECT": "${workspaceFolder}/apps/web/tsconfig.json"
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/web-client/tsconfig.json"
       }
     }
   ]

@@ -1,10 +1,10 @@
 version: '3'
 services:
-  site:
-    container_name: site
+  website:
+    container_name: website
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile.site
+      dockerfile: ./docker/production/Dockerfile.website
       args:
         DOCKER_BUILDKIT: 1
     env_file:
@@ -15,11 +15,11 @@ services:
     networks:
       - app-network
 
-  web:
-    container_name: web
+  web_client:
+    container_name: web_client
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile.web
+      dockerfile: ./docker/production/Dockerfile.web_client
       args:
         DOCKER_BUILDKIT: 1
     env_file:
@@ -30,11 +30,11 @@ services:
     networks:
       - app-network
 
-  internal:
-    container_name: internal
+  internal_docs:
+    container_name: internal_docs
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile.internal
+      dockerfile: ./docker/production/Dockerfile.internal_docs
       args:
         DOCKER_BUILDKIT: 1
     env_file:
@@ -53,9 +53,9 @@ services:
     ports:
       - '80:80'
     depends_on:
-      - site
-      - web
-      - internal
+      - website
+      - web_client
+      - internal_docs
     networks:
       - app-network
 

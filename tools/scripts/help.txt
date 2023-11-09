@@ -9,5 +9,5 @@
 {{BOLD}}ci{{RESET}}    run the CI docker-compose file
           args: [update|restart|build|start|stop|logs] (service)
 
-For more information, see: {{BLUE}}https://opendevnet.com/internal/contributing/setup#execution{{RESET}}
+For more information, see: {{BLUE}}https://opendevnet.com/internal-docs/contributing/setup#execution{{RESET}}
 

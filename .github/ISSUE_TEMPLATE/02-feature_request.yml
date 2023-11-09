@@ -13,8 +13,8 @@ body:
       options:
         - General
         - API
-        - Site
-        - Web App
+        - Website
+        - Web client
         - Other (specify below)
     validations:
       required: true

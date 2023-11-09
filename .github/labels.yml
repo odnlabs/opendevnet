@@ -1,10 +1,10 @@
 - name: apps:api
   color: fbca04
-- name: apps:internal
+- name: apps:internal-docs
   color: fbca04
-- name: apps:site
+- name: apps:website
   color: fbca04
-- name: apps:web
+- name: apps:web-client
   color: fbca04
 - name: backlog
   color: 7ef7ef

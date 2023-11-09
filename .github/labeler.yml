@@ -1,15 +1,15 @@
 apps:api:
   - apps/api/*
   - apps/api/**/*
-apps:internal:
-  - apps/internal/*
-  - apps/internal/**/*
-apps:site:
-  - apps/site/*
-  - apps/site/**/*
-apps:web:
-  - apps/web/*
-  - apps/web/**/*
+apps:internal-docs:
+  - apps/internal-docs/*
+  - apps/internal-docs/**/*
+apps:website:
+  - apps/website/*
+  - apps/website/**/*
+apps:web-client:
+  - apps/web-client/*
+  - apps/web-client/**/*
 ci:
   - .github/workflows/*
   - .github/workflows/**/*

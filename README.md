@@ -7,7 +7,7 @@ Open Dev Net is the open-source social platform for developers to collaborate, f
 ## Resources
 
 - [Open Dev Net](https://opendevnet.com/)
-- [Internal Docs](https://odnlabs.github.io/internal-docs/)
+- [Internal Docs](https://opendevnet.com/internal-docs/)
 - [Developer Docs](https://opendevnet.com/dev/docs)
 - [Code of Conduct](.github/CODE_OF_CONDUCT.md)
 

@@ -1,0 +1,54 @@
+# Use Node.js v20 as the base image
+FROM node:21-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+# Install the latest pnpm version with corepack
+RUN corepack enable
+RUN corepack prepare pnpm@latest --activate
+# Add apk packages
+RUN apk add --update --no-cache python3 build-base gcc && ln -sf /usr/bin/python3 /usr/bin/python
+RUN apk add --no-cache libc6-compat
+RUN apk update
+# Set working directory
+WORKDIR /app
+
+
+# Install dependencies
+FROM base AS installer
+COPY . .
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm fetch
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --offline --frozen-lockfile
+# Build the project
+RUN pnpm nx run website:build --prod
+
+
+# Create the production-ready image - final output of build
+FROM base as runner
+# Don't run production as root
+# Add a new group called nodejs, with GID 1001
+RUN addgroup -g 1001 -S nodejs
+# Add a new user called nextjs, with UID/GID 1001, to run as a non-root user
+RUN adduser -S nextjs -u 1001 -G nodejs
+# Create the nx directory
+RUN mkdir -p .nx/cache
+RUN chown -R nextjs:nodejs .nx
+# Switch to the `nextjs` user
+USER nextjs
+# Root files
+COPY --from=installer --chown=nextjs:nodejs /app/.env.production ./
+COPY --from=installer --chown=nextjs:nodejs /app/package.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
+COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
+COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
+COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
+# Config, dep, and built files that the app needs
+COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/website  ./dist/apps/website
+COPY --from=installer --chown=nextjs:nodejs /app/apps/website/project.json  ./dist/apps/website/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/website/tailwind.config.ts  ./dist/apps/website/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/website/postcss.config.js  ./dist/apps/website/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/website/node_modules ./dist/apps/website/node_modules
+COPY --from=installer --chown=nextjs:nodejs /app/apps/website/.next ./dist/apps/website/.next
+# Expose port 4000
+EXPOSE 4000
+# Start the app on port 4000
+CMD ["pnpm", "nx", "run", "website:serve", "--prod", "--verbose"]

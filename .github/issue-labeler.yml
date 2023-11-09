@@ -1,15 +1,15 @@
 apps:api:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\napi\\n"
-apps:internal:
+apps:internal-docs:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\ninternal\\n"
-apps:site:
+    report|feature request) for\\?\\n\\ninternal-docs\\n"
+apps:website:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\nsite\\n"
-apps:web:
+    report|feature request) for\\?\\n\\nwebsite\\n"
+apps:web-client:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\nweb\\n"
+    report|feature request) for\\?\\n\\nweb-client\\n"
 libs:@odnlabs/api-client:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/api-client\\n"

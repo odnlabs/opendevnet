@@ -14,9 +14,9 @@ services:
   #   networks:
   #     - app-network
 
-  site:
-    container_name: site
-    image: slekup/opendevnet-site:main
+  website:
+    container_name: website
+    image: slekup/opendevnet-website:main
     env_file:
       - .env.production
     restart: always
@@ -29,9 +29,9 @@ services:
     networks:
       - app-network
 
-  internal:
-    container_name: internal
-    image: slekup/opendevnet-internal:main
+  internal_docs:
+    container_name: internal_docs
+    image: slekup/opendevnet-internal_docs:main
     env_file:
       - .env.production
     restart: always
@@ -44,9 +44,9 @@ services:
     networks:
       - app-network
 
-  web:
+  web_client:
     container_name: web
-    image: slekup/opendevnet-web:main
+    image: slekup/opendevnet-web_client:main
     env_file:
       - .env.production
     restart: always
@@ -68,9 +68,9 @@ services:
       - '80:80'
     depends_on:
       # - api
-      - site
-      - web
-      - internal
+      - website
+      - web_client
+      - internal_docs
     networks:
       - app-network
 

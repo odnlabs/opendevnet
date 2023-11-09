@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@odnlabs/tsconfig/nextjs.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@store": ["src/store.ts"],
+      "@constants/*": ["src/constants/*"],
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@styles/*": ["src/styles/*"],
+      "@slices/*": ["src/slices/*"],
+      "@typings/*": ["src/typings/*"],
+      "@utils/*": ["src/utils/*"]
+    },
+    "moduleResolution": "node"
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "../../dist/apps/website/.next/types/**/*.ts",
+    "../../environment.d.ts"
+  ],
+  "exclude": ["node_modules"]
+}
