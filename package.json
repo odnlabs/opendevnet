@@ -29,6 +29,10 @@
     "lint:fix": "nx run-many --target=lint --all -- --fix",
     "test": "nx run-many --target=test --all"
   },
+  "resolutions": {
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0"
+  },
   "dependencies": {
     "@commitlint/cli": "^18.2.0",
     "@commitlint/config-angular": "^18.1.0",
