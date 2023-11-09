@@ -124,7 +124,7 @@ importers:
         version: link:../../libs/utils-client
       '@odnlabs/utils-server':
         specifier: workspace:*
-        version: link:../../libs/utils
+        version: link:../../libs/utils-server
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -224,7 +224,7 @@ importers:
         version: link:../../libs/utils-client
       '@odnlabs/utils-server':
         specifier: workspace:*
-        version: link:../../libs/utils
+        version: link:../../libs/utils-server
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -342,7 +342,7 @@ importers:
         version: link:../../libs/utils-client
       '@odnlabs/utils-server':
         specifier: workspace:*
-        version: link:../../libs/utils
+        version: link:../../libs/utils-server
       '@react-icons/all-files':
         specifier: ^4.1.0
         version: 4.1.0(react@18.2.0)
@@ -545,7 +545,26 @@ importers:
         specifier: ^5.2.2
         version: 5.2.2
 
-  libs/utils:
+  libs/utils-client:
+    dependencies:
+      axios:
+        specifier: ^1.6.0
+        version: 1.6.0
+    devDependencies:
+      '@odnlabs/tsconfig':
+        specifier: workspace:*
+        version: link:../tsconfig
+      '@types/node':
+        specifier: ^20.8.10
+        version: 20.8.10
+      eslint-config-odn:
+        specifier: workspace:*
+        version: link:../eslint-config-odn
+      tsup:
+        specifier: ^7.2.0
+        version: 7.2.0(@swc/core@1.3.95)(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)
+
+  libs/utils-server:
     dependencies:
       '@odnlabs/utils-client':
         specifier: workspace:*
@@ -574,25 +593,6 @@ importers:
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
-    devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-      '@types/node':
-        specifier: ^20.8.10
-        version: 20.8.10
-      eslint-config-odn:
-        specifier: workspace:*
-        version: link:../eslint-config-odn
-      tsup:
-        specifier: ^7.2.0
-        version: 7.2.0(@swc/core@1.3.95)(postcss@8.4.31)(ts-node@10.9.1)(typescript@5.2.2)
-
-  libs/utils-client:
-    dependencies:
-      axios:
-        specifier: ^1.6.0
-        version: 1.6.0
     devDependencies:
       '@odnlabs/tsconfig':
         specifier: workspace:*
