@@ -41,9 +41,6 @@ COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
-# NX will throw an error if these files/dirs are not present
-COPY --from=installer --chown=nextjs:nodejs /app/tsconfig.base.json ./
-COPY --from=installer --chown=nextjs:nodejs /app/libs/nx-rust ./libs/nx-rust
 # Config, dep, and built files that the app needs
 COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/web  ./dist/apps/web
 COPY --from=installer --chown=nextjs:nodejs /app/apps/web/project.json  ./dist/apps/web/

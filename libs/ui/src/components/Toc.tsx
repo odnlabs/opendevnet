@@ -2,6 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 
 import { HiOutlineExternalLink } from '@react-icons/all-files/hi/HiOutlineExternalLink';
 
+/**
+ * Hook to observe the headings.
+ * @returns The active heading id.
+ */
 const useHeadsObserver = (): { activeId: string } => {
   const observer = useRef<IntersectionObserver | undefined>();
   const [activeId, setActiveId] = useState('');
@@ -40,16 +44,25 @@ interface TocProps {
  * @returns The Table of Contents component.
  */
 export const Toc: React.FC<TocProps> = ({ editLink }) => {
-  const [headings, setHeadings] = useState<
-    {
-      id: string;
-      text: string;
-      level: number;
-    }[]
-  >([]);
+  interface Heading {
+    id: string;
+    text: string;
+    level: number;
+  }
+
+  const [headings, setHeadings] = useState<Heading[]>([]);
+  const [tocPosition, setTocPosition] = useState<
+    'relative' | 'fixed' | 'absolute'
+  >('relative');
+  const [isMobileWidth, setIsMobileWidth] = useState<boolean>(false);
 
   const { activeId } = useHeadsObserver();
 
+  const tocRef = useRef<HTMLDivElement>(null);
+
+  /**
+   * Get the headings from the markdown content.
+   */
   useEffect(() => {
     const mdxContent = document.getElementById('mdx-content');
     if (!mdxContent) return;
@@ -63,6 +76,56 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
     setHeadings(elements);
   }, []);
 
+  const headerHeight = 56;
+  const tocFromTop = 80;
+
+  useEffect(() => {
+    const handleScroll = (): void => {
+      const footer = document.getElementById('footer');
+      const toc = tocRef.current;
+
+      if (!footer || !toc) return;
+
+      const tocHeight = toc.offsetHeight;
+      const footerPosition = footer.getBoundingClientRect().top;
+
+      const remainingSpace = window.innerHeight - footerPosition;
+      const shouldStick =
+        tocHeight + remainingSpace > window.innerHeight - tocFromTop - 208; // 208 for padding
+
+      if (window.innerWidth < 768) {
+        if (!isMobileWidth) setIsMobileWidth(true);
+        setTocPosition('relative');
+        return;
+      }
+
+      if (isMobileWidth) setIsMobileWidth(false);
+      if (shouldStick) return setTocPosition('absolute');
+      const borderWidth = 1;
+      setTocPosition(
+        window.scrollY > headerHeight - borderWidth ? 'fixed' : 'relative'
+      );
+    };
+
+    /**
+     * Handles the resize event.
+     * @returns Nothing.
+     */
+    const handleResize = (): void =>
+      window.innerWidth < 768
+        ? setIsMobileWidth(true)
+        : setIsMobileWidth(false);
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [isMobileWidth]);
+
   const styles = [
     '', // h1
     'ml-2', // h2
@@ -72,8 +135,17 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
 
   return (
     <>
-      <div className="min-w-60 max-w-60 relative ml-20">
-        <div className="min-w-60 max-w-60 fixed top-40">
+      <div className="min-w-60 max-w-60 relative ml-20 min-h-full">
+        <div
+          className={`min-w-60 max-w-60 ${
+            tocPosition === 'relative'
+              ? 'relative'
+              : tocPosition === 'fixed'
+              ? 'fixed top-20'
+              : 'absolute bottom-0'
+          }`}
+          ref={tocRef}
+        >
           <p className="border-border border-b py-2 font-semibold">
             Table of Contents
           </p>

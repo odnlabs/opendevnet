@@ -96,7 +96,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
   ];
 
   return (
-    <>
+    <div id="footer">
       <div className="mx-auto mb-8 w-11/12 max-w-7xl rounded-lg bg-gradient-to-tr from-blue-700 to-[#0B1D50] shadow-xl sm:mb-10 lg:mb-20">
         <div className="justify-between p-10 md:flex md:p-12 lg:p-20">
           <div className="drop-shadow-lg">
@@ -236,6 +236,6 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
           </Link>
         </p>
       </div>
-    </>
+    </div>
   );
 };

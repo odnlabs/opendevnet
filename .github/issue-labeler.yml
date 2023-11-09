@@ -16,9 +16,6 @@ libs:@odnlabs/api-client:
 libs:eslint-config-odn:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\neslint-config-odn\\n"
-libs:@odnlabs/nx-rust:
-  - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\n@odnlabs/nx-rust\\n"
 libs:@odnlabs/tailwind-config:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/tailwind-config\\n"
