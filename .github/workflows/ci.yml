@@ -85,7 +85,7 @@ jobs:
               - *all
               - 'apps/api/**'
               - 'docker/production/Dockerfile.api'
-              website:
+            website:
               - *all
               - *frontend
               - 'libs/api-client/**'
