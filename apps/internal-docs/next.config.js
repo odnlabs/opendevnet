@@ -3,7 +3,7 @@ const { join } = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: '/internal',
+  basePath: '/internal-docs',
   reactStrictMode: false, // Prevent multiple refreshes in dev mode.
   transpilePackages: [
     '@odnlabs/ui',
