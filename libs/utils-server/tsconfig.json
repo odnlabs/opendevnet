@@ -4,7 +4,7 @@
   "compilerOptions": { "paths": {} },
   "include": [
     "src/**/*",
-    "/environment.d.ts",
+    "../../environment.d.ts",
     "../utils-client/src/index.ts",
     "../utils-client/src/types.ts"
   ],

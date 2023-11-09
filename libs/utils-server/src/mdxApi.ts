@@ -419,6 +419,7 @@ export const getDocFromSlug = async (
         [rehypeAutolinkHeadings, { behavior: 'wrap' }],
       ],
       remarkPlugins: [remarkGfm],
+      development: process.env.ENVIRONMENT !== 'production',
     },
   });
 
