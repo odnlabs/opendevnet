@@ -11,5 +11,5 @@ export default {
   ws: process.env.PUBLIC_WS_URL,
   site: process.env.PUBLIC_SITE_URL,
   webApp: process.env.PUBLIC_WEB_CLIENT_URL,
-  internal: process.env.PUBLIC_INTERNAL_URL,
+  internalDocs: process.env.PUBLIC_INTERNAL_DOCS_URL,
 };

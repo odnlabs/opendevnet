@@ -24,7 +24,7 @@ const links: HeaderLink[] = [
   },
   {
     title: 'Internal',
-    href: `${config.internal}`,
+    href: `${config.internalDocs}`,
     external: true,
   },
   {

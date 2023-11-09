@@ -29,9 +29,9 @@ services:
     networks:
       - app-network
 
-  internal:
-    container_name: internal
-    image: slekup/opendevnet-internal:main
+  internal_docs:
+    container_name: internal_docs
+    image: slekup/opendevnet-internal_docs:main
     env_file:
       - .env.production
     restart: always
@@ -70,7 +70,7 @@ services:
       # - api
       - site
       - web_client
-      - internal
+      - internal_docs
     networks:
       - app-network
 

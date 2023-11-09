@@ -23,10 +23,10 @@ interface FooterProps {
     youtube: string;
     email: string;
   };
-  internal?: string | undefined;
+  internalDocs?: string | undefined;
 }
 
-export const Footer: React.FC<FooterProps> = ({ socialUrls, internal }) => {
+export const Footer: React.FC<FooterProps> = ({ socialUrls, internalDocs }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const socialMediaLinks = [
@@ -75,7 +75,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, internal }) => {
     {
       title: 'Resources',
       items: [
-        { label: 'Internal Docs', href: internal ?? '/404' },
+        { label: 'Internal Docs', href: internalDocs ?? '/404' },
         { label: 'Help Center', href: '/help' },
         { label: 'Feedback', href: '/feedback' },
         { label: 'Changelog', href: '/changelog' },

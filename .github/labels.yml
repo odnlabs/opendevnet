@@ -1,6 +1,6 @@
 - name: apps:api
   color: fbca04
-- name: apps:internal
+- name: apps:internal-docs
   color: fbca04
 - name: apps:site
   color: fbca04

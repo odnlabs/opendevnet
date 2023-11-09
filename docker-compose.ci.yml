@@ -30,11 +30,11 @@ services:
     networks:
       - app-network
 
-  internal:
-    container_name: internal
+  internal_docs:
+    container_name: internal_docs
     build:
       context: .
-      dockerfile: ./docker/production/Dockerfile.internal
+      dockerfile: ./docker/production/Dockerfile.internal_docs
       args:
         DOCKER_BUILDKIT: 1
     env_file:
@@ -55,7 +55,7 @@ services:
     depends_on:
       - site
       - web_client
-      - internal
+      - internal_docs
     networks:
       - app-network
 

@@ -1,9 +1,9 @@
 apps:api:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\napi\\n"
-apps:internal:
+apps:internal-docs:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\ninternal\\n"
+    report|feature request) for\\?\\n\\ninternal-docs\\n"
 apps:site:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\nsite\\n"

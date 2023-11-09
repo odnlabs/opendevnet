@@ -1,9 +1,9 @@
 apps:api:
   - apps/api/*
   - apps/api/**/*
-apps:internal:
-  - apps/internal/*
-  - apps/internal/**/*
+apps:internal-docs:
+  - apps/internal-docs/*
+  - apps/internal-docs/**/*
 apps:site:
   - apps/site/*
   - apps/site/**/*

@@ -41,7 +41,7 @@ export default function MoreNavLinks({
       },
       {
         label: 'Internal Docs',
-        route: '/internal',
+        route: '/internal-docs',
       },
       {
         label: 'Change Log',

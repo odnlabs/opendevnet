@@ -35,7 +35,7 @@ function setup_prod_env() {
     echo "PUBLIC_WS_URL=ws://opendevnet.com/ws" >> .env.production
     echo "PUBLIC_SITE_URL=https://opendevnet.com" >> .env.production
     echo "PUBLIC_WEB_CLIENT_URL=https://opendevnet.com/app" >> .env.production
-    echo "PUBLIC_INTERNAL_URL=https://opendevnet.com/internal" >> .env.production
+    echo "PUBLIC_INTERNAL_DOCS_URL=https://opendevnet.com/internal-docs" >> .env.production
   fi
 
   rm ./apps/api/.env || true
@@ -53,7 +53,7 @@ function setup_dev_env() {
     echo "PUBLIC_WS_URL=ws://localhost:5000/ws" >> .env.local
     echo "PUBLIC_SITE_URL=http://localhost:4000" >> .env.local
     echo "PUBLIC_WEB_CLIENT_URL=http://localhost:4100/app" >> .env.local
-    echo "PUBLIC_INTERNAL_URL=http://localhost:4200/internal" >> .env.local
+    echo "PUBLIC_INTERNAL_DOCS_URL=http://localhost:4200/internal-docs" >> .env.local
   fi
 
   rm ./apps/api/.env || true
@@ -85,24 +85,24 @@ if [ "$1" == "prod" ]; then
   export COMPOSE_FILE="docker-compose.production.yml"
   run_script docker "${args[@]}"
 elif [ "$1" == "prodtest" ]; then
-  if [ "$2" == "internal" ]; then
+  if [ "$2" == "internal_docs" ]; then
     run_script check ci
-    echo -e "${BLUE}BUILDING${RESET} internal"
-    pnpm nx run internal:build --prod --no-cache
+    echo -e "${BLUE}BUILDING${RESET} internal docs"
+    pnpm nx run internal-docs:build --prod --no-cache
     echo -e "${BLUE}COPYING${RESET} project.json"
-    cp ./apps/internal/project.json ./dist/apps/internal || true
+    cp ./apps/internal-docs/project.json ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} tailwind.config.ts"
-    cp ./apps/internal/tailwind.config.ts ./dist/apps/internal || true
+    cp ./apps/internal-docs/tailwind.config.ts ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} postcss.config.js"
-    cp ./apps/internal/postcss.config.js ./dist/apps/internal || true
+    cp ./apps/internal-docs/postcss.config.js ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} node_modules"
-    cp -rL ./apps/internal/node_modules ./dist/apps/internal || true
+    cp -rL ./apps/internal-docs/node_modules ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} .next"
-    cp -rL ./apps/internal/.next ./dist/apps/internal || true
+    cp -rL ./apps/internal-docs/.next ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} mdx"
-    cp -rL ./apps/internal/mdx ./dist/apps/internal || true
-    echo -e "${BLUE}SERVING${RESET} internal"
-    pnpm nx run internal:serve --prod --verbose
+    cp -rL ./apps/internal-docs/mdx ./dist/apps/internal-docs || true
+    echo -e "${BLUE}SERVING${RESET} internal-docs"
+    pnpm nx run internal-docs:serve --prod --verbose
   else
     echo -e "${RED}ERROR${RESET} Invalid argument"
   fi

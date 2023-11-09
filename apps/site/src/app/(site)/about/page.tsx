@@ -59,7 +59,7 @@ const About: NextPage = () => {
           If you&apos;re interested in contributing to the project, check out
           our{' '}
           <a
-            href="https://opendevnet.com/internal/contributing/contributing"
+            href="https://opendevnet.com/internal-docs/contributing/contributing"
             target="_blank"
             rel="noopener noreferrer"
             className="link"
