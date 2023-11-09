@@ -30,7 +30,7 @@ const socialUrls = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
     <head>
-      <link rel="icon" href="/internal/favicon.ico" sizes="any" />
+      <link rel="icon" href="/internal-docs/favicon.ico" sizes="any" />
     </head>
 
     <body className={font.className}>
@@ -41,7 +41,7 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
         <div className="relative right-0 top-0 md:w-[calc(100vw-280px)]">
           <div className="relative min-h-[75vh]">{children}</div>
-          <Footer socialUrls={socialUrls} site={config.site} />
+          <Footer socialUrls={socialUrls} website={config.website} />
         </div>
       </div>
     </body>

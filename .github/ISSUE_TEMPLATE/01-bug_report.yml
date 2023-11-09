@@ -13,7 +13,7 @@ body:
       options:
         - None (general issue)
         - API
-        - Site
+        - Website
         - Web client
         - Other (specify below)
     validations:

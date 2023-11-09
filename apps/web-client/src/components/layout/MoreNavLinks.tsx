@@ -9,11 +9,11 @@ interface DefaultLink {
 export default function MoreNavLinks({
   moreLinksOpen,
   setMoreLinksOpen,
-  site,
+  website,
 }: {
   moreLinksOpen: boolean;
   setMoreLinksOpen: (open: boolean) => void;
-  site?: string | undefined;
+  website?: string | undefined;
 }): JSX.Element {
   const links: DefaultLink[][] = [
     [
@@ -110,7 +110,7 @@ export default function MoreNavLinks({
           {section.map((btn, btnIndex) =>
             btn.route ? (
               <a
-                href={`${site ?? ''}${btn.route}`}
+                href={`${website ?? ''}${btn.route}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 key={btnIndex}

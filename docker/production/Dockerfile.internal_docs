@@ -43,12 +43,12 @@ COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
 # Config, dep, and built files that the app needs
 COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/internal  ./dist/apps/internal
-COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/project.json  ./dist/apps/internal/
-COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/tailwind.config.ts  ./dist/apps/internal/
-COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/postcss.config.js  ./dist/apps/internal/
-COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/node_modules ./dist/apps/internal/node_modules
-COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/.next ./dist/apps/internal/.next
-COPY --from=installer --chown=nextjs:nodejs /app/apps/internal/mdx ./dist/apps/internal/mdx
+COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/project.json  ./dist/apps/internal-docs/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/tailwind.config.ts  ./dist/apps/internal-docs/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/postcss.config.js  ./dist/apps/internal-docs/
+COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/node_modules ./dist/apps/internal-docs/node_modules
+COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/.next ./dist/apps/internal-docs/.next
+COPY --from=installer --chown=nextjs:nodejs /app/apps/internal-docs/mdx ./dist/apps/internal-docs/mdx
 # Expose port 4200
 EXPOSE 4200
 # Start the app on port 4200

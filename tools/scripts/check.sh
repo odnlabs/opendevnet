@@ -46,9 +46,9 @@ function file_check() {
 
 function env_check() {
   echo -e "${BLUE}CHECK${RESET} If required environment variables are set amd and valid"
-  variables=("ENVIRONMENT" "DEBUG" "PUBLIC_API_URL" "PUBLIC_WS_URL" "PUBLIC_SITE_URL" "PUBLIC_WEB_CLIENT_URL" "PUBLIC_INTERNAL_DOCS_URL")
+  variables=("ENVIRONMENT" "DEBUG" "PUBLIC_API_URL" "PUBLIC_WS_URL" "PUBLIC_WEBSITE_URL" "PUBLIC_WEB_CLIENT_URL" "PUBLIC_INTERNAL_DOCS_URL")
 
-  required_http_vars=("PUBLIC_API_URL" "PUBLIC_SITE_URL" "PUBLIC_WEB_CLIENT_URL", "PUBLIC_INTERNAL_DOCS_URL")
+  required_http_vars=("PUBLIC_API_URL" "PUBLIC_WEBSITE_URL" "PUBLIC_WEB_CLIENT_URL", "PUBLIC_INTERNAL_DOCS_URL")
   valid_environments=("development" "production")
 
   missing_variables=()

@@ -20,12 +20,12 @@
       }
     },
     {
-      "name": "Launch apps/site development",
+      "name": "Launch apps/website development",
       "type": "node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["nx", "run", "site:dev", "--verbose"],
+      "runtimeArgs": ["nx", "run", "website:dev", "--verbose"],
       "skipFiles": ["<node_internals>/**", "${workspaceFolder}/node_modules/*"],
       "outputCapture": "std",
       "internalConsoleOptions": "openOnSessionStart",
@@ -33,7 +33,7 @@
       "env": {
         "DEBUG": "true",
         "TS_NODE_IGNORE": "false",
-        "TS_NODE_PROJECT": "${workspaceFolder}/apps/site/tsconfig.json"
+        "TS_NODE_PROJECT": "${workspaceFolder}/apps/website/tsconfig.json"
       }
     },
     {

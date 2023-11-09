@@ -2,7 +2,7 @@
   color: fbca04
 - name: apps:internal-docs
   color: fbca04
-- name: apps:site
+- name: apps:website
   color: fbca04
 - name: apps:web-client
   color: fbca04

@@ -7,7 +7,7 @@
 /apps/api/** @odnlabs/api
 /apps/internal-docs/** @odnlabs/web
 /apps/internal-docs/mdx/** @odnlabs/docs
-/apps/site/** @odnlabs/web
+/apps/website/** @odnlabs/web
 /apps/website/mdx/** @odnlabs/docs
 /apps/web-client/** @odnlabs/web
 /apps/web-client/mdx/** @odnlabs/docs

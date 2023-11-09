@@ -17,7 +17,7 @@ export const Header: React.FC = () => (
         className="flex px-3 py-3 text-2xl font-medium ring-inset focus-visible:ring"
       >
         <Image
-          src="/internal/logo.png"
+          src="/internal-docs/logo.png"
           alt="Open Dev Net logo"
           height={30}
           width={30}
@@ -33,7 +33,7 @@ export const Header: React.FC = () => (
 
       <div className="m-2 flex">
         <a
-          href={`${config.social.github}/opendevnet/tree/dev/apps/internal/mdx`}
+          href={`${config.social.github}/opendevnet/tree/dev/apps/internal-docs/mdx`}
           target="_blank"
           rel="noreferrer"
           className="text-text-secondary hover:text-text active:text-text my-2 mr-3 -translate-y-px"
@@ -42,7 +42,7 @@ export const Header: React.FC = () => (
         </a>
         {/* Main Website */}
         <a
-          href={config.site}
+          href={config.website}
           className="border-border bg-secondary hover:bg-secondary-hover active:bg-secondary-active flex items-center rounded-lg border px-3 py-1.5 text-sm transition duration-200 hover:ease-out focus-visible:ring"
         >
           <IoExitOutline className="h-5 w-5" />

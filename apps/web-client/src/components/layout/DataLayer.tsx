@@ -10,10 +10,10 @@ import { ServerMessage, useWebSocket } from '@utils/socket';
 
 interface DataLayerProps {
   children: React.ReactNode;
-  site?: string | undefined;
+  website?: string | undefined;
 }
 
-export const DataLayer: React.FC<DataLayerProps> = ({ children, site }) => {
+export const DataLayer: React.FC<DataLayerProps> = ({ children, website }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -45,14 +45,14 @@ export const DataLayer: React.FC<DataLayerProps> = ({ children, site }) => {
               })
             );
 
-            if (site) window.location.href = `${site}/login`;
+            if (website) window.location.href = `${website}/login`;
             else window.location.href = `/login`;
           });
       }
     };
 
     fetchUserData();
-  }, [dispatch, site]);
+  }, [dispatch, website]);
 
   const onConnect = (): void => {
     dispatch(

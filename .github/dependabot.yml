@@ -22,7 +22,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/apps/site'
+    directory: '/apps/website'
     schedule:
       interval: 'daily'
     target-branch: 'dev'

@@ -4,9 +4,9 @@ apps:api:
 apps:internal-docs:
   - apps/internal-docs/*
   - apps/internal-docs/**/*
-apps:site:
-  - apps/site/*
-  - apps/site/**/*
+apps:website:
+  - apps/website/*
+  - apps/website/**/*
 apps:web-client:
   - apps/web-client/*
   - apps/web-client/**/*

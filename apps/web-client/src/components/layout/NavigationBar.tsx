@@ -65,8 +65,8 @@ const NavButton: React.FC<{
   );
 };
 
-export const NavigationBar: React.FC<{ site?: string | undefined }> = ({
-  site,
+export const NavigationBar: React.FC<{ website?: string | undefined }> = ({
+  website,
 }) => {
   const [moreLinksOpen, setMoreLinksOpen] = useState<boolean>(false);
 
@@ -132,7 +132,7 @@ export const NavigationBar: React.FC<{ site?: string | undefined }> = ({
           <MoreNavLinks
             moreLinksOpen={moreLinksOpen}
             setMoreLinksOpen={setMoreLinksOpen}
-            site={site}
+            website={website}
           />
         </div>
       </div>

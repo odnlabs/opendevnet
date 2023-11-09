@@ -4,9 +4,9 @@ apps:api:
 apps:internal-docs:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\ninternal-docs\\n"
-apps:site:
+apps:website:
   - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\nsite\\n"
+    report|feature request) for\\?\\n\\nwebsite\\n"
 apps:web-client:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\nweb-client\\n"

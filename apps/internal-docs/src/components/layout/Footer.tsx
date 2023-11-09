@@ -66,10 +66,10 @@ interface FooterProps {
     youtube: string;
     email: string;
   };
-  site?: string | undefined;
+  website?: string | undefined;
 }
 
-export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
+export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const socialMediaLinks = [
@@ -149,7 +149,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
             <Image
               height={50}
               width={50}
-              src="/internal/logo.png"
+              src="/internal-docs/logo.png"
               alt="Footer Logo"
               className="mx-auto lg:mx-0"
             />
@@ -208,7 +208,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
                           </Link>
                         ) : (
                           <a
-                            href={`${site}${item.href}`}
+                            href={`${website}${item.href}`}
                             rel="noreferrer"
                             className={useClass}
                           >
@@ -229,7 +229,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, site }) => {
         <p className="text-text-faint text-center text-sm">
           &copy; {new Date().getFullYear()},{' '}
           <Link
-            href={site ?? 'https://opendevnet.com'}
+            href={website ?? 'https://opendevnet.com'}
             className="hover:text-text"
           >
             OpenDevNet.com

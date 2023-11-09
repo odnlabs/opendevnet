@@ -26,13 +26,13 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <link rel="icon" href="/app/favicon.ico" sizes="any" />
     </head>
     <Providers>
-      <DataLayer site={config.site}>
+      <DataLayer website={config.website}>
         <body className={font.className}>
           <div className="relative h-14"></div>
           <div className="flex">
             <Header />
 
-            <NavigationBar site={config.site} />
+            <NavigationBar website={config.website} />
 
             {children}
           </div>
