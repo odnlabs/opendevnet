@@ -12,7 +12,7 @@ const nextConfig = {
     '@odnlabs/utils-server',
   ],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-  // distDir: '../../dist/apps/web/.next', // commented out, because it should not leave the project directory.
+  // distDir: '../../dist/apps/web-client/.next', // commented out, because it should not leave the project directory.
   experimental: {
     // this includes files from the monorepo base two directories up.
     outputFileTracingRoot: join(__dirname, '../../'),

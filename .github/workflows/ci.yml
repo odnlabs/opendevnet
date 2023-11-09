@@ -205,7 +205,7 @@ jobs:
         run: chmod +x run.sh && ./run.sh ci start site
 
   build_and_run_web_client_image:
-    name: Build and Run Web Image
+    name: Build and Run Web Client Image
     runs-on: ubuntu-latest
     needs: filter_check
     if: needs.filter_check.outputs.web_client == 'true'
@@ -216,7 +216,7 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
-      - name: Run Web client Image
+      - name: Run Web Client Image
         run: chmod +x run.sh && ./run.sh ci start web_client
 
   build_and_run_internal_image:
