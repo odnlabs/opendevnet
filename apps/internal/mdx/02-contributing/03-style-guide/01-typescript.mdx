@@ -72,25 +72,20 @@ The workspace uses [Prettier](https://prettier.io/) to format TypeScript code. P
 
 ### Comments
 
-Comments should be written in `/** ... */` format. For example:
+Comments and documentation should be written in `/** ... */` format. For example:
 
 ```ts
 /**
- * This is a comment
+ * This is a comment.
  */
 ```
 
-### Documentation
-
-Documentation should be written in `/** ... */` format. For example:
-
 ```ts
 /**
- * This is a function
- * @param {string} myParam - This is a param
- * @returns {string} This is a return value
+ * This is a function.
+ * @param myParam A parameter for the function.
+ * @returns The paramerter that was passed in.
  */
-
 const myFunction = (myParam: string): string => {
   return myParam;
 };
