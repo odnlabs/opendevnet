@@ -27,7 +27,8 @@
     "postinstall": "manypkg check",
     "lint": "nx run-many --target=lint --all",
     "lint:fix": "nx run-many --target=lint --all -- --fix",
-    "test": "nx run-many --target=test --all"
+    "test": "nx run-many --target=test --all",
+    "update": "pnpm update --recursive --latest --interactive"
   },
   "resolutions": {
     "eslint-import-resolver-typescript": "^3.6.1",
