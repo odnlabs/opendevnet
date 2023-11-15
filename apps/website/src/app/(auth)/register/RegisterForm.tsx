@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -16,12 +17,17 @@ export const RegisterForm: React.FC = () => {
   const [retypePassword, setRetypePassword] = useState<string>('');
   const [sendEmails, setSendEmails] = useState<boolean>(true);
 
+  const searchParams = useSearchParams();
+  const isDev = searchParams.get('dev') === 'true';
+
   const dispatch = useDispatch();
 
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
+
+    if (!isDev) return;
 
     if (password !== retypePassword) {
       dispatch(
@@ -75,7 +81,7 @@ export const RegisterForm: React.FC = () => {
 
   return (
     <form
-      className="bg-background mx-auto w-11/12 max-w-md rounded-3xl p-8"
+      className="bg-background relative mx-auto w-11/12 max-w-md rounded-3xl p-8"
       onSubmit={(event) => {
         handleSubmit(event);
       }}
@@ -165,6 +171,23 @@ export const RegisterForm: React.FC = () => {
           </p>
         </div>
       </div>
+
+      {/* Temporary */}
+      {!isDev && (
+        <div className="bg-background/75 absolute left-0 top-0 h-full w-full rounded-3xl text-center text-white backdrop-blur-md">
+          <div className="absolute left-1/2 top-1/2 w-11/12 -translate-x-1/2 -translate-y-1/2 drop-shadow-md">
+            <p className="text-4xl font-bold">Coming Soon</p>
+            <p className="text-text-secondary mt-5">
+              We&apos;re working hard to bring you the best experience possible.
+            </p>
+            <div className="mt-8">
+              <Link href="/">
+                <Button label="Back to Home" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
     </form>
   );
 };
