@@ -31,8 +31,6 @@ pnpm run install:api
 
 You can find all of the npm scripts <Link href="/contributing/contributing#npm-scripts">here</Link>.
 
-However, to run the applications in production, we use docker compose.
-
 In the root directory, there is a `run.sh` file.
 
 This can be used with the following options:
@@ -41,10 +39,43 @@ This can be used with the following options:
 ./run.sh [prod|dev] [update|restart|start|stop|logs]
 ```
 
-> If you don't have the correct perms to run it, you might need to run this first: `chmod +x run.sh`.
+> If you don't have the correct perms to run it, you may need to run `chmod +x run.sh`.
 
 ## Environment Variables
 
 In the root of the workspace, there is a `.env.example` file. This contains all of the environment variables that are required for the applications to run.
 
 Development commands require that all of the environment variables are provided in a `.env.local` file in the root of the workspace. Production commands, such as `build`, require that all of the environment variables are provided in a `.env.production` file in the root of the workspace.
+
+## Production
+
+Currently, the production applications have not been tested in production environments, besides the main server, so there is no guarantee that they will work as expected. However, here are some notes on how to run them.
+
+### NGINX
+
+An `nginx.conf` file should be placed in `/docker/production/`. This will be used to configure the NGINX server.
+
+There is an [example file](https://github.com/odnlabs/opendevnet/blob/main/docker/production/example.nginx.conf) in the same directory, which can be used as a template.
+
+> Replace `0.0.0.0` with the IP address of the server and `example.com` with the domain name or IP address of the server.
+
+### SSL Certificates
+
+#### Cloudflare Origin Certificates
+
+The docker compose file is configured to use Cloudflare origin certificates. To use this, you will need to create a certificate on Cloudflare and download the certificate and key files. These files should be placed in the `/docker/ssl/` directory.
+
+#### Certbot
+
+To enable HTTPS, you can use certbot to register an SSL certificate. To do this, follow these steps:
+
+1. Ensure that you have a domain name pointing to the server (`A`/`AAAA` records).
+2. Install certbot. For example, on ubuntu: `sudo apt install certbot`.
+3. Run the certbot command with `sudo certbot certonly --standalone -d <domain>`. This will generate the certificate and key files in `/etc/letsencrypt/live/<domain>/`.
+4. In the `docker-compose.production.yml` file, replace the **nginx ssl** volume with the following:
+   ```yaml
+   volumes:
+     - /etc/letsencrypt/live/<domain>/fullchain.pem:/etc/ssl/example.crt:ro
+     - /etc/letsencrypt/live/<domain>/privkey.pem:/etc/ssl/example.key:ro
+   ```
+5. Restart the nginx container with `./run.sh prod restart nginx`.

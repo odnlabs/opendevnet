@@ -1,13 +1,19 @@
 
 {{YELLOW}}Usage: ./run.sh [command] [...args]{{RESET}}
 
-{{BOLD}}check{{RESET}}   check if the environment is set up correctly for production
 {{BOLD}}prod{{RESET}}    run the production docker-compose file
           args: [update|restart|build|start|stop|logs] (service)
+          args: [setup] [env]
 {{BOLD}}dev{{RESET}}     run the development docker-compose file
           args: [update|restart|build|start|stop|logs] (service)
-{{BOLD}}ci{{RESET}}    run the CI docker-compose file
+          args: [setup] [env]
+{{BOLD}}ci{{RESET}}      run the CI docker-compose file
           args: [update|restart|build|start|stop|logs] (service)
+          args: [setup] [env]
+{{BOLD}}check{{RESET}}   check if the environment is set up correctly for production
+          args: [prod|dev|ci]
+{{BOLD}}clean{{RESET}}   clean up the environment
+{{BOLD}}help{{RESET}}    show this help message
 
 For more information, see: {{BLUE}}https://opendevnet.com/internal-docs/contributing/setup#execution{{RESET}}
 
