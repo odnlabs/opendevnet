@@ -417,8 +417,8 @@ importers:
   libs/api-client:
     dependencies:
       axios:
-        specifier: ^1.6.1
-        version: 1.6.1
+        specifier: ^1.6.2
+        version: 1.6.2
       builder-validation:
         specifier: ^0.0.3
         version: 0.0.3
@@ -548,8 +548,8 @@ importers:
   libs/utils-client:
     dependencies:
       axios:
-        specifier: ^1.6.1
-        version: 1.6.1
+        specifier: ^1.6.2
+        version: 1.6.2
     devDependencies:
       '@odnlabs/tsconfig':
         specifier: workspace:*
@@ -570,8 +570,8 @@ importers:
         specifier: workspace:*
         version: link:../utils-client
       axios:
-        specifier: ^1.6.1
-        version: 1.6.1
+        specifier: ^1.6.2
+        version: 1.6.2
       glob:
         specifier: ^10.3.10
         version: 10.3.10
@@ -4426,8 +4426,8 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@1.6.1:
-    resolution: {integrity: sha512-vfBmhDpKafglh0EldBEbVuoe7DyAavGSLWhuSm5ZSEKQnHhBf0xAAwybbNH1IkrJNGnS/VG4I5yxig1pCEXE4g==}
+  /axios@1.6.2:
+    resolution: {integrity: sha512-7i24Ri4pmDRfJTR7LDBhsOTtcm+9kjX5WiY1X3wIisx6G9So3pfMkEiU7emUBe46oceVImccTEM3k6C5dbVW8A==}
     dependencies:
       follow-redirects: 1.15.3
       form-data: 4.0.0
@@ -9224,7 +9224,7 @@ packages:
       '@yarnpkg/lockfile': 1.1.0
       '@yarnpkg/parsers': 3.0.0-rc.46
       '@zkochan/js-yaml': 0.0.6
-      axios: 1.6.1
+      axios: 1.6.2
       chalk: 4.1.2
       cli-cursor: 3.1.0
       cli-spinners: 2.6.1
