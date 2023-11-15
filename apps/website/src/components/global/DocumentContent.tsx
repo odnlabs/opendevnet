@@ -15,7 +15,11 @@ import { ReturnedDoc } from '@odnlabs/utils-client';
 
 import * as uiComponents from '../uiClientComponents';
 
-export const DocumentContent: React.FC<{ doc: ReturnedDoc }> = ({ doc }) => {
+interface DocumentContentProps {
+  doc: ReturnedDoc;
+}
+
+export const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
     const links = document

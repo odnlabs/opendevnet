@@ -20,7 +20,7 @@
     "build": "dotenv -e .env.production -- nx run-many --target=build --all --parallel --maxParallel=1",
     "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all --parallel --maxParallel=1",
     "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
-    "dev:frontend": "dotenv -e .env.local -- nx run-many --target=dev --projects=internal_docs,website,web-client",
+    "dev:frontend": "dotenv -e .env.local -- nx run-many --target=dev --projects=internal-docs,website,web-client",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
     "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,md,mdx,json}\" --ignore-path=.prettierignore",
@@ -31,8 +31,10 @@
     "update": "pnpm update --recursive --latest --interactive"
   },
   "resolutions": {
-    "eslint-import-resolver-typescript": "^3.6.1",
-    "eslint-plugin-import": "^2.29.0"
+    "eslint-import-resolver-typescript": "3.6.1",
+    "eslint-plugin-import": "2.29.0",
+    "next": "14.0.1",
+    "remark-gfm": "3.0.1"
   },
   "dependencies": {
     "@commitlint/cli": "^18.4.1",
