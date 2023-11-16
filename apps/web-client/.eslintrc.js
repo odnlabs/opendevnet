@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['slekup/nextjs'],
+  extends: ['slekup/next'],
 };
