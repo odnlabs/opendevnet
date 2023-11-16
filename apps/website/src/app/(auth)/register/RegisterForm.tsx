@@ -81,7 +81,7 @@ export const RegisterForm: React.FC = () => {
 
   return (
     <form
-      className="bg-background relative mx-auto w-11/12 max-w-md rounded-3xl p-8"
+      className="bg-background no-select relative mx-auto w-11/12 max-w-md rounded-3xl p-8"
       onSubmit={(event) => {
         handleSubmit(event);
       }}
