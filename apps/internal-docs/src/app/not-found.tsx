@@ -13,7 +13,7 @@ const NotFound: NextPage = () => (
     <p className="text-text-secondary mx-auto mb-10 mt-8 max-w-md">
       Oops! We can&apos;t seem to find the page you&apos;re looking for. Try
       going back to the previous page or see our{' '}
-      <a href="/help" className="link">
+      <a className="link" href="/help">
         Help Center
       </a>{' '}
       for more information.

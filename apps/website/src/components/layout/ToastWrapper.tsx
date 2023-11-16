@@ -15,5 +15,5 @@ export const ToastWrapper: React.FC = () => {
     dispatch(removeToast(id));
   };
 
-  return <Toasts toasts={toasts} removeToast={removeToastFunc} />;
+  return <Toasts removeToast={removeToastFunc} toasts={toasts} />;
 };

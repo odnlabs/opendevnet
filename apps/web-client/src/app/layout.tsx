@@ -23,17 +23,15 @@ export const metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
     <head>
-      <link rel="icon" href="/app/favicon.ico" sizes="any" />
+      <link href="/app/favicon.ico" rel="icon" sizes="any" />
     </head>
     <Providers>
       <DataLayer website={config.website}>
         <body className={font.className}>
-          <div className="relative h-14"></div>
+          <div className="relative h-14" />
           <div className="flex">
             <Header />
-
             <NavigationBar website={config.website} />
-
             {children}
           </div>
         </body>

@@ -21,5 +21,4 @@ export const { addToast, removeToast } = toastsSlice.actions;
 export const toastsState = (state: RootState): IToast[] => state.toasts;
 
 export const { setUser } = userSlice.actions;
-export const userState = (state: RootState): IUser | undefined =>
-  state.user.user;
+export const userState = (state: RootState): IUser | undefined => state.user.user;

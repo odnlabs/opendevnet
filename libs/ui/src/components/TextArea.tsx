@@ -2,15 +2,15 @@ import React from 'react';
 
 interface TextAreaProps
   extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
-  label?: string;
+  readonly label?: string;
 }
 
 export const TextArea: React.FC<TextAreaProps> = ({ label, ...props }) => (
   <div>
     {label && (
       <label
-        htmlFor={props.id}
         className="text-text-primary mb-2 ml-1 inline-block text-sm font-medium"
+        htmlFor={props.id}
       >
         {label}
         {props.required && <span className="text-danger ml-1">*</span>}

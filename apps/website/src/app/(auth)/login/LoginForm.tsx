@@ -81,48 +81,44 @@ export const LoginForm: React.FC<LoginFormProps> = ({ webApp }) => {
           </span>
         </h1>
       </div>
-
       <div className="mt-5">
         <div className="mt-3">
           <Input
-            type="email"
             id="email"
             label="Email"
-            placeholder="name@example.com"
             onChange={(event) => setEmail(event.target.value)}
+            placeholder="name@example.com"
             required
+            type="email"
           />
         </div>
         <div className="mt-3">
           <Input
-            type="password"
             id="password"
             label="Password"
-            placeholder="Choose a strong password"
             onChange={(event) => setPassword(event.target.value)}
+            placeholder="Choose a strong password"
             required
+            type="password"
           />
           <div className="mt-2 text-xs">
-            <Link href="/forgotpassword" className="link">
+            <Link className="link" href="/forgotpassword">
               Forgot Password?
             </Link>
           </div>
         </div>
-
         <div className="mt-5">
-          <Button label="Login" type="submit" size="lg" width="full" />
+          <Button label="Login" size="lg" type="submit" width="full" />
         </div>
-
         <div className="mt-5">
           <p className="text-text-secondary text-sm">
             Don&apos;t have an account?{' '}
-            <Link href="/register" className="link">
+            <Link className="link" href="/register">
               Register
             </Link>
           </p>
         </div>
       </div>
-
       {/* Temporary */}
       {!isDev && (
         <div className="bg-background/75 absolute left-0 top-0 h-full w-full rounded-3xl text-center text-white backdrop-blur-md">

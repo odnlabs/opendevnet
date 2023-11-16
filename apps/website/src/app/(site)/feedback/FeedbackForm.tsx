@@ -46,60 +46,56 @@ export const FeedbackForm: React.FC = () => {
           </span>
         </h1>
       </div>
-
       <div className="mt-5">
         <div className="mt-3 flex">
-          {ratingOptions.map((option, index) => (
+          {ratingOptions.map((option) => (
             <button
-              key={index}
               className={`mx-2 h-12 w-12 rounded-3xl p-1 transition duration-200 hover:scale-125 hover:drop-shadow-lg ${
                 rating === option && 'bg-primary'
               }`}
+              key={option}
               onClick={() => setRating(rating === option ? undefined : option)}
+              type="button"
             >
               <div className="relative h-10 w-10">
                 <Image
-                  src={`/feedback/${option}.svg`}
                   alt="Feedback rating graphic"
-                  fill={true}
+                  fill
+                  src={`/feedback/${option}.svg`}
                 />
               </div>
             </button>
           ))}
         </div>
-
         <div className="mt-5">
           <Select
             options={categoryOptions}
-            state={category}
             setState={setCategory}
+            state={category}
           />
         </div>
-
         <div className="mt-5">
           <Input
-            type="email"
             id="email"
             label="Email"
-            placeholder="name@example.com"
             onChange={(event) => setEmail(event.target.value)}
+            placeholder="name@example.com"
             required
+            type="email"
           />
         </div>
-
         <div className="mt-5">
           <TextArea
+            className="h-32"
             id="feedback"
             label="Feedback"
-            placeholder="Type your feedback here..."
-            minLength={10}
             maxLength={500}
-            className="h-32"
+            minLength={10}
             onChange={(event) => setEmail(event.target.value)}
+            placeholder="Type your feedback here..."
             required
           />
         </div>
-
         <div className="mt-8">
           <Button label="Submit" size="lg" variant="primary" width="full" />
         </div>

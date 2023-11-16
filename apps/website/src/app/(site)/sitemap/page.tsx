@@ -58,11 +58,9 @@ const Content: React.FC<BoxProps & { marginLeft: number }> = ({
         )}
         <p className="text-sm font-medium">{layer.name}</p>
       </div>
-
       {layer.description && (
         <p className="text-text-secondary text-xs">{layer.description}</p>
       )}
-
       {/* Horizontal line */}
       <div
         className={`absolute left-0 top-1/2 h-px w-full -translate-y-1/2 transition-all duration-500 hover:duration-300 ${
@@ -72,8 +70,7 @@ const Content: React.FC<BoxProps & { marginLeft: number }> = ({
           left: `-${marginLeft}px`,
           width: `${marginLeft}px`,
         }}
-      ></div>
-
+      />
       {/* Vertical line */}
       <div
         className="absolute left-0 top-1/2 h-[calc(100%+0.75rem*2+2px)] w-px -translate-y-1/2"
@@ -81,7 +78,7 @@ const Content: React.FC<BoxProps & { marginLeft: number }> = ({
           left: `-${marginLeft}px`,
           background: `rgba(${rgb[deep]},0.75)`,
         }}
-      ></div>
+      />
     </>
   );
 };
@@ -125,33 +122,32 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
             marginLeft: `${marginLeft}px`,
           }}
         >
-          <Content layer={layer} deep={deep} marginLeft={marginLeft} />
+          <Content deep={deep} layer={layer} marginLeft={marginLeft} />
         </div>
       ) : layer.path.startsWith('/app') ? (
         <a
-          href={layer.path}
           className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
+          href={layer.path}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
         >
-          <Content layer={layer} deep={deep} marginLeft={marginLeft} />
+          <Content deep={deep} layer={layer} marginLeft={marginLeft} />
         </a>
       ) : (
         <Link
-          href={layer.path}
           className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
+          href={layer.path}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
         >
-          <Content layer={layer} deep={deep} marginLeft={marginLeft} />
+          <Content deep={deep} layer={layer} marginLeft={marginLeft} />
         </Link>
       )}
-
       {/* Recursion */}
       {layer.children?.map((child, index) => (
-        <Box layer={child} deep={deep + 1} key={index} />
+        <Box deep={deep + 1} key={index} layer={child} />
       ))}
     </div>
   );
@@ -168,15 +164,15 @@ const Sitemap: NextPage = async () => {
         <div className="text-center">
           <h1 className="text-center text-3xl font-bold">Sitemap</h1>
           <div className="mt-2">
-            <Link href="/sitemap/basic" className="link">
+            <Link className="link" href="/sitemap/basic">
               Switch to Basic View
             </Link>
           </div>
         </div>
         <div className="mt-8 columns-1 gap-10 md:columns-2">
           {layers.map((layer, index) => (
-            <div key={index} className="inline-block w-full">
-              <Box layer={layer} deep={0} />
+            <div className="inline-block w-full" key={index}>
+              <Box deep={0} layer={layer} />
             </div>
           ))}
         </div>

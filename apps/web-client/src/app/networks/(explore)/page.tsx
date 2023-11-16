@@ -5,9 +5,7 @@ export const metadata = {
 };
 
 const Networks: NextPage = () => (
-  <>
-    <div className="max-w-8xl w-11/12 p-10"></div>
-  </>
+  <div className="max-w-8xl w-11/12 p-10" />
 );
 
 export default Networks;

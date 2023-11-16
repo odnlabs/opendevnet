@@ -32,8 +32,8 @@ const typeIcon = {
 };
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  toast: IToast;
-  removeToast: (id: string) => void;
+  readonly toast: IToast;
+  readonly removeToast: (id: string) => void;
 }
 
 export const Toast: React.FC<Props> = ({ toast, removeToast, ...props }) => {
@@ -80,20 +80,18 @@ export const Toast: React.FC<Props> = ({ toast, removeToast, ...props }) => {
           <div className="flex p-1">
             {/* Icon */}
             <div className="mr-1">{typeIcon[toast.type]}</div>
-
             {/* Title */}
             <p className="my-0.5 text-sm font-bold">{toast.title}</p>
           </div>
-
           {/* Close Button */}
           <button
             className="rounded-3xl p-1.5 text-gray-300 hover:text-white"
             onClick={handleClose}
+            type="button"
           >
             <MdClose className="h-5 w-5" />
           </button>
         </div>
-
         {/* Content */}
         {toast.description && (
           <div

@@ -6,15 +6,17 @@ interface DefaultLink {
   onClick?: () => void;
 }
 
-export default function MoreNavLinks({
+interface Props {
+  readonly moreLinksOpen: boolean;
+  readonly setMoreLinksOpen: (open: boolean) => void;
+  readonly website?: string | undefined;
+}
+
+const MoreNavLinks: React.FC<Props> = ({
   moreLinksOpen,
   setMoreLinksOpen,
   website,
-}: {
-  moreLinksOpen: boolean;
-  setMoreLinksOpen: (open: boolean) => void;
-  website?: string | undefined;
-}): JSX.Element {
+}) => {
   const links: DefaultLink[][] = [
     [
       {
@@ -105,31 +107,40 @@ export default function MoreNavLinks({
       id="more-links-dropdown-container"
     >
       {links.map((section, index) => (
-        <React.Fragment key={index}>
-          {index !== 0 && <div className="bg-text/20 my-1 h-px w-full"></div>}
-          {section.map((btn, btnIndex) =>
-            btn.route ? (
+        <React.Fragment
+          key={section
+            .map((sec) => sec.label.replace(' ', '').toLowerCase())
+            .join('-')}
+        >
+          {index !== 0 && <div className="bg-text/20 my-1 h-px w-full" />}
+          {section.map((btn) => {
+            return btn.route ? (
               <a
-                href={`${website ?? ''}${btn.route}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                key={btnIndex}
                 className={linkClass}
+                href={`${website ?? ''}${btn.route}`}
+                key={btn.route}
+                rel="noopener noreferrer"
+                target="_blank"
               >
                 {btn.label}
               </a>
             ) : (
               <button
-                onClick={btn.onClick}
-                key={btnIndex}
                 className={linkClass}
+                key={btn.route}
+                onClick={() => {
+                  if (btn.onClick) btn.onClick();
+                }}
+                type="button"
               >
                 {btn.label}
               </button>
-            )
-          )}
+            );
+          })}
         </React.Fragment>
       ))}
     </div>
   );
-}
+};
+
+export default MoreNavLinks;

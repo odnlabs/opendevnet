@@ -105,17 +105,19 @@ const Home: NextPage = () => {
           </p>
         </div>
       </section>
-
       <section>
         <div className="mx-auto flex max-w-7xl justify-center py-24">
-          {features.map((feature, index) => (
-            <div key={index} className="w-96 p-10 text-center">
+          {features.map((feature) => (
+            <div
+              className="w-96 p-10 text-center"
+              key={feature.text.replace(' ', '-').toLowerCase()}
+            >
               <Image
-                src={feature.image}
                 alt="illustration"
-                height={200}
-                width={200}
                 className="mx-auto"
+                height={200}
+                src={feature.image}
+                width={200}
               />
               <p className="mt-10 block px-2 text-lg font-medium">
                 {feature.text}
@@ -124,7 +126,6 @@ const Home: NextPage = () => {
           ))}
         </div>
       </section>
-
       <section>
         <div className="mx-auto w-11/12 max-w-3xl pb-32 pt-10">
           <h1 className="text-center text-3xl font-medium">

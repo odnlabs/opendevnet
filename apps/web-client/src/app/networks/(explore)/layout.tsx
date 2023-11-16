@@ -5,7 +5,6 @@ const NetworksLayout: React.FC<{ children: React.ReactNode }> = ({
 }) => (
   <>
     <SidebarWrapper />
-
     <div className="flex-grow">{children}</div>
   </>
 );

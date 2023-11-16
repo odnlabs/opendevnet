@@ -16,10 +16,11 @@ export const generateMetadata = async ({
 }): Promise<Metadata> => {
   const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
-  if (!category)
+  if (!category) {
     return {
       title: 'Not Found',
     };
+  }
 
   return {
     title: `Help Center - ${category.name} | Open Dev Net`,
@@ -31,24 +32,29 @@ const Section: React.FC<{
   description: string;
   slug: string;
   items: (SubItem | Item)[] | undefined;
-}> = ({ name, slug, description, items }) =>
-  items && (
-    <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
-      <Link href={`/help/${slug}`}>
-        <h2 className="text-2xl font-semibold hover:underline">{name}</h2>
-      </Link>
-      <p className="text-text-secondary mt-3">{description}</p>
-      <div className="border-border mt-5 border-t pt-2">
-        {items.map((item, index) => (
-          <div key={index} className="my-2">
-            <Link href={`/help/${slug}/${item.slug}`} className="link">
-              {item.name}
-            </Link>
-          </div>
-        ))}
+}> = ({ name, slug, description, items }) => {
+  if (items) {
+    return (
+      <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
+        <Link href={`/help/${slug}`}>
+          <h2 className="text-2xl font-semibold hover:underline">{name}</h2>
+        </Link>
+        <p className="text-text-secondary mt-3">{description}</p>
+        <div className="border-border mt-5 border-t pt-2">
+          {items.map((item) => (
+            <div className="my-2" key={item.slug}>
+              <Link className="link" href={`/help/${slug}/${item.slug}`}>
+                {item.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
+};
 
 const HelpCategory = async ({
   params,
@@ -70,27 +76,26 @@ const HelpCategory = async ({
           </p>
         </div>
       </div>
-
       <div className="mx-auto w-11/12 max-w-7xl pb-24 pt-8">
         <Link href="/help">
           <Button label="Back" variant="primary-outline" />
         </Link>
         <div className="">
           <Section
-            name={category.name}
-            slug={category.slug}
             description={category.description}
             items={category.items.filter((item) => !item.items)}
+            name={category.name}
+            slug={category.slug}
           />
           {category.items
             .filter((item) => item.items)
-            .map((item, index) => (
+            .map((item) => (
               <Section
-                key={index}
-                name={item.name}
-                slug={`${category.slug}/${item.slug}`}
                 description={item.description as string}
                 items={item.items}
+                key={item.slug}
+                name={item.name}
+                slug={`${category.slug}/${item.slug}`}
               />
             ))}
         </div>

@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@slekup/tsconfig/base.json",
+  "include": ["tsconfig.json"]
+}

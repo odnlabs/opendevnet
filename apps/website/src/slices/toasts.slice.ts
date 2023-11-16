@@ -22,8 +22,7 @@ const toastsSlice = createSlice({
       state.push(newToast);
       history.push(newToast);
     },
-    removeToast: (state, action: PayloadAction<string>) =>
-      state.filter((toast) => toast.id !== action.payload),
+    removeToast: (state, action: PayloadAction<string>) => state.filter((toast) => toast.id !== action.payload),
     getHistory: () => history,
     deleteHistory: () => {
       history.length = 0;

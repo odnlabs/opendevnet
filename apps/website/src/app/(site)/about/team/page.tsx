@@ -31,21 +31,21 @@ const Team: NextPage = () => {
         our mission forward.
       </p>
       <div className="mt-8 flex flex-wrap justify-center">
-        {devList.map((dev, index) => (
+        {devList.map((dev) => (
           <a
-            href={`https://github.com/${dev.username}`}
-            target="_blank"
-            rel="noopener noreferrer"
             className="w-full p-3 md:w-1/2 lg:w-1/3"
-            key={index}
+            href={`https://github.com/${dev.username}`}
+            key={dev.username}
+            rel="noopener noreferrer"
+            target="_blank"
           >
             <div className="border-border hover:bg-secondary active:bg-secondary-active rounded-2xl border p-8 transition">
               <Image
-                src={dev.avatar}
                 alt={dev.name}
-                width={100}
-                height={100}
                 className="mx-auto rounded-full"
+                height={100}
+                src={dev.avatar}
+                width={100}
               />
               <p className="mt-5 text-center text-lg font-medium">{dev.name}</p>
               <h1 className="text-text-secondary mb-2 mt-2 text-center text-sm">
@@ -58,10 +58,10 @@ const Team: NextPage = () => {
       <p className="mt-10 text-center text-gray-400">
         Want to join the team?{' '}
         <a
-          href="mailto:slekupvimplyrataqq@protonmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
           className="link"
+          href="mailto:slekupvimplyrataqq@protonmail.com"
+          rel="noopener noreferrer"
+          target="_blank"
         >
           Send an email
         </a>

@@ -8,8 +8,8 @@ export interface Faq {
 }
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  data: Faq[];
-  autoClose?: boolean;
+  readonly data: Faq[];
+  readonly autoClose?: boolean;
 }
 
 export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
@@ -20,27 +20,28 @@ export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
     <div {...props}>
       {data.map((set, index) => (
         <div
-          key={index}
           className={`border-border text-text-primary h-full overflow-hidden border text-sm md:text-base ${
             index === 0 ? 'rounded-t-lg' : 'border-t-0'
           } ${index === data.length - 1 && 'rounded-b-lg'}`}
+          key={set.question.replace(/\s/g, '').toLowerCase()}
         >
           {/* Question - button */}
           <button
             className="no-selection bg-background-secondary block w-full cursor-pointer px-5 py-5 text-left ring-inset"
             onClick={() => {
               if (autoClose) setFocused(focused === index ? null : index);
-              else
+              else {
                 setFocusedArr(
                   focusedArr.includes(index)
                     ? focusedArr.filter((item) => item !== index)
                     : [...focusedArr, index]
                 );
+              }
             }}
+            type="button"
           >
             <div className="-mt-0.5 flex justify-between">
               <p className="w-[calc(100%-1.5rem)]">{set.question}</p>
-
               <FaChevronDown
                 className={`mt-1.5 h-4 w-4 transition duration-300 ${
                   (autoClose ? focused === index : focusedArr.includes(index))

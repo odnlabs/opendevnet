@@ -4,6 +4,6 @@ export const metadata: Metadata = {
   title: 'Library | Open Dev Net',
 };
 
-const Library: NextPage = () => <div className=""></div>;
+const Library: NextPage = () => <div className="" />;
 
 export default Library;

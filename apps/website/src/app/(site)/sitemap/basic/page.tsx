@@ -20,9 +20,8 @@ interface BoxProps {
 
 const Content: React.FC<{ layer: Layer }> = ({ layer }) => (
   <>
-    <span className="absolute left-0 top-2 h-1 w-1 rounded-xl bg-white/50"></span>
+    <span className="absolute left-0 top-2 h-1 w-1 rounded-xl bg-white/50" />
     <p className="text-sm font-medium">{layer.name}</p>
-
     {layer.description && (
       <p className="text-text-secondary text-xs">{layer.description}</p>
     )}
@@ -45,8 +44,8 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
         </div>
       ) : layer.path.startsWith('/app') ? (
         <a
-          href={layer.path}
           className="link group relative my-0.5 inline-block px-4"
+          href={layer.path}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -55,8 +54,8 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
         </a>
       ) : (
         <Link
-          href={layer.path}
           className="link group relative my-0.5 inline-block px-4"
+          href={layer.path}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -64,10 +63,9 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
           <Content layer={layer} />
         </Link>
       )}
-
       {/* Recursion */}
-      {layer.children?.map((child, index) => (
-        <Box layer={child} deep={deep + 1} key={index} />
+      {layer.children?.map((child) => (
+        <Box deep={deep + 1} key={child.path} layer={child} />
       ))}
     </div>
   );
@@ -86,15 +84,15 @@ const SitemapBasic: NextPage = async () => {
             Sitemap - Basic View
           </h1>
           <div className="mt-2">
-            <Link href="/sitemap" className="link">
+            <Link className="link" href="/sitemap">
               Switch to Modern View
             </Link>
           </div>
         </div>
         <div className="mt-8 columns-1 gap-10 md:columns-2">
-          {layers.map((layer, index) => (
-            <div key={index} className="inline-block w-full">
-              <Box layer={layer} deep={0} />
+          {layers.map((layer) => (
+            <div className="inline-block w-full" key={layer.path}>
+              <Box deep={0} layer={layer} />
             </div>
           ))}
         </div>

@@ -20,13 +20,13 @@ const SidebarLink: React.FC<{
 
   return (
     <Link
-      href={itemPath}
       className={`my-1 block rounded-md px-2.5 py-1.5 text-sm ${
         itemPath === pathname ||
         (pathname === '/' && itemPath === '/introduction/introduction')
           ? 'bg-primary font-medium'
           : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
       }`}
+      href={itemPath}
     >
       {subItem ? subItem.name : item.name}
     </Link>
@@ -38,22 +38,23 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
 
   const pathname = usePathname();
 
-  return cat.items.map((item, itemIndex) =>
-    item.items && item.items?.length > 0 ? (
-      <div className="h-full overflow-hidden" key={itemIndex}>
+  return cat.items.map((item, itemIndex) => {
+    return item.items && item.items?.length > 0 ? (
+      <div className="h-full overflow-hidden" key={item.slug}>
         <button
           className={`flex w-full justify-between rounded-md px-2.5 py-1.5 text-left text-sm ${
             pathname.startsWith(`/${cat.slug}/${item.slug}`)
               ? 'bg-secondary cursor-default font-medium'
               : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
           }`}
-          onClick={() =>
-            setOpen((prev) =>
-              prev.includes(itemIndex)
+          onClick={() => {
+            setOpen((prev) => {
+              return prev.includes(itemIndex)
                 ? prev.filter((idx) => idx !== itemIndex)
-                : [...prev, itemIndex]
-            )
-          }
+                : [...prev, itemIndex];
+            });
+          }}
+          type="button"
         >
           {item.name}
           <HiChevronRight
@@ -72,20 +73,20 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
               : 'grid-rows-[0fr]'
           }`}
         >
-          <div className={`border-border mx-2 overflow-hidden border-l px-2`}>
-            {item.items.map((subItem, subItemIndex) => (
+          <div className="border-border mx-2 overflow-hidden border-l px-2">
+            {item.items.map((subItem) => (
               <SidebarLink
                 cat={cat}
                 item={item}
+                key={subItem.slug}
                 subItem={subItem}
-                key={subItemIndex}
               />
             ))}
           </div>
         </div>
       </div>
     ) : (
-      <SidebarLink cat={cat} item={item} key={itemIndex} />
-    )
-  );
+      <SidebarLink cat={cat} item={item} key={item.slug} />
+    );
+  });
 };

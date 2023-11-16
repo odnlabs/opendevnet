@@ -26,11 +26,11 @@ const Vision: NextPage = () => {
           of technology.
         </p>
         <Image
-          src="/about/vision.jpg"
           alt="About"
-          height={800}
-          width={1200}
           className="mt-5 max-h-80 rounded-lg object-cover"
+          height={800}
+          src="/about/vision.jpg"
+          width={1200}
         />
         <h2 className={headerStyle}>
           Connecting Developers, Creators, and Innovators

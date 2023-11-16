@@ -11,15 +11,12 @@ const CreateGuild: NextPage = () => {
   const dispatch = useDispatch();
 
   return (
-    <>
-      <div className="h-full min-h-screen w-full bg-gradient-to-tr from-[#2E1442] to-[#141745] p-10">
+    <div className="h-full min-h-screen w-full bg-gradient-to-tr from-[#2E1442] to-[#141745] p-10">
         <div className="bg-background/50 border-border rounded-md border p-10">
           <h1 className="mb-5 text-3xl font-bold">Create a new Guild</h1>
           <Button
             label="Submit"
-            variant="primary"
-            onClick={() =>
-              dispatch(
+            onClick={() => dispatch(
                 addToast({
                   title: 'Guild Created Successfully',
                   description:
@@ -27,12 +24,11 @@ const CreateGuild: NextPage = () => {
                   type: ToastType.Success,
                   time: 5000,
                 })
-              )
-            }
+              )}
+            variant="primary"
           />
         </div>
       </div>
-    </>
   );
 };
 

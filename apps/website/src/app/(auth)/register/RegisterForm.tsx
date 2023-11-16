@@ -93,46 +93,45 @@ export const RegisterForm: React.FC = () => {
           </span>
         </h1>
       </div>
-
       <div className="mt-5">
         <div className="mt-3">
           <Input
-            type="email"
             id="email"
             label="Email"
-            placeholder="name@example.com"
             onChange={(event) => setEmail(event.target.value)}
+            placeholder="name@example.com"
             required
+            type="email"
           />
         </div>
         <div className="mt-3">
           <Input
-            type="text"
             id="username"
             label="Username"
-            placeholder="This will be your username"
             onChange={(event) => setUsername(event.target.value)}
+            placeholder="This will be your username"
             required
+            type="text"
           />
         </div>
         <div className="mt-3">
           <Input
-            type="password"
             id="password"
             label="Password"
-            placeholder="Choose a strong password"
             onChange={(event) => setPassword(event.target.value)}
+            placeholder="Choose a strong password"
             required
+            type="password"
           />
         </div>
         <div className="mt-3">
           <Input
-            type="password"
             id="retype-password"
             label="Retype Password"
-            placeholder="Retype password"
             onChange={(event) => setRetypePassword(event.target.value)}
+            placeholder="Retype password"
             required
+            type="password"
           />
         </div>
         <div className="mt-5 flex">
@@ -146,32 +145,29 @@ export const RegisterForm: React.FC = () => {
             and special offers. You can opt out at any time.
           </p>
         </div>
-
         <div className="mt-5">
-          <Button label="Create Account" type="submit" size="lg" width="full" />
+          <Button label="Create Account" size="lg" type="submit" width="full" />
         </div>
-
         <div className="mt-3">
           <p className="text-text-secondary text-xs">
             By registering, you agree to Open Dev Net&apos;s{' '}
-            <Link href="/terms" className="link">
+            <Link className="link" href="/terms">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="link">
+            <Link className="link" href="/privacy">
               Privacy Policy
             </Link>
             .
           </p>
           <p className="text-text-secondary mt-3 text-sm">
             Already have an account?{' '}
-            <Link href="/login" className="link">
+            <Link className="link" href="/login">
               Login
             </Link>
           </p>
         </div>
       </div>
-
       {/* Temporary */}
       {!isDev && (
         <div className="bg-background/75 absolute left-0 top-0 h-full w-full rounded-3xl text-center text-white backdrop-blur-md">

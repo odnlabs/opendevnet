@@ -44,6 +44,9 @@ importers:
       '@nx/workspace':
         specifier: ^17.1.2
         version: 17.1.2
+      '@slekup/tsconfig':
+        specifier: ^1.0.0
+        version: 1.0.0
       '@types/node':
         specifier: ^20.9.0
         version: 20.9.0
@@ -54,8 +57,8 @@ importers:
         specifier: ^8.53.0
         version: 8.53.0
       eslint-config-slekup:
-        specifier: 1.0.4
-        version: 1.0.4(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.8
+        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -3388,6 +3391,10 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: false
 
+  /@slekup/tsconfig@1.0.0:
+    resolution: {integrity: sha512-xB9eoaGgybe8L1u3Vzk8tpp+oar8L8YYblq2Prqbq3SuO/lqQmqzoH7aYJGmZRZ+tJMIhFFLrxC8qlpRkWcmrA==}
+    dev: false
+
   /@splidejs/react-splide@0.7.12:
     resolution: {integrity: sha512-UfXH+j47jsMc4x5HA/aOwuuHPqn6y9+ZTNYPWDRD8iLKvIVMZlzq2unjUEvyDAU+TTVPZOXkG2Ojeoz0P4AkZw==}
     dependencies:
@@ -3842,7 +3849,7 @@ packages:
       debug: 4.3.4
       eslint: 8.53.0
       graphemer: 1.4.0
-      ignore: 5.2.4
+      ignore: 5.3.0
       natural-compare: 1.4.0
       semver: 7.5.4
       ts-api-utils: 1.0.3(typescript@5.2.2)
@@ -5664,8 +5671,8 @@ packages:
     resolution: {integrity: sha512-nlrIkHCXnnSgv+8CeTpaUQ1Poe8XjeFsxX+h8bgxqHwgQQ1hYmdklIdvaqIs93rBXo16vfz42kPw/jsjEviDgg==}
     dev: true
 
-  /eslint-config-slekup@1.0.4(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-Wep+ZbMAgcpWR+dvi5/OCigh0wU2smYcQFxNaVEqR+ED+RdWYSeXWy6N2ycVbTdKMxQe9GxlmKtl9f30XvUxiw==}
+  /eslint-config-slekup@1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-OKasO7XNMoXbEc21qJtpeBf8e+t3yHH1ZDxkOB6a5i56FB0r/2gjg1Ubjz6deNs4VOB+vDW8AQmNINHGpUbuyQ==}
     peerDependencies:
       eslint: ^8.0.0
     dependencies:
@@ -5787,7 +5794,7 @@ packages:
     dependencies:
       escape-string-regexp: 1.0.5
       eslint: 8.53.0
-      ignore: 5.2.4
+      ignore: 5.3.0
     dev: false
 
   /eslint-plugin-import@2.29.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0):
@@ -5904,7 +5911,7 @@ packages:
       eslint: 8.53.0
       eslint-plugin-es-x: 7.3.0(eslint@8.53.0)
       get-tsconfig: 4.7.2
-      ignore: 5.2.4
+      ignore: 5.3.0
       is-builtin-module: 3.2.1
       is-core-module: 2.13.1
       minimatch: 3.1.2
@@ -5921,7 +5928,7 @@ packages:
       eslint: 8.53.0
       eslint-plugin-es: 3.0.1(eslint@8.53.0)
       eslint-utils: 2.1.0
-      ignore: 5.2.4
+      ignore: 5.3.0
       minimatch: 3.1.2
       resolve: 1.22.8
       semver: 6.3.1
@@ -6969,6 +6976,11 @@ packages:
   /ignore@5.2.4:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
+
+  /ignore@5.3.0:
+    resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==}
+    engines: {node: '>= 4'}
+    dev: false
 
   /immer@9.0.21:
     resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}

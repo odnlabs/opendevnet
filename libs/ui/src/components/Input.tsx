@@ -8,9 +8,9 @@ enum IconOptions {
 
 interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
-  size?: 'sm' | 'md' | 'lg';
-  label?: string;
-  icon?: `${IconOptions}`;
+  readonly size?: 'sm' | 'md' | 'lg';
+  readonly label?: string;
+  readonly icon?: `${IconOptions}`;
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -35,14 +35,13 @@ export const Input: React.FC<InputProps> = ({
     <div>
       {label && (
         <label
-          htmlFor={props.id}
           className="text-text-primary mb-2 ml-1 inline-block text-sm font-medium"
+          htmlFor={props.id}
         >
           {label}
           {props.required && <span className="text-danger ml-1">*</span>}
         </label>
       )}
-
       <div className="relative">
         {Icon && (
           <Icon
@@ -51,7 +50,6 @@ export const Input: React.FC<InputProps> = ({
             }`}
           />
         )}
-
         <input
           {...props}
           className={`focus:border-primary block w-full rounded-md border-2 border-transparent bg-[rgb(var(--input))] transition duration-200 placeholder:text-sm focus:bg-[rgb(var(--input-focus))] ${sizeStyles[size]} ${props.className}`}

@@ -114,10 +114,12 @@ const getLibraries = async (): Promise<LibraryList> => {
       .catch(() => undefined);
     if (packageJsonFile) {
       const packageJson = JSON.parse(packageJsonFile) as DepFile | undefined;
-      if (packageJson?.dependencies)
+      if (packageJson?.dependencies) {
         await addNpmPackage(packageJson.dependencies);
-      if (packageJson?.devDependencies)
+      }
+      if (packageJson?.devDependencies) {
         await addNpmPackage(packageJson.devDependencies);
+      }
     }
     // Cargo.toml
     const cargoTomlFile = await fs
@@ -134,13 +136,14 @@ const getLibraries = async (): Promise<LibraryList> => {
       .catch(() => undefined);
     if (cargoLockFile) {
       const cargoLock = toml.parse(cargoLockFile) as CargoLock | undefined;
-      if (cargoLock?.package)
+      if (cargoLock?.package) {
         libraries.rust.push(
           ...Object.values(cargoLock.package).map((pkg) => [
             pkg.name,
             `https://crates.io/crates/${pkg.name}`,
           ])
         );
+      }
     }
   }
 
@@ -150,13 +153,13 @@ const getLibraries = async (): Promise<LibraryList> => {
 const Licenses: NextPage = async () => {
   const libraries = await getLibraries();
 
-  const filterAndSort = (originalArr: string[][]): string[][] =>
-    originalArr
-      .filter(
-        (item, index, arr) =>
-          arr.findIndex((subItem) => subItem[0] === item[0]) === index
-      )
+  const filterAndSort = (originalArr: string[][]): string[][] => {
+    return originalArr
+      .filter((item, index, arr) => {
+        return arr.findIndex((subItem) => subItem[0] === item[0]) === index;
+      })
       .sort();
+  };
 
   const filteredLibraries: LibraryList = {
     js: filterAndSort(libraries.js),
@@ -165,89 +168,81 @@ const Licenses: NextPage = async () => {
   };
 
   return (
-    <>
-      <div className="mx-auto mb-20 mt-10 w-10/12 max-w-xl lg:mb-28 lg:mt-20">
-        <h1 className="text-4xl font-bold">Licenses</h1>
-        <p className="mt-4">
-          Below is a list of all of the libraries and packages used by Open Dev
-          Net, with links to their pages where you can find their licenses:
-        </p>
-        <p className="mt-4 font-medium">Rust Crates:</p>
-        <ul className="mt-1 list-inside list-disc">
-          {filteredLibraries.rust.map((library, index) => (
-            <li key={index} className="text-text-secondary">
-              <a
-                href={library[1]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link mx-1"
-              >
-                {library[0]}
-              </a>
-              {libraries.rust.filter((item) => item[0] === library[0]).length >
-                1 && (
-                <span className="text-text-faint text-xs">
-                  x
-                  {
-                    libraries.rust.filter((item) => item[0] === library[0])
-                      .length
-                  }
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-4 font-medium">Internal Libraries:</p>
-        <ul className="mt-1 list-inside list-disc">
-          {filteredLibraries.internal.map((library, index) => (
-            <li key={index} className="text-text-secondary">
-              <a
-                href={library[1]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link mx-1"
-              >
-                {library[0]}
-              </a>
-              {libraries.internal.filter((item) => item[0] === library[0])
-                .length > 1 && (
-                <span className="text-text-faint text-xs">
-                  x
-                  {
-                    libraries.internal.filter((item) => item[0] === library[0])
-                      .length
-                  }
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-
-        <p className="mt-4 font-medium">NPM Packages:</p>
-        <ul className="mt-1 list-inside list-disc">
-          {filteredLibraries.js.map((library, index) => (
-            <li key={index} className="text-text-secondary">
-              <a
-                href={library[1]}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link mx-1"
-              >
-                {library[0]}
-              </a>
-              {libraries.js.filter((item) => item[0] === library[0]).length >
-                1 && (
-                <span className="text-text-faint text-xs">
-                  x
-                  {libraries.js.filter((item) => item[0] === library[0]).length}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+    <div className="mx-auto mb-20 mt-10 w-10/12 max-w-xl lg:mb-28 lg:mt-20">
+      <h1 className="text-4xl font-bold">Licenses</h1>
+      <p className="mt-4">
+        Below is a list of all of the libraries and packages used by Open Dev
+        Net, with links to their pages where you can find their licenses:
+      </p>
+      <p className="mt-4 font-medium">Rust Crates:</p>
+      <ul className="mt-1 list-inside list-disc">
+        {filteredLibraries.rust.map((library) => (
+          <li className="text-text-secondary" key={library[0]}>
+            <a
+              className="link mx-1"
+              href={library[1]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {library[0]}
+            </a>
+            {libraries.rust.filter((item) => item[0] === library[0]).length >
+              1 && (
+              <span className="text-text-faint text-xs">
+                x
+                {libraries.rust.filter((item) => item[0] === library[0]).length}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 font-medium">Internal Libraries:</p>
+      <ul className="mt-1 list-inside list-disc">
+        {filteredLibraries.internal.map((library) => (
+          <li className="text-text-secondary" key={library[0]}>
+            <a
+              className="link mx-1"
+              href={library[1]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {library[0]}
+            </a>
+            {libraries.internal.filter((item) => item[0] === library[0])
+              .length > 1 && (
+              <span className="text-text-faint text-xs">
+                x
+                {
+                  libraries.internal.filter((item) => item[0] === library[0])
+                    .length
+                }
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+      <p className="mt-4 font-medium">NPM Packages:</p>
+      <ul className="mt-1 list-inside list-disc">
+        {filteredLibraries.js.map((library) => (
+          <li className="text-text-secondary" key={library[0]}>
+            <a
+              className="link mx-1"
+              href={library[1]}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {library[0]}
+            </a>
+            {libraries.js.filter((item) => item[0] === library[0]).length >
+              1 && (
+              <span className="text-text-faint text-xs">
+                x{libraries.js.filter((item) => item[0] === library[0]).length}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 

@@ -5,10 +5,10 @@ import React from 'react';
 import { FaCheck } from '@react-icons/all-files/fa/FaCheck';
 
 interface CheckboxProps extends React.HTMLAttributes<HTMLDivElement> {
-  checked: boolean;
-  setChecked: React.Dispatch<React.SetStateAction<boolean>>;
-  className?: string;
-  disabled?: boolean;
+  readonly checked: boolean;
+  readonly setChecked: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly className?: string;
+  readonly disabled?: boolean;
 }
 
 export const Checkbox: React.FC<CheckboxProps> = ({
