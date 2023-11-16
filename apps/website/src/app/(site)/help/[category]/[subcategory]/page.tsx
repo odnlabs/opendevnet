@@ -20,27 +20,27 @@ export const generateMetadata = async ({
     .catch(() => undefined);
 
   if (doc) {
- return {
+    return {
       title: `${doc.meta.title} | Open Dev Net`,
     };
-}
+  }
 
   const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category) {
- return {
+    return {
       title: 'Not Found',
     };
-}
+  }
   const subcategory = category?.items.find(
     (subcat) => subcat.slug === params.subcategory
   );
 
   if (subcategory) {
- return {
+    return {
       title: `Help Center - ${subcategory.name} | Open Dev Net`,
     };
-}
+  }
 
   return {
     title: 'Not Found',
@@ -52,9 +52,8 @@ const Section: React.FC<{
   description: string;
   slug: string;
   items: (SubItem | Item)[] | undefined;
-}> = ({
- name, slug, description, items
-}) => items && (
+}> = ({ name, slug, description, items }) =>
+  items && (
     <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
       <h2 className="text-2xl font-semibold">{name}</h2>
       <p className="text-text-secondary mt-3">{description}</p>
