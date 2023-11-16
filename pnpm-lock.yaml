@@ -57,8 +57,8 @@ importers:
         specifier: ^8.53.0
         version: 8.53.0
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       husky:
         specifier: ^8.0.3
         version: 8.0.3
@@ -163,8 +163,8 @@ importers:
         specifier: 14.0.2
         version: 14.0.2(eslint@8.53.0)(typescript@5.2.2)
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -278,8 +278,8 @@ importers:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -402,8 +402,8 @@ importers:
         specifier: ^8.53.0
         version: 8.53.0
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -439,8 +439,8 @@ importers:
         specifier: ^8.5.9
         version: 8.5.9
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.31)(typescript@5.2.2)
@@ -489,8 +489,8 @@ importers:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -517,8 +517,8 @@ importers:
         specifier: ^20.9.0
         version: 20.9.0
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.31)(typescript@5.2.2)
@@ -560,8 +560,8 @@ importers:
         specifier: ^20.9.0
         version: 20.9.0
       eslint-config-slekup:
-        specifier: 1.0.8
-        version: 1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
+        specifier: 1.0.10
+        version: 1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2)
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.31)(typescript@5.2.2)
@@ -5608,8 +5608,8 @@ packages:
     dependencies:
       eslint: 8.53.0
 
-  /eslint-config-slekup@1.0.8(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-OKasO7XNMoXbEc21qJtpeBf8e+t3yHH1ZDxkOB6a5i56FB0r/2gjg1Ubjz6deNs4VOB+vDW8AQmNINHGpUbuyQ==}
+  /eslint-config-slekup@1.0.10(@babel/core@7.23.3)(eslint@8.53.0)(typescript@5.2.2):
+    resolution: {integrity: sha512-UNWkmiXHWNpX9ApyzUKoKqarHrY9V12IK872uJ9Q97D38dX4Uh0gCoigi6CGCiC+eLNw59sTSIpiDs7c0gsOKA==}
     peerDependencies:
       eslint: ^8.0.0
     dependencies:
@@ -5621,7 +5621,7 @@ packages:
       eslint-config-eslint: 9.0.0(eslint@8.53.0)
       eslint-config-next: 14.0.2(eslint@8.53.0)(typescript@5.2.2)
       eslint-config-prettier: 9.0.0(eslint@8.53.0)
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
       eslint-plugin-import: 2.29.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0)
       eslint-plugin-jsdoc: 46.9.0(eslint@8.53.0)
       eslint-plugin-jsonc: 2.10.0(eslint@8.53.0)
@@ -5671,28 +5671,6 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
 
-  /eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.11.0)(eslint-plugin-import@2.29.0)(eslint@8.53.0):
-    resolution: {integrity: sha512-xgdptdoi5W3niYeuQxKmzVDTATvLYqhpwmykwsh7f6HIOStGWEIL9iqZgQDF9u9OEzrRwR8no5q2VT+bjAujTg==}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    peerDependencies:
-      eslint: '*'
-      eslint-plugin-import: 2.29.0
-    dependencies:
-      debug: 4.3.4
-      enhanced-resolve: 5.15.0
-      eslint: 8.53.0
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0)
-      eslint-plugin-import: 2.29.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0)
-      fast-glob: 3.3.2
-      get-tsconfig: 4.7.2
-      is-core-module: 2.13.1
-      is-glob: 4.0.3
-    transitivePeerDependencies:
-      - '@typescript-eslint/parser'
-      - eslint-import-resolver-node
-      - eslint-import-resolver-webpack
-      - supports-color
-
   /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
     engines: {node: '>=4'}
@@ -5719,34 +5697,6 @@ packages:
       eslint: 8.53.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
-    transitivePeerDependencies:
-      - supports-color
-
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0):
-    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-      eslint:
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
-    dependencies:
-      '@typescript-eslint/parser': 6.11.0(eslint@8.53.0)(typescript@5.2.2)
-      debug: 3.2.7
-      eslint: 8.53.0
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
     transitivePeerDependencies:
       - supports-color
 

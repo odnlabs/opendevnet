@@ -51,7 +51,7 @@
     "@types/node": "^20.9.0",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.53.0",
-    "eslint-config-slekup": "1.0.8",
+    "eslint-config-slekup": "1.0.10",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",
     "nx": "^17.1.2",

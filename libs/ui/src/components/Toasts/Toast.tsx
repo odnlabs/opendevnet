@@ -39,6 +39,9 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 export const Toast: React.FC<Props> = ({ toast, removeToast, ...props }) => {
   const [visible, setVisible] = useState<boolean>(true);
 
+  /**
+   *
+   */
   const handleClose = (): void => {
     setVisible(false);
     setTimeout(() => {
