@@ -117,7 +117,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
     <div className="relative block">
       {!layer.path ? (
         <div
-          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 ${boxStyles[deep][0]}`}
+          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 ${boxStyles[deep]?.[0]}`}
           style={{
             marginLeft: `${marginLeft}px`,
           }}
@@ -126,7 +126,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
         </div>
       ) : layer.path.startsWith('/app') ? (
         <a
-          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
+          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep]?.[0]} ${boxStyles[deep]?.[1]}`}
           href={layer.path}
           style={{
             marginLeft: `${marginLeft}px`,
@@ -136,7 +136,7 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
         </a>
       ) : (
         <Link
-          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep][0]} ${boxStyles[deep][1]}`}
+          className={`group relative my-3 inline-block rounded-lg border bg-[length:200%] bg-left px-4 py-3 transition-all duration-500 ease-out hover:bg-right hover:duration-200 focus:ring focus:transition-none ${boxStyles[deep]?.[0]} ${boxStyles[deep]?.[1]}`}
           href={layer.path}
           style={{
             marginLeft: `${marginLeft}px`,
@@ -146,8 +146,8 @@ const Box: React.FC<BoxProps> = ({ layer, deep }) => {
         </Link>
       )}
       {/* Recursion */}
-      {layer.children?.map((child, index) => (
-        <Box deep={deep + 1} key={index} layer={child} />
+      {layer.children?.map((child) => (
+        <Box deep={deep + 1} key={child.path} layer={child} />
       ))}
     </div>
   );
@@ -170,8 +170,8 @@ const Sitemap: NextPage = async () => {
           </div>
         </div>
         <div className="mt-8 columns-1 gap-10 md:columns-2">
-          {layers.map((layer, index) => (
-            <div className="inline-block w-full" key={index}>
+          {layers.map((layer) => (
+            <div className="inline-block w-full" key={layer.path}>
               <Box deep={0} layer={layer} />
             </div>
           ))}

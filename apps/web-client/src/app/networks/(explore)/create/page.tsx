@@ -16,7 +16,7 @@ const CreateGuild: NextPage = () => {
         <h1 className="mb-5 text-3xl font-bold">Create a new Guild</h1>
         <Button
           label="Submit"
-          onClick={() =>
+          onClick={() => {
             dispatch(
               addToast({
                 title: 'Guild Created Successfully',
@@ -24,8 +24,8 @@ const CreateGuild: NextPage = () => {
                 type: ToastType.Success,
                 time: 5000,
               })
-            )
-          }
+            );
+          }}
           variant="primary"
         />
       </div>

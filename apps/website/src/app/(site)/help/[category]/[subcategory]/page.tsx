@@ -52,22 +52,27 @@ const Section: React.FC<{
   description: string;
   slug: string;
   items: (SubItem | Item)[] | undefined;
-}> = ({ name, slug, description, items }) =>
-  items && (
-    <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
-      <h2 className="text-2xl font-semibold">{name}</h2>
-      <p className="text-text-secondary mt-3">{description}</p>
-      <div className="border-border mt-5 border-t pt-2">
-        {items.map((item, index) => (
-          <div className="my-2" key={index}>
-            <Link className="link" href={`/help/${slug}/${item.slug}`}>
-              {item.name}
-            </Link>
-          </div>
-        ))}
+}> = ({ name, slug, description, items }) => {
+  if (items) {
+    return (
+      <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
+        <h2 className="text-2xl font-semibold">{name}</h2>
+        <p className="text-text-secondary mt-3">{description}</p>
+        <div className="border-border mt-5 border-t pt-2">
+          {items.map((item) => (
+            <div className="my-2" key={item.slug}>
+              <Link className="link" href={`/help/${slug}/${item.slug}`}>
+                {item.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
+};
 
 const HelpCategory = async ({
   params,
