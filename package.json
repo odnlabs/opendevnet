@@ -37,7 +37,7 @@
     "remark-gfm": "3.0.1"
   },
   "dependencies": {
-    "@commitlint/cli": "^18.4.1",
+    "@commitlint/cli": "^18.4.2",
     "@commitlint/config-angular": "^18.4.0",
     "@manypkg/cli": "^0.21.0",
     "@nx/devkit": "17.1.2",
