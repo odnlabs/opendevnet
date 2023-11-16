@@ -25,11 +25,15 @@
     }
   ],
   "eslint.validate": [
+    "css",
+    "html",
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact",
-    "json"
+    "json",
+    "yaml",
+    "markdown"
   ],
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": "file:///d%3A/github/opendevnet/.github/workflows/deploy.yml",
