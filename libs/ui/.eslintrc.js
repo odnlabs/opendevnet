@@ -1,4 +1,4 @@
 module.exports = {
-  extends: ['slekup/next'],
+  extends: ['slekup/react'],
   ignorePatterns: ['tailwind.config.ts'],
 };
