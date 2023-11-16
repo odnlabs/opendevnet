@@ -30,9 +30,6 @@ documentation:
 libs:@odnlabs/api-client:
   - libs/api-client/*
   - libs/api-client/**/*
-libs:eslint-config-odn:
-  - libs/eslint-config-odn/*
-  - libs/eslint-config-odn/**/*
 libs:@odnlabs/tailwind-config:
   - libs/tailwind-config/*
   - libs/tailwind-config/**/*

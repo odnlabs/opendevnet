@@ -44,8 +44,6 @@
   color: e4e669
 - name: libs:@odnlabs/api-client
   color: fbca04
-- name: libs:eslint-config-odn
-  color: fbca04
 - name: libs:@odnlabs/tailwind-config
   color: fbca04
 - name: libs:@odnlabs/tsconfig

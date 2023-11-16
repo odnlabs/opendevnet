@@ -49,15 +49,6 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/libs/eslint-config-odn'
-    schedule:
-      interval: 'daily'
-    target-branch: 'dev'
-    labels:
-      - 'dependencies'
-    open-pull-requests-limit: 20
-
-  - package-ecosystem: 'npm'
     directory: '/libs/tailwind-config'
     schedule:
       interval: 'daily'
