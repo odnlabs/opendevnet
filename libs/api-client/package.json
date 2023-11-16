@@ -28,7 +28,7 @@
     "@odnlabs/tsconfig": "workspace:*",
     "@types/node": "^20.9.0",
     "@types/ws": "^8.5.9",
-    "eslint-config-slekup": "1.0.1",
+    "eslint-config-slekup": "1.0.8",
     "tsup": "^7.2.0"
   },
   "publishConfig": {
