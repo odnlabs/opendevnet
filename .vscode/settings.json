@@ -2,8 +2,8 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll": true,
-    "source.organizeImports": false
+    "source.fixAll": "explicit",
+    "source.organizeImports": "never"
   },
   "editor.trimAutoWhitespace": false,
   "files.associations": {
@@ -50,5 +50,11 @@
       "language": "markdown",
       "scheme": "file"
     }
-  ]
+  ],
+  "[go]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "never"
+    }
+  }
 }
