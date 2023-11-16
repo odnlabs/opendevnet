@@ -26,63 +26,62 @@ export const HeaderMenu: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
       <button
         className="hover:bg-secondary active:bg-secondary-hover my-2 h-12 w-12 rounded-3xl p-2.5 transition duration-200 lg:hidden"
         onClick={() => setOpen(true)}
+        type="button"
       >
         <RiMenuFill className="h-7 w-7" />
       </button>
-
       <div
         className={`z-60 fixed left-0 top-0 h-screen w-screen bg-black/75 transition-[visibility,opacity] duration-500 lg:hidden ${
           !open && 'invisible opacity-0'
         }`}
         onClick={() => setOpen(false)}
-      ></div>
-
+      />
       <div
         className={`z-60 max-w-60 fixed left-0 top-0 h-screen w-full bg-[rgb(var(--navigation-bar))] transition-[transform] duration-500 lg:hidden ${
           !open && '-translate-x-full'
         }`}
       >
         <div className="border-border flex h-16 justify-between border-b p-3">
-          <Link href="/" className="flex" onClick={() => setOpen(false)}>
+          <Link className="flex" href="/" onClick={() => setOpen(false)}>
             <Image
-              src={`/logo-trans${theme === 'light' ? 'light' : ''}.png`}
-              height={100}
-              width={100}
               alt="Logo"
               className="h-10 w-10 rounded-full"
+              height={100}
+              src={`/logo-trans${theme === 'light' ? 'light' : ''}.png`}
+              width={100}
             />
             <p className="text-text my-1.5 ml-1 text-lg font-medium">ODN</p>
           </Link>
-          <button className="mr-1" onClick={() => setOpen(false)}>
+          <button className="mr-1" onClick={() => setOpen(false)} type="button">
             <MdClose className="h-6 w-6" />
           </button>
         </div>
         <div className="px-2 py-5">
-          {links.map((link, index) =>
-            link.external ? (
+          {links.map((link) => {
+            return link.external ? (
               <a
-                key={index}
-                href={link.href}
-                rel="noopener noreferrer"
                 className="text-text-secondary my-1 block px-5 py-2 text-sm font-medium"
+                href={link.href}
+                key={link.href}
+                rel="noopener noreferrer"
               >
                 {link.title}
               </a>
             ) : (
               <Link
-                key={index}
-                href={link.href}
                 className={`my-1 block px-5 py-2 text-sm ${
                   pathname === link.href
                     ? 'text-text font-bold'
                     : 'text-text-secondary font-medium'
                 }`}
+                href={link.href}
+                key={link.href}
                 onClick={() => setOpen(false)}
               >
                 {link.title}
               </Link>
-            )
-          )}
+            );
+          })}
         </div>
       </div>
     </>

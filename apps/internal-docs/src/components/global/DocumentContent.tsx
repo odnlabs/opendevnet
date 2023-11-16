@@ -48,7 +48,7 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
   return (
     <div className="mx-auto mb-20 mt-10 w-11/12 max-w-5xl lg:mb-28 lg:mt-20 xl:mb-52">
       <div className="flex">
-        <div id="mdx-content" className="w-full">
+        <div className="w-full" id="mdx-content">
           <h1 className="text-text my-3 block text-4xl font-bold leading-[1.2] md:text-5xl">
             {doc.meta.title}
           </h1>
@@ -56,11 +56,11 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
             <b className="font-semibold">Last Updated: </b>
             {doc.meta.lastUpdated}
           </p>
-          <div className="bg-border mt-5 h-px w-full"></div>
+          <div className="bg-border mt-5 h-px w-full" />
           <div className={`text-text-secondary mb-10 mt-8 ${styles.content}`}>
             {doc.source && (
               <MDXRemote
-                source={doc.source}
+                components={{ Link, ...uiComponents }}
                 options={{
                   mdxOptions: {
                     rehypePlugins: [
@@ -72,17 +72,16 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
                     development: process.env.NODE_ENV !== 'production',
                   },
                 }}
-                components={{ Link, ...uiComponents }}
+                source={doc.source}
               />
             )}
           </div>
-
           <div className="border-border flex border-t pt-10">
             <div className="w-1/2 pr-2">
               {doc.meta.prev && (
                 <Link
-                  href={doc.meta.prev.slug}
                   className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-left transition duration-300"
+                  href={doc.meta.prev.slug}
                 >
                   <p className="text-text-secondary text-sm font-medium">
                     Previous
@@ -93,7 +92,7 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
                   </p>
                   <p className="text-text-faint mt-3 text-xs font-medium">
                     {doc.meta.prev.location.map((part, index) => (
-                      <span key={index}>
+                      <span key={part}>
                         {part}
                         {doc.meta.prev?.location &&
                           index !== doc.meta.prev.location.length - 1 && (
@@ -105,12 +104,11 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
                 </Link>
               )}
             </div>
-
             <div className="w-1/2 pl-2">
               {doc.meta.next && (
                 <Link
-                  href={doc.meta.next.slug}
                   className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-right transition duration-300"
+                  href={doc.meta.next.slug}
                 >
                   <p className="text-text-secondary text-sm font-medium">
                     Next
@@ -121,7 +119,7 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
                   </p>
                   <p className="text-text-faint mt-3 text-xs font-medium">
                     {doc.meta.next.location.map((part, index) => (
-                      <span key={index}>
+                      <span key={part}>
                         {part}
                         {doc.meta.next?.location &&
                           index !== doc.meta.next.location.length - 1 && (

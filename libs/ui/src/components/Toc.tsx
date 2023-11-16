@@ -111,10 +111,11 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
      * Handles the resize event.
      * @returns Nothing.
      */
-    const handleResize = (): void =>
-      window.innerWidth < 768
+    const handleResize = (): void => {
+      return window.innerWidth < 768
         ? setIsMobileWidth(true)
         : setIsMobileWidth(false);
+    };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll);
@@ -134,52 +135,50 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
   ];
 
   return (
-    <>
-      <div className="min-w-60 max-w-60 relative ml-20 min-h-full">
-        <div
-          className={`min-w-60 max-w-60 ${
-            tocPosition === 'relative'
-              ? 'relative'
-              : tocPosition === 'fixed'
+    <div className="min-w-60 max-w-60 relative ml-20 min-h-full">
+      <div
+        className={`min-w-60 max-w-60 ${
+          tocPosition === 'relative'
+            ? 'relative'
+            : tocPosition === 'fixed'
               ? 'fixed top-20'
               : 'absolute bottom-0'
-          }`}
-          ref={tocRef}
-        >
-          <p className="border-border border-b py-2 font-semibold">
-            Table of Contents
-          </p>
-          <ul className="pt-2">
-            {headings.map((heading) => (
-              <li key={heading.id} className={styles[heading.level - 1]}>
-                <a
-                  href={`#${heading.id}`}
-                  className={`text-sm ${
-                    activeId === heading.id
-                      ? 'link font-semibold'
-                      : 'text-text-primary hover:underline'
-                  }`}
-                >
-                  {heading.text}
-                </a>
-              </li>
-            ))}
-          </ul>
-          {editLink && (
-            <div className="border-border mt-3 border-t text-sm">
+        }`}
+        ref={tocRef}
+      >
+        <p className="border-border border-b py-2 font-semibold">
+          Table of Contents
+        </p>
+        <ul className="pt-2">
+          {headings.map((heading) => (
+            <li className={styles[heading.level - 1]} key={heading.id}>
               <a
-                href={editLink}
-                target="_blank"
-                rel="noreferrer"
-                className="text-text-secondary hover:text-text active:text-text my-2 flex"
+                className={`text-sm ${
+                  activeId === heading.id
+                    ? 'link font-semibold'
+                    : 'text-text-primary hover:underline'
+                }`}
+                href={`#${heading.id}`}
               >
-                Edit this page on GitHub
-                <HiOutlineExternalLink className="ml-1.5 mt-1 h-3 w-3 translate-y-px" />
+                {heading.text}
               </a>
-            </div>
-          )}
-        </div>
+            </li>
+          ))}
+        </ul>
+        {editLink && (
+          <div className="border-border mt-3 border-t text-sm">
+            <a
+              className="text-text-secondary hover:text-text active:text-text my-2 flex"
+              href={editLink}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Edit this page on GitHub
+              <HiOutlineExternalLink className="ml-1.5 mt-1 h-3 w-3 translate-y-px" />
+            </a>
+          </div>
+        )}
       </div>
-    </>
+    </div>
   );
 };

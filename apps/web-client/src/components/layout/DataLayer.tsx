@@ -46,7 +46,7 @@ export const DataLayer: React.FC<DataLayerProps> = ({ children, website }) => {
             );
 
             if (website) window.location.href = `${website}/login`;
-            else window.location.href = `/login`;
+            else window.location.href = '/login';
           });
       }
     };
@@ -78,7 +78,7 @@ export const DataLayer: React.FC<DataLayerProps> = ({ children, website }) => {
     console.log(message);
     dispatch(
       addToast({
-        title: `New Message From Server`,
+        title: 'New Message From Server',
         type: 'success',
         description: `${message.message}`,
       })

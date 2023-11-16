@@ -16,42 +16,38 @@ export const ContactForm: React.FC = () => {
       <div className="border-border border-b pb-5">
         <h1 className="text-3xl font-bold">Get In Touch</h1>
       </div>
-
       <div className="mt-5">
         <Input
-          type="text"
           id="name"
           label="Name"
-          placeholder="Type your name here..."
           onChange={(event) => setName(event.target.value)}
+          placeholder="Type your name here..."
           required
+          type="text"
         />
       </div>
-
       <div className="mt-5">
         <Input
-          type="email"
           id="email"
           label="Email"
-          placeholder="name@example.com"
           onChange={(event) => setEmail(event.target.value)}
+          placeholder="name@example.com"
           required
+          type="email"
         />
       </div>
-
       <div className="mt-5">
         <TextArea
+          className="h-32"
           id="message"
           label="Message"
-          placeholder="Type your message here..."
-          minLength={10}
           maxLength={500}
-          className="h-32"
+          minLength={10}
           onChange={(event) => setMessage(event.target.value)}
+          placeholder="Type your message here..."
           required
         />
       </div>
-
       <div className="mt-8">
         <Button label="Send Message" size="lg" variant="primary" width="full" />
       </div>

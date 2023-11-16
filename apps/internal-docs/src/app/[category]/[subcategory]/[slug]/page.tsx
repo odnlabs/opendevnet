@@ -20,10 +20,11 @@ export const generateMetadata = async ({
     `${params.category}/${params.subcategory}/${params.slug}`
   );
 
-  if (!doc)
+  if (!doc) {
     return {
       title: 'Not Found',
     };
+  }
 
   return {
     title: `${doc.meta.title} | Open Dev Net`,

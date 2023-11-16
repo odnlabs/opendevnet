@@ -108,73 +108,72 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
               the future of developer collaboration!
             </p>
           </div>
-
           <div className="min-w-72 flex pt-5 md:justify-end md:py-5">
             <div>
               <Link
-                href="/contributing/contributing"
                 className="group inline-block rounded-sm shadow-sm"
+                href="/contributing/contributing"
               >
                 <Button
                   label="More Info"
+                  link
                   size="lg"
                   variant="secondary-glass"
-                  link
                 />
               </Link>
             </div>
-            <div className="w-3"></div>
+            <div className="w-3" />
             <div>
               <a
-                href={socialUrls.github}
-                target="_blank"
-                rel="noreferrer"
                 className="group inline-block rounded-sm shadow-sm"
+                href={socialUrls.github}
+                rel="noreferrer"
+                target="_blank"
               >
                 <Button
                   label="GitHub"
+                  link
                   size="lg"
                   variant="secondary-glass"
-                  link
                 />
               </a>
             </div>
           </div>
         </div>
       </div>
-
       <div className="border-border border-t bg-[rgb(var(--footer))] text-sm md:py-10">
         <div className="mx-auto max-w-7xl justify-between pt-10 md:w-10/12 md:py-5 lg:flex lg:py-10">
           <div className="mx-auto mb-10 w-80 text-center lg:mx-0 lg:mb-0 lg:text-left">
             <Image
-              height={50}
-              width={50}
-              src="/internal-docs/logo.png"
               alt="Footer Logo"
               className="mx-auto lg:mx-0"
+              height={50}
+              src="/internal-docs/logo.png"
+              width={50}
             />
             <p className="text-text-primary mt-4 text-xl font-medium">
               Open Dev Net
             </p>
-
             <div className="text-text-faint mt-5 flex justify-center lg:justify-start">
-              {socialMediaLinks.map((link, index) => (
+              {socialMediaLinks.map((link) => (
                 <a
-                  key={index}
-                  href={link.url}
                   className="hover:text-text-secondary active:text-text mr-3 transition duration-200"
-                  target="_black"
+                  href={link.url}
+                  key={link.url}
                   rel="noreferrer"
+                  target="_black"
                 >
                   <link.icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
           </div>
-
           <div className="w-full max-w-4xl justify-between md:flex">
             {links.map((category, index) => (
-              <div className="md:w-1/4" key={index}>
+              <div
+                className="md:w-1/4"
+                key={category.title.replace(' ', '').toLowerCase()}
+              >
                 {/* Category */}
                 <p className="mb-4 hidden text-sm font-semibold uppercase md:block">
                   {category.title}
@@ -184,13 +183,13 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
                     openIndex !== index &&
                     'hover:bg-secondary active:bg-secondary-active'
                   }`}
-                  onClick={() =>
-                    setOpenIndex(openIndex === index ? null : index)
-                  }
+                  onClick={() => {
+                    setOpenIndex(openIndex === index ? null : index);
+                  }}
+                  type="button"
                 >
                   {category.title}
                 </button>
-
                 {/* Links */}
                 <div
                   className={`origin-top transition-[max-height,transform,opacity] duration-300 ${
@@ -199,22 +198,23 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
                       : 'max-h-0 scale-y-90 overflow-y-hidden opacity-0 md:max-h-full md:scale-y-100 md:overflow-y-auto md:opacity-100'
                   }`}
                 >
-                  {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="md:my-2">
-                      {((useClass) =>
-                        item.internal ? (
-                          <Link href={item.href} className={useClass}>
+                  {category.items.map((item) => (
+                    <div className="md:my-2" key={item.href}>
+                      {((useClass) => {
+                        return item.internal ? (
+                          <Link className={useClass} href={item.href}>
                             {item.label}
                           </Link>
                         ) : (
                           <a
+                            className={useClass}
                             href={`${website}${item.href}`}
                             rel="noreferrer"
-                            className={useClass}
                           >
                             {item.label}
                           </a>
-                        ))(
+                        );
+                      })(
                         'block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:py-0 text-text-secondary md:text-text-faint hover:text-text-primary active:text-text transition duration-300 md:transition-none ring-inset focus-visible:ring'
                       )}
                     </div>
@@ -229,8 +229,8 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
         <p className="text-text-faint text-center text-sm">
           &copy; {new Date().getFullYear()},{' '}
           <Link
-            href={website ?? 'https://opendevnet.com'}
             className="hover:text-text"
+            href={website ?? 'https://opendevnet.com'}
           >
             OpenDevNet.com
           </Link>

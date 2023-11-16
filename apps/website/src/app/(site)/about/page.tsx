@@ -13,7 +13,6 @@ const About: NextPage = () => {
   return (
     <div className="mx-auto max-w-2xl py-10">
       <h1 className="text-center text-3xl font-semibold">About Us</h1>
-
       <div className="mt-5">
         <p className={paragraphStyle}>
           Hey! We&apos;re the team behind Open Dev Net, a group of developers
@@ -23,11 +22,11 @@ const About: NextPage = () => {
           and streamline workflows.
         </p>
         <Image
-          src="/about/about.jpg"
           alt="About"
-          height={800}
-          width={1200}
           className="mt-5 max-h-80 rounded-lg object-cover"
+          height={800}
+          src="/about/about.jpg"
+          width={1200}
         />
         <h2 className={subheaderStyle}>The Problem</h2>
         <p className={paragraphStyle}>
@@ -59,19 +58,19 @@ const About: NextPage = () => {
           If you&apos;re interested in contributing to the project, check out
           our{' '}
           <a
-            href="https://opendevnet.com/internal-docs/contributing/contributing"
-            target="_blank"
-            rel="noopener noreferrer"
             className="link"
+            href="https://opendevnet.com/internal-docs/contributing/contributing"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             Contributing Guidelines
           </a>
           . If you&apos;re interested in officially joining the team, email at{' '}
           <a
-            href="mailto:slekupvimplyrataqq@protonmail.com"
-            target="_blank"
-            rel="noopener noreferrer"
             className="link"
+            href="mailto:slekupvimplyrataqq@protonmail.com"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             slekupvimplyrataqq@protonmail.com
           </a>
@@ -89,10 +88,10 @@ const About: NextPage = () => {
         <p className={paragraphStyle}>
           Open Dev Net and most of its related code is licensed under{' '}
           <a
-            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
-            target="_blank"
-            rel="noopener noreferrer"
             className="link"
+            href="http://creativecommons.org/licenses/by-nc-sa/4.0/"
+            rel="noopener noreferrer"
+            target="_blank"
           >
             CC BY-NC-SA 4.0
           </a>

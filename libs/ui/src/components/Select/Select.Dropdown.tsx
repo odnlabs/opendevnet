@@ -83,12 +83,11 @@ export const SelectDropdown = <T,>({
             onClick={() => {
               closeSelect();
             }}
-          ></div>
-
+          />
           <div
             className="no-select fixed z-[100]"
-            style={{ top: fromTop, left: fromLeft, width }}
             id="select-dropdown"
+            style={{ top: fromTop, left: fromLeft, width }}
           >
             <div
               className={`thin-scroll border-border bg-background top-2 z-[100] max-h-60 origin-top cursor-default overflow-y-auto overflow-x-hidden rounded-sm border p-1 shadow-xl drop-shadow-lg transition-all duration-200 ${
@@ -97,7 +96,12 @@ export const SelectDropdown = <T,>({
             >
               {options.map((option, index) => (
                 <button
-                  key={index}
+                  className={`ring-primary hover:bg-secondary/50 active:bg-secondary flex w-full justify-between rounded-sm px-4 py-2.5 text-left text-sm ring-inset transition duration-200 focus-visible:ring-2 ${
+                    state === option.value &&
+                    'bg-secondary text-text font-medium'
+                  }`}
+                  id={`select-dropdown-item-${index.toString()}`}
+                  key={option.label}
                   onClick={() => {
                     setState(option.value);
                     if (onChange) onChange(option.value);
@@ -109,8 +113,9 @@ export const SelectDropdown = <T,>({
                       let prevItem = document.getElementById(
                         `select-dropdown-item-${index - 1}`
                       );
-                      if (index === 0)
+                      if (index === 0) {
                         prevItem = document.getElementById('select-btn-true');
+                      }
                       if (prevItem) prevItem.focus();
                       return;
                     }
@@ -130,11 +135,7 @@ export const SelectDropdown = <T,>({
                       closeSelect();
                     }
                   }}
-                  className={`ring-primary hover:bg-secondary/50 active:bg-secondary flex w-full justify-between rounded-sm px-4 py-2.5 text-left text-sm ring-inset transition duration-200 focus-visible:ring-2 ${
-                    state === option.value &&
-                    'bg-secondary text-text font-medium'
-                  }`}
-                  id={`select-dropdown-item-${index.toString()}`}
+                  type="button"
                 >
                   {option.label}
                   {state === option.value && (

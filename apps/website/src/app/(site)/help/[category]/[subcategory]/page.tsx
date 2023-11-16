@@ -19,25 +19,28 @@ export const generateMetadata = async ({
     .getDocFromSlug('mdx/help', `${params.category}/${params.subcategory}`)
     .catch(() => undefined);
 
-  if (doc)
+  if (doc) {
     return {
       title: `${doc.meta.title} | Open Dev Net`,
     };
+  }
 
   const ordered = await mdxApi.getOrderedSlugs('mdx/help');
   const category = ordered.find((cat) => cat.slug === params.category);
-  if (!category)
+  if (!category) {
     return {
       title: 'Not Found',
     };
+  }
   const subcategory = category?.items.find(
     (subcat) => subcat.slug === params.subcategory
   );
 
-  if (subcategory)
+  if (subcategory) {
     return {
       title: `Help Center - ${subcategory.name} | Open Dev Net`,
     };
+  }
 
   return {
     title: 'Not Found',
@@ -49,22 +52,27 @@ const Section: React.FC<{
   description: string;
   slug: string;
   items: (SubItem | Item)[] | undefined;
-}> = ({ name, slug, description, items }) =>
-  items && (
-    <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
-      <h2 className="text-2xl font-semibold">{name}</h2>
-      <p className="text-text-secondary mt-3">{description}</p>
-      <div className="border-border mt-5 border-t pt-2">
-        {items.map((item, index) => (
-          <div key={index} className="my-2">
-            <Link href={`/help/${slug}/${item.slug}`} className="link">
-              {item.name}
-            </Link>
-          </div>
-        ))}
+}> = ({ name, slug, description, items }) => {
+  if (items) {
+    return (
+      <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
+        <h2 className="text-2xl font-semibold">{name}</h2>
+        <p className="text-text-secondary mt-3">{description}</p>
+        <div className="border-border mt-5 border-t pt-2">
+          {items.map((item) => (
+            <div className="my-2" key={item.slug}>
+              <Link className="link" href={`/help/${slug}/${item.slug}`}>
+                {item.name}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
+};
 
 const HelpCategory = async ({
   params,
@@ -99,17 +107,16 @@ const HelpCategory = async ({
           </p>
         </div>
       </div>
-
       <div className="mx-auto w-11/12 max-w-7xl pb-24 pt-8">
         <Link href={`/help/${category.slug}`}>
           <Button label="Back" variant="primary-outline" />
         </Link>
         <div className="">
           <Section
-            name={subcategory.name}
-            slug={`${category.slug}/${subcategory.slug}`}
             description={subcategory.description as string}
             items={subcategory.items}
+            name={subcategory.name}
+            slug={`${category.slug}/${subcategory.slug}`}
           />
         </div>
       </div>

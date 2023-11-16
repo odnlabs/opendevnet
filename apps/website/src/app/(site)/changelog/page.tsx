@@ -1,5 +1,6 @@
 import { Metadata, NextPage } from 'next';
 import Link from 'next/link';
+import React from 'react';
 
 export const metadata: Metadata = {
   title: 'Changelog | Open Dev Net',
@@ -22,9 +23,10 @@ const ChangeLog: NextPage = () => {
         'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
         'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas alias ut dolor et doloribus perferendis labore cum aliquid?',
         'Lorem ipsum dolor sit amet.',
+        // eslint-disable-next-line react/jsx-key
         <>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.{' '}
-          <Link href="/changelog" className="link">
+          <Link className="link" href="/changelog">
             Nulla euismod
           </Link>
           .
@@ -65,8 +67,8 @@ const ChangeLog: NextPage = () => {
     <div className="mx-auto w-11/12 max-w-3xl py-20">
       <h1 className="text-4xl font-bold">Changelog</h1>
       <div className="mt-10">
-        {changeLogData.map((changeLog, index) => (
-          <div key={index} className="border-border border-t py-10">
+        {changeLogData.map((changeLog) => (
+          <div className="border-border border-t py-10" key={changeLog.version}>
             <h2 className="text-3xl font-bold">
               <span className="">
                 {changeLog.date
@@ -86,7 +88,11 @@ const ChangeLog: NextPage = () => {
             </p>
             <ul className="mt-5 list-disc pl-5">
               {changeLog.changes.map((change, changeIndex) => (
-                <li key={changeIndex} className="mt-2 pl-2">
+                <li
+                  className="mt-2 pl-2"
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={changeIndex}
+                >
                   {change}
                 </li>
               ))}

@@ -6,9 +6,9 @@ export enum ToastType {
 }
 
 export interface IToast {
-  id?: string;
   title: string;
-  description?: string;
   type: `${ToastType}`;
-  time?: number;
+  id?: string | undefined;
+  description?: string | undefined;
+  time?: number | undefined;
 }

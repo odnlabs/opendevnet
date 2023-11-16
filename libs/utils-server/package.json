@@ -31,9 +31,9 @@
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
-    "@odnlabs/tsconfig": "workspace:*",
+    "@slekup/tsconfig": "1.0.0",
     "@types/node": "^20.9.0",
-    "eslint-config-odn": "workspace:*",
+    "eslint-config-slekup": "1.0.8",
     "tsup": "^7.2.0"
   },
   "publishConfig": {

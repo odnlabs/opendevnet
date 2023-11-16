@@ -40,7 +40,8 @@ const nextConfig = {
     PUBLIC_WEBSITE_URL: process.env.PUBLIC_WEBSITE_URL,
     PUBLIC_WEB_CLIENT_URL: process.env.PUBLIC_WEB_CLIENT_URL,
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
+    // eslint-disable-next-line no-param-reassign
     config.resolve.fallback = { fs: false };
     return config;
   },

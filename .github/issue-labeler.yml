@@ -13,15 +13,10 @@ apps:web-client:
 libs:@odnlabs/api-client:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/api-client\\n"
-libs:eslint-config-odn:
-  - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\neslint-config-odn\\n"
 libs:@odnlabs/tailwind-config:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/tailwind-config\\n"
-libs:@odnlabs/tsconfig:
-  - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\n@odnlabs/tsconfig\\n"
+
 libs:@odnlabs/ui:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/ui\\n"

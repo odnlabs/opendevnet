@@ -363,8 +363,9 @@ export const getDocFromSlug = async (
   for (let idx = 0; idx < docsSplit.length; idx += 1) {
     const foundDirs = await fs.readdir(correctPath, { withFileTypes: true });
     const foundDir = foundDirs.find((dir) => {
-      if (dir.name.split('-').length === 1 && dir.name === docsSplit[idx])
+      if (dir.name.split('-').length === 1 && dir.name === docsSplit[idx]) {
         return true;
+      }
       return dir.name.split('-').slice(1).join('-') === docsSplit[idx];
     });
     if (!foundDir) {
@@ -419,8 +420,9 @@ export const getDocFromSlug = async (
   }> => {
     const slugs = await getSlugs(rootDir);
     const index = slugs.slugs.findIndex((slg) => slg.slug === fullSlug);
-    if (index === -1)
+    if (index === -1) {
       throw new Error(`No slug found: "${fullSlug}" at path "${rootDir}"`);
+    }
 
     const next = slugs.slugs[index + 1] || undefined;
     const prev = slugs.slugs[index - 1] || undefined;

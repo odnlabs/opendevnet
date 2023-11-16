@@ -2,9 +2,9 @@ import React from 'react';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  label: string;
-  size?: 'sm' | 'md' | 'lg';
-  variant?:
+  readonly label: string;
+  readonly size?: 'sm' | 'md' | 'lg';
+  readonly variant?:
     | 'primary'
     | 'primary-outline'
     | 'primary-glass'
@@ -20,9 +20,9 @@ export interface ButtonProps
     | 'success'
     | 'success-glass'
     | 'success-outline';
-  width?: 'auto' | 'full';
-  outline?: boolean;
-  link?: boolean;
+  readonly width?: 'auto' | 'full';
+  readonly outline?: boolean;
+  readonly link?: boolean;
 }
 
 export const Button = ({
@@ -85,6 +85,7 @@ export const Button = ({
     </p>
   ) : (
     <button
+      type="button"
       {...props}
       className={`rounded-sm transition duration-200 focus-visible:ring focus-visible:transition-none ${
         sizeStyle[size]

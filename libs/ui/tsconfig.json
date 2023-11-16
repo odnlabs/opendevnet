@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@odnlabs/tsconfig/react-library.json",
+  "extends": "@slekup/tsconfig/react-library.json",
   "compilerOptions": {
     "paths": {}
   },

@@ -34,33 +34,31 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <div className="bg-background-secondary relative mx-auto flex w-11/12 max-w-3xl justify-center rounded-b-3xl">
         <div className="relative">
           <span
+            className="bg-text absolute bottom-0 left-0 h-0.5 w-24 rounded-lg transition duration-500"
             style={{
               transform: `translateX(${
                 links.findIndex((link) => link.href === pathname) * 100
               }%)`,
             }}
-            className={`bg-text absolute bottom-0 left-0 h-0.5 w-24 rounded-lg transition duration-500`}
-          ></span>
+          />
         </div>
-
         {links.map((link, index) => (
           <Link
-            key={index}
-            href={link.href}
-            ref={(el) => {
-              linkRefs.current[index] = el as HTMLAnchorElement;
-            }}
             className={`group relative w-24 py-4 text-center font-medium transition duration-200 ${
               pathname === link.href
                 ? 'text-text'
                 : 'text-text-faint hover:text-text-secondary focus:text-text-primary'
             }`}
+            href={link.href}
+            key={link.href}
+            ref={(el) => {
+              linkRefs.current[index] = el as HTMLAnchorElement;
+            }}
           >
             {link.title}
           </Link>
         ))}
       </div>
-
       {children}
     </div>
   );

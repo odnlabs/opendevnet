@@ -14,7 +14,7 @@ const SiteLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
     <Header />
     <div className="min-h-[80vh]">{children}</div>
-    <Footer socialUrls={socialUrls} internalDocs={config.internalDocs} />
+    <Footer internalDocs={config.internalDocs} socialUrls={socialUrls} />
   </>
 );
 

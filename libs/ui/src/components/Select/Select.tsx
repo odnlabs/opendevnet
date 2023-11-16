@@ -10,23 +10,23 @@ interface Props<T>
   /**
    * Additional class names to be added to the select component.
    */
-  className?: string;
+  readonly className?: string;
   /**
    * The title of the select component.
    */
-  title?: string;
+  readonly title?: string;
   /**
    * Whether the title should change when an option is selected.
    */
-  fixedTitle?: boolean;
+  readonly fixedTitle?: boolean;
   /**
    * Whether the select component is disabled.
    */
-  disabled?: boolean;
+  readonly disabled?: boolean;
   /**
    * Whether the select component is loading.
    */
-  loading?: boolean;
+  readonly loading?: boolean;
 }
 
 export const Select = <T,>({
@@ -93,6 +93,11 @@ export const Select = <T,>({
             ? 'cursor-default'
             : 'focus:border-primary border-2 border-transparent bg-[rgb(var(--input))] focus:bg-[rgb(var(--input-focus))]'
         } ${loading && 'bg-secondary-active text-transparent'}`}
+        id={`${focused ? 'select-btn-true' : 'select-btn-false'}`}
+        onBlur={() => {
+          if (tabKey) closeSelect();
+          tabKey = false;
+        }}
         onClick={(evt) => toggleSelect(evt)}
         onFocus={(evt) => toggleSelect(evt, true)}
         onKeyDown={(evt) => {
@@ -103,38 +108,32 @@ export const Select = <T,>({
 
           if (evt.key === 'Tab') tabKey = true;
         }}
-        onBlur={() => {
-          if (tabKey) closeSelect();
-          tabKey = false;
-        }}
-        id={`${focused ? 'select-btn-true' : 'select-btn-false'}`}
+        type="button"
       >
         {fixedTitle
           ? fixedTitle
           : state
-          ? options.find((opt) => opt.value === state)
-            ? options.find((opt) => opt?.value === state)?.label
-            : title || 'Select from dropdown'
-          : title || 'Select from dropdown'}
-
+            ? options.find((opt) => opt.value === state)
+              ? options.find((opt) => opt?.value === state)?.label
+              : title || 'Select from dropdown'
+            : title || 'Select from dropdown'}
         <HiChevronDown
           className={`pointer-events-none h-5 w-5 transition duration-200 ${
             focused && 'rotate-180'
           }`}
         />
       </button>
-
       <SelectDropdown
-        options={options}
-        focused={focused}
-        setFocused={setFocused}
-        state={state}
-        setState={setState}
-        width={width}
-        fromTop={fromTop}
-        fromLeft={fromLeft}
         closeSelect={closeSelect}
+        focused={focused}
+        fromLeft={fromLeft}
+        fromTop={fromTop}
         onChange={onChange}
+        options={options}
+        setFocused={setFocused}
+        setState={setState}
+        state={state}
+        width={width}
       />
     </div>
   );

@@ -4,6 +4,6 @@ export const metadata: Metadata = {
   title: 'Events | Open Dev Net',
 };
 
-const Events: NextPage = () => <div className=""></div>;
+const Events: NextPage = () => <div className="" />;
 
 export default Events;

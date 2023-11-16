@@ -21,12 +21,11 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <html lang="en">
     <head>
-      <link rel="icon" href="/favicon.ico" sizes="any" />
+      <link href="/favicon.ico" rel="icon" sizes="any" />
     </head>
     <Providers>
       <body className={font.className}>
         <ToastWrapper />
-
         {children}
       </body>
     </Providers>
