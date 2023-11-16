@@ -45,7 +45,7 @@ importers:
         specifier: ^17.1.2
         version: 17.1.2
       '@slekup/tsconfig':
-        specifier: ^1.0.0
+        specifier: 1.0.0
         version: 1.0.0
       '@types/node':
         specifier: ^20.9.0
@@ -138,9 +138,9 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../../libs/tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/mdx':
         specifier: ^2.0.10
         version: 2.0.10
@@ -256,9 +256,9 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../../libs/tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/mdx':
         specifier: ^2.0.10
         version: 2.0.10
@@ -377,9 +377,9 @@ importers:
         specifier: ^9.0.1
         version: 9.0.1
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../../libs/tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/mdx':
         specifier: ^2.0.10
         version: 2.0.10
@@ -429,9 +429,9 @@ importers:
         specifier: ^8.14.2
         version: 8.14.2
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/node':
         specifier: ^20.9.0
         version: 20.9.0
@@ -451,11 +451,9 @@ importers:
         specifier: ^3.3.5
         version: 3.3.5
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
-
-  libs/tsconfig: {}
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
 
   libs/ui:
     dependencies:
@@ -481,9 +479,9 @@ importers:
         specifier: ^7.2.0
         version: 7.2.0(postcss@8.4.31)(typescript@5.2.2)
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/react':
         specifier: ^18.2.37
         version: 18.2.37
@@ -512,9 +510,9 @@ importers:
         specifier: ^1.6.2
         version: 1.6.2
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/node':
         specifier: ^20.9.0
         version: 20.9.0
@@ -555,9 +553,9 @@ importers:
         specifier: 3.0.1
         version: 3.0.1
     devDependencies:
-      '@odnlabs/tsconfig':
-        specifier: workspace:*
-        version: link:../tsconfig
+      '@slekup/tsconfig':
+        specifier: 1.0.0
+        version: 1.0.0
       '@types/node':
         specifier: ^20.9.0
         version: 20.9.0
@@ -3366,7 +3364,6 @@ packages:
 
   /@slekup/tsconfig@1.0.0:
     resolution: {integrity: sha512-xB9eoaGgybe8L1u3Vzk8tpp+oar8L8YYblq2Prqbq3SuO/lqQmqzoH7aYJGmZRZ+tJMIhFFLrxC8qlpRkWcmrA==}
-    dev: false
 
   /@splidejs/react-splide@0.7.12:
     resolution: {integrity: sha512-UfXH+j47jsMc4x5HA/aOwuuHPqn6y9+ZTNYPWDRD8iLKvIVMZlzq2unjUEvyDAU+TTVPZOXkG2Ojeoz0P4AkZw==}
@@ -5624,7 +5621,7 @@ packages:
       eslint-config-eslint: 9.0.0(eslint@8.53.0)
       eslint-config-next: 14.0.2(eslint@8.53.0)(typescript@5.2.2)
       eslint-config-prettier: 9.0.0(eslint@8.53.0)
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
       eslint-plugin-import: 2.29.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0)
       eslint-plugin-jsdoc: 46.9.0(eslint@8.53.0)
       eslint-plugin-jsonc: 2.10.0(eslint@8.53.0)
@@ -5674,6 +5671,28 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
 
+  /eslint-import-resolver-typescript@3.6.1(@typescript-eslint/parser@6.11.0)(eslint-plugin-import@2.29.0)(eslint@8.53.0):
+    resolution: {integrity: sha512-xgdptdoi5W3niYeuQxKmzVDTATvLYqhpwmykwsh7f6HIOStGWEIL9iqZgQDF9u9OEzrRwR8no5q2VT+bjAujTg==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      eslint: '*'
+      eslint-plugin-import: 2.29.0
+    dependencies:
+      debug: 4.3.4
+      enhanced-resolve: 5.15.0
+      eslint: 8.53.0
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0)
+      eslint-plugin-import: 2.29.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0)
+      fast-glob: 3.3.2
+      get-tsconfig: 4.7.2
+      is-core-module: 2.13.1
+      is-glob: 4.0.3
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - eslint-import-resolver-node
+      - eslint-import-resolver-webpack
+      - supports-color
+
   /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
     engines: {node: '>=4'}
@@ -5700,6 +5719,34 @@ packages:
       eslint: 8.53.0
       eslint-import-resolver-node: 0.3.9
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
+    transitivePeerDependencies:
+      - supports-color
+
+  /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.11.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.53.0):
+    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
+    engines: {node: '>=4'}
+    peerDependencies:
+      '@typescript-eslint/parser': '*'
+      eslint: '*'
+      eslint-import-resolver-node: '*'
+      eslint-import-resolver-typescript: '*'
+      eslint-import-resolver-webpack: '*'
+    peerDependenciesMeta:
+      '@typescript-eslint/parser':
+        optional: true
+      eslint:
+        optional: true
+      eslint-import-resolver-node:
+        optional: true
+      eslint-import-resolver-typescript:
+        optional: true
+      eslint-import-resolver-webpack:
+        optional: true
+    dependencies:
+      '@typescript-eslint/parser': 6.11.0(eslint@8.53.0)(typescript@5.2.2)
+      debug: 3.2.7
+      eslint: 8.53.0
+      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.11.0)(eslint-plugin-import@2.29.0)(eslint@8.53.0)
     transitivePeerDependencies:
       - supports-color
 

@@ -33,7 +33,7 @@
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {
-    "@odnlabs/tsconfig": "workspace:*",
+    "@slekup/tsconfig": "1.0.0",
     "@types/mdx": "^2.0.10",
     "@types/node": "^20.9.0",
     "@types/react": "^18.2.37",

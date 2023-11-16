@@ -33,9 +33,6 @@ libs:@odnlabs/api-client:
 libs:@odnlabs/tailwind-config:
   - libs/tailwind-config/*
   - libs/tailwind-config/**/*
-libs:@odnlabs/tsconfig:
-  - libs/tsconfig/*
-  - libs/tsconfig/**/*
 libs:@odnlabs/ui:
   - libs/ui/*
   - libs/ui/**/*

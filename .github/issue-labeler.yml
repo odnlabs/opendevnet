@@ -16,9 +16,7 @@ libs:@odnlabs/api-client:
 libs:@odnlabs/tailwind-config:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/tailwind-config\\n"
-libs:@odnlabs/tsconfig:
-  - "### Which (application|library|application or library) is this (bug
-    report|feature request) for\\?\\n\\n@odnlabs/tsconfig\\n"
+
 libs:@odnlabs/ui:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\n@odnlabs/ui\\n"

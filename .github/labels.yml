@@ -46,8 +46,6 @@
   color: fbca04
 - name: libs:@odnlabs/tailwind-config
   color: fbca04
-- name: libs:@odnlabs/tsconfig
-  color: fbca04
 - name: libs:@odnlabs/ui
   color: fbca04
 - name: libs:@odnlabs/utils-server
