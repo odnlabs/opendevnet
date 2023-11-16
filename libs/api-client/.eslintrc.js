@@ -1,4 +1,4 @@
 module.exports = {
-  extends: ['slekup/library'],
+  extends: ['slekup'],
   ignorePatterns: ['tsup.config.ts'],
 };
