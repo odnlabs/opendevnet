@@ -20,8 +20,8 @@ function run_script() {
 
 function help() {
   awk -v BOLD="$BOLD" -v BLUE="$BLUE" -v YELLOW="$YELLOW" -v RESET="$RESET" \
-  '{gsub(/{{BOLD}}/, BOLD); gsub(/{{BLUE}}/, BLUE); gsub(/{{YELLOW}}/, YELLOW); gsub(/{{RESET}}/, RESET); print}' \
-  ./tools/scripts/help.txt
+    '{gsub(/{{BOLD}}/, BOLD); gsub(/{{BLUE}}/, BLUE); gsub(/{{YELLOW}}/, YELLOW); gsub(/{{RESET}}/, RESET); print}' \
+    ./tools/scripts/help.txt
 }
 
 function setup_prod_env() {
@@ -129,4 +129,3 @@ else
   help
   exit 1
 fi
-
