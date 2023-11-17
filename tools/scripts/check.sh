@@ -56,7 +56,7 @@ function env_check() {
   source .env.production
   for var in "${variables[@]}"; do
     if [[ -n "${!var}" ]]; then
-      if [[ " ${required_http_vars[*]} " =~ " $var " && ! ( "${!var}" == http://* || "${!var}" == https://* ) ]]; then
+      if [[ " ${required_http_vars[*]} " =~ " $var " && ! ("${!var}" == http://* || "${!var}" == https://*) ]]; then
         echo -e "${RED}FAIL${RESET} $var environment variable does not start with 'http://' or 'https://'"
         invalid_variables+=(""$var" does not start with not 'http://' or 'https://'")
         passed=false
@@ -64,7 +64,7 @@ function env_check() {
         echo -e "${RED}FAIL${RESET} $var environment variable is not 'true' or 'false'"
         invalid_variables+=(""$var" is not 'true' or 'false'")
         passed=false
-      elif [[ "$var" == "PUBLIC_WS_URL" && ! ( "${!var}" == ws://* || "${!var}" == wss://* ) ]]; then
+      elif [[ "$var" == "PUBLIC_WS_URL" && ! ("${!var}" == ws://* || "${!var}" == wss://*) ]]; then
         echo -e "${RED}FAIL${RESET} $var environment variable does not start with 'ws://' or 'wss://'"
         invalid_variables+=(""$var" does not start with 'ws://' or 'wss://'")
         passed=false
@@ -94,11 +94,11 @@ function repo_sync_check() {
     branch="dev"
   fi
   if [ "$(git rev-parse HEAD)" = "$(git rev-parse origin/$branch)" ]; then
-      echo -e "${GREEN}PASS${RESET} Repository is in sync with origin/$branch"
+    echo -e "${GREEN}PASS${RESET} Repository is in sync with origin/$branch"
   else
-      echo -e "${RED}FAIL${RESET} Repository is not in sync with origin/$branch"
-      repo_synced=false
-      passed=false
+    echo -e "${RED}FAIL${RESET} Repository is not in sync with origin/$branch"
+    repo_synced=false
+    passed=false
   fi
 }
 
@@ -155,4 +155,3 @@ else
 
   exit 1
 fi
-

@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: CI
 
 on:
@@ -71,7 +72,7 @@ jobs:
         with:
           filters: |
             all: &all
-              - '.github/workflows/deploy.yml'
+              - '.github/workflows/deploy.yaml'
               - 'tools/scripts/docker.sh'
               - '.dockerignore'
               - 'run.sh'

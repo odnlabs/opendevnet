@@ -69,10 +69,16 @@ export const Select = <T,>({
     setFromLeft(Math.round(left));
   };
 
+  /**
+   *
+   */
   const handleScroll = (): void => {
     if (focused === true) setFocused(false);
   };
 
+  /**
+   *
+   */
   const closeSelect = (): void => {
     setFocused(false);
   };
