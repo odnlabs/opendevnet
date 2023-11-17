@@ -6,12 +6,12 @@ on:
     branches:
       - main
     paths:
-      - '.github/labels.yml'
-      - '.github/workflows/label-sync.yml'
+      - '.github/labels.yaml'
+      - '.github/workflows/label-sync.yaml'
   pull_request:
     paths:
-      - '.github/labels.yml'
-      - '.github/workflows/label-sync.yml'
+      - '.github/labels.yaml'
+      - '.github/workflows/label-sync.yaml'
   schedule:
     - cron: '0 0 * * *'
   workflow_dispatch:
@@ -34,4 +34,4 @@ jobs:
         uses: crazy-max/ghaction-github-labeler@v5
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          yaml-file: .github/labels.yml
+          yaml-file: .github/labels.yaml

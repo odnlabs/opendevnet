@@ -17,6 +17,6 @@ jobs:
       - name: Run Issue Labeler
         uses: github/issue-labeler@v3.3
         with:
-          configuration-path: .github/labeler.yml
+          configuration-path: .github/labeler.yaml
           enable-versioned-regex: 0
           repo-token: ${{ github.token }}

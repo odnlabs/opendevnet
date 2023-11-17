@@ -66,17 +66,17 @@ pnpm run <script>
 
 We use GitHub workflows to automate repetitive tasks. Our workflows are:
 
-| Workflow                                                                                                       | Description                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| [CI](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml)                                 | Formats, builds, lints, and tests code.                                                                                      |
-| [Cleanup Cache](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/cleanup-cache.yml)           | Cleans up cache from the workflows.                                                                                          |
-| [Close Stale Issues and PR](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/close-stale.yml) | Closes issues and pull requests that haven't had any activity for a certain period of time.                                  |
-| [CodeQL](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/codeql.yml)                         | Checks the quality of the code.                                                                                              |
-| [Deploy](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/deploy.yml)                         | Builds and tests the images locally, pushes images to docker hub, and pulls the new images on the production server via ssh. |
-| [Issue Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/issue-labeler.yml)           | Automatically assigns labels to issues.                                                                                      |
-| [Label Sync](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/label-sync.yml)                 | Syncs the labels on GitHub with the ones defined in `.github/labels.yml`.                                                    |
-| [Lighthouse](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/lighthouse.yml)                 | Creates performance reports on websites using lighthouse.                                                                    |
-| [PR Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yml)                         | Automatically adds labels to pull requests based on the files changed.                                                       |
+| Workflow                                                                                                        | Description                                                                                                                  |
+| --------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| [CI](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yaml)                                 | Formats, builds, lints, and tests code.                                                                                      |
+| [Cleanup Cache](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/cleanup-cache.yaml)           | Cleans up cache from the workflows.                                                                                          |
+| [Close Stale Issues and PR](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/close-stale.yaml) | Closes issues and pull requests that haven't had any activity for a certain period of time.                                  |
+| [CodeQL](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/codeql.yaml)                         | Checks the quality of the code.                                                                                              |
+| [Deploy](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/deploy.yaml)                         | Builds and tests the images locally, pushes images to docker hub, and pulls the new images on the production server via ssh. |
+| [Issue Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/issue-labeler.yaml)           | Automatically assigns labels to issues.                                                                                      |
+| [Label Sync](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/label-sync.yaml)                 | Syncs the labels on GitHub with the ones defined in `.github/labels.yaml`.                                                   |
+| [Lighthouse](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/lighthouse.yaml)                 | Creates performance reports on websites using lighthouse.                                                                    |
+| [PR Labeler](https://github.com/odnlabs/opendevnet/tree/main/.github/workflows/ci.yaml)                         | Automatically adds labels to pull requests based on the files changed.                                                       |
 
 ### Husky
 

@@ -72,7 +72,7 @@ jobs:
         with:
           filters: |
             all: &all
-              - '.github/workflows/deploy.yml'
+              - '.github/workflows/deploy.yaml'
               - 'tools/scripts/docker.sh'
               - '.dockerignore'
               - 'run.sh'
