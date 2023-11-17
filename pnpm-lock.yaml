@@ -87,8 +87,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(@types/react@18.2.37)(react@18.2.0)
       '@next/mdx':
-        specifier: ^14.0.1
-        version: 14.0.2(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
+        specifier: ^14.0.3
+        version: 14.0.3(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
       '@odnlabs/tailwind-config':
         specifier: workspace:*
         version: link:../../libs/tailwind-config
@@ -190,8 +190,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(@types/react@18.2.37)(react@18.2.0)
       '@next/mdx':
-        specifier: ^14.0.1
-        version: 14.0.2(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
+        specifier: ^14.0.3
+        version: 14.0.3(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
       '@odnlabs/api-client':
         specifier: workspace:*
         version: link:../../libs/api-client
@@ -305,8 +305,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(@types/react@18.2.37)(react@18.2.0)
       '@next/mdx':
-        specifier: ^14.0.1
-        version: 14.0.2(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
+        specifier: ^14.0.3
+        version: 14.0.3(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0)
       '@odnlabs/api-client':
         specifier: workspace:*
         version: link:../../libs/api-client
@@ -2712,8 +2712,8 @@ packages:
     dependencies:
       glob: 7.1.7
 
-  /@next/mdx@14.0.2(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0):
-    resolution: {integrity: sha512-MFjfSeGDmjwLLRHojlyaDIs2dQz5kFBQh/jcTIb57VIlbOvRjJsgnwLTH3DzUT25dUaX0QaR6t+ITNcdyfwozQ==}
+  /@next/mdx@14.0.3(@mdx-js/loader@3.0.0)(@mdx-js/react@3.0.0):
+    resolution: {integrity: sha512-RhiANppBndB7ELjPc3SEdEywLWgsy69Vj1bJtfDWqCl8yIVX9aps1D7kwby1pBAweHvZVpiI91Xu/78citVQrQ==}
     peerDependencies:
       '@mdx-js/loader': '>=0.15.0'
       '@mdx-js/react': '>=0.15.0'
