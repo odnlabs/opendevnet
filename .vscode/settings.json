@@ -35,10 +35,6 @@
     "yaml",
     "markdown"
   ],
-  "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow.json": "file:///d%3A/github/opendevnet/.github/workflows/deploy.yml",
-    "https://json.schemastore.org/github-issue-config.json": "file:///d%3A/github/opendevnet/.github/ISSUE_TEMPLATE/config.yml"
-  },
   "rest-client.environmentVariables": {
     "$shared": {
       "host": "http://localhost:5000/api",
@@ -47,18 +43,5 @@
       "email": "test_user@opendevnet.com"
     }
   },
-  "rest-client.showResponseInDifferentTab": true,
-  "grammarly.files.include": ["**/README.md", "**/readme.md", "**/*.txt"],
-  "grammarly.selectors": [
-    {
-      "language": "markdown",
-      "scheme": "file"
-    }
-  ],
-  "[go]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "explicit",
-      "source.organizeImports": "never"
-    }
-  }
+  "rest-client.showResponseInDifferentTab": true
 }
