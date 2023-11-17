@@ -26,7 +26,7 @@
     "@slekup/tsconfig": "1.0.0",
     "@types/node": "^20.9.1",
     "eslint-config-slekup": "1.0.10",
-    "tsup": "^7.2.0"
+    "tsup": "^7.3.0"
   },
   "publishConfig": {
     "access": "public"
