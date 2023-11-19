@@ -1,4 +1,5 @@
--- Add down migration script here
+-- Drop the "users" table
+DROP TABLE IF EXISTS users;
 
-DROP TABLE IF EXISTS "users";
--- Add down migration script here
+-- Drop the "opendevnet" database
+DROP DATABASE IF EXISTS opendevnet;
