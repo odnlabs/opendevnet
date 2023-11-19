@@ -12,6 +12,63 @@ updates:
     schedule:
       interval: 'daily'
     target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'cargo'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'cargo'
+    directory: '/api'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'cargo'
+    directory: '/api'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'cargo'
+    directory: '/services/auth-service'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'cargo'
+    directory: '/services/user-service'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/apps/internal-docs'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
     directory: '/apps/web-client'
@@ -51,6 +108,24 @@ updates:
 
   - package-ecosystem: 'npm'
     directory: '/libs/ui'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/libs/utils-client'
+    schedule:
+      interval: 'daily'
+    target-branch: 'dev'
+    labels:
+      - 'dependencies'
+    open-pull-requests-limit: 20
+
+  - package-ecosystem: 'npm'
+    directory: '/libs/utils-server'
     schedule:
       interval: 'daily'
     target-branch: 'dev'
