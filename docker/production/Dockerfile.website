@@ -35,7 +35,6 @@ RUN chown -R nextjs:nodejs .nx
 # Switch to the `nextjs` user
 USER nextjs
 # Root files
-COPY --from=installer --chown=nextjs:nodejs /app/.env.production ./
 COPY --from=installer --chown=nextjs:nodejs /app/package.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
