@@ -11,7 +11,10 @@
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n",
-  "rust-analyzer.linkedProjects": [".\\apps\\api\\Cargo.toml"],
+  "rust-analyzer.linkedProjects": [
+    ".\\api\\Cargo.toml",
+    ".\\services\\auth_service\\Cargo.toml"
+  ],
   "rust-analyzer.showUnlinkedFileNotification": false,
   "rust-analyzer.cargo.extraEnv": {
     "DATABASE_URL": "postgresql://admin:password123@localhost:6500/opendevnet?schema=public"
