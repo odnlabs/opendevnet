@@ -1,4 +1,6 @@
 function setup_prod_env() {
+  local env="$1"
+
   if [ -e .env.production ]; then
     echo -e "${YELLOW}WARNING${RESET} .env.production already exists"
   else
@@ -41,40 +43,44 @@ function setup_prod_env() {
   rm ./api/.env || true
   ln -s ../.env.production ./api/.env || true
 
-  packages=("build-essential" "pkg-config" "libssl-dev")
-  for package in "${packages[@]}"; do
-    if dpkg-query -W -f='${Status}' "$package" 2> /dev/null | grep -q "installed"; then
-      echo -e "${GREEN}PASS${RESET} $package is installed"
+  if [ "$env" == "api" ]; then
+    packages=("build-essential" "pkg-config" "libssl-dev")
+    for package in "${packages[@]}"; do
+      if dpkg-query -W -f='${Status}' "$package" 2> /dev/null | grep -q "installed"; then
+        echo -e "${GREEN}PASS${RESET} $package is installed"
+      else
+        echo -e "${YELLOW}FAIL${RESET} $package is not installed, installing..."
+        sudo apt -y install "$package"
+      fi
+    done
+
+    # Install cargo
+    if [ -e ~/.cargo/bin/cargo ]; then
+      echo -e "${GREEN}PASS${RESET} cargo is installed"
     else
-      echo -e "${YELLOW}FAIL${RESET} $package is not installed, installing..."
-      sudo apt -y install "$package"
+      echo -e "${YELLOW}FAIL${RESET} cargo is not installed, installing..."
+      curl https://sh.rustup.rs -sSf | sh -s -- -y
+      source ~/.cargo/env
     fi
-  done
 
-  # Install cargo
-  if [ -e ~/.cargo/bin/cargo ]; then
-    echo -e "${GREEN}PASS${RESET} cargo is installed"
-  else
-    echo -e "${YELLOW}FAIL${RESET} cargo is not installed, installing..."
-    curl https://sh.rustup.rs -sSf | sh -s -- -y
-    source ~/.cargo/env
+    # Install sqlx-cli
+    if [ -e ~/.cargo/bin/sqlx ]; then
+      echo -e "${GREEN}PASS${RESET} sqlx-cli is installed"
+    else
+      echo -e "${YELLOW}FAIL${RESET} sqlx-cli is not installed, installing..."
+      cargo install sqlx-cli
+    fi
+
+    # Migration
+    cd api
+    sqlx migrate run
+    cd ../
   fi
-
-  # Install sqlx-cli
-  if [ -e ~/.cargo/bin/sqlx ]; then
-    echo -e "${GREEN}PASS${RESET} sqlx-cli is installed"
-  else
-    echo -e "${YELLOW}FAIL${RESET} sqlx-cli is not installed, installing..."
-    cargo install sqlx-cli
-  fi
-
-  # Migration
-  cd api
-  sqlx migrate run
-  cd ../
 }
 
 function setup_dev_env() {
+  local env="$1"
+
   if [ -e .env.local ]; then
     echo -e "${YELLOW}WARNING${RESET} .env.local already exists"
   else
@@ -119,7 +125,15 @@ function setup_dev_env() {
 }
 
 if [ "$1" == "prod" ]; then
-  setup_prod_env
+  if [ "$2" == "api" ]; then
+    setup_prod_env $2
+  else
+    setup_prod_env
+  fi
 elif [ "$1" == "dev" ]; then
-  setup_dev_env
+  if [ "$2" == "api" ]; then
+    setup_dev_env $2
+  else
+    setup_dev_env
+  fi
 fi
