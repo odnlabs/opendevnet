@@ -9,8 +9,6 @@ services:
       context: .
       dockerfile: ./docker/production/Dockerfile.api
     container_name: api
-    depends_on:
-      - postgres
     env_file:
       - .env.production
     networks:

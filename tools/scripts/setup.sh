@@ -27,7 +27,7 @@ function setup_prod_env() {
     echo "POSTGRES_PORT=6500" >> .env.production
     echo "POSTGRES_USER=admin" >> .env.production
     echo "POSTGRES_DB=opendevnet" >> .env.production
-    echo "DATABASE_URL=postgresql://admin:password123@localhost:6500/opendevnet?schema=public" >> .env.production
+    echo "DATABASE_URL=postgresql://admin:examplepass@localhost:6500/opendevnet?schema=public" >> .env.production
     echo "CLIENT_ORIGIN=http://localhost:4000" >> .env.production
     echo "REDIS_URL=redis://127.0.0.1:6379/" >> .env.production
     echo "ACCESS_TOKEN_PRIVATE_KEY=secret" >> .env.production
@@ -103,21 +103,21 @@ function setup_dev_env() {
     echo "PUBLIC_WEB_CLIENT_URL=http://localhost:4100/app" >> .env.local
     echo "PUBLIC_INTERNAL_DOCS_URL=http://localhost:4200/internal-docs" >> .env.local
     # API
-    echo "POSTGRES_HOST=127.0.0.1" >> .env.production
-    echo "POSTGRES_PORT=6500" >> .env.production
-    echo "POSTGRES_USER=admin" >> .env.production
-    echo "POSTGRES_DB=opendevnet" >> .env.production
-    echo "DATABASE_URL=postgresql://admin:password123@localhost:6500/opendevnet?schema=public" >> .env.production
-    echo "CLIENT_ORIGIN=http://localhost:4000" >> .env.production
-    echo "REDIS_URL=redis://127.0.0.1:6379/" >> .env.production
-    echo "ACCESS_TOKEN_PRIVATE_KEY=secret" >> .env.production
-    echo "ACCESS_TOKEN_PUBLIC_KEY=secret" >> .env.production
-    echo "ACCESS_TOKEN_EXPIRED_IN=15m" >> .env.production
-    echo "ACCESS_TOKEN_MAXAGE=15m" >> .env.production
-    echo "REFRESH_TOKEN_PRIVATE_KEY=secret" >> .env.production
-    echo "REFRESH_TOKEN_PUBLIC_KEY=secret" >> .env.production
-    echo "REFRESH_TOKEN_EXPIRED_IN=60m" >> .env.production
-    echo "REFRESH_TOKEN_MAXAGE=60" >> .env.production
+    echo "POSTGRES_HOST=127.0.0.1" >> .env.local
+    echo "POSTGRES_PORT=6500" >> .env.local
+    echo "POSTGRES_USER=admin" >> .env.local
+    echo "POSTGRES_DB=opendevnet" >> .env.local
+    echo "DATABASE_URL=postgresql://admin:password123@localhost:6500/opendevnet?schema=public" >> .env.local
+    echo "CLIENT_ORIGIN=http://localhost:4000" >> .env.local
+    echo "REDIS_URL=redis://127.0.0.1:6379/" >> .env.local
+    echo "ACCESS_TOKEN_PRIVATE_KEY=secret" >> .env.local
+    echo "ACCESS_TOKEN_PUBLIC_KEY=secret" >> .env.local
+    echo "ACCESS_TOKEN_EXPIRED_IN=15m" >> .env.local
+    echo "ACCESS_TOKEN_MAXAGE=15m" >> .env.local
+    echo "REFRESH_TOKEN_PRIVATE_KEY=secret" >> .env.local
+    echo "REFRESH_TOKEN_PUBLIC_KEY=secret" >> .env.local
+    echo "REFRESH_TOKEN_EXPIRED_IN=60m" >> .env.local
+    echo "REFRESH_TOKEN_MAXAGE=60" >> .env.local
   fi
 
   rm ./api/.env || true
