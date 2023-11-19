@@ -81,7 +81,7 @@ elif [ "$1" == "dev" ]; then
   export COMPOSE_FILE="docker-compose.development.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "ci" ]; then
-  setup_prod_env
+  run_script setup prod
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.ci.yaml"
   run_script docker "${args[@]}"
