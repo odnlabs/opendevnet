@@ -48,7 +48,6 @@ COPY --from=installer --chown=nextjs:nodejs /app/apps/website/tailwind.config.ts
 COPY --from=installer --chown=nextjs:nodejs /app/apps/website/postcss.config.js  ./dist/apps/website/
 COPY --from=installer --chown=nextjs:nodejs /app/apps/website/node_modules ./dist/apps/website/node_modules
 COPY --from=installer --chown=nextjs:nodejs /app/apps/website/.next ./dist/apps/website/.next
-COPY --from=installer --chown=nextjs:nodejs /app/apps/website/mdx ./dist/apps/website/mdx
 # Expose port 4000
 EXPOSE 4000
 # Start the app on port 4000

@@ -5,7 +5,7 @@ import { DocumentContent } from '@components';
 import { mdxApi } from '@odnlabs/utils-server';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const doc = await mdxApi.getDocFromSlug('mdx', 'policies/privacy');
+  const doc = await mdxApi.getDocFromDirectSlug('../../docs/policies/privacy');
 
   if (!doc) {
     return {
@@ -19,11 +19,16 @@ export const generateMetadata = async (): Promise<Metadata> => {
 };
 
 const Privacy = async (): Promise<JSX.Element> => {
-  const doc = await mdxApi.getDocFromSlug('mdx', 'policies/privacy');
+  const doc = await mdxApi.getDocFromDirectSlug('../../docs/policies/privacy');
 
   if (!doc) return redirect('/404');
 
-  return <DocumentContent doc={doc} />;
+  return (
+    <DocumentContent
+      doc={doc}
+      editLink="https://github.com/odnlabs/opendevnet/blob/dev/docs/policies/privacy.mdx"
+    />
+  );
 };
 
 export default Privacy;

@@ -134,7 +134,7 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
           </div>
         </div>
         <uiComponents.Toc
-          editLink={`https://github.com/odnlabs/opendevnet/tree/dev/apps/internal-docs/${doc.meta.path}`}
+          editLink={`https://github.com/odnlabs/opendevnet/tree/dev/docs/internal/${doc.meta.path}`}
         />
       </div>
     </div>

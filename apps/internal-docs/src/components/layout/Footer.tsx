@@ -31,7 +31,6 @@ const links: { title: string; items: Link[] }[] = [
   {
     title: 'About Us',
     items: [
-      { label: 'About Us', href: '/about' },
       { label: 'Our Story', href: '/about' },
       { label: 'The Vision Ahead', href: '/about/vision' },
       { label: 'Meet the Team', href: '/about/team' },

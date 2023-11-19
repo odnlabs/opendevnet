@@ -16,7 +16,10 @@ export const generateMetadata = async ({
   params: Params;
 }): Promise<Metadata> => {
   const doc = await mdxApi
-    .getDocFromSlug('mdx/help', `${params.category}/${params.subcategory}`)
+    .getDocFromSlug(
+      '../../docs/help',
+      `${params.category}/${params.subcategory}`
+    )
     .catch(() => undefined);
 
   if (doc) {
@@ -25,7 +28,7 @@ export const generateMetadata = async ({
     };
   }
 
-  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('../../docs/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category) {
     return {
@@ -80,14 +83,18 @@ const HelpCategory = async ({
   params: Params;
 }): Promise<JSX.Element> => {
   const doc = await mdxApi
-    .getDocFromSlug('mdx/help', `${params.category}/${params.subcategory}`, {
-      nextAndPrev: true,
-    })
+    .getDocFromSlug(
+      '../../docs/help',
+      `${params.category}/${params.subcategory}`,
+      {
+        nextAndPrev: true,
+      }
+    )
     .catch(() => undefined);
 
   if (doc) return <DocumentContent doc={doc} />;
 
-  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('../../docs/help');
   const category = ordered.find((cat) => cat.slug === params.category);
   if (!category) return <div>404</div>;
   const subcategory = category?.items.find(

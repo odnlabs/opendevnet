@@ -24,42 +24,6 @@ function help() {
     ./tools/scripts/help.txt
 }
 
-function setup_prod_env() {
-  if [ -e .env.production ]; then
-    echo -e "${YELLOW}WARNING${RESET} .env.production already exists"
-  else
-    echo "Setting environment variables in .env.production"
-    echo "ENVIRONMENT=production" >> .env.production
-    echo "DEBUG=true" >> .env.production
-    echo "PUBLIC_API_URL=https://opendevnet.com/api" >> .env.production
-    echo "PUBLIC_WS_URL=ws://opendevnet.com/ws" >> .env.production
-    echo "PUBLIC_WEBSITE_URL=https://opendevnet.com" >> .env.production
-    echo "PUBLIC_WEB_CLIENT_URL=https://opendevnet.com/app" >> .env.production
-    echo "PUBLIC_INTERNAL_DOCS_URL=https://opendevnet.com/internal-docs" >> .env.production
-  fi
-
-  rm ./apps/api/.env || true
-  ln -s ../../.env.production ./apps/api/.env || true
-}
-
-function setup_dev_env() {
-  if [ -e .env.local ]; then
-    echo -e "${YELLOW}WARNING${RESET} .env.local already exists"
-  else
-    echo "Setting environment variables in .env.local"
-    echo "ENVIRONMENT=development" >> .env.local
-    echo "DEBUG=true" >> .env.local
-    echo "PUBLIC_API_URL=http://localhost:5000/api" >> .env.local
-    echo "PUBLIC_WS_URL=ws://localhost:5000/ws" >> .env.local
-    echo "PUBLIC_WEBSITE_URL=http://localhost:4000" >> .env.local
-    echo "PUBLIC_WEB_CLIENT_URL=http://localhost:4100/app" >> .env.local
-    echo "PUBLIC_INTERNAL_DOCS_URL=http://localhost:4200/internal-docs" >> .env.local
-  fi
-
-  rm ./apps/api/.env || true
-  ln -s ../../.env.local ./apps/api/.env || true
-}
-
 # Check if the environment argument is specified
 if [ -z "$1" ]; then
   help
@@ -72,7 +36,7 @@ args=("$@")
 if [ "$1" == "prod" ]; then
   if [ "$2" == "setup" ]; then
     if [ "$3" == "env" ]; then
-      setup_prod_env
+      run_script setup prod
       exit 0
     fi
   elif [ "$2" == "check" ]; then
@@ -99,8 +63,6 @@ elif [ "$1" == "prodtest" ]; then
     cp -rL ./apps/internal-docs/node_modules ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} .next"
     cp -rL ./apps/internal-docs/.next ./dist/apps/internal-docs || true
-    echo -e "${BLUE}COPYING${RESET} mdx"
-    cp -rL ./apps/internal-docs/mdx ./dist/apps/internal-docs || true
     echo -e "${BLUE}SERVING${RESET} internal-docs"
     pnpm nx run internal-docs:serve --prod --verbose
   else
@@ -109,7 +71,7 @@ elif [ "$1" == "prodtest" ]; then
 elif [ "$1" == "dev" ]; then
   if [ "$2" == "setup" ]; then
     if [ "$3" == "env" ]; then
-      setup_dev_env
+      run_script setup dev
       exit 0
     fi
   fi
@@ -117,7 +79,13 @@ elif [ "$1" == "dev" ]; then
   export COMPOSE_FILE="docker-compose.development.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "ci" ]; then
-  setup_prod_env
+  if [ "$2" == "setup" ]; then
+    if [ "$3" == "api" ]; then
+      run_script setup prod api
+      exit 0
+    fi
+  fi
+  run_script setup prod
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.ci.yaml"
   run_script docker "${args[@]}"

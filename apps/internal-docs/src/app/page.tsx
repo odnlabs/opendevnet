@@ -9,7 +9,10 @@ import { DocumentContent } from '@components';
 import { mdxApi } from '@odnlabs/utils-server';
 
 const Home = async (): Promise<JSX.Element> => {
-  const doc = await mdxApi.getDocFromSlug('mdx', 'introduction/introduction');
+  const doc = await mdxApi.getDocFromSlug(
+    '../../docs/internal',
+    'introduction/introduction'
+  );
 
   if (!doc) redirect('/404');
 

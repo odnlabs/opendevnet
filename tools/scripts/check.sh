@@ -28,6 +28,20 @@ function software_check() {
   done
 }
 
+function package_check() {
+  packages=("build-essential" "pkg-config" "libssl-dev")
+  missing_packages=()
+  for package in "${packages[@]}"; do
+    if dpkg-query -W -f='${Status}' "$package" 2> /dev/null | grep -q "installed"; then
+      echo -e "${GREEN}PASS${RESET} $package is installed"
+    else
+      echo -e "${RED}FAIL${RESET} $package is not installed"
+      missing_packages+=("$package")
+      passed=false
+    fi
+  done
+}
+
 function file_check() {
   # Check if required files exist
   echo -e "${BLUE}CHECK${RESET} If required files exist"
@@ -105,6 +119,7 @@ function repo_sync_check() {
 # If the environment is not ci, run these checks
 if [ "$1" != "ci" ]; then
   software_check "$1"
+  package_check
   file_check
   repo_sync_check "$1"
 fi
@@ -122,6 +137,13 @@ else
   if [ ! ${#missing_software[@]} -eq 0 ]; then
     for missing_software_name in "${missing_software[@]}"; do
       echo -e "  • Missing software: "$missing_software_name""
+    done
+  fi
+
+  # Missing packages
+  if [ ! ${#missing_packages[@]} -eq 0 ]; then
+    for missing_package in "${missing_packages[@]}"; do
+      echo -e "  • Missing package: "$missing_package""
     done
   fi
 

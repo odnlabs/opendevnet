@@ -3,3 +3,7 @@ extends:
   - 'slekup/react'
 ignorePatterns:
   - 'tailwind.config.ts'
+parserOptions:
+  project:
+    - './tsconfig.json'
+    - './libs/ui/tsconfig.json'

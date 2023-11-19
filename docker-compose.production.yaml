@@ -1,78 +1,80 @@
 version: '3.3'
-services:
-  # api:
-  #   container_name: api
-  #   image: slekup/opendevnet-api:main
-  #   build: ./api
-  #   env_file:
-  #     - .env.production
-  #   restart: always
-  #   environment:
-  #     NODE_ENV: production
-  #   ports:
-  #     - '5000:5000'
-  #   networks:
-  #     - app-network
 
-  website:
-    container_name: website
-    image: slekup/opendevnet-website:main
+services:
+  api:
+    build:
+      args:
+        DOCKER_BUILDKIT: 1
+      context: .
+      dockerfile: ./docker/production/Dockerfile.api
+    container_name: api
     env_file:
       - .env.production
-    restart: always
-    environment:
-      NEXT_PUBLIC_APP_NODE_ENV: production
-    ports:
-      - '4000:4000'
-    # depends_on:
-    #   - api
     networks:
       - app-network
+    ports:
+      - '5000:5000'
+    restart: always
 
   internal_docs:
     container_name: internal_docs
-    image: slekup/opendevnet-internal_docs:main
+    depends_on:
+      - api
     env_file:
       - .env.production
-    restart: always
     environment:
       NEXT_PUBLIC_APP_NODE_ENV: production
-    ports:
-      - '4200:4200'
-    # depends_on:
-    #   - api
+    image: slekup/opendevnet-internal_docs:main
     networks:
       - app-network
+    ports:
+      - '4200:4200'
+    restart: always
 
   web_client:
     container_name: web
-    image: slekup/opendevnet-web_client:main
+    depends_on:
+      - api
     env_file:
       - .env.production
-    restart: always
-    ports:
-      - '4100:4100'
-    # depends_on:
-    #   - api
+    image: slekup/opendevnet-web_client:main
     networks:
       - app-network
+    ports:
+      - '4100:4100'
+    restart: always
+
+  website:
+    container_name: website
+    depends_on:
+      - api
+    env_file:
+      - .env.production
+    environment:
+      NEXT_PUBLIC_APP_NODE_ENV: production
+    image: slekup/opendevnet-website:main
+    networks:
+      - app-network
+    ports:
+      - '4000:4000'
+    restart: always
 
   nginx:
     container_name: nginx
-    image: nginx:latest
-    volumes:
-      - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./docker/production/ssl/:/etc/ssl/:ro
-    ports:
-      - '443:443'
-      - '80:80'
     depends_on:
-      # - api
+      - api
       - website
       - web_client
       - internal_docs
+    image: nginx:latest
     networks:
       - app-network
+    ports:
+      - '443:443'
+      - '80:80'
+    volumes:
+      - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/production/ssl/:/etc/ssl/:ro
 
 networks:
   app-network:

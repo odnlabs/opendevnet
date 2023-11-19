@@ -36,7 +36,8 @@ jobs:
               - 'libs/utils-client/**'
             api:
               - *all
-              - 'apps/api/**'
+              - 'api/**'
+              - 'services/**'
               - 'docker/production/Dockerfile.api'
             website:
               - *all
@@ -56,8 +57,26 @@ jobs:
               - 'apps/internal-docs/**'
               - 'docker/production/Dockerfile.internal_docs'
 
+  build_api_image:
+    name: Build API Image
+    runs-on: ubuntu-latest
+    needs: filter_check
+    if: needs.filter_check.outputs.api == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build API image
+        run: \
+          chmod +x run.sh &&
+          ./run.sh ci setup api &&
+          ./run.sh ci build api
+
   build_website_image:
-    name: Build Site Image
+    name: Build Webite Image
     runs-on: ubuntu-latest
     needs: filter_check
     if: needs.filter_check.outputs.website == 'true'
@@ -69,7 +88,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Website image
-        run: chmod +x run.sh && ./run.sh ci build website
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci build website
 
   build_web_client_image:
     name: Build Web Client Image
@@ -84,7 +105,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Web Client Image
-        run: chmod +x run.sh && ./run.sh ci build web_client
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci build web_client
 
   build_internal_docs_image:
     name: Build Internal Image
@@ -99,10 +122,30 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build Internal Docs Image
-        run: chmod +x run.sh && ./run.sh ci build internal_docs
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci build internal_docs
+
+  build_and_run_api_image:
+    name: Build and Run API Image
+    runs-on: ubuntu-latest
+    needs: filter_check
+    if: needs.filter_check.outputs.api == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Test API image
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci setup api
+          ./run.sh ci start api
 
   build_and_run_website_image:
-    name: Build and Run Site Image
+    name: Build and Run Website Image
     runs-on: ubuntu-latest
     needs: filter_check
     if: needs.filter_check.outputs.website == 'true'
@@ -114,7 +157,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Website image
-        run: chmod +x run.sh && ./run.sh ci start website
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start website
 
   build_and_run_web_client_image:
     name: Build and Run Web Image
@@ -129,7 +174,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Web Client Image
-        run: chmod +x run.sh && ./run.sh ci start web_client
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start web_client
 
   build_and_run_internal_docs_image:
     name: Build and Run Internal Docs Image
@@ -144,10 +191,12 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Test Internal Docs Image
-        run: chmod +x run.sh && ./run.sh ci start internal_docs
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start internal_docs
 
   push_website_to_registry:
-    name: Publish Site to Docker Hub
+    name: Publish Website to Docker Hub
     runs-on: ubuntu-latest
     needs: ['filter_check', 'build_website_image', 'build_and_run_website_image']
     if: needs.filter_check.outputs.website == 'true'
@@ -171,7 +220,9 @@ jobs:
           images: docker.io/slekup/opendevnet-website
 
       - name: Set Production Environment
-        run: chmod +x run.sh && ./run.sh prod setup env
+        run: |
+          chmod +x run.sh &&
+          ./run.sh prod setup env
 
       - name: Publish Website
         uses: docker/build-push-action@v5
@@ -208,7 +259,9 @@ jobs:
           images: docker.io/slekup/opendevnet-web_client
 
       - name: Set Production Environment
-        run: chmod +x run.sh && ./run.sh prod setup env
+        run: |
+          chmod +x run.sh &&
+          ./run.sh prod setup env
 
       - name: Publish Web Client
         uses: docker/build-push-action@v5
@@ -245,7 +298,9 @@ jobs:
           images: docker.io/slekup/opendevnet-internal_docs
 
       - name: Set Production Environment
-        run: chmod +x run.sh && ./run.sh prod setup env
+        run: |
+          chmod +x run.sh &&
+          ./run.sh prod setup env
 
       - name: Publish Internal Docs App
         uses: docker/build-push-action@v5
