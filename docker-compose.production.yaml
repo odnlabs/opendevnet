@@ -1,6 +1,5 @@
-networks:
-  app-network:
-    driver: bridge
+version: '3.3'
+
 services:
   api:
     build:
@@ -16,6 +15,7 @@ services:
     ports:
       - '5000:5000'
     restart: always
+
   internal_docs:
     container_name: internal_docs
     depends_on:
@@ -30,6 +30,35 @@ services:
     ports:
       - '4200:4200'
     restart: always
+
+  web_client:
+    container_name: web
+    depends_on:
+      - api
+    env_file:
+      - .env.production
+    image: slekup/opendevnet-web_client:main
+    networks:
+      - app-network
+    ports:
+      - '4100:4100'
+    restart: always
+
+  website:
+    container_name: website
+    depends_on:
+      - api
+    env_file:
+      - .env.production
+    environment:
+      NEXT_PUBLIC_APP_NODE_ENV: production
+    image: slekup/opendevnet-website:main
+    networks:
+      - app-network
+    ports:
+      - '4000:4000'
+    restart: always
+
   nginx:
     container_name: nginx
     depends_on:
@@ -46,30 +75,7 @@ services:
     volumes:
       - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ./docker/production/ssl/:/etc/ssl/:ro
-  web_client:
-    container_name: web
-    depends_on:
-      - api
-    env_file:
-      - .env.production
-    image: slekup/opendevnet-web_client:main
-    networks:
-      - app-network
-    ports:
-      - '4100:4100'
-    restart: always
-  website:
-    container_name: website
-    depends_on:
-      - api
-    env_file:
-      - .env.production
-    environment:
-      NEXT_PUBLIC_APP_NODE_ENV: production
-    image: slekup/opendevnet-website:main
-    networks:
-      - app-network
-    ports:
-      - '4000:4000'
-    restart: always
-version: '3.3'
+
+networks:
+  app-network:
+    driver: bridge

@@ -17,6 +17,7 @@ services:
     ports:
       - '5000:5000'
     restart: always
+
   internal_docs:
     build:
       args:
@@ -31,6 +32,7 @@ services:
     ports:
       - '4200:4200'
     restart: always
+
   postgres:
     container_name: postgres
     env_file:
@@ -40,6 +42,7 @@ services:
       - '6500:5432'
     volumes:
       - ./docker/postgres-data:/var/lib/postgresql/data
+
   web_client:
     build:
       args:
@@ -54,6 +57,7 @@ services:
     ports:
       - '4100:4100'
     restart: always
+
   website:
     build:
       args:

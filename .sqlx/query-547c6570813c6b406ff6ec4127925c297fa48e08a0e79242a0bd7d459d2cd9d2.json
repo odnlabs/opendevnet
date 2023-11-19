@@ -80,11 +80,7 @@
       }
     ],
     "parameters": {
-      "Left": [
-        "Varchar",
-        "Varchar",
-        "Varchar"
-      ]
+      "Left": ["Varchar", "Varchar", "Varchar"]
     },
     "nullable": [
       false,
