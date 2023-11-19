@@ -70,7 +70,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build API image
-        run: \
+        run: |
           chmod +x run.sh &&
           ./run.sh ci setup api &&
           ./run.sh ci build api
@@ -316,9 +316,11 @@ jobs:
     name: Deploy to Server
     runs-on: ubuntu-latest
     # Runs if at least one of the depedant jobs was successful
-    if: ${{ always() && (needs.push_internal_docs_to_registry.result == 'success' || needs.push_website_to_registry.result == 'success' || needs.push_web_client_to_registry.result == 'success') }}
+    if: ${{ always() && (needs.push_internal_docs_to_registry.result == 'success' || needs.push_website_to_registry.result == 'success' || needs.push_web_client_to_registry.result == 'success' || (needs.build_api_image.result == 'success' && needs.build_and_run_api_image.result == 'success')) }}
     needs:
       [
+        'build_api_image',
+        'build_and_run_api_image',
         'push_website_to_registry',
         'push_web_client_to_registry',
         'push_internal_docs_to_registry',

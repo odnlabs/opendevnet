@@ -24,7 +24,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@splidejs/react-splide": "^0.7.12",
     "builder-validation": "^0.0.3",
-    "next": "^14.0.3",
+    "next": "14.0.3",
     "next-mdx-remote": "^4.4.1",
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@slekup/tsconfig": "1.0.0",
     "@types/mdx": "^2.0.10",
-    "@types/node": "^20.9.1",
+    "@types/node": "^20.9.2",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@types/uuid": "^9.0.7",

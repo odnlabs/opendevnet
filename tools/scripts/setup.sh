@@ -36,7 +36,7 @@ function setup_prod_env() {
   fi
 
   rm ./api/.env || true
-  ln -s ../.env.production ./.env || true
+  ln -s ./.env.production ./.env || true
 
   exit 0
 
@@ -99,8 +99,8 @@ function setup_dev_env() {
     cp ./tools/scripts/data/.env.example.local ./.env.local || true
   fi
 
-  rm ./api/.env || true
-  ln -s ../.env.local ./api/.env || true
+  rm ./.env || true
+  ln -s ./.env.local ./.env || true
 }
 
 if [ "$1" == "prod" ]; then

@@ -26,10 +26,10 @@
   },
   "devDependencies": {
     "@slekup/tsconfig": "1.0.0",
-    "@types/node": "^20.9.1",
+    "@types/node": "^20.9.2",
     "@types/ws": "^8.5.9",
     "eslint-config-slekup": "1.0.12",
-    "tsup": "^7.3.0"
+    "tsup": "^8.0.0"
   },
   "publishConfig": {
     "access": "public"
