@@ -40,7 +40,7 @@ COPY --from=installer --chown=nextjs:nodejs /app/pnpm-workspace.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/pnpm-lock.yaml ./
 COPY --from=installer --chown=nextjs:nodejs /app/nx.json ./
 COPY --from=installer --chown=nextjs:nodejs /app/node_modules ./node_modules
-COPY --from=installer --chown=nextjs:nodejs /app/docs ./docs
+COPY --from=installer --chown=nextjs:nodejs /app/docs ./dist/docs
 # Config, dep, and built files that the app needs
 COPY --from=installer --chown=nextjs:nodejs /app/dist/apps/website  ./dist/apps/website
 COPY --from=installer --chown=nextjs:nodejs /app/apps/website/project.json  ./dist/apps/website/
