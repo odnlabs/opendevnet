@@ -1,18 +1,21 @@
 version: '3.3'
 services:
-  # api:
-  #   container_name: api
-  #   image: slekup/opendevnet-api:main
-  #   build: ./api
-  #   env_file:
-  #     - .env.production
-  #   restart: always
-  #   environment:
-  #     NODE_ENV: production
-  #   ports:
-  #     - '5000:5000'
-  #   networks:
-  #     - app-network
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./docker/production/Dockerfile.api
+      args:
+        DOCKER_BUILDKIT: 1
+    env_file:
+      - .env.production
+    restart: always
+    ports:
+      - '5000:5000'
+    depends_on:
+      - postgres
+    networks:
+      - app-network
 
   website:
     container_name: website
@@ -24,8 +27,8 @@ services:
       NEXT_PUBLIC_APP_NODE_ENV: production
     ports:
       - '4000:4000'
-    # depends_on:
-    #   - api
+    depends_on:
+      - api
     networks:
       - app-network
 
@@ -39,8 +42,8 @@ services:
       NEXT_PUBLIC_APP_NODE_ENV: production
     ports:
       - '4200:4200'
-    # depends_on:
-    #   - api
+    depends_on:
+      - api
     networks:
       - app-network
 
@@ -52,8 +55,8 @@ services:
     restart: always
     ports:
       - '4100:4100'
-    # depends_on:
-    #   - api
+    depends_on:
+      - api
     networks:
       - app-network
 
@@ -67,7 +70,7 @@ services:
       - '443:443'
       - '80:80'
     depends_on:
-      # - api
+      - api
       - website
       - web_client
       - internal_docs
