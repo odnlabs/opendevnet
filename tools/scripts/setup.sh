@@ -54,7 +54,7 @@ function setup_prod_env() {
     echo "POSTGRES_PORT=6500" >> .env.production
     echo "POSTGRES_USER=admin" >> .env.production
     echo "POSTGRES_DB=opendevnet" >> .env.production
-    echo "DATABASE_URL=postgresql://admin:examplepass@localhost:6500/opendevnet?schema=public" >> .env.production
+    echo "DATABASE_URL=postgresql://admin:examplepass@postgres:6500/opendevnet?schema=public" >> .env.production
     echo "CLIENT_ORIGIN=http://localhost:4000" >> .env.production
     echo "REDIS_URL=redis://127.0.0.1:6379/" >> .env.production
     echo "ACCESS_TOKEN_PRIVATE_KEY=secret" >> .env.production
