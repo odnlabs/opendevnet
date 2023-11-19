@@ -11,11 +11,11 @@ use axum_extra::extract::cookie::{Cookie, SameSite};
 use serde_json::json;
 
 use crate::{
-    models::user::User,
     utils::{generate_token, save_token_data_to_redis},
     AppState,
 };
 use auth_service::models::LoginUserSchema;
+use user_service::models::User;
 
 pub async fn login_user_handler(
     State(data): State<Arc<AppState>>,

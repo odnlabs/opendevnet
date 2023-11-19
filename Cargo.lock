@@ -87,6 +87,7 @@ dependencies = [
  "tower-http",
  "tracing",
  "tracing-subscriber",
+ "user_service",
  "uuid",
 ]
 
@@ -2636,6 +2637,16 @@ dependencies = [
  "form_urlencoded",
  "idna",
  "percent-encoding",
+]
+
+[[package]]
+name = "user_service"
+version = "0.1.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "sqlx",
+ "uuid",
 ]
 
 [[package]]

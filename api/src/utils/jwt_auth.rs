@@ -11,8 +11,9 @@ use axum::{
 use axum_extra::extract::cookie::CookieJar;
 use serde::{Deserialize, Serialize};
 
-use crate::{models::user::User, utils::token, AppState};
+use crate::{utils::token, AppState};
 use redis::AsyncCommands;
+use user_service::models::User;
 
 #[derive(Debug, Serialize)]
 pub struct ErrorResponse {

@@ -14,10 +14,10 @@ use redis::AsyncCommands;
 use serde_json::json;
 
 use crate::{
-    models::user::User,
     utils::{generate_token, save_token_data_to_redis, token},
     AppState,
 };
+use user_service::models::User;
 
 pub async fn refresh_access_token_handler(
     cookie_jar: CookieJar,

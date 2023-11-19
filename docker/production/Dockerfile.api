@@ -12,6 +12,7 @@ RUN rm src/*.rs
 COPY ./Cargo.toml ./Cargo.toml
 COPY ./.sqlx ./.sqlx/
 COPY ./api ./api/
+COPY ./services ./services/
 COPY ./.env ./.env
 # Build for release
 RUN rm ./target/release/deps/api*

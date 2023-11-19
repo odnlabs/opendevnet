@@ -4,8 +4,9 @@ use argon2::{password_hash::SaltString, Argon2, PasswordHasher};
 use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
 use rand_core::OsRng;
 
-use crate::{models::user::User, AppState};
+use crate::AppState;
 use auth_service::models::RegisterUserSchema;
+use user_service::models::User;
 
 pub async fn register_user_handler(
     State(data): State<Arc<AppState>>,
