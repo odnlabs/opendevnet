@@ -138,7 +138,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Create Environment Variables
-        run: chmod +x run.sh && ./run.sh prod setup env
+        run: |
+          chmod +x run.sh &&
+          ./run.sh prod setup env
 
       - name: Build
         run: pnpm run build
@@ -194,7 +196,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run API image
-        run: chmod +x run.sh && ./run.sh ci setup api && ./run.sh ci start api
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci setup api &&
+          ./run.sh ci start api
 
   build_and_run_website_image:
     name: Build and Run Website Image
@@ -209,7 +214,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run Website image
-        run: chmod +x run.sh && ./run.sh ci start website
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start website
 
   build_and_run_web_client_image:
     name: Build and Run Web Client Image
@@ -224,7 +231,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run Web Client Image
-        run: chmod +x run.sh && ./run.sh ci start web_client
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start web_client
 
   build_and_run_internal_docs_image:
     name: Build and Run Internal Image
@@ -239,7 +248,9 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run Internal Docs Image
-        run: chmod +x run.sh && ./run.sh ci start internal_docs
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start internal_docs
 
   tests:
     name: Tests
