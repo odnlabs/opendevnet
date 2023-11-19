@@ -4,14 +4,14 @@ FROM rust:1.70 as build
 RUN USER=root cargo new --bin api
 WORKDIR /api
 # Copy over manifests
-COPY ./apps/api/Cargo.toml ./Cargo.toml
-COPY ./apps/api/Cargo.lock ./Cargo.lock
+COPY ./api/Cargo.toml ./Cargo.toml
+COPY ./api/Cargo.lock ./Cargo.lock
 # Build only the dependencies to cache them
 RUN cargo build --release
 RUN rm src/*.rs
 # Copy over source code
-COPY ./apps/api/src ./src
-COPY ./apps/api/.env ./.env
+COPY ./api/src ./src
+COPY ./api/.env ./.env
 # Build for release
 RUN rm ./target/release/deps/api*
 RUN cargo build --release
