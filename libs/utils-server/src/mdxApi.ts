@@ -361,6 +361,11 @@ export const getDocFromSlug = async (
   // This loop will find the correct directory to get the doc from based on the `slug` parameter.
   // The correct directory just includes the position prefix (01, 02, etc) in the directory name.
   for (let idx = 0; idx < docsSplit.length; idx += 1) {
+    // if parent directory
+    if (docsSplit[idx] === '..') {
+      correctPath += '../';
+      continue;
+    }
     const foundDirs = await fs.readdir(correctPath, { withFileTypes: true });
     const foundDir = foundDirs.find((dir) => {
       if (dir.name.split('-').length === 1 && dir.name === docsSplit[idx]) {
@@ -477,6 +482,48 @@ export const getDocFromSlug = async (
       next: nextAndPrev ? next : undefined,
       prev: nextAndPrev ? prev : undefined,
       path: foundSlug,
+    },
+  };
+};
+
+/**
+ * Get a doc from a slug that isn't located in directories with position prefixes.
+ * @param filePath The full path of the doc.
+ * @returns The doc.
+ */
+export const getDocFromDirectSlug = async (
+  filePath: string
+): Promise<{
+  source: string;
+  meta: { title: string; lastUpdated: string };
+}> => {
+  // If the file path doesn't end with .mdx, add it
+  const filePathWithExt = filePath.endsWith('.mdx')
+    ? filePath
+    : `${filePath}.mdx`;
+
+  // Use receieved directory and slug (url) to get the doc file
+  const fullFilePath = path.join(process.cwd(), filePathWithExt);
+
+  // Extract content and meta data from file
+  const source = await fs.readFile(fullFilePath);
+  const result = matter(source);
+  const data = result.data as { title: string; last_updated: string };
+
+  // Verify frontmatter
+  const requiredFrontmatter: RequiredFrontmatter = [
+    ['title', 'string'],
+    ['last_updated', 'string'],
+  ];
+
+  verifyFrontmatter(fullFilePath, data, requiredFrontmatter);
+
+  // Return all data to display doc
+  return {
+    source: result.content,
+    meta: {
+      title: data.title,
+      lastUpdated: data.last_updated,
     },
   };
 };

@@ -17,7 +17,7 @@ export const generateMetadata = async ({
   params: Params;
 }): Promise<Metadata> => {
   const doc = await mdxApi.getDocFromSlug(
-    'mdx',
+    '../../docs/internal',
     `${params.category}/${params.subcategory}`
   );
 
@@ -34,7 +34,7 @@ export const generateMetadata = async ({
 
 const Page = async ({ params }: { params: Params }): Promise<JSX.Element> => {
   const doc = await mdxApi.getDocFromSlug(
-    'mdx',
+    '../../docs/internal',
     `${params.category}/${params.subcategory}`,
     { nextAndPrev: true }
   );

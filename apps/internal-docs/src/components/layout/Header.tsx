@@ -9,7 +9,7 @@ import { config } from '@odnlabs/utils-server';
 export const Header: React.FC = () => (
   <>
     <div className="relative h-14 w-full" />
-    <div className="border-border fixed left-0 top-0 z-50 flex h-14 w-full justify-between border-b bg-[rgb(var(--header))]">
+    <div className="border-border no-select fixed left-0 top-0 z-50 flex h-14 w-full justify-between border-b bg-[rgb(var(--header))]">
       {/* Branding */}
       <Link
         className="flex px-3 py-3 text-2xl font-medium ring-inset focus-visible:ring"

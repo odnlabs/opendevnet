@@ -3,3 +3,7 @@ extends:
   - 'slekup'
 ignorePatterns:
   - 'tsup.config.ts'
+parserOptions:
+  project:
+    - './tsconfig.json'
+    - './libs/utils-server/tsconfig.json'

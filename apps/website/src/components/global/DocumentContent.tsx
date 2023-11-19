@@ -17,9 +17,13 @@ import * as uiComponents from '../uiClientComponents';
 
 interface DocumentContentProps {
   doc: ReturnedDoc;
+  editLink?: string | undefined;
 }
 
-export const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
+export const DocumentContent: React.FC<DocumentContentProps> = ({
+  doc,
+  editLink,
+}) => {
   // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
     const links = document
@@ -134,7 +138,7 @@ export const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
           </div>
         )}
       </div>
-      <uiComponents.Toc />
+      <uiComponents.Toc editLink={editLink ?? undefined} />
     </div>
   );
 };

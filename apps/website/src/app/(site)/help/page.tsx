@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const Help: NextPage = async () => {
-  const ordered = await mdxApi.getOrderedSlugs('mdx/help');
+  const ordered = await mdxApi.getOrderedSlugs('../../docs/help');
 
   return (
     <>
