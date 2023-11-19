@@ -32,7 +32,7 @@ export const Header: React.FC = () => (
       <div className="m-2 flex">
         <a
           className="text-text-secondary hover:text-text active:text-text my-2 mr-3 -translate-y-px"
-          href={`${config.social.github}/opendevnet/tree/dev/apps/internal-docs/mdx`}
+          href={`${config.social.github}/opendevnet/tree/dev/docs/internal`}
           rel="noreferrer"
           target="_blank"
         >

@@ -63,8 +63,6 @@ elif [ "$1" == "prodtest" ]; then
     cp -rL ./apps/internal-docs/node_modules ./dist/apps/internal-docs || true
     echo -e "${BLUE}COPYING${RESET} .next"
     cp -rL ./apps/internal-docs/.next ./dist/apps/internal-docs || true
-    echo -e "${BLUE}COPYING${RESET} mdx"
-    cp -rL ./apps/internal-docs/mdx ./dist/apps/internal-docs || true
     echo -e "${BLUE}SERVING${RESET} internal-docs"
     pnpm nx run internal-docs:serve --prod --verbose
   else
