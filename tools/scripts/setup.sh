@@ -63,6 +63,17 @@ function setup_prod_env() {
       source ~/.cargo/env
     fi
 
+    # Install Postgres
+    if [ -e psql ]; then
+      echo -e "${GREEN}PASS${RESET} psql is installed"
+    else
+      echo -e "${YELLOW}FAIL${RESET} psql is not installed, installing..."
+      sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+      wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+      sudo apt update
+      sudo apt -y install postgresql
+    fi
+
     # Install sqlx-cli
     if [ -e ~/.cargo/bin/sqlx ]; then
       echo -e "${GREEN}PASS${RESET} sqlx-cli is installed"
