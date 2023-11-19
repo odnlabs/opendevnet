@@ -1,1 +1,1 @@
-[Documentation](https://opendevnet.com/internal-docs/libraries/api-client/api-client)
+[Documentation](https://opendevnet.com/internal-docs/libraries/api-client/overview)
