@@ -26,10 +26,8 @@ dependencies:
   - apps/**/Cargo.lock
   - libs/**/Cargo.lock
 documentation:
-  - apps/internal-docs/mdx/*
-  - apps/internal-docs/mdx/**/*
-  - apps/website/mdx/*
-  - apps/website/mdx/**/*
+  - docs/*
+  - docs/**/*
 libs:@odnlabs/api-client:
   - libs/api-client/*
   - libs/api-client/**/*

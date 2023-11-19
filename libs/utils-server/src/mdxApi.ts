@@ -343,8 +343,8 @@ export const getDocFromSlug = async (
   let correctPath = './';
 
   /**
-   * Example: "mdx/docs/introduction" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "introduction/getting-started".
-   * Example: "mdx/docs" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "getting-started".
+   * Example: "../../docs/introduction" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "introduction/getting-started".
+   * Example: "../../docs" would be the value of `docDir` if `rootDir` is "mdx" and `slug` is "getting-started".
    */
   const docDir = `${rootDir}/${slug.split('/').slice(0, -1).join('/')}`;
   if (!docDir) throw new Error(`No doc dir found: ${rootDir}`);

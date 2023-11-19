@@ -6,11 +6,8 @@
 # Apps
 /api/** @odnlabs/api
 /apps/internal-docs/** @odnlabs/web
-/apps/internal-docs/mdx/** @odnlabs/docs
 /apps/website/** @odnlabs/web
-/apps/website/mdx/** @odnlabs/docs
 /apps/web-client/** @odnlabs/web
-/apps/web-client/mdx/** @odnlabs/docs
 
 # Libraries
 /libs/api-client/** @odnlabs/api @odnlabs/web
@@ -22,3 +19,6 @@
 # Tools
 /tools/** @odnlabs/tooling
 /tools/rest/** @odnlabs/api @odnlabs/web
+
+# Documentation
+/docs/** @odnlabs/docs
