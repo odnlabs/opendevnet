@@ -1,11 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {"paths": {}},
+  "exclude": ["dist", "build", "node_modules"],
   "extends": "@slekup/tsconfig/library.json",
-  "compilerOptions": { "paths": {} },
   "include": [
     "src/**/*",
     "../utils-client/src/index.ts",
     "../utils-client/src/types.ts"
-  ],
-  "exclude": ["dist", "build", "node_modules"]
+  ]
 }
