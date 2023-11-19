@@ -10,6 +10,7 @@ RUN cargo build --release
 RUN rm src/*.rs
 # Copy over source code
 COPY ./Cargo.toml ./Cargo.toml
+COPY ./.sqlx ./.sqlx/
 COPY ./api ./api/
 COPY ./.env ./.env
 # Build for release
