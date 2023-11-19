@@ -8,3 +8,4 @@ coverage/
 docker-compose.ci.yaml
 docker-compose.development.yaml
 docker-compose.production.yaml
+pnpm-lock.yaml
