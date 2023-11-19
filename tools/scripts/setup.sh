@@ -1,3 +1,30 @@
+function create_database() {
+  # Load environment variables from .env.local file
+  set -a
+  source .env.local # Assumes the .env.local file contains the variables
+  set +a
+
+  # Extract database connection details
+  DB_HOST=$POSTGRES_HOST
+  DB_PORT=$POSTGRES_PORT
+  DB_USERNAME=$POSTGRES_USER
+  DB_PASSWORD=$POSTGRES_PASSWORD
+  DB_NAME=$POSTGRES_DB
+
+  export PGPASSWORD="$DB_PASSWORD"
+
+  # Check if the database already exists
+  if psql "postgresql://$DB_USERNAME@$DB_HOST:$DB_PORT/$DB_NAME" -lqt | cut -d \| -f 1 | grep -qw "$DB_NAME"; then
+    echo "Database '$DB_NAME' already exists. Skipping creation."
+  else
+    # Create the database
+    createdb -h "$DB_HOST" -p "$DB_PORT" -U "$DB_USERNAME" -w "$DB_PASSWORD" "$DB_NAME"
+    echo "Database '$DB_NAME' created successfully."
+  fi
+
+  unset PGPASSWORD # Unset the password after the command execution for security reasons
+}
+
 function setup_prod_env() {
   local env="$1"
 
@@ -73,6 +100,9 @@ function setup_prod_env() {
       sudo apt update
       sudo apt -y install postgresql
     fi
+
+    # Create database if doesn't exist
+    create_database
 
     # Install sqlx-cli
     if [ -e ~/.cargo/bin/sqlx ]; then
