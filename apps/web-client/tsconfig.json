@@ -22,7 +22,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "../../dist/apps/web-client/.next/types/**/*.ts",
-    "../../environment.d.ts"
   ],
   "exclude": ["node_modules"]
 }

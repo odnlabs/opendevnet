@@ -1,9 +1,9 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "extends": "@slekup/tsconfig/base.json",
   "compilerOptions": {
     "paths": {}
   },
-  "include": ["src/**/*", "../../environment.d.ts"],
-  "exclude": ["dist", "build", "node_modules"]
+  "exclude": ["dist", "build", "node_modules"],
+  "extends": "@slekup/tsconfig/base.json",
+  "include": ["src/**/*"]
 }
