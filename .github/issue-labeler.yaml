@@ -1,4 +1,4 @@
-apps:api:
+api:
   - "### Which (application|library|application or library) is this (bug
     report|feature request) for\\?\\n\\napi\\n"
 apps:internal-docs:

@@ -36,7 +36,7 @@ jobs:
               - 'libs/utils-client/**'
             api:
               - *all
-              - 'apps/api/**'
+              - 'api/**'
               - 'docker/production/Dockerfile.api'
             website:
               - *all

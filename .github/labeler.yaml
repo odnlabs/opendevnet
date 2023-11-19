@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/pull-request-labeler.json
-apps:api:
-  - apps/api/*
-  - apps/api/**/*
+api:
+  - api/*
+  - api/**/*
 apps:internal-docs:
   - apps/internal-docs/*
   - apps/internal-docs/**/*

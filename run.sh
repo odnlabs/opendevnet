@@ -38,8 +38,8 @@ function setup_prod_env() {
     echo "PUBLIC_INTERNAL_DOCS_URL=https://opendevnet.com/internal-docs" >> .env.production
   fi
 
-  rm ./apps/api/.env || true
-  ln -s ../../.env.production ./apps/api/.env || true
+  rm ./api/.env || true
+  ln -s ../../.env.production ./api/.env || true
 }
 
 function setup_dev_env() {
@@ -56,8 +56,8 @@ function setup_dev_env() {
     echo "PUBLIC_INTERNAL_DOCS_URL=http://localhost:4200/internal-docs" >> .env.local
   fi
 
-  rm ./apps/api/.env || true
-  ln -s ../../.env.local ./apps/api/.env || true
+  rm ./api/.env || true
+  ln -s ../../.env.local ./api/.env || true
 }
 
 # Check if the environment argument is specified

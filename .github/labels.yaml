@@ -1,4 +1,4 @@
-- name: apps:api
+- name: api
   color: fbca04
 - name: apps:internal-docs
   color: fbca04

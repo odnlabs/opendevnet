@@ -1,6 +1,6 @@
 
 [workspace]
-members = ['apps/api']
+members = ['api']
 
 [profile.release]
 lto = true

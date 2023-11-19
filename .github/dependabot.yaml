@@ -32,15 +32,6 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'npm'
-    directory: '/apps/api'
-    schedule:
-      interval: 'daily'
-    target-branch: 'dev'
-    labels:
-      - 'dependencies'
-    open-pull-requests-limit: 20
-
-  - package-ecosystem: 'npm'
     directory: '/libs/api-client'
     schedule:
       interval: 'daily'
