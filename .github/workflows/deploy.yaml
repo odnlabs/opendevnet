@@ -37,6 +37,7 @@ jobs:
             api:
               - *all
               - 'api/**'
+              - 'services/**'
               - 'docker/production/Dockerfile.api'
             website:
               - *all

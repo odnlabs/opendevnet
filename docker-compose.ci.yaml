@@ -1,77 +1,72 @@
-version: '3'
+networks:
+  app-network:
+    driver: bridge
 services:
+  api:
+    build:
+      args:
+        DOCKER_BUILDKIT: 1
+      context: .
+      dockerfile: ./docker/production/Dockerfile.api
+    container_name: api
+    depends_on:
+      - postgres
+    env_file:
+      - .env.production
+    networks:
+      - app-network
+    ports:
+      - '5000:5000'
+    restart: always
+  internal_docs:
+    build:
+      args:
+        DOCKER_BUILDKIT: 1
+      context: .
+      dockerfile: ./docker/production/Dockerfile.internal_docs
+    container_name: internal_docs
+    env_file:
+      - .env.production
+    networks:
+      - app-network
+    ports:
+      - '4200:4200'
+    restart: always
   postgres:
-    image: postgres:latest
     container_name: postgres
+    env_file:
+      - .env.production
+    image: postgres:latest
     ports:
       - '6500:5432'
     volumes:
       - ./docker/postgres-data:/var/lib/postgresql/data
-    env_file:
-      - .env.production
-
-  api:
-    container_name: api
-    build:
-      context: .
-      dockerfile: ./docker/production/Dockerfile.api
-      args:
-        DOCKER_BUILDKIT: 1
-    env_file:
-      - .env.production
-    restart: always
-    ports:
-      - '5000:5000'
-    depends_on:
-      - postgres
-    networks:
-      - app-network
-
-  website:
-    container_name: website
-    build:
-      context: .
-      dockerfile: ./docker/production/Dockerfile.website
-      args:
-        DOCKER_BUILDKIT: 1
-    env_file:
-      - .env.production
-    restart: always
-    ports:
-      - '4000:4000'
-    networks:
-      - app-network
-
   web_client:
-    container_name: web_client
     build:
+      args:
+        DOCKER_BUILDKIT: 1
       context: .
       dockerfile: ./docker/production/Dockerfile.web_client
-      args:
-        DOCKER_BUILDKIT: 1
+    container_name: web_client
     env_file:
       - .env.production
-    restart: always
+    networks:
+      - app-network
     ports:
       - '4100:4100'
-    networks:
-      - app-network
-
-  internal_docs:
-    container_name: internal_docs
+    restart: always
+  website:
     build:
-      context: .
-      dockerfile: ./docker/production/Dockerfile.internal_docs
       args:
         DOCKER_BUILDKIT: 1
+      context: .
+      dockerfile: ./docker/production/Dockerfile.website
+    container_name: website
     env_file:
       - .env.production
-    restart: always
-    ports:
-      - '4200:4200'
     networks:
       - app-network
-
-networks:
-  app-network:
-    driver: bridge
+    ports:
+      - '4000:4000'
+    restart: always
+version: '3'

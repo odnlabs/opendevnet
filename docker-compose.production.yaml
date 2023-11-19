@@ -1,82 +1,77 @@
-version: '3.3'
+networks:
+  app-network:
+    driver: bridge
 services:
   api:
-    container_name: api
     build:
-      context: .
-      dockerfile: ./docker/production/Dockerfile.api
       args:
         DOCKER_BUILDKIT: 1
-    env_file:
-      - .env.production
-    restart: always
-    ports:
-      - '5000:5000'
+      context: .
+      dockerfile: ./docker/production/Dockerfile.api
+    container_name: api
     depends_on:
       - postgres
-    networks:
-      - app-network
-
-  website:
-    container_name: website
-    image: slekup/opendevnet-website:main
     env_file:
       - .env.production
-    restart: always
-    environment:
-      NEXT_PUBLIC_APP_NODE_ENV: production
-    ports:
-      - '4000:4000'
-    depends_on:
-      - api
     networks:
       - app-network
-
+    ports:
+      - '5000:5000'
+    restart: always
   internal_docs:
     container_name: internal_docs
-    image: slekup/opendevnet-internal_docs:main
+    depends_on:
+      - api
     env_file:
       - .env.production
-    restart: always
     environment:
       NEXT_PUBLIC_APP_NODE_ENV: production
+    image: slekup/opendevnet-internal_docs:main
+    networks:
+      - app-network
     ports:
       - '4200:4200'
-    depends_on:
-      - api
-    networks:
-      - app-network
-
-  web_client:
-    container_name: web
-    image: slekup/opendevnet-web_client:main
-    env_file:
-      - .env.production
     restart: always
-    ports:
-      - '4100:4100'
-    depends_on:
-      - api
-    networks:
-      - app-network
-
   nginx:
     container_name: nginx
-    image: nginx:latest
-    volumes:
-      - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./docker/production/ssl/:/etc/ssl/:ro
-    ports:
-      - '443:443'
-      - '80:80'
     depends_on:
       - api
       - website
       - web_client
       - internal_docs
+    image: nginx:latest
     networks:
       - app-network
-
-networks:
-  app-network:
-    driver: bridge
+    ports:
+      - '443:443'
+      - '80:80'
+    volumes:
+      - ./docker/production/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./docker/production/ssl/:/etc/ssl/:ro
+  web_client:
+    container_name: web
+    depends_on:
+      - api
+    env_file:
+      - .env.production
+    image: slekup/opendevnet-web_client:main
+    networks:
+      - app-network
+    ports:
+      - '4100:4100'
+    restart: always
+  website:
+    container_name: website
+    depends_on:
+      - api
+    env_file:
+      - .env.production
+    environment:
+      NEXT_PUBLIC_APP_NODE_ENV: production
+    image: slekup/opendevnet-website:main
+    networks:
+      - app-network
+    ports:
+      - '4000:4000'
+    restart: always
+version: '3.3'
