@@ -40,6 +40,16 @@ function setup_prod_env() {
 
   rm ./api/.env || true
   ln -s ../.env.production ./api/.env || true
+
+  packages=("build-essential" "pkg-config" "libssl-dev")
+  for package in "${packages[@]}"; do
+    if dpkg-query -W -f='${Status}' "$package" 2> /dev/null | grep -q "installed"; then
+      echo -e "${GREEN}PASS${RESET} $package is installed"
+    else
+      echo -e "${YELLOW}FAIL${RESET} $package is not installed, installing..."
+      sudo apt -y install "$package"
+    fi
+  done
 }
 
 function setup_dev_env() {
