@@ -10,8 +10,8 @@ RUN cargo build --release
 RUN rm src/*.rs
 # Copy over source code
 COPY ./Cargo.toml ./Cargo.toml
-COPY ./apps/api ./apps/api/
-COPY ./apps/api/.env ./.env
+COPY ./api ./api/
+COPY ./.env ./.env
 # Build for release
 RUN rm ./target/release/deps/api*
 RUN cargo build --release --bin api
