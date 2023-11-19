@@ -36,7 +36,7 @@ function setup_prod_env() {
   fi
 
   rm ./api/.env || true
-  ln -s ../.env.production ./api/.env || true
+  ln -s ../.env.production ./.env || true
 
   exit 0
 
