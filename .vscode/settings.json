@@ -13,8 +13,8 @@
   "files.eol": "\n",
   "rust-analyzer.linkedProjects": [
     ".\\api\\Cargo.toml",
-    ".\\services\\auth_service\\Cargo.toml",
-    ".\\services\\user_service\\Cargo.toml"
+    ".\\services\\auth-service\\Cargo.toml",
+    ".\\services\\user-service\\Cargo.toml"
   ],
   "rust-analyzer.showUnlinkedFileNotification": false,
   "rust-analyzer.cargo.extraEnv": {
