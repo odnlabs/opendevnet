@@ -1,7 +1,7 @@
 function create_database() {
-  # Load environment variables from .env.local file
+  # Load environment variables from .env.production file
   set -a
-  source .env.local # Assumes the .env.local file contains the variables
+  source .env.production # Assumes the .env.production file contains the variables
   set +a
 
   # Extract database connection details
