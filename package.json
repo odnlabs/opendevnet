@@ -50,7 +50,7 @@
     "@nx/react": "^17.1.2",
     "@nx/workspace": "^17.1.2",
     "@slekup/tsconfig": "1.0.0",
-    "@types/node": "^20.9.1",
+    "@types/node": "^20.9.2",
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.53.0",
