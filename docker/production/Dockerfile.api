@@ -1,17 +1,24 @@
-FROM rust:alpine3.18 as base
-ENV PNPM_HOME="/pnpm"
-ENV PATH="$PNPM_HOME:$PATH"
-# Install the latest pnpm version with corepack
-RUN corepack enable
-RUN corepack prepare pnpm@latest --activate
+# Using the latest rust image
+FROM rust:1.70 as build
+# Create a new empty shell project
+RUN USER=root cargo new --bin api
+WORKDIR /api
+# Copy over manifests
+COPY ./apps/api/Cargo.toml ./Cargo.toml
+COPY ./apps/api/Cargo.lock ./Cargo.lock
+# Build only the dependencies to cache them
+RUN cargo build --release
+RUN rm src/*.rs
+# Copy over source code
+COPY ./apps/api/src ./src
+COPY ./apps/api/.env ./.env
+# Build for release
+RUN rm ./target/release/deps/api*
+RUN cargo build --release
 
-FROM base as builder
-WORKDIR /usr/src/api
-COPY . .
-RUN pnpm api:install
-
-FROM base as release
-WORKDIR /usr/src/api
-COPY --from=builder /usr/src/api .
-RUN pnpm api:build
-CMD ["pnpm", "nx", "run", "api:run"]
+# Final image
+FROM debian:bullseye-slim
+# Copy the build artifact from the build stage
+COPY --from=build /api/target/release/api .
+# Set the startup command to run the binary
+CMD ["./api"]
