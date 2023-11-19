@@ -50,6 +50,28 @@ function setup_prod_env() {
       sudo apt -y install "$package"
     fi
   done
+
+  # Install cargo
+  if [ -e ~/.cargo/bin/cargo ]; then
+    echo -e "${GREEN}PASS${RESET} cargo is installed"
+  else
+    echo -e "${YELLOW}FAIL${RESET} cargo is not installed, installing..."
+    curl https://sh.rustup.rs -sSf | sh -s -- -y
+    source ~/.cargo/env
+  fi
+
+  # Install sqlx-cli
+  if [ -e ~/.cargo/bin/sqlx ]; then
+    echo -e "${GREEN}PASS${RESET} sqlx-cli is installed"
+  else
+    echo -e "${YELLOW}FAIL${RESET} sqlx-cli is not installed, installing..."
+    cargo install sqlx-cli
+  fi
+
+  # Migration
+  cd api
+  sqlx migrate run
+  cd ../
 }
 
 function setup_dev_env() {

@@ -194,7 +194,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Run API image
-        run: chmod +x run.sh && ./run.sh ci start api
+        run: chmod +x run.sh && ./run.sh ci start postgres && ./run.sh ci start api
 
   build_and_run_website_image:
     name: Build and Run Website Image
