@@ -1,9 +1,3 @@
--- Create the database
-CREATE DATABASE opendevnet;
-
--- Connect to the database
-\c opendevnet;
-
 -- Enable the uuid-ossp extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
