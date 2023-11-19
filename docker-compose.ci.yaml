@@ -1,6 +1,5 @@
-networks:
-  app-network:
-    driver: bridge
+version: '3'
+
 services:
   api:
     build:
@@ -69,4 +68,7 @@ services:
     ports:
       - '4000:4000'
     restart: always
-version: '3'
+
+networks:
+  app-network:
+    driver: bridge
