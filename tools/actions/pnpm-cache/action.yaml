@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: pnpm install
+description: Run pnpm install with cache enabled
+runs:
+  using: 'composite'
+  steps:
+    - if: runner.os == 'Linux'
+      name: Set up swap space
+      uses: pierotofy/set-swap-space@v1.0
+      with:
+        swap-size-gb: 1
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: latest
+        run_install: false
+    - name: Get pnpm store directory
+      id: pnpm-cache
+      run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+      shell: bash
+    - id: cache-rotation
+      name: Cache rotation keys
+      run: |
+        echo "YEAR_MONTH=$(/bin/date -u "+%Y%m")" >> $GITHUB_OUTPUT
+      shell: bash
+    - name: Setup pnpm cache
+      uses: actions/cache@v3
+      with:
+        key: ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+        path: ${{ steps.pnpm-config.outputs.STORE_PATH }}
+        restore-keys: |
+          ${{ runner.os }}-pnpm-store-cache-${{ steps.cache-rotation.outputs.YEAR_MONTH }}-
+    - env:
+        HUSKY: '0'
+      name: Install dependencies
+      run: |
+        pnpm install --frozen-lockfile --prefer-offline --loglevel error
+      shell: bash
