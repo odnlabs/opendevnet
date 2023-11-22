@@ -14,8 +14,8 @@ use crate::{
     utils::{generate_token, save_token_data_to_redis},
     AppState,
 };
-use auth_service::models::LoginUserSchema;
-use user_service::models::User;
+use opendevnet_auth::models::LoginUserSchema;
+use opendevnet_user::models::User;
 
 pub async fn login_user_handler(
     State(data): State<Arc<AppState>>,

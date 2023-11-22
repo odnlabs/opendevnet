@@ -65,7 +65,6 @@ name = "api"
 version = "0.0.0"
 dependencies = [
  "argon2",
- "auth_service",
  "axum",
  "axum-extra",
  "base64",
@@ -75,6 +74,8 @@ dependencies = [
  "futures-util",
  "headers",
  "jsonwebtoken",
+ "opendevnet_auth",
+ "opendevnet_user",
  "rand_core",
  "redis",
  "serde",
@@ -87,7 +88,6 @@ dependencies = [
  "tower-http",
  "tracing",
  "tracing-subscriber",
- "user_service",
  "uuid",
 ]
 
@@ -229,13 +229,6 @@ name = "atomic-waker"
 version = "1.1.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1505bd5d3d116872e7271a6d4e16d81d0c8570876c8de68093a09ac269d8aac0"
-
-[[package]]
-name = "auth_service"
-version = "0.1.0"
-dependencies = [
- "serde",
-]
 
 [[package]]
 name = "autocfg"
@@ -1380,6 +1373,23 @@ name = "once_cell"
 version = "1.18.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
+
+[[package]]
+name = "opendevnet_auth"
+version = "0.0.0"
+dependencies = [
+ "serde",
+]
+
+[[package]]
+name = "opendevnet_user"
+version = "0.0.0"
+dependencies = [
+ "chrono",
+ "serde",
+ "sqlx",
+ "uuid",
+]
 
 [[package]]
 name = "openssl"
@@ -2637,16 +2647,6 @@ dependencies = [
  "form_urlencoded",
  "idna",
  "percent-encoding",
-]
-
-[[package]]
-name = "user_service"
-version = "0.1.0"
-dependencies = [
- "chrono",
- "serde",
- "sqlx",
- "uuid",
 ]
 
 [[package]]

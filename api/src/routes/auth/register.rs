@@ -5,8 +5,8 @@ use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
 use rand_core::OsRng;
 
 use crate::AppState;
-use auth_service::models::RegisterUserSchema;
-use user_service::models::User;
+use opendevnet_auth::models::RegisterUserSchema;
+use opendevnet_user::models::User;
 
 pub async fn register_user_handler(
     State(data): State<Arc<AppState>>,
