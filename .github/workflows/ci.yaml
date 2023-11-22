@@ -204,11 +204,11 @@ jobs:
           chmod +x run.sh &&
           ./run.sh ci start internal_docs
 
-  tests:
-    name: Tests
+  node_tests:
+    name: Node Tests
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -226,3 +226,24 @@ jobs:
       # TODO: Add tests
       # - name: Tests
       #   run: pnpm run test
+
+  rust_tests:
+    name: Rust Tests
+    runs-on: ubuntu-latest
+    env:
+      CARGO_TERM_COLOR: always
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check
+        run: cargo check --verbose
+
+      - name: Format
+        run: cargo fmt --all -- --check --verbose
+
+      - name: Clippy
+        run: cargo clippy -- -D warnings --verbose
+
+      - name: Test
+        run: cargo test --verbose
