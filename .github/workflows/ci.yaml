@@ -226,19 +226,19 @@ jobs:
       - name: Setup Environment Variables
         run: |
           chmod +x run.sh &&
-          ./run.sh prod setup env
+          ./run.sh dev setup env
 
       - name: Build
         run: pnpm run build
 
       - name: Test
-        run: pnpm run test:prod
+        run: pnpm run test
 
       - name: Install Browsers
         run: pnpm playwright install --with-deps
 
       - name: End-to-end Test
-        run: pnpm run e2e:prod
+        run: pnpm run e2e
 
   rust_tests:
     name: Rust Tests
