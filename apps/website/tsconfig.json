@@ -21,6 +21,8 @@
     "*.config.ts",
     "src/**/*.ts",
     "src/**/*.tsx",
-    ".next/types/**/*.ts"
+    "e2e/**/*.test.ts",
+    ".next/types/**/*.ts",
+    "e2e/page.test.tsx"
   ]
 }

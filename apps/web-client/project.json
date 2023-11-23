@@ -57,6 +57,13 @@
       "options": {
         "lintFilePatterns": ["apps/web-client/**/*.{ts,tsx,js,jsx}"]
       }
+    },
+    "e2e": {
+      "executor": "@nx/playwright:playwright",
+      "outputs": ["{workspaceRoot}/dist/.playwright/apps/web-client"],
+      "options": {
+        "config": "apps/web-client/playwright.config.ts"
+      }
     }
   },
   "tags": []

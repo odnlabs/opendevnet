@@ -113,7 +113,7 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Lint check (main branch only)
+      - name: Lint check
         run: pnpm run lint
 
   format:

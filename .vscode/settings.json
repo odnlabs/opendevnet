@@ -22,10 +22,7 @@
   },
   "eslint.workingDirectories": [
     {
-      "pattern": "./apps/*"
-    },
-    {
-      "pattern": "./libs/*"
+      "pattern": "./"
     }
   ],
   "eslint.validate": [

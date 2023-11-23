@@ -3,5 +3,4 @@ extends:
   - slekup
 parserOptions:
   project:
-    - ./tsconfig.json
     - ./libs/utils-server/tsconfig.json

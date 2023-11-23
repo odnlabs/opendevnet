@@ -7,7 +7,7 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "test", "lint"],
+        "cacheableOperations": ["build", "test", "e2e", "lint"],
         "cacheDirectory": "/tmp/nx-cache"
       }
     }
@@ -29,6 +29,7 @@
       "inputs": ["default", "^production"]
     },
     "e2e": {
+      "dependsOn": ["^build"],
       "inputs": ["default", "^production"]
     },
     "dev": {
