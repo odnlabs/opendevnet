@@ -223,9 +223,11 @@ jobs:
       - name: Check manypkg
         run: pnpm manypkg check
 
-      # TODO: Add tests
-      # - name: Tests
-      #   run: pnpm run test
+      - name: Test
+        run: pnpm run test
+
+      - name: End-to-end Test
+        run: pnpm run e2e
 
   rust_tests:
     name: Rust Tests
