@@ -48,7 +48,7 @@
 **/.github/
 **/.commitlintrc.json
 **/.editorconfig
-**/.eslintrc.js
+**/.eslintrc.yaml
 **/.gitattributes
 **/.gitignore
 **/.lintstagedrc

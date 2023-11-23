@@ -1,8 +1,6 @@
 # yaml-language-server: $schema=https://json.schemastore.org/eslintrc.json
 extends:
-  - 'slekup/next'
-ignorePatterns:
-  - 'tailwind.config.ts'
+  - slekup/next
 parserOptions:
   project:
-    - './apps/website/tsconfig.json'
+    - ./apps/website/tsconfig.json

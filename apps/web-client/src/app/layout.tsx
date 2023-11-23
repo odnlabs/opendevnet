@@ -2,9 +2,9 @@ import { Poppins } from 'next/font/google';
 
 import { config } from '@odnlabs/utils-server';
 
-import { Header, NavigationBar } from '@components/layout';
 import { DataLayer } from '@components/layout/DataLayer';
 import { Providers } from '@components/layout/Providers';
+import { Header, NavigationBar } from '@components/layout/index';
 
 import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
