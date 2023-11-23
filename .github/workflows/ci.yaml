@@ -234,6 +234,9 @@ jobs:
       - name: Test
         run: pnpm run test:prod
 
+      - name: Install Browsers
+        run: pnpm playwright install --with-deps
+
       - name: End-to-end Test
         run: pnpm run e2e:prod
 
