@@ -6,4 +6,3 @@ ignorePatterns:
 parserOptions:
   project:
     - './tsconfig.json'
-    - './libs/utils-client/tsconfig.json'

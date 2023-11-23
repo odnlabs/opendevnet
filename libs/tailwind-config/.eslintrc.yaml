@@ -4,6 +4,5 @@ extends:
 parserOptions:
   project:
     - './tsconfig.json'
-    - './libs/tailwind-config/tsconfig.json'
 rules:
   'jsdoc/require-jsdoc': 0

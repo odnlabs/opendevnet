@@ -5,6 +5,8 @@
   "extends": "@slekup/tsconfig/library.json",
   "include": [
     "src/**/*",
+    "tsup.config.ts",
+    "vitest.config.ts",
     "../utils-client/src/index.ts",
     "../utils-client/src/types.ts"
   ]

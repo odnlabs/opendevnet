@@ -5,5 +5,4 @@ ignorePatterns:
   - 'tailwind.config.ts'
 parserOptions:
   project:
-    - './tsconfig.json'
     - './apps/website/tsconfig.json'

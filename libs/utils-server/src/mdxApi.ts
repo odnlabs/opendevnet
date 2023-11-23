@@ -16,7 +16,17 @@ import {
  * @param slug The original slug to remove the prefix from.
  * @returns The refomatted slug.
  */
-const removePos = (slug: string): string => slug.split('-').slice(1).join('-');
+export const removePos = (slug: string): string => {
+  const pos = slug.split('-')[0];
+  if (slug.split('-').length === 1) {
+    throw new Error(`No slug after position found: ${slug}`);
+  }
+  if (!pos) throw new Error(`No slug position found: ${slug}`);
+  const position = parseInt(pos, 10);
+  if (Number.isNaN(position)) throw new Error(`Invalid slug position: ${slug}`);
+  if (position < 1) throw new Error(`Invalid slug position: ${slug}`);
+  return slug.split('-').slice(1).join('-');
+};
 
 /**
  * Get the position from a slug.
@@ -24,11 +34,15 @@ const removePos = (slug: string): string => slug.split('-').slice(1).join('-');
  * @returns The position.
  * @throws If the position is not a number.
  */
-const getSlugPosition = (slug: string): number => {
+export const getSlugPosition = (slug: string): number => {
   const pos = slug.split('-')[0];
+  if (slug.split('-').length === 1) {
+    throw new Error(`No slug after position found: ${slug}`);
+  }
   if (!pos) throw new Error(`No slug position found: ${slug}`);
   const position = parseInt(pos, 10);
   if (Number.isNaN(position)) throw new Error(`Invalid slug position: ${slug}`);
+  if (position < 1) throw new Error(`Invalid slug position: ${slug}`);
   return position;
 };
 

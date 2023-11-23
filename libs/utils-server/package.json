@@ -17,7 +17,8 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "lint": "eslint \"**/*.ts*\""
+    "lint": "eslint \"**/*.ts*\"",
+    "test": "vitest run"
   },
   "dependencies": {
     "@odnlabs/utils-client": "workspace:*",
@@ -33,7 +34,7 @@
   "devDependencies": {
     "@slekup/tsconfig": "1.0.0",
     "@types/node": "^20.9.4",
-    "eslint-config-slekup": "1.0.17",
+    "eslint-config-slekup": "1.0.20",
     "tsup": "^8.0.1"
   },
   "publishConfig": {
