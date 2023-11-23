@@ -1,0 +1,11 @@
+{
+  "name": "@odnlabs/ui",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/ui",
+  "projectType": "library",
+  "options": {
+    "outputPath": "dist/libs/ui"
+  },
+  "targets": {},
+  "tags": []
+}

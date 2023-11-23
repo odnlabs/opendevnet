@@ -1,0 +1,11 @@
+{
+  "name": "@odnlabs/utils-client",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/utils-client",
+  "projectType": "library",
+  "options": {
+    "outputPath": "dist/libs/utils-client"
+  },
+  "targets": {},
+  "tags": []
+}
