@@ -1,8 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/eslintrc.json
 extends:
-  - 'slekup/react'
-ignorePatterns:
-  - 'tailwind.config.ts'
+  - slekup/react
 parserOptions:
   project:
-    - './tsconfig.json'
+    - ./tsconfig.json
+    - ./libs/ui/tsconfig.json

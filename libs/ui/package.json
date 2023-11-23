@@ -32,7 +32,7 @@
     "@slekup/tsconfig": "1.0.0",
     "@types/react": "^18.2.38",
     "autoprefixer": "^10.4.16",
-    "eslint-config-slekup": "1.0.20",
+    "eslint-config-slekup": "1.0.21",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "tailwindcss": "^3.3.5",

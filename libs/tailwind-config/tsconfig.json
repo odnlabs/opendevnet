@@ -4,6 +4,6 @@
   "compilerOptions": {
     "paths": {}
   },
-  "include": ["."],
+  "include": ["*.config.ts"],
   "exclude": ["node_modules"]
 }
