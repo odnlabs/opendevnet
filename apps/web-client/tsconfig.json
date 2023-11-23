@@ -16,5 +16,11 @@
     }
   },
   "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "*.config.ts", "src/**/*.ts", "src/**/*.tsx"]
+  "include": [
+    "next-env.d.ts",
+    "*.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
+  ]
 }

@@ -25,7 +25,7 @@
     },
     "test": {
       "dependsOn": ["^build"],
-      "outputs": ["{workspaceRoot}/coverage"],
+      "outputs": ["{projectRoot}/coverage"],
       "inputs": ["default", "^production"]
     },
     "e2e": {
@@ -40,7 +40,8 @@
       "inputs": [
         "default",
         "{workspaceRoot}/.eslintignore",
-        "{projectRoot}/.eslintrc.js"
+        "{workspaceRoot}/.eslintrc.yaml",
+        "{projectRoot}/.eslintrc.yaml"
       ],
       "dependsOn": ["^lint"]
     }

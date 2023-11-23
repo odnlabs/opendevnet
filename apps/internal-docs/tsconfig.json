@@ -15,6 +15,12 @@
       "@utils/*": ["src/utils/*"]
     }
   },
-  "include": ["next-env.d.ts", "*.config.ts", "src/**/*.ts", "src/**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "*.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
+  ],
   "exclude": ["node_modules"]
 }

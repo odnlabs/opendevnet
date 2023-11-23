@@ -28,7 +28,7 @@
     "@slekup/tsconfig": "1.0.0",
     "@types/node": "^20.9.4",
     "@types/ws": "^8.5.10",
-    "eslint-config-slekup": "1.0.21",
+    "eslint-config-slekup": "1.0.22",
     "tsup": "^8.0.1"
   },
   "publishConfig": {
