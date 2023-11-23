@@ -21,9 +21,11 @@ use auth::{
 use info::root::root_handler;
 use users::get_me::get_me_handler;
 
-use crate::{utils::jwt_auth::auth, utils::ws::ws_handler, AppState};
-
 use self::users::list_users::list_users;
+use crate::{
+    utils::{jwt_auth::auth, ws::ws_handler},
+    AppState,
+};
 
 pub fn create_router(app_state: Arc<AppState>) -> Router {
     let assets_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets");

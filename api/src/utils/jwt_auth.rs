@@ -7,13 +7,12 @@ use axum::{
     response::IntoResponse,
     Json,
 };
-
 use axum_extra::extract::cookie::CookieJar;
+use opendevnet_user::models::User;
+use redis::AsyncCommands;
 use serde::{Deserialize, Serialize};
 
 use crate::{utils::token, AppState};
-use opendevnet_user::models::User;
-use redis::AsyncCommands;
 
 #[derive(Debug, Serialize)]
 pub struct ErrorResponse {

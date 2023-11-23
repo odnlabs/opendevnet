@@ -9,8 +9,9 @@ pub mod token;
 pub mod user;
 pub mod ws;
 
-use crate::AppState;
 use token::TokenDetails;
+
+use crate::AppState;
 
 pub fn generate_token(
     user_id: uuid::Uuid,
