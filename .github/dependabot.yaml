@@ -44,7 +44,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'cargo'
-    directory: '/services/opendevnet-auth'
+    directory: '/crates/opendevnet-auth'
     schedule:
       interval: 'daily'
     target-branch: 'dev'
@@ -53,7 +53,7 @@ updates:
     open-pull-requests-limit: 20
 
   - package-ecosystem: 'cargo'
-    directory: '/services/opendevnet-user'
+    directory: '/crates/opendevnet-user'
     schedule:
       interval: 'daily'
     target-branch: 'dev'
