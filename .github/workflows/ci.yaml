@@ -223,11 +223,16 @@ jobs:
       - name: Check manypkg
         run: pnpm manypkg check
 
+      - name: Setup Environment Variables
+        run: |
+          chmod +x run.sh &&
+          ./run.sh prod setup env
+
       - name: Test
-        run: pnpm run test
+        run: pnpm run test:prod
 
       - name: End-to-end Test
-        run: pnpm run e2e
+        run: pnpm run e2e:prod
 
   rust_tests:
     name: Rust Tests
