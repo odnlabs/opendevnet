@@ -3,4 +3,5 @@ extends:
   - slekup/react
 parserOptions:
   project:
+    - ./tsconfig.json
     - ./libs/ui/tsconfig.json
