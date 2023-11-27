@@ -57,11 +57,11 @@ export default defineConfig({
     // Mobile viewports.
     {
       name: 'Mobile Chrome',
-      use: { ...devices['Pixel 5'] },
+      use: { ...devices['Pixel 5'], channel: 'chrome' },
     },
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
+      use: { ...devices['iPhone 12'], channel: 'chrome' },
     },
     // Branded browsers.
     {
