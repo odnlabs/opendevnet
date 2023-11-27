@@ -61,7 +61,7 @@ export default defineConfig({
     },
     {
       name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'], channel: 'chrome' },
+      use: { ...devices['iPhone 12'] },
     },
     // Branded browsers.
     {
