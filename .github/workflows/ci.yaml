@@ -236,8 +236,6 @@ jobs:
   e2e:
     name: End-to-end Test
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.40.0-jammy
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -258,6 +256,9 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Install Browsers
+        run: pnpm playwright install --with-deps
 
       - name: End-to-end Test
         run: pnpm run e2e
