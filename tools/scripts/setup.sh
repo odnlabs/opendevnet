@@ -32,7 +32,7 @@ function setup_prod_env() {
     echo -e "${YELLOW}WARNING${RESET} .env.production already exists"
   else
     echo "Setting up environment variables in .env.production"
-    cp ./tools/scripts/data/.env.example.production ./.env.production || true
+    cp ./tools/scripts/templates/.env.example.production ./.env.production || true
   fi
 
   rm ./api/.env 2> /dev/null || true
@@ -96,7 +96,7 @@ function setup_ci_env() {
     echo -e "${YELLOW}WARNING${RESET} .env.ci already exists"
   else
     echo "Setting up environment variables in .env.ci"
-    cp ./tools/scripts/data/.env.example.ci ./.env.ci || true
+    cp ./tools/scripts/templates/.env.example.ci ./.env.ci || true
   fi
 
   rm ./.env 2> /dev/null || true
@@ -110,7 +110,7 @@ function setup_dev_env() {
     echo -e "${YELLOW}WARNING${RESET} .env.local already exists"
   else
     echo "Setting up environment variables in .env.local"
-    cp ./tools/scripts/data/.env.example.local ./.env.local || true
+    cp ./tools/scripts/templates/.env.example.local ./.env.local || true
   fi
 
   rm ./.env 2> /dev/null || true
