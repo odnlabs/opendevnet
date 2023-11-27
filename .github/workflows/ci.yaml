@@ -255,10 +255,26 @@ jobs:
           ./run.sh ci setup env
 
       - name: Install Browsers
-        run: pnpm playwright install --with-deps
+        run: pnpm exec playwright install --with-deps firefox chromium webkit chrome msedge
 
       - name: Run End-to-end Tests
         run: pnpm run e2e
+
+      - name: Upload Internal Docs Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-e2e-report
+          path: dist/apps/internal-docs/playwright-report/
+          retention-days: 30
+
+      - name: Upload Web Client Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-e2e-report
+          path: dist/apps/web-client/playwright-report/
+          retention-days: 30
 
       - name: Upload Website Report
         uses: actions/upload-artifact@v3
