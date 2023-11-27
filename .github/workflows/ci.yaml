@@ -254,9 +254,6 @@ jobs:
           chmod +x run.sh &&
           ./run.sh ci setup env
 
-      - name: Build
-        run: pnpm run build
-
       - name: Install Browsers
         run: pnpm playwright install --with-deps
 
