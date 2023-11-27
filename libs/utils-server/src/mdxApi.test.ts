@@ -23,12 +23,27 @@ describe('mdxApi', () => {
   });
 
   it('validates frontmatter', () => {
-    expect(() => verifyFrontmatter(
+    expect(() => {
+      verifyFrontmatter(
         '/',
         {
           title: 'title',
         },
-        [['title', 'string']]
-      )).toThrowError();
+        [
+          ['title', 'string'],
+          ['position', 'number'],
+        ]
+      );
+    }).toThrowError();
+
+    expect(() => {
+      verifyFrontmatter(
+        '/',
+        {
+          description: 5,
+        },
+        [['description', 'string']]
+      );
+    }).toThrowError();
   });
 });
