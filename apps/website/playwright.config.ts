@@ -11,7 +11,7 @@ const ci = process.env.ENVIRONMENT === 'ci';
  */
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './e2e' }),
-  timeout: 60_000,
+  timeout: 30_000,
   // Run all tests in parallel.
   fullyParallel: true,
   // Retry on CI only.
