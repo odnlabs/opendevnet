@@ -4,8 +4,7 @@ import { nxE2EPreset } from '@nx/playwright/preset';
 import { defineConfig, devices } from '@playwright/test';
 
 const baseUrl =
-  process.env.PUBLIC_INTERNAL_DOCS_URL?.replace('/internal-docs', '') ||
-  'http://localhost:4200';
+  process.env.PUBLIC_INTERNAL_DOCS_URL || 'http://localhost:4200/internal-docs';
 const ci = process.env.ENVIRONMENT === 'ci';
 
 /**
