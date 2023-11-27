@@ -72,7 +72,6 @@ jobs:
       - name: Build API image
         run: |
           chmod +x run.sh &&
-          ./run.sh ci setup api &&
           ./run.sh ci build api
 
   build_website_image:
@@ -141,7 +140,6 @@ jobs:
       - name: Test API image
         run: |
           chmod +x run.sh &&
-          ./run.sh ci setup api
           ./run.sh ci start api
 
   build_and_run_website_image:

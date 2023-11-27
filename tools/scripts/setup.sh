@@ -35,7 +35,7 @@ function setup_prod_env() {
     cp ./tools/scripts/data/.env.example.production ./.env.production || true
   fi
 
-  rm ./api/.env || true
+  rm ./api/.env 2> /dev/null || true
   ln -s ./.env.production ./.env || true
 
   exit 0
@@ -89,6 +89,20 @@ function setup_prod_env() {
   fi
 }
 
+function setup_ci_env() {
+  local env="$1"
+
+  if [ -e .env.ci ]; then
+    echo -e "${YELLOW}WARNING${RESET} .env.ci already exists"
+  else
+    echo "Setting up environment variables in .env.ci"
+    cp ./tools/scripts/data/.env.example.ci ./.env.ci || true
+  fi
+
+  rm ./.env 2> /dev/null || true
+  ln -s ./.env.ci ./.env || true
+}
+
 function setup_dev_env() {
   local env="$1"
 
@@ -99,7 +113,7 @@ function setup_dev_env() {
     cp ./tools/scripts/data/.env.example.local ./.env.local || true
   fi
 
-  rm ./.env || true
+  rm ./.env 2> /dev/null || true
   ln -s ./.env.local ./.env || true
 }
 
@@ -108,6 +122,12 @@ if [ "$1" == "prod" ]; then
     setup_prod_env $2
   else
     setup_prod_env
+  fi
+elif [ "$1" == "ci" ]; then
+  if [ "$2" == "api" ]; then
+    setup_ci_env $2
+  else
+    setup_ci_env
   fi
 elif [ "$1" == "dev" ]; then
   if [ "$2" == "api" ]; then

@@ -39,6 +39,8 @@ if [ "$1" == "prod" ]; then
       run_script setup prod
       exit 0
     fi
+    help
+    exit 0
   elif [ "$2" == "check" ]; then
     run_script check "${args[@]}"
     exit 0
@@ -47,6 +49,22 @@ if [ "$1" == "prod" ]; then
   git pull
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.production.yaml"
+  run_script docker "${args[@]}"
+elif [ "$1" == "ci" ]; then
+  if [ "$2" == "setup" ]; then
+    if [ "$3" == "env" ]; then
+      run_script setup ci
+      exit 0
+    fi
+    help
+    exit 0
+  elif [ "$2" == "check" ]; then
+    run_script check "${args[@]}"
+    exit 0
+  fi
+  run_script setup ci
+  run_script check "${args[@]}"
+  export COMPOSE_FILE="docker-compose.ci.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "prodtest" ]; then
   if [ "$2" == "internal_docs" ]; then
@@ -77,17 +95,6 @@ elif [ "$1" == "dev" ]; then
   fi
   run_script check "${args[@]}"
   export COMPOSE_FILE="docker-compose.development.yaml"
-  run_script docker "${args[@]}"
-elif [ "$1" == "ci" ]; then
-  if [ "$2" == "setup" ]; then
-    if [ "$3" == "api" ]; then
-      run_script setup prod api
-      exit 0
-    fi
-  fi
-  run_script setup prod
-  run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.ci.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
   run_script check "${args[@]}"

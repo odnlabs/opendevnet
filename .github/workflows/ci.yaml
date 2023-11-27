@@ -150,7 +150,6 @@ jobs:
       - name: Run API image
         run: |
           chmod +x run.sh &&
-          ./run.sh ci setup api &&
           ./run.sh ci start api
 
   build_and_run_website_image:
@@ -226,7 +225,7 @@ jobs:
       - name: Setup Environment Variables
         run: |
           chmod +x run.sh &&
-          ./run.sh dev setup env
+          ./run.sh ci setup env
 
       - name: Build
         run: pnpm run build
