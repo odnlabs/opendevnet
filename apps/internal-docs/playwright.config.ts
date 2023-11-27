@@ -4,7 +4,8 @@ import { nxE2EPreset } from '@nx/playwright/preset';
 import { defineConfig, devices } from '@playwright/test';
 
 const baseUrl =
-  process.env.PUBLIC_INTERNAL_DOCS_URL || 'http://localhost:4200/internal-docs';
+  process.env.PUBLIC_INTERNAL_DOCS_URL?.replace('/internal-docs', '') ||
+  'http://localhost:4200';
 const ci = process.env.ENVIRONMENT === 'ci';
 
 /**
@@ -41,7 +42,7 @@ export default defineConfig({
     url: baseUrl,
     reuseExistingServer: ci,
     cwd: workspaceRoot,
-    timeout: 30_000,
+    timeout: 60_000,
   },
   // Configure projects for major browsers.
   projects: [
