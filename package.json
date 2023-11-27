@@ -22,8 +22,7 @@
     "commit": "commit",
     "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
     "dev:frontend": "dotenv -e .env.local -- nx run-many --target=dev --projects=internal-docs,website,web-client",
-    "e2e": "dotenv -e .env.local -- nx run-many --target=e2e --all",
-    "e2e:prod": "dotenv -e .env.production -- nx run-many --target=e2e --all",
+    "e2e": "dotenv -e .env.local -- nx run-many --target=e2e --all --parallel=false",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{mjs,cjs,js,jsx,ts,tsx,md,mdx,json,yaml,sh}\" --ignore-path=.prettierignore",
     "format:check": "prettier --check \"**/*.{mjs,cjs,js,jsx,ts,tsx,md,mdx,json,yaml,sh}\" --ignore-path=.prettierignore",
@@ -31,7 +30,6 @@
     "lint": "nx run-many --target=lint --all",
     "lint:fix": "nx run-many --target=lint --all -- --fix",
     "test": "dotenv -e .env.local -- nx run-many --target=test --all",
-    "test:prod": "dotenv -e .env.production -- nx run-many --target=test --all",
     "update": "pnpm update --recursive --latest --interactive"
   },
   "resolutions": {
