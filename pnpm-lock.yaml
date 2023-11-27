@@ -182,8 +182,8 @@ importers:
         specifier: 14.0.3
         version: 14.0.3(eslint@8.54.0)(typescript@5.3.2)
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -297,8 +297,8 @@ importers:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -421,8 +421,8 @@ importers:
         specifier: ^8.54.0
         version: 8.54.0
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -458,8 +458,8 @@ importers:
         specifier: ^8.5.10
         version: 8.5.10
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       tsup:
         specifier: ^8.0.1
         version: 8.0.1(postcss@8.4.31)(typescript@5.3.2)
@@ -508,8 +508,8 @@ importers:
         specifier: ^10.4.16
         version: 10.4.16(postcss@8.4.31)
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       postcss:
         specifier: ^8.4.31
         version: 8.4.31
@@ -536,8 +536,8 @@ importers:
         specifier: ^20.9.4
         version: 20.9.4
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       tsup:
         specifier: ^8.0.1
         version: 8.0.1(postcss@8.4.31)(typescript@5.3.2)
@@ -579,8 +579,8 @@ importers:
         specifier: ^20.9.4
         version: 20.9.4
       eslint-config-slekup:
-        specifier: 1.0.22
-        version: 1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
+        specifier: 1.0.23
+        version: 1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2)
       tsup:
         specifier: ^8.0.1
         version: 8.0.1(postcss@8.4.31)(typescript@5.3.2)
@@ -5583,39 +5583,6 @@ packages:
       eslint: '>=7.0.0'
     dependencies:
       eslint: 8.54.0
-    dev: true
-
-  /eslint-config-slekup@1.0.22(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2):
-    resolution: {integrity: sha512-XoX+LearEbCPjdKyoP1FHqMSNwfwJ3FANgODCVsFldJoXxhyR9yAs2la9TnfolicTB2NVAjgZGiyj5Lh2ta8bA==}
-    peerDependencies:
-      eslint: ^8.0.0
-    dependencies:
-      '@babel/eslint-parser': 7.23.3(@babel/core@7.23.3)(eslint@8.54.0)
-      '@typescript-eslint/eslint-plugin': 6.12.0(@typescript-eslint/parser@6.12.0)(eslint@8.54.0)(typescript@5.3.2)
-      '@typescript-eslint/parser': 6.12.0(eslint@8.54.0)(typescript@5.3.2)
-      eslint: 8.54.0
-      eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.29.0)(eslint@8.54.0)
-      eslint-config-eslint: 9.0.0(eslint@8.54.0)
-      eslint-config-next: 14.0.3(eslint@8.54.0)(typescript@5.3.2)
-      eslint-config-prettier: 9.0.0(eslint@8.54.0)
-      eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.12.0)(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.29.0)(eslint@8.54.0)
-      eslint-plugin-import: 2.29.0(@typescript-eslint/parser@6.12.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.54.0)
-      eslint-plugin-jsdoc: 46.9.0(eslint@8.54.0)
-      eslint-plugin-jsonc: 2.10.0(eslint@8.54.0)
-      eslint-plugin-markdown: 3.0.1(eslint@8.54.0)
-      eslint-plugin-node: 11.1.0(eslint@8.54.0)
-      eslint-plugin-promise: 6.1.1(eslint@8.54.0)
-      eslint-plugin-react: 7.33.2(eslint@8.54.0)
-      eslint-plugin-react-hooks: 4.6.0(eslint@8.54.0)
-      eslint-plugin-tsdoc: 0.2.17
-      eslint-plugin-yml: 1.10.0(eslint@8.54.0)
-      yaml-eslint-parser: 1.2.2
-    transitivePeerDependencies:
-      - '@babel/core'
-      - eslint-import-resolver-node
-      - eslint-import-resolver-webpack
-      - supports-color
-      - typescript
     dev: true
 
   /eslint-config-slekup@1.0.23(@babel/core@7.23.3)(eslint@8.54.0)(typescript@5.3.2):
