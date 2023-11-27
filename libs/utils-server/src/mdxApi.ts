@@ -54,7 +54,7 @@ type RequiredFrontmatter = [string, 'string' | 'number' | 'boolean'][];
  * @param data The frontmatter data.
  * @param requiredFrontmatter The required frontmatter and their types.
  */
-const verifyFrontmatter = (
+export const verifyFrontmatter = (
   path: string,
   data: Record<string, unknown>,
   requiredFrontmatter: RequiredFrontmatter
