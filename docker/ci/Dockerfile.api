@@ -1,0 +1,26 @@
+# Using the latest rust image
+FROM rust:1.70 as build
+# Create a new empty shell project
+RUN USER=root cargo new --bin api
+WORKDIR /api
+# Copy over manifests
+COPY ./Cargo.lock ./Cargo.lock
+# Build only the dependencies to cache them
+RUN cargo build --release
+RUN rm src/*.rs
+# Copy over source code
+COPY ./Cargo.toml ./Cargo.toml
+COPY ./.sqlx ./.sqlx/
+COPY ./api ./api/
+COPY ./crates ./crates/
+COPY ./.env ./.env
+# Build for release
+RUN rm ./target/release/deps/api*
+RUN cargo build --release --bin api
+
+# Final image
+FROM debian:bullseye-slim
+# Copy the build artifact from the build stage
+COPY --from=build /api/target/release/api .
+# Set the startup command to run the binary
+CMD ["./api"]
