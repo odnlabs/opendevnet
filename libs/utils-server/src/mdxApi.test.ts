@@ -52,13 +52,11 @@ describe('mdxApi', () => {
     }).toThrowError();
   });
 
-  it('gets slugs', () => {
-    expect(async () => {
-      await getSlugs('../../no-docs/dir-that-doest-exist');
-    }).toThrowError();
+  it('gets slugs', async () => {
+    await expect(
+      getSlugs('../../no-docs/dir-that-doest-exist')
+    ).rejects.toThrowError();
 
-    expect(async () => {
-      await getSlugs('../../docs/internal');
-    }).not.toThrowError();
+    await expect(getSlugs('../../docs/internal')).resolves.not.toThrowError();
   });
 });
