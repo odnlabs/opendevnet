@@ -59,10 +59,15 @@ export default defineConfig({
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 5'], channel: 'chrome' },
     },
-    {
-      name: 'Mobile Safari',
-      use: { ...devices['iPhone 12'] },
-    },
+    // Disable mobile Safari on CI because the browser works incorrectly on ubuntu.
+    ...(ci
+      ? []
+      : [
+          {
+            name: 'Mobile Safari',
+            use: { ...devices['iPhone 12'] },
+          },
+        ]),
     // Branded browsers.
     {
       name: 'Microsoft Edge',
