@@ -233,8 +233,31 @@ jobs:
       - name: Test
         run: pnpm run test
 
-      - name: Install Browsers
-        run: pnpm playwright install --with-deps
+  e2e:
+    name: End-to-end Test
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.40.0-jammy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+          check-latest: true
+
+      - name: Install dependencies
+        uses: ./tools/actions/pnpm-cache
+
+      - name: Setup Environment Variables
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci setup env
+
+      - name: Build
+        run: pnpm run build
 
       - name: End-to-end Test
         run: pnpm run e2e
