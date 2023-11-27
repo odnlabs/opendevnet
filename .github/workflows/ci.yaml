@@ -38,8 +38,8 @@ jobs:
         if: github.event_name == 'pull_request'
         run: pnpm exec commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
 
-  filter_check:
-    name: Filter check
+  changes:
+    name: Change Detection
     runs-on: ubuntu-latest
     outputs:
       api: ${{ steps.filter.outputs.api }}
@@ -57,8 +57,12 @@ jobs:
           filters: |
             all: &all
               - '.github/workflows/deploy.yaml'
+              - '.github/workflows/ci.yaml'
               - 'tools/scripts/docker.sh'
               - '.dockerignore'
+              - 'docker-compose.ci.yaml'
+              - 'docker-compose.production.yaml'
+              - 'docker-compose.development.yaml'
               - 'run.sh'
             frontend: &frontend
               - 'libs/tailwind-config/**'
@@ -138,8 +142,8 @@ jobs:
   build_and_run_api_image:
     name: Build and Run API Image
     runs-on: ubuntu-latest
-    needs: filter_check
-    if: needs.filter_check.outputs.api == 'true'
+    needs: changes
+    if: needs.changes.outputs.api == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -155,8 +159,8 @@ jobs:
   build_and_run_website_image:
     name: Build and Run Website Image
     runs-on: ubuntu-latest
-    needs: filter_check
-    if: needs.filter_check.outputs.website == 'true'
+    needs: changes
+    if: needs.changes.outputs.website == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -172,8 +176,8 @@ jobs:
   build_and_run_web_client_image:
     name: Build and Run Web Client Image
     runs-on: ubuntu-latest
-    needs: filter_check
-    if: needs.filter_check.outputs.web_client == 'true'
+    needs: changes
+    if: needs.changes.outputs.web_client == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -189,8 +193,8 @@ jobs:
   build_and_run_internal_docs_image:
     name: Build and Run Internal Image
     runs-on: ubuntu-latest
-    needs: filter_check
-    if: needs.filter_check.outputs.internal_docs == 'true'
+    needs: changes
+    if: needs.changes.outputs.internal_docs == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
