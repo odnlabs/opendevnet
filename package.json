@@ -18,12 +18,12 @@
   ],
   "scripts": {
     "build": "dotenv -e .env.production -- nx run-many --target=build --all",
+    "build:ci": "dotenv -e .env.ci -- nx run-many --target=build --all",
     "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all",
     "commit": "commit",
     "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
     "dev:frontend": "dotenv -e .env.local -- nx run-many --target=dev --projects=internal-docs,website,web-client",
-    "e2e": "dotenv -e .env.local -- nx run-many --target=e2e --all",
-    "e2e:prod": "dotenv -e .env.production -- nx run-many --target=e2e --all",
+    "e2e": "dotenv -e .env.local -- nx run-many --target=e2e --all --parallel=false",
     "fix": "manypkg fix",
     "format": "prettier --write \"**/*.{mjs,cjs,js,jsx,ts,tsx,md,mdx,json,yaml,sh}\" --ignore-path=.prettierignore",
     "format:check": "prettier --check \"**/*.{mjs,cjs,js,jsx,ts,tsx,md,mdx,json,yaml,sh}\" --ignore-path=.prettierignore",
@@ -31,14 +31,12 @@
     "lint": "nx run-many --target=lint --all",
     "lint:fix": "nx run-many --target=lint --all -- --fix",
     "test": "dotenv -e .env.local -- nx run-many --target=test --all",
-    "test:prod": "dotenv -e .env.production -- nx run-many --target=test --all",
     "update": "pnpm update --recursive --latest --interactive"
   },
   "resolutions": {
     "next": "14.0.1",
     "remark-gfm": "3.0.1"
   },
-  "dependencies": {},
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-angular": "^18.4.3",
@@ -58,7 +56,7 @@
     "conventional-changelog-conventionalcommits": "^7.0.2",
     "dotenv-cli": "^7.3.0",
     "eslint": "^8.54.0",
-    "eslint-config-slekup": "1.0.22",
+    "eslint-config-slekup": "1.0.23",
     "eslint-plugin-playwright": "^0.15.3",
     "husky": "^8.0.3",
     "lint-staged": "^15.1.0",

@@ -7,7 +7,7 @@
     "default": {
       "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "test", "e2e", "lint"],
+        "cacheableOperations": ["build", "test", "lint"],
         "cacheDirectory": "/tmp/nx-cache"
       }
     }
