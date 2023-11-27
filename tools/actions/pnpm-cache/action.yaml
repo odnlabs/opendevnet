@@ -4,11 +4,11 @@ description: Run pnpm install with cache enabled
 runs:
   using: 'composite'
   steps:
-    # - if: runner.os == 'Linux'
-    #   name: Set up swap space
-    #   uses: pierotofy/set-swap-space@v1.0
-    #   with:
-    #     swap-size-gb: 1
+    - if: runner.os == 'Linux'
+      name: Set up swap space
+      uses: pierotofy/set-swap-space@v1.0
+      with:
+        swap-size-gb: 1
 
     - name: Install pnpm
       uses: pnpm/action-setup@v2
