@@ -255,7 +255,7 @@ jobs:
           ./run.sh ci setup env
 
       - name: Install Browsers
-        run: pnpm exec playwright install --with-deps firefox chromium webkit chrome msedge
+        run: pnpm exec playwright install --with-deps chromium chrome msedge firefox webkit
 
       - name: Run End-to-end Tests
         run: pnpm run e2e
