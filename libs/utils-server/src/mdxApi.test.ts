@@ -1,5 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { getSlugPosition, removePos, verifyFrontmatter } from './mdxApi';
+import {
+  getSlugPosition,
+  getSlugs,
+  removePos,
+  verifyFrontmatter,
+} from './mdxApi';
 
 describe('mdxApi', () => {
   it('gets slug position', () => {
@@ -45,5 +50,15 @@ describe('mdxApi', () => {
         [['description', 'string']]
       );
     }).toThrowError();
+  });
+
+  it('gets slugs', () => {
+    expect(async () => {
+      await getSlugs('../../no-docs/dir-that-doest-exist');
+    }).toThrowError();
+
+    expect(async () => {
+      await getSlugs('../../docs/internal');
+    }).not.toThrowError();
   });
 });
