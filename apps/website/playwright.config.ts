@@ -9,27 +9,34 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   ...nxE2EPreset(__filename, { testDir: './e2e' }),
   timeout: 30_000,
+  // Run all tests in parallel.
   fullyParallel: true,
-  retries: process.env.CI ? 2 : 0,
-  /* Fail the build on CI if you accidentally left test.only in the source code. */
+  // Retry on CI only.
+  retries: process.env.ENVIRONMENT === 'ci' ? 2 : 0,
+  // Fail the build on CI if you accidentally left test.only in the source code.
   forbidOnly: !!process.env.CI,
-  /* Opt out of parallel tests on CI. */
-  // workers: process.env.CI ? 1 : 0,
+  // Opt out of parallel tests on CI.
+  ...(process.env.ENVIRONMENT === 'ci' ? { workers: 1 } : {}),
+  // Generate a report after the test run.
   reporter: [
     ['html', { outputFolder: '../../dist/apps/website/playwright-report' }],
   ],
-  /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
   use: {
+    headless: true,
     baseURL: process.env.PUBLIC_WEBSITE_URL || 'http://localhost:4000',
+    ignoreHTTPSErrors: true,
     trace: 'on-first-retry',
   },
-  /* Run local dev server before starting the tests */
+  // Run local dev server before starting the tests.
   webServer: {
     command: 'dotenv -e .env.local -- nx run website:dev',
-    url: 'http://localhost:4000',
-    reuseExistingServer: !process.env.CI,
+    url: process.env.PUBLIC_WEBSITE_URL || 'http://localhost:4000',
+    reuseExistingServer: process.env.ENVIRONMENT !== 'ci',
     cwd: workspaceRoot,
-  }, // Configure projects for major browsers
+    timeout: 30_000,
+  },
+  // Configure projects for major browsers.
   projects: [
     {
       name: 'chromium',
@@ -43,7 +50,7 @@ export default defineConfig({
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
     },
-    // Test against mobile viewports.
+    // Mobile viewports.
     {
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 5'] },
@@ -52,7 +59,7 @@ export default defineConfig({
       name: 'Mobile Safari',
       use: { ...devices['iPhone 12'] },
     },
-    // Test against branded browsers.
+    // Branded browsers.
     {
       name: 'Microsoft Edge',
       use: { ...devices['Desktop Edge'], channel: 'msedge' },
