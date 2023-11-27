@@ -3,6 +3,10 @@ import { workspaceRoot } from '@nx/devkit';
 import { nxE2EPreset } from '@nx/playwright/preset';
 import { defineConfig, devices } from '@playwright/test';
 
+const baseUrl =
+  process.env.PUBLIC_INTERNAL_DOCS_URL || 'http://localhost:4200/internal-docs';
+const ci = process.env.ENVIRONMENT === 'ci';
+
 /**
  * LINK: https://playwright.dev/docs/test-configuration.
  */
@@ -12,11 +16,11 @@ export default defineConfig({
   // Run all tests in parallel.
   fullyParallel: true,
   // Retry on CI only.
-  retries: process.env.ENVIRONMENT === 'ci' ? 2 : 0,
+  retries: ci ? 2 : 0,
   // Fail the build on CI if you accidentally left test.only in the source code.
-  forbidOnly: !!process.env.CI,
+  forbidOnly: !!ci,
   // Opt out of parallel tests on CI.
-  ...(process.env.ENVIRONMENT === 'ci' ? { workers: 1 } : {}),
+  ...(ci ? { workers: 1 } : {}),
   // Generate a report after the test run.
   reporter: [
     [
@@ -27,19 +31,15 @@ export default defineConfig({
   // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
   use: {
     headless: true,
-    baseURL:
-      process.env.PUBLIC_INTERNAL_DOCS_URL ||
-      'http://localhost:4200/internal-docs',
+    baseURL: baseUrl,
     ignoreHTTPSErrors: true,
     trace: 'on-first-retry',
   },
   // Run local dev server before starting the tests.
   webServer: {
     command: 'dotenv -e .env.local -- nx run internal-docs:dev',
-    url:
-      process.env.PUBLIC_INTERNAL_DOCS_URL ||
-      'http://localhost:4200/internal-docs',
-    reuseExistingServer: process.env.ENVIRONMENT !== 'ci',
+    url: baseUrl,
+    reuseExistingServer: ci,
     cwd: workspaceRoot,
     timeout: 30_000,
   },
