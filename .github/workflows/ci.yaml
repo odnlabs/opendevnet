@@ -203,8 +203,8 @@ jobs:
           chmod +x run.sh &&
           ./run.sh ci start internal_docs
 
-  node_tests:
-    name: Node Tests
+  unit_tests:
+    name: Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -230,11 +230,11 @@ jobs:
       - name: Build
         run: pnpm run build
 
-      - name: Test
+      - name: Run Unit Tests
         run: pnpm run test
 
-  e2e:
-    name: End-to-end Test
+  e2e_tests:
+    name: End-to-end Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -257,8 +257,16 @@ jobs:
       - name: Install Browsers
         run: pnpm playwright install --with-deps
 
-      - name: End-to-end Test
+      - name: Run End-to-end Tests
         run: pnpm run e2e
+
+      - name: Upload Website Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-e2e-report
+          path: dist/apps/website/playwright-report/
+          retention-days: 30
 
   rust_tests:
     name: Rust Tests
