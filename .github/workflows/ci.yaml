@@ -70,24 +70,24 @@ jobs:
               - *all
               - 'api/**'
               - 'crates/**'
-              - 'docker/production/Dockerfile.api'
+              - 'docker/ci/Dockerfile.api'
             website:
               - *all
               - *frontend
               - 'libs/api-client/**'
               - 'apps/website/**'
-              - 'docker/production/Dockerfile.website'
+              - 'docker/ci/Dockerfile.website'
             web_client:
               - *all
               - *frontend
               - 'libs/api-client/**'
               - 'apps/web_client/**'
-              - 'docker/production/Dockerfile.web_client'
+              - 'docker/ci/Dockerfile.web_client'
             internal_docs:
               - *all
               - *frontend
               - 'apps/internal-docs/**'
-              - 'docker/production/Dockerfile.internal_docs'
+              - 'docker/ci/Dockerfile.internal_docs'
 
   lint:
     name: Lint
@@ -108,10 +108,10 @@ jobs:
       - name: Create Environment Variables
         run: |
           chmod +x run.sh &&
-          ./run.sh prod setup env
+          ./run.sh ci setup env
 
       - name: Build
-        run: pnpm run build
+        run: pnpm run build:ci
 
       - name: Lint check
         run: pnpm run lint

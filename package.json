@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "build": "dotenv -e .env.production -- nx run-many --target=build --all",
+    "build:ci": "dotenv -e .env.ci -- nx run-many --target=build --all",
     "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all",
     "commit": "commit",
     "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
