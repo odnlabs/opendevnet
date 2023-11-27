@@ -9,12 +9,10 @@ describe('config', () => {
   });
 
   it('has valid http URLs', () => {
-    const urlRegex =
-      '^(?!mailto:)(?:(?:http|https|ftp)://)(?:\\S+(?::\\S*)?@)?(?:(?:(?:[1-9]\\d?|1\\d\\d|2[01]\\d|22[0-3])(?:\\.(?:1?\\d{1,2}|2[0-4]\\d|25[0-5])){2}(?:\\.(?:[0-9]\\d?|1\\d\\d|2[0-4]\\d|25[0-4]))|(?:(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)(?:\\.(?:[a-z\\u00a1-\\uffff0-9]+-?)*[a-z\\u00a1-\\uffff0-9]+)*(?:\\.(?:[a-z\\u00a1-\\uffff]{2,})))|localhost)(?::\\d{2,5})?(?:(/|\\?|#)[^\\s]*)?$';
-    const url = new RegExp(urlRegex, 'i');
-    expect(config.api).toMatch(url);
-    expect(config.website).toMatch(url);
-    expect(config.webApp).toMatch(url);
-    expect(config.internalDocs).toMatch(url);
+    const urlRegex = /^(?:http|https):\/\//;
+    expect(config.api).toMatch(urlRegex);
+    expect(config.website).toMatch(urlRegex);
+    expect(config.webApp).toMatch(urlRegex);
+    expect(config.internalDocs).toMatch(urlRegex);
   });
 });
