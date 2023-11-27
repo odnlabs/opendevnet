@@ -264,7 +264,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-e2e-report
+          name: playwright-e2e-report-internal-docs
           path: dist/apps/internal-docs/playwright-report/
           retention-days: 30
 
@@ -272,7 +272,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-e2e-report
+          name: playwright-e2e-report-web-client
           path: dist/apps/web-client/playwright-report/
           retention-days: 30
 
@@ -280,7 +280,7 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-e2e-report
+          name: playwright-e2e-report-website
           path: dist/apps/website/playwright-report/
           retention-days: 30
 
