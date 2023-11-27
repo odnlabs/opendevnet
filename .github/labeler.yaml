@@ -14,6 +14,13 @@ apps:web-client:
 ci:
   - .github/workflows/*
   - .github/workflows/**/*
+  - tools/actions/**/*
+crates:auth:
+  - crates/opendevnet-auth/*
+  - crates/opendevnet-auth/**/*
+crates:user:
+  - crates/opendevnet-user/*
+  - crates/opendevnet-user/**/*
 dependencies:
   - package.json
   - pnpm-lock.yaml
@@ -21,13 +28,21 @@ dependencies:
   - libs/**/package.json
   - Cargo.toml
   - Cargo.lock
-  - apps/**/Cargo.toml
-  - libs/**/Cargo.toml
-  - apps/**/Cargo.lock
-  - libs/**/Cargo.lock
-documentation:
-  - docs/*
-  - docs/**/*
+  - crates/**/Cargo.toml
+  - crates/**/Cargo.lock
+  - .nvmrc
+docs:api:
+  - docs/api/*
+  - docs:api/**/*
+docs:help:
+  - docs/help/*
+  - docs/help/**/*
+docs:internal:
+  - docs/internal/*
+  - docs/internal/**/*
+docs:policies:
+  - docs/policies/*
+  - docs/policies/**/*
 libs:@odnlabs/api-client:
   - libs/api-client/*
   - libs/api-client/**/*
