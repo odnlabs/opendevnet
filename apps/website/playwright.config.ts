@@ -30,6 +30,7 @@ export default defineConfig({
     baseURL: baseUrl,
     ignoreHTTPSErrors: true,
     trace: 'on-first-retry',
+    actionTimeout: 12_000,
   },
   // Run local dev server before starting the tests.
   webServer: {
