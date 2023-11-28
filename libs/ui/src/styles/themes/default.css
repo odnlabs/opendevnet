@@ -59,6 +59,7 @@
 
 /* Tailwind */
 .group:focus-visible .group-focus-visible\:ring,
+.after\:focus-visible\:ring:focus-visible::after,
 *:focus-visible {
   --tw-ring-color: rgb(var(--ring));
   border-color: var(--tw-ring-color);
