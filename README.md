@@ -5,7 +5,7 @@
 <h3 align="center">Open Dev Net</h3>
 
 <p align="center">
-  <b>A Social Platform for Developers</b>
+  <b>The Social Networking Platform for Developers and Designers.</b>
 </p>
 
 <div align="center">
