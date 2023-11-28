@@ -1,175 +1,175 @@
 - name: api
-  color: 00db99
+  color: '00db99'
   description: API changes.
 
 - name: apps:internal-docs
-  color: 00db99
+  color: '00db99'
   description: Internal documentation.
 
 - name: apps:website
-  color: 00db99
+  color: '00db99'
   description: Website changes.
 
 - name: apps:web-client
-  color: 00db99
+  color: '00db99'
   description: Web client changes.
 
 - name: backlog
-  color: 7ef7ef
+  color: '7ef7ef'
   description: Not currently being worked on.
 
 - name: blocked
-  color: fc1423
+  color: 'fc1423'
   description: Blocked by another issue.
 
 - name: bug
-  color: d73a4a
+  color: 'd73a4a'
   description: Something isn't working.
 
 - name: chore
-  color: ffffff
+  color: 'ffffff'
   description: Maintenance work.
 
 - name: ci
-  color: ff2466
+  color: 'ff2466'
   description: CI configuration, scripts, etc.
 
 - name: crates:auth
-  color: 0435fb
+  color: '0435fb'
   description: Authentication crate.
 
 - name: crates:user
-  color: 0435fb
+  color: '0435fb'
   description: User crate.
 
 - name: dependencies
-  color: 276bd1
+  color: '276bd1'
   description: Project dependencies.
 
 - name: docs
-  color: 008672
+  color: '008672'
   description: Documentation.
 
 - name: docs:api
-  color: 008672
+  color: '008672'
   description: API documentation.
 
 - name: docs:help
-  color: 008672
+  color: '008672'
   description: Help center documentation.
 
 - name: docs:internal
-  color: 008672
+  color: '008672'
   description: Internal documentation.
 
 - name: docs:policies
-  color: 008672
+  color: '008672'
   description: Policies documentation.
 
 - name: duplicate
-  color: cfd3d7
+  color: 'cfd3d7'
   description: This issue or pull request already exists.
 
 - name: feature request
-  color: fcf95a
+  color: 'fcf95a'
   description: New feature or request.
 
 - name: good first issue
-  color: 7057ff
+  color: '7057ff'
   description: Good for newcomers.
 
 - name: has PR
-  color: 4b1f8e
+  color: '4b1f8e'
   description: Pull request has been opened.
 
 - name: help wanted
-  color: 0075ca
+  color: '0075ca'
   description: Extra attention is needed.
 
 - name: in progress
-  color: ffccd7
+  color: 'ffccd7'
   description: Currently being worked on.
 
 - name: in review
-  color: aed5fc
+  color: 'aed5fc'
   description: Currently being reviewed.
 
 - name: invalid
-  color: e4e669
+  color: 'e4e669'
   description: This doesn't seem right.
 
 - name: libs:@odnlabs/api-client
-  color: fbca04
+  color: 'fbca04'
   description: API client library.
 
 - name: libs:@odnlabs/tailwind-config
-  color: fbca04
+  color: 'fbca04'
   description: Tailwind configuration.
 
 - name: libs:@odnlabs/ui
-  color: fbca04
+  color: 'fbca04'
   description: UI components.
 
 - name: libs:@odnlabs/utils-server
-  color: fbca04
+  color: 'fbca04'
   description: Server utilities.
 
 - name: libs:@odnlabs/utils-client
-  color: fbca04
+  color: 'fbca04'
   description: Client utilities.
 
 - name: performance
-  color: 80c042
+  color: '80c042'
   description: Improves performance.
 
 - name: pr:autoupdate
-  color: 6624ff
+  color: '6624ff'
   description: Kodiak will merge base branch into this PR.
 
 - name: pr:fixship
-  color: 6624ff
+  color: '6624ff'
   description: A PR which is approved with notes and does not require re-review.
 
 - name: pr:on hold
-  color: 6624ff
+  color: '6624ff'
   description: Pull requests that are "on hold" and should not be merged.
 
 - name: pr:wip
-  color: 6624ff
+  color: '6624ff'
   description: Pull requests that are "work in progress" and should not be merged.
 
 - name: priority:high
-  color: fc1423
+  color: 'fc1423'
   description: High priority.
 
 - name: priority:low
-  color: 7ef7ef
+  color: '7ef7ef'
   description: Low priority.
 
 - name: priority:medium
-  color: 00db99
+  color: '00db99'
   description: Medium priority.
 
 - name: refactor
-  color: 1d637f
+  color: '1d637f'
   description: Refactoring code.
 
 - name: regression
-  color: ea8785
+  color: 'ea8785'
   description: Something that used to work, but now doesn't.
 
 - name: tests
-  color: f06dff
+  color: 'f06dff'
   description: Unit tests, integration tests, e2e tests, etc.
 
 - name: tools
-  color: e01de0
+  color: 'e01de0'
   description: Tools used to develop the project.
 
 - name: typings
-  color: 80c042
+  color: '80c042'
   description: Only type changes, no code changes.
 
 - name: wontfix
-  color: ffffff
+  color: 'ffffff'
   description: Will not be fixed.
