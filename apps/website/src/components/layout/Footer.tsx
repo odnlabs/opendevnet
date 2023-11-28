@@ -150,10 +150,10 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, internalDocs }) => {
             <p className="text-text-primary mt-4 text-xl font-medium">
               Open Dev Net
             </p>
-            <div className="text-text-faint mt-5 flex justify-center lg:justify-start">
+            <div className="text-text-faint -ml-1 mt-3 flex justify-center lg:justify-start">
               {socialMediaLinks.map((link) => (
                 <a
-                  className="hover:text-text-secondary active:text-text mr-3 transition duration-200"
+                  className="hover:text-text-secondary active:text-text focus-visible:text-text mr-1 rounded-md p-1 focus-visible:ring"
                   href={link.url}
                   key={link.url}
                   rel="noreferrer"
@@ -171,7 +171,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, internalDocs }) => {
                 key={category.title.replaceAll(' ', '-').toLowerCase()}
               >
                 {/* Category */}
-                <p className="mb-4 hidden text-sm font-semibold uppercase md:block">
+                <p className="mb-2 hidden px-2 text-sm font-semibold uppercase md:block">
                   {category.title}
                 </p>
                 <button
@@ -195,9 +195,9 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, internalDocs }) => {
                   }`}
                 >
                   {category.items.map((item) => (
-                    <div className="md:my-2" key={item.href}>
+                    <div key={item.href}>
                       <Link
-                        className="border-border/50 bg-secondary/50 hover:bg-secondary focus:bg-secondary-active text-text-secondary md:text-text-faint hover:text-text-primary active:text-text block border-t py-4 text-center ring-inset transition duration-300 focus-visible:ring md:inline md:border-none md:bg-transparent md:py-0 md:text-left md:transition-none md:hover:bg-transparent md:focus:bg-transparent"
+                        className="border-border/50 bg-secondary/50 hover:bg-secondary focus:bg-secondary-active text-text-secondary md:text-text-faint hover:text-text-primary active:text-text focus-visible:text-text block border-t py-4 text-center ring-inset transition duration-300 focus-visible:ring md:inline-block md:rounded-md md:border-none md:bg-transparent md:px-2 md:py-1 md:text-left md:transition-none md:hover:bg-transparent md:focus:bg-transparent"
                         href={item.href}
                       >
                         {item.label}
@@ -213,7 +213,10 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, internalDocs }) => {
       <div className="border-border/50 border-t bg-[rgb(var(--footer))] py-8 text-sm">
         <p className="text-text-faint text-center text-sm">
           &copy; {new Date().getFullYear()},{' '}
-          <Link className="hover:text-text" href="/">
+          <Link
+            className="hover:text-text focus-visible:text-text rounded-md p-1 focus-visible:ring"
+            href="/"
+          >
             OpenDevNet.com
           </Link>
         </p>

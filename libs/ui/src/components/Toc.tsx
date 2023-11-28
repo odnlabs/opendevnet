@@ -153,7 +153,7 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
           {headings.map((heading) => (
             <li className={styles[heading.level - 1]} key={heading.id}>
               <a
-                className={`text-sm ${
+                className={`relative text-sm after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring ${
                   activeId === heading.id
                     ? 'link font-semibold'
                     : 'text-text-primary hover:underline'
@@ -168,7 +168,7 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
         {editLink && (
           <div className="border-border mt-3 border-t text-sm">
             <a
-              className="text-text-secondary hover:text-text active:text-text my-2 flex"
+              className="text-text-secondary hover:text-text active:text-text relative my-2 flex after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring"
               href={editLink}
               rel="noreferrer"
               target="_blank"
