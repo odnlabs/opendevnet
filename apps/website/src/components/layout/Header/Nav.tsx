@@ -15,7 +15,7 @@ export const HeaderLinks: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
   const basePath = `/${urlSplit[1]}`;
 
   return (
-    <div className="absolute left-1/2 my-4 hidden -translate-x-1/2 justify-center lg:flex">
+    <nav className="absolute left-1/2 my-4 hidden -translate-x-1/2 justify-center lg:flex">
       {links.map((link) => {
         return link.external ? (
           <a
@@ -40,6 +40,6 @@ export const HeaderLinks: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
           </Link>
         );
       })}
-    </div>
+    </nav>
   );
 };

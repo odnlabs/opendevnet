@@ -140,7 +140,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
           </div>
         </div>
       </div>
-      <div className="border-border border-t bg-[rgb(var(--footer))] text-sm md:py-10">
+      <footer className="border-border border-t bg-[rgb(var(--footer))] text-sm md:py-10">
         <div className="mx-auto max-w-7xl justify-between pt-10 md:w-10/12 md:py-5 lg:flex lg:py-10">
           <div className="mx-auto mb-10 w-80 text-center lg:mx-0 lg:mb-0 lg:text-left">
             <Image
@@ -223,7 +223,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
             ))}
           </div>
         </div>
-      </div>
+      </footer>
       <div className="border-border/50 border-t bg-[rgb(var(--footer))] py-8 text-sm">
         <p className="text-text-faint text-center text-sm">
           &copy; {new Date().getFullYear()},{' '}

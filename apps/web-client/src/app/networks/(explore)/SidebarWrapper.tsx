@@ -8,7 +8,7 @@ import { HiOutlinePlus } from '@react-icons/all-files/hi/HiOutlinePlus';
 import { MdWeb } from '@react-icons/all-files/md/MdWeb';
 import { RiSettings3Line } from '@react-icons/all-files/ri/RiSettings3Line';
 
-import { Sidebar, SidebarButton } from '@components/layout/index';
+import { Sidebar, SidebarButton } from '@components/layout/Sidebar';
 
 export const SidebarWrapper: React.FC = () => {
   const buttons: SidebarButton[][] = [

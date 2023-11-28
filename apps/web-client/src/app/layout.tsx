@@ -3,9 +3,11 @@ import { Poppins } from 'next/font/google';
 import { config } from '@odnlabs/utils-server';
 
 import { DataLayer } from '@components/layout/DataLayer';
+import { Header } from '@components/layout/Header';
+import { NavigationBar } from '@components/layout/NavigationBar';
 import { Providers } from '@components/layout/Providers';
-import { Header, NavigationBar } from '@components/layout/index';
 
+import { AccessibilityShortcuts } from '@components/layout/AccessibilityShortcuts';
 import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
 
@@ -27,9 +29,10 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     </head>
     <Providers>
       <DataLayer website={config.website}>
-        <body className={font.className}>
+        <body className={font.className} tabIndex={-1}>
           <div className="relative h-14" />
           <div className="flex">
+            <AccessibilityShortcuts website={config.website} />
             <Header />
             <NavigationBar website={config.website} />
             {children}

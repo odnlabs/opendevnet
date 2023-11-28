@@ -128,9 +128,11 @@ fi
 # If the environment is not ci, run these checks
 if [ "$1" != "ci" ]; then
   software_check "$1"
-  package_check
   file_check "$env_file"
-  repo_sync_check "$1"
+  if [ "$1" == "prod" ]; then
+    package_check
+    repo_sync_check "$1"
+  fi
 fi
 
 env_check

@@ -1,4 +1,4 @@
-import { Header } from '@components/layout/index';
+import { Header } from '@components/layout/Header';
 import { Footer } from 'src/components/layout/Footer';
 
 import { config } from '@odnlabs/utils-server';
@@ -13,7 +13,9 @@ const socialUrls = {
 const SiteLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <>
     <Header />
-    <div className="min-h-[80vh]">{children}</div>
+    <main className="min-h-[80vh]" id="main" tabIndex={0}>
+      {children}
+    </main>
     <Footer internalDocs={config.internalDocs} socialUrls={socialUrls} />
   </>
 );

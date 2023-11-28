@@ -7,6 +7,7 @@ import { Footer, Header, Sidebar } from '@components/layout';
 
 import '@odnlabs/ui/styles.css';
 import '@odnlabs/ui/styles/code.css';
+import { AccessibilityShortcuts } from 'src/components/layout/AccessibilityShortcuts';
 import '../styles/globals.css';
 
 const font = Poppins({
@@ -32,12 +33,15 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <head>
       <link href="/internal-docs/favicon.ico" rel="icon" sizes="any" />
     </head>
-    <body className={font.className}>
+    <body className={font.className} tabIndex={-1}>
+      <AccessibilityShortcuts website={config.website} />
       <Header />
       <div className="flex">
         <Sidebar />
         <div className="relative right-0 top-0 md:w-[calc(100vw-280px)]">
-          <div className="relative min-h-[75vh]">{children}</div>
+          <main className="relative min-h-[75vh]" id="main" tabIndex={0}>
+            {children}
+          </main>
           <Footer socialUrls={socialUrls} website={config.website} />
         </div>
       </div>
