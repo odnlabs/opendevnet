@@ -44,7 +44,7 @@ export const DocumentContent: React.FC<DocumentContentProps> = ({
           link.target = '_blank';
           link.rel = 'noreferrer';
         }
-        link.classList.add('link-200');
+        link.classList.add('link');
       }
     }
   }, []);
@@ -84,7 +84,7 @@ export const DocumentContent: React.FC<DocumentContentProps> = ({
             <div className="w-1/2 pr-2">
               {doc.meta.prev && (
                 <Link
-                  className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-left transition duration-300"
+                  className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-left transition duration-300 hover:no-underline"
                   href={`/help${doc.meta.prev.slug}`}
                 >
                   <p className="text-text-secondary text-sm font-medium">
@@ -111,7 +111,7 @@ export const DocumentContent: React.FC<DocumentContentProps> = ({
             <div className="w-1/2 pl-2">
               {doc.meta.next && (
                 <Link
-                  className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-right transition duration-300"
+                  className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-right transition duration-300 hover:no-underline"
                   href={`/help${doc.meta.next.slug}`}
                 >
                   <p className="text-text-secondary text-sm font-medium">

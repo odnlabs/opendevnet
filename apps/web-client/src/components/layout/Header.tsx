@@ -45,7 +45,7 @@ export const Header: React.FC = () => (
         <div className="relative w-full">
           <RiSearchLine className="text-text-faint absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2" />
           <input
-            className="bg-background border-border text-text-secondary focus:text-text ring-primary h-9 w-full rounded-lg border py-2 pl-9 pr-3 transition duration-200 placeholder:text-sm focus:bg-[rgb(var(--input-focus))] focus:ring-2"
+            className="bg-background border-border text-text-secondary focus:text-text h-9 w-full rounded-lg border py-2 pl-9 pr-3 transition duration-200 placeholder:text-sm focus:bg-[rgb(var(--input-focus))] focus:ring-2"
             maxLength={100}
             placeholder="Search for networks, events, and users..."
             type="text"
