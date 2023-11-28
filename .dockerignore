@@ -21,10 +21,10 @@
 **/target/
 
 # Docker
-**/docker/postgres-data
-**/docker/redis-data
-**/docker/production/nginx.conf
-**/docker/production/ssl/*
+**/postgres-data
+**/redis-data
+**/ssl
+**/nginx.conf
 
 # Cache
 **/tmp/

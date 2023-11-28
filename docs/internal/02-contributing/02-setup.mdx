@@ -72,7 +72,7 @@ To enable HTTPS, you can use certbot to register an SSL certificate. To do this,
 1. Ensure that you have a domain name pointing to the server (`A`/`AAAA` records).
 2. Install certbot. For example, on ubuntu: `sudo apt install certbot`.
 3. Run the certbot command with `sudo certbot certonly --standalone -d <domain>`. This will generate the certificate and key files in `/etc/letsencrypt/live/<domain>/`.
-4. In the `docker-compose.production.yaml` file, replace the **nginx ssl** volume with the following:
+4. In the `docker/production/docker-compose.yaml` file, replace the **nginx ssl** volume with the following:
    ```yaml
    volumes:
      - /etc/letsencrypt/live/<domain>/fullchain.pem:/etc/ssl/example.crt:ro
