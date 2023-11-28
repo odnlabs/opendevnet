@@ -11,21 +11,14 @@
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n",
-  "rust-analyzer.linkedProjects": [
-    ".\\api\\Cargo.toml",
-    ".\\services\\auth-service\\Cargo.toml",
-    ".\\services\\user-service\\Cargo.toml"
-  ],
+  "rust-analyzer.linkedProjects": [".\\Cargo.toml"],
   "rust-analyzer.showUnlinkedFileNotification": false,
   "rust-analyzer.cargo.extraEnv": {
     "DATABASE_URL": "postgresql://admin:password123@localhost:6500/opendevnet?schema=public"
   },
   "eslint.workingDirectories": [
     {
-      "pattern": "./apps/*"
-    },
-    {
-      "pattern": "./libs/*"
+      "pattern": "./"
     }
   ],
   "eslint.validate": [

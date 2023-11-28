@@ -1,7 +1,6 @@
 use chrono::prelude::*;
+use opendevnet_user::models::User;
 use serde::Serialize;
-
-use user_service::models::User;
 
 #[allow(non_snake_case)]
 #[derive(Debug, Serialize)]

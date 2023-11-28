@@ -5,6 +5,7 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "humao.rest-client",
-    "rust-lang.rust-analyzer"
+    "rust-lang.rust-analyzer",
+    "ms-playwright.playwright"
   ]
 }

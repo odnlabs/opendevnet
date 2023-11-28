@@ -10,27 +10,27 @@ npm-debug.log*
 coverage
 
 # Next.js
-.next/
-out/
+.next
+out
 
 # Dist
-dist/
-build/
+dist
+build
 
 # Rust
-target/
+target
 
 # Docker
-docker/postgres-data
-docker/redis-data
-docker/production/nginx.conf
-docker/production/ssl/*
-!docker/production/ssl/example.crt
-!docker/production/ssl/example.key
+postgres-data
+redis-data
+nginx.conf
+ssl
+!ssl/example.crt
+!ssl/example.key
 
 # Cache
-tmp/
-.nx/
+tmp
+.nx
 .prettiercache
 .eslintcache
 

@@ -8,8 +8,8 @@ license = "CC-BY-NC-SA-4.0"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-auth_service = { path = "../services/auth-service" }
-user_service = { path = "../services/user-service" }
+opendevnet_auth = { path = "../crates/opendevnet-auth" }
+opendevnet_user = { path = "../crates/opendevnet-user" }
 argon2 = "0.5.0"
 axum = { version = "0.6.12", features = ["json", "ws", "headers"] }
 axum-extra = { version = "0.8.0", features = ["cookie"] }

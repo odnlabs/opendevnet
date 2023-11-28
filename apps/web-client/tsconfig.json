@@ -2,27 +2,25 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@slekup/tsconfig/nextjs.json",
   "compilerOptions": {
+    "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@store": ["./src/store.ts"],
-      "@constants/*": ["./src/constants/*"],
-      "@components": ["./src/components"],
-      "@components/*": ["./src/components/*"],
-      "@components/layout": ["./src/components/layout"],
-      "@styles/*": ["./src/styles/*"],
-      "@slices/*": ["./src/slices/*"],
-      "@typings/*": ["./src/typings/*"],
-      "@utils/*": ["./src/utils/*"]
-    },
-    "moduleResolution": "node"
+      "@components": ["src/components"],
+      "@components/*": ["src/components/*"],
+      "@constants/*": ["src/constants/*"],
+      "@slices/*": ["src/slices/*"],
+      "@store": ["src/store.ts"],
+      "@styles/*": ["src/styles/*"],
+      "@typings/*": ["src/typings/*"],
+      "@utils/*": ["src/utils/*"]
+    }
   },
+  "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "../../dist/apps/web-client/.next/types/**/*.ts",
-    "../../environment.d.ts"
-  ],
-  "exclude": ["node_modules"]
+    "*.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    ".next/types/**/*.ts"
+  ]
 }

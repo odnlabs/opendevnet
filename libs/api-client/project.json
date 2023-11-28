@@ -1,0 +1,11 @@
+{
+  "name": "@odnlabs/api-client",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/api-client",
+  "projectType": "library",
+  "options": {
+    "outputPath": "dist/libs/api-client"
+  },
+  "targets": {},
+  "tags": []
+}

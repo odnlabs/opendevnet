@@ -5,7 +5,7 @@ import { FiRadio } from '@react-icons/all-files/fi/FiRadio';
 import { MdEvent } from '@react-icons/all-files/md/MdEvent';
 import { MdFavoriteBorder } from '@react-icons/all-files/md/MdFavoriteBorder';
 
-import { Sidebar, SidebarButton } from '@components/layout';
+import { Sidebar, SidebarButton } from '@components/layout/Sidebar';
 
 export const SidebarWrapper: React.FC = () => {
   const buttons: SidebarButton[][] = [

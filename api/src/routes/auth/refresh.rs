@@ -10,6 +10,7 @@ use axum_extra::extract::{
     cookie::{Cookie, SameSite},
     CookieJar,
 };
+use opendevnet_user::models::User;
 use redis::AsyncCommands;
 use serde_json::json;
 
@@ -17,7 +18,6 @@ use crate::{
     utils::{generate_token, save_token_data_to_redis, token},
     AppState,
 };
-use user_service::models::User;
 
 pub async fn refresh_access_token_handler(
     cookie_jar: CookieJar,

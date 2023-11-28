@@ -1,0 +1,11 @@
+{
+  "name": "@odnlabs/tailwind-config",
+  "$schema": "https://raw.githubusercontent.com/nrwl/nx/master/packages/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tailwind-config",
+  "projectType": "library",
+  "options": {
+    "outputPath": "dist/libs/tailwind-config"
+  },
+  "targets": {},
+  "tags": []
+}

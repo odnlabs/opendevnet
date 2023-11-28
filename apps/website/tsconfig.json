@@ -2,26 +2,27 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@slekup/tsconfig/nextjs.json",
   "compilerOptions": {
+    "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@store": ["src/store.ts"],
-      "@constants/*": ["src/constants/*"],
       "@components": ["src/components"],
       "@components/*": ["src/components/*"],
-      "@styles/*": ["src/styles/*"],
+      "@constants/*": ["src/constants/*"],
       "@slices/*": ["src/slices/*"],
+      "@store": ["src/store.ts"],
+      "@styles/*": ["src/styles/*"],
       "@typings/*": ["src/typings/*"],
       "@utils/*": ["src/utils/*"]
-    },
-    "moduleResolution": "node"
+    }
   },
+  "exclude": ["node_modules"],
   "include": [
     "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "*.config.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "e2e/**/*.test.ts",
     ".next/types/**/*.ts",
-    "../../dist/apps/website/.next/types/**/*.ts",
-    "../../environment.d.ts"
-  ],
-  "exclude": ["node_modules"]
+    "e2e/page.test.tsx"
+  ]
 }

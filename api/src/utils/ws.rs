@@ -1,30 +1,26 @@
-use axum::{
-    extract::ws::{Message, WebSocket, WebSocketUpgrade},
-    response::IntoResponse,
-    TypedHeader,
-};
-
-use std::borrow::Cow;
-use std::net::SocketAddr;
-use std::ops::ControlFlow;
+use std::{borrow::Cow, net::SocketAddr, ops::ControlFlow};
 
 // Allows to extract the IP of connecting user.
 use axum::extract::connect_info::ConnectInfo;
-use axum::extract::ws::CloseFrame;
-
+use axum::{
+    extract::ws::{CloseFrame, Message, WebSocket, WebSocketUpgrade},
+    response::IntoResponse,
+    TypedHeader,
+};
 // Allows to split the websocket stream into separate TX and RX branches.
 use futures::{sink::SinkExt, stream::StreamExt};
 
 /// Handler for the HTTP request that will switch to websocket protocol.
-/// This is the last point where we can extract TCP/IP metadata such as IP address of the client
-/// as well as things from HTTP headers such as user-agent of the browser etc.
-/// The `ws` parameter is the websocket upgrade request. We can use it to customize the
-/// websocket handshake process.
+/// This is the last point where we can extract TCP/IP metadata such as IP
+/// address of the client as well as things from HTTP headers such as user-agent
+/// of the browser etc. The `ws` parameter is the websocket upgrade request. We
+/// can use it to customize the websocket handshake process.
 /// The `user_agent` parameter is the user-agent header from the HTTP request.
 /// The `addr` parameter is the IP address of the client.
-/// The return value is a `impl IntoResponse` which is a trait that converts the return value
-/// into a response. In this case, we are returning a `WebSocketUpgrade` which is a type that
-/// represents a websocket upgrade request. This will cause the server to switch from HTTP to
+/// The return value is a `impl IntoResponse` which is a trait that converts the
+/// return value into a response. In this case, we are returning a
+/// `WebSocketUpgrade` which is a type that represents a websocket upgrade
+/// request. This will cause the server to switch from HTTP to
 /// websocket protocol.
 pub async fn ws_handler(
     ws: WebSocketUpgrade,
@@ -45,20 +41,22 @@ pub async fn ws_handler(
 
 /// Actual websocket statemachine (one will be spawned per connection)
 async fn handle_socket(mut socket: WebSocket, who: SocketAddr) {
-    //send a ping (unsupported by some browsers) just to kick things off and get a response
+    //send a ping (unsupported by some browsers) just to kick things off and get a
+    // response
     if socket.send(Message::Ping(vec![1, 2, 3])).await.is_ok() {
         tracing::info!("Pinged {who}...");
     } else {
         tracing::info!("Could not send ping {who}!");
         // no Error here since the only thing we can do is to close the connection.
-        // If we can not send messages, there is no way to salvage the statemachine anyway.
+        // If we can not send messages, there is no way to salvage the statemachine
+        // anyway.
         return;
     }
 
-    // receive single message from a client (we can either receive or send with socket).
-    // this will likely be the Pong for our Ping or a hello message from client.
-    // waiting for message from a client will block this task, but will not block other client's
-    // connections.
+    // receive single message from a client (we can either receive or send with
+    // socket). this will likely be the Pong for our Ping or a hello message
+    // from client. waiting for message from a client will block this task, but
+    // will not block other client's connections.
     if let Some(msg) = socket.recv().await {
         if let Ok(msg) = msg {
             if process_message(msg, who).is_break() {
@@ -71,9 +69,10 @@ async fn handle_socket(mut socket: WebSocket, who: SocketAddr) {
     }
 
     // Since each client gets individual statemachine, we can pause handling
-    // when necessary to wait for some external event (in this case illustrated by sleeping).
-    // Waiting for this client to finish getting its greetings does not prevent other clients from
-    // connecting to server and receiving their greetings.
+    // when necessary to wait for some external event (in this case illustrated by
+    // sleeping). Waiting for this client to finish getting its greetings does
+    // not prevent other clients from connecting to server and receiving their
+    // greetings.
     for i in 1..5 {
         if socket
             .send(Message::Text(format!("Hi {i} times!")))
@@ -86,11 +85,13 @@ async fn handle_socket(mut socket: WebSocket, who: SocketAddr) {
         tokio::time::sleep(std::time::Duration::from_millis(100)).await;
     }
 
-    // By splitting socket we can send and receive at the same time. In this example we will send
-    // unsolicited messages to client based on some sort of server's internal event (i.e .timer).
+    // By splitting socket we can send and receive at the same time. In this example
+    // we will send unsolicited messages to client based on some sort of
+    // server's internal event (i.e .timer).
     let (mut sender, mut receiver) = socket.split();
 
-    // Spawn a task that will push several messages to the client (does not matter what client does)
+    // Spawn a task that will push several messages to the client (does not matter
+    // what client does)
     let mut send_task = tokio::spawn(async move {
         let n_msg = 20;
         for i in 0..n_msg {
@@ -119,7 +120,8 @@ async fn handle_socket(mut socket: WebSocket, who: SocketAddr) {
         n_msg
     });
 
-    // This second task will receive messages from client and print them on server console
+    // This second task will receive messages from client and print them on server
+    // console
     let mut recv_task = tokio::spawn(async move {
         let mut cnt = 0;
         while let Some(Ok(msg)) = receiver.next().await {
@@ -154,7 +156,8 @@ async fn handle_socket(mut socket: WebSocket, who: SocketAddr) {
     tracing::info!("Websocket context {who} destroyed");
 }
 
-/// helper to print contents of messages to stdout. Has special treatment for Close.
+/// helper to print contents of messages to stdout. Has special treatment for
+/// Close.
 fn process_message(msg: Message, who: SocketAddr) -> ControlFlow<(), ()> {
     match msg {
         Message::Text(t) => {

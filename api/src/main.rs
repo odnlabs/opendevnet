@@ -1,7 +1,6 @@
+use api::{start_http_server, utils::config::Config};
 use dotenv::dotenv;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
-
-use api::{start_http_server, utils::config::Config};
 
 #[tokio::main]
 async fn main() {

@@ -1,9 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/eslintrc.json
 extends:
-  - 'slekup'
-ignorePatterns:
-  - 'tsup.config.ts'
+  - slekup
 parserOptions:
   project:
-    - './tsconfig.json'
-    - './libs/utils-server/tsconfig.json'
+    - ./tsconfig.json
+    - ./libs/utils-server/tsconfig.json

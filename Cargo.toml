@@ -1,6 +1,6 @@
 
 [workspace]
-members = ['api']
+members = ['api', 'crates/opendevnet*']
 
 [profile.release]
-lto = true
+lto = "off"

@@ -20,6 +20,9 @@ rm -rf bazel-*
 echo -e "${RED}REMOVE${RESET} next.js output directories"
 rm -rf apps/**/.next
 
+echo -e "${RED}REMOVE${RESET} coverage directory"
+rm -rf coverage
+
 echo ""
 echo -e "${GREEN}✅ Successfully cleaned up the workspace!${RESET}"
 echo ""

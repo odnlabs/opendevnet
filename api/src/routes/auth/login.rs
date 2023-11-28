@@ -8,14 +8,14 @@ use axum::{
     Json,
 };
 use axum_extra::extract::cookie::{Cookie, SameSite};
+use opendevnet_auth::models::LoginUserSchema;
+use opendevnet_user::models::User;
 use serde_json::json;
 
 use crate::{
     utils::{generate_token, save_token_data_to_redis},
     AppState,
 };
-use auth_service::models::LoginUserSchema;
-use user_service::models::User;
 
 pub async fn login_user_handler(
     State(data): State<Arc<AppState>>,

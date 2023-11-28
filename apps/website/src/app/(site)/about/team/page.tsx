@@ -13,12 +13,6 @@ const Team: NextPage = () => {
       avatar: 'https://avatars.githubusercontent.com/u/74949101?v=4',
       title: 'Founder & Lead Developer',
     },
-    {
-      name: 'ODN Admin',
-      username: 'odn-admin',
-      avatar: 'https://avatars.githubusercontent.com/u/137981468?v=4',
-      title: 'Admin Account',
-    },
   ];
 
   return (

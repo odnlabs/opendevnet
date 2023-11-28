@@ -7,13 +7,12 @@ use axum::{
     response::IntoResponse,
     Json,
 };
-
 use axum_extra::extract::cookie::CookieJar;
+use opendevnet_user::models::User;
+use redis::AsyncCommands;
 use serde::{Deserialize, Serialize};
 
 use crate::{utils::token, AppState};
-use redis::AsyncCommands;
-use user_service::models::User;
 
 #[derive(Debug, Serialize)]
 pub struct ErrorResponse {
@@ -40,13 +39,7 @@ pub async fn auth<B>(
             req.headers()
                 .get(header::AUTHORIZATION)
                 .and_then(|auth_header| auth_header.to_str().ok())
-                .and_then(|auth_value| {
-                    if auth_value.starts_with("Bearer ") {
-                        Some(auth_value[7..].to_owned())
-                    } else {
-                        None
-                    }
-                })
+                .and_then(|auth_value| auth_value.strip_prefix("Bearer ").map(|end| end.to_owned()))
         });
 
     let access_token = access_token.ok_or_else(|| {

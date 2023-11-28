@@ -43,9 +43,10 @@ function package_check() {
 }
 
 function file_check() {
+  local env_file="$1"
   # Check if required files exist
   echo -e "${BLUE}CHECK${RESET} If required files exist"
-  file_paths=(".env.production" "docker/production/nginx.conf" "docker/production/ssl/opendevnet.crt" "docker/production/ssl/opendevnet.key")
+  file_paths=("$env_file" "docker/production/nginx.conf" "docker/production/ssl/opendevnet.crt" "docker/production/ssl/opendevnet.key")
   missing_files=()
   for file in "${file_paths[@]}"; do
     if [ -e "$file" ]; then
@@ -63,11 +64,11 @@ function env_check() {
   variables=("ENVIRONMENT" "DEBUG" "PUBLIC_API_URL" "PUBLIC_WS_URL" "PUBLIC_WEBSITE_URL" "PUBLIC_WEB_CLIENT_URL" "PUBLIC_INTERNAL_DOCS_URL")
 
   required_http_vars=("PUBLIC_API_URL" "PUBLIC_WEBSITE_URL" "PUBLIC_WEB_CLIENT_URL", "PUBLIC_INTERNAL_DOCS_URL")
-  valid_environments=("development" "production")
+  valid_environments=("production" "ci" "development")
 
   missing_variables=()
   invalid_variables=()
-  source .env.production
+  source "$env_file"
   for var in "${variables[@]}"; do
     if [[ -n "${!var}" ]]; then
       if [[ " ${required_http_vars[*]} " =~ " $var " && ! ("${!var}" == http://* || "${!var}" == https://*) ]]; then
@@ -116,12 +117,22 @@ function repo_sync_check() {
   fi
 }
 
+if [ "$1" == "prod" ]; then
+  env_file=".env.production"
+elif [ "$1" == "ci" ]; then
+  env_file=".env.ci"
+else
+  env_file=".env.local"
+fi
+
 # If the environment is not ci, run these checks
 if [ "$1" != "ci" ]; then
   software_check "$1"
-  package_check
-  file_check
-  repo_sync_check "$1"
+  file_check "$env_file"
+  if [ "$1" == "prod" ]; then
+    package_check
+    repo_sync_check "$1"
+  fi
 fi
 
 env_check
