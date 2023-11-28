@@ -8,7 +8,7 @@ export const Sidebar: React.FC = async () => {
   return (
     <>
       <div className="relative h-[calc(100vh-3.5rem)] w-72" />
-      <div className="border-border hover-thin-scroll no-select fixed bottom-0 left-0 z-40 h-[calc(100vh-3.5rem)] w-72 overflow-y-auto border-r bg-[rgb(var(--header))] pb-20">
+      <nav className="border-border hover-thin-scroll no-select fixed bottom-0 left-0 z-40 h-[calc(100vh-3.5rem)] w-72 overflow-y-auto border-r bg-[rgb(var(--header))] pb-20">
         <div className="pt-2">
           {ordered.map((cat, index) => (
             <div
@@ -22,7 +22,7 @@ export const Sidebar: React.FC = async () => {
             </div>
           ))}
         </div>
-      </div>
+      </nav>
     </>
   );
 };
