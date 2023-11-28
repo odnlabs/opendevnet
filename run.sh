@@ -48,7 +48,7 @@ if [ "$1" == "prod" ]; then
   git reset --hard
   git pull
   run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.production.yaml"
+  export COMPOSE_FILE="docker/production/docker-compose.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "ci" ]; then
   if [ "$2" == "setup" ]; then
@@ -64,7 +64,7 @@ elif [ "$1" == "ci" ]; then
   fi
   run_script setup ci
   run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.ci.yaml"
+  export COMPOSE_FILE="docker/ci/docker-compose.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "prodtest" ]; then
   if [ "$2" == "internal_docs" ]; then
@@ -94,7 +94,7 @@ elif [ "$1" == "dev" ]; then
     fi
   fi
   run_script check "${args[@]}"
-  export COMPOSE_FILE="docker-compose.development.yaml"
+  export COMPOSE_FILE="docker/development/docker-compose.yaml"
   run_script docker "${args[@]}"
 elif [ "$1" == "check" ]; then
   run_script check "${args[@]}"

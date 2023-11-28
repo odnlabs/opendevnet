@@ -60,9 +60,9 @@ jobs:
               - '.github/workflows/ci.yaml'
               - 'tools/scripts/docker.sh'
               - '.dockerignore'
-              - 'docker-compose.ci.yaml'
-              - 'docker-compose.production.yaml'
-              - 'docker-compose.development.yaml'
+              - 'docker/ci/docker-compose.yaml'
+              - 'docker/production/docker-compose.yaml'
+              - 'docker/development/docker-compose.yaml'
               - 'run.sh'
             frontend: &frontend
               - 'libs/tailwind-config/**'
