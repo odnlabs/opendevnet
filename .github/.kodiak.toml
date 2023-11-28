@@ -1,8 +1,7 @@
 version = 1
 
 [merge]
-automerge_label = "pr:automerge"
-require_automerge_label = true
+require_automerge_label = false
 blocking_labels = ["blocked", "pr:on hold", "pr:wip"]
 method = "squash"
 delete_branch_on_merge = true
@@ -14,7 +13,8 @@ notify_on_conflict = false
 # https://kodiakhq.com/docs/config-reference#updatealways
 always = true
 # https://kodiakhq.com/docs/config-reference#updateautoupdate_label
-autoupdate_label = "pr:autoupdate"
+# autoupdate_label = "pr:autoupdate"
+require_automerge_label = false
 
 [merge.message]
 title = "pull_request_title"
