@@ -36,10 +36,13 @@ const Section: React.FC<{
   if (items) {
     return (
       <div className="bg-background-secondary border-border mt-8 rounded-lg border p-8">
-        <Link href={`/help/${slug}`}>
+        <Link
+          className="-ml-2 -mt-1 inline-block rounded-md px-2 py-1 focus-visible:ring"
+          href={`/help/${slug}`}
+        >
           <h2 className="text-2xl font-semibold hover:underline">{name}</h2>
         </Link>
-        <p className="text-text-secondary mt-3">{description}</p>
+        <p className="text-text-secondary mt-2">{description}</p>
         <div className="border-border mt-5 border-t pt-2">
           {items.map((item) => (
             <div className="my-2" key={item.slug}>
