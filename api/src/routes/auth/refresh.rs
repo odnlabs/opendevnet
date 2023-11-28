@@ -107,22 +107,20 @@ pub async fn refresh_access_token_handler(
 
     save_token_data_to_redis(&data, &access_token_details, data.env.access_token_max_age).await?;
 
-    let access_cookie = Cookie::build(
+    let access_cookie = Cookie::build((
         "access_token",
         access_token_details.token.clone().unwrap_or_default(),
-    )
+    ))
     .path("/")
     .max_age(time::Duration::minutes(data.env.access_token_max_age * 60))
     .same_site(SameSite::Lax)
-    .http_only(true)
-    .finish();
+    .http_only(true);
 
-    let logged_in_cookie = Cookie::build("logged_in", "true")
+    let logged_in_cookie = Cookie::build(("logged_in", "true"))
         .path("/")
         .max_age(time::Duration::minutes(data.env.access_token_max_age * 60))
         .same_site(SameSite::Lax)
-        .http_only(false)
-        .finish();
+        .http_only(false);
 
     let mut response = Response::new(
         json!({"status": "success", "access_token": access_token_details.token.unwrap()})
