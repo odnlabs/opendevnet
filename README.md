@@ -13,7 +13,7 @@
 ![CI Status](https://github.com/odnlabs/opendevnet/actions/workflows/ci.yaml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/odnlabs/opendevnet) ![Github Repo Size](https://img.shields.io/github/repo-size/odnlabs/opendevnet) ![Github Repo Stars](https://img.shields.io/github/stars/odnlabs/opendevnet) [![License: BY-NC-SA SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
   <h4>
-  <a href="https://opendevnet.com">Open Dev Net</a> · <a href="https://opendevnet.com/internal-docs">Internal Docs</a>
+  <a href="https://opendevnet.com">Open Dev Net</a> · <a href="https://opendevnet.com/changelog">Changelog</a> · <a href="https://opendevnet.com/internal-docs">Internal Docs</a>
   </h4>
   
 </div>
