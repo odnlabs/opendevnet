@@ -1,9 +1,10 @@
 import { Poppins } from 'next/font/google';
 
-import { ToastWrapper } from '@components/layout/index';
+import { ToastWrapper } from '@components/layout/ToastWrapper';
 import { Metadata } from 'next';
 import { Providers } from 'src/components/layout/Providers';
 
+import { AccessibilityShortcuts } from '@components/layout/Header/AccessibilityShortcuts';
 import '@odnlabs/ui/styles.css';
 import '../styles/globals.css';
 
@@ -24,8 +25,10 @@ const RootLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <link href="/favicon.ico" rel="icon" sizes="any" />
     </head>
     <Providers>
-      <body className={font.className}>
+      <body className={font.className} tabIndex={-1}>
         <ToastWrapper />
+        <AccessibilityShortcuts />
+        {/* Main tag is added in child layouts */}
         {children}
       </body>
     </Providers>

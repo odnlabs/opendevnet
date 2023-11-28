@@ -21,7 +21,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ buttons }) => {
   return (
     <>
       <div className="relative h-full w-60" />
-      <div className="border-border/50 fixed left-16 top-14 z-50 h-full w-60 border-r bg-[rgb(var(--sidebar))]">
+      <nav className="border-border/50 fixed left-16 top-14 z-50 h-full w-60 border-r bg-[rgb(var(--sidebar))]">
         <div className="px-3 pt-3">
           {buttons.map((section) => (
             <div key={section.map((sec) => sec.href).join('-')}>
@@ -43,7 +43,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ buttons }) => {
             </div>
           ))}
         </div>
-      </div>
+      </nav>
     </>
   );
 };
