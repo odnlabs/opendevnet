@@ -22,6 +22,7 @@
   --background-tertiary: 50, 50, 64;
   --border: 60, 60, 79;
   --link: 91, 169, 255;
+  --ring: 40, 223, 255;
   /* System (no change) */
   --success: 34, 197, 94;
   --success-hover: 31, 180, 87;
@@ -54,4 +55,13 @@
   --navigation-bar: var(--footer);
   --sidebar: 23, 23, 36;
   --footer: 13, 13, 19;
+}
+
+/* Tailwind */
+.group:focus-visible .group-focus-visible\:ring,
+*:focus-visible {
+  --tw-ring-color: rgb(var(--ring));
+  border-color: var(--tw-ring-color);
+  transition: none;
+  color: var(--text);
 }

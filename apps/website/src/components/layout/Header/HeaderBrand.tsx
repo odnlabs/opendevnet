@@ -9,7 +9,7 @@ export const HeaderBrand: React.FC = () => {
 
   return (
     <Link
-      className="relative flex py-2.5 ring-inset focus-visible:ring sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0"
+      className="relative my-1 flex rounded-md py-1.5 pl-2 pr-4 ring-inset focus-visible:ring sm:absolute sm:left-1/2 sm:-translate-x-1/2 lg:relative lg:left-0 lg:translate-x-0"
       href="/"
     >
       <Image

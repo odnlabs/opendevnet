@@ -27,7 +27,7 @@ export const Accordian: React.FC<Props> = ({ data, autoClose, ...props }) => {
         >
           {/* Question - button */}
           <button
-            className="no-selection bg-background-secondary ring-text block w-full cursor-pointer px-5 py-5 text-left ring-inset focus-visible:ring"
+            className="no-selection bg-background-secondary block w-full cursor-pointer px-5 py-5 text-left ring-inset focus-visible:ring"
             onClick={() => {
               if (autoClose) setFocused(focused === index ? null : index);
               else {
