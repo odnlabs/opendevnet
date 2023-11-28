@@ -1,6 +1,6 @@
 import { Poppins } from 'next/font/google';
 
-import { ToastWrapper } from '@components/layout/index';
+import { ToastWrapper } from '@components/layout/ToastWrapper';
 import { Metadata } from 'next';
 import { Providers } from 'src/components/layout/Providers';
 

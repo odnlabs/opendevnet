@@ -3,7 +3,7 @@
 import { BsPeople } from '@react-icons/all-files/bs/BsPeople';
 import { FiInbox } from '@react-icons/all-files/fi/FiInbox';
 
-import { Sidebar, SidebarButton } from '@components/layout/index';
+import { Sidebar, SidebarButton } from '@components/layout/Sidebar';
 
 export const SidebarWrapper: React.FC = () => {
   const buttons: SidebarButton[][] = [
