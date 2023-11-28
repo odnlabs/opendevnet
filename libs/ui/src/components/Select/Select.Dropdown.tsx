@@ -96,7 +96,7 @@ export const SelectDropdown = <T,>({
             >
               {options.map((option, index) => (
                 <button
-                  className={`ring-primary hover:bg-secondary/50 active:bg-secondary flex w-full justify-between rounded-sm px-4 py-2.5 text-left text-sm ring-inset transition duration-200 focus-visible:ring-2 ${
+                  className={`hover:bg-secondary/50 active:bg-secondary flex w-full justify-between rounded-sm px-4 py-2.5 text-left text-sm ring-inset transition duration-200 focus-visible:ring-2 ${
                     state === option.value &&
                     'bg-secondary text-text font-medium'
                   }`}
