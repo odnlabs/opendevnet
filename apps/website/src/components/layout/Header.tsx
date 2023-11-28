@@ -2,8 +2,8 @@ import React from 'react';
 
 import { HeaderBrand } from './Header/HeaderBrand';
 import { HeaderButtons } from './Header/HeaderButtons';
-import { HeaderLinks } from './Header/HeaderLinks';
-import { HeaderMenu } from './Header/HeaderMenu';
+import { HeaderLinks } from './Header/Nav';
+import { HeaderMenu } from './Header/NavMenu';
 
 interface HeaderLink {
   title: string;

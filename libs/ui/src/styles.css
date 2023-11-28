@@ -279,3 +279,8 @@ td {
 .link:hover {
   text-decoration: underline;
 }
+
+.link:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgb(var(--link));
+}
