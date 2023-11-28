@@ -12,9 +12,9 @@ export const AccessibilityShortcuts: React.FC = () => {
   }, [pathname]);
 
   return (
-    <div className="z-100 fixed left-4 top-20">
+    <div className="z-100 fixed left-4 top-4">
       <button
-        className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active ring-primary absolute left-0 top-0 -translate-x-[calc(100%+16px)] whitespace-nowrap rounded-md px-5 py-2.5 text-sm focus-visible:translate-x-0 focus-visible:ring"
+        className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active absolute left-0 top-0 -translate-x-[calc(100%+16px)] whitespace-nowrap rounded-md px-10 py-4 text-sm focus-visible:translate-x-0 focus-visible:ring"
         id="skip-to-content"
         onClick={() => {
           document.getElementById('main')?.focus();
@@ -24,7 +24,7 @@ export const AccessibilityShortcuts: React.FC = () => {
         Skip to main content
       </button>
       <Link
-        className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active ring-primary absolute left-0 top-0 -translate-x-[calc(100%+16px)] whitespace-nowrap rounded-md px-5 py-2.5 text-sm focus-visible:translate-x-0 focus-visible:ring"
+        className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active absolute left-0 top-0 -translate-x-[calc(100%+16px)] whitespace-nowrap rounded-md px-10 py-4 text-sm focus-visible:translate-x-0 focus-visible:ring"
         href="/accessibility"
         onClick={(event) => {
           event.currentTarget.blur();
@@ -34,7 +34,7 @@ export const AccessibilityShortcuts: React.FC = () => {
         Accessibility Help
       </Link>
       <Link
-        className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active ring-primary absolute left-0 top-0 -translate-x-[calc(100%+16px)] whitespace-nowrap rounded-md px-5 py-2.5 text-sm focus-visible:translate-x-0 focus-visible:ring"
+        className="bg-secondary hover:bg-secondary-hover active:bg-secondary-active absolute left-0 top-0 -translate-x-[calc(100%+16px)] whitespace-nowrap rounded-md px-10 py-4 text-sm focus-visible:translate-x-0 focus-visible:ring"
         href="/feedback?category=accessibility"
         onClick={() => {
           document.body.focus();

@@ -274,13 +274,24 @@ td {
 .link {
   color: rgb(var(--link));
   text-decoration: none;
+  position: relative;
 }
 
 .link:hover {
   text-decoration: underline;
 }
 
-.link:focus {
+.link:focus-visible {
   outline: none;
+}
+
+.link:focus-visible:after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: -1px;
+  right: -3px;
+  bottom: -1px;
   box-shadow: 0 0 0 2px rgb(var(--link));
+  border-radius: 3px;
 }
