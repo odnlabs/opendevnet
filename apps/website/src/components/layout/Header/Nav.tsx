@@ -3,13 +3,13 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-interface HeaderLink {
+interface Link {
   title: string;
   href: string;
   external?: boolean;
 }
 
-export const HeaderLinks: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
+export const NavLinks: React.FC<{ links: Link[] }> = ({ links }) => {
   const pathname = usePathname();
   const urlSplit = pathname.split('/');
   const basePath = `/${urlSplit[1]}`;
@@ -28,7 +28,7 @@ export const HeaderLinks: React.FC<{ links: HeaderLink[] }> = ({ links }) => {
           </a>
         ) : (
           <Link
-            className={`mx-3 py-0.5 focus-visible:ring ${
+            className={`mx-1 rounded-md px-2 py-0.5 focus-visible:ring ${
               basePath === link.href
                 ? 'text-text'
                 : 'text-text-faint hover:text-text-secondary focus:text-text'

@@ -44,7 +44,7 @@ const AboutLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
         {links.map((link, index) => (
           <Link
-            className={`group relative w-24 py-4 text-center font-medium transition duration-200 ${
+            className={`ring-offset-background-secondary group relative w-24 rounded-lg py-4 text-center font-medium ring-inset ring-offset-2 transition duration-200 focus-visible:ring ${
               pathname === link.href
                 ? 'text-text'
                 : 'text-text-faint hover:text-text-secondary focus:text-text-primary'
