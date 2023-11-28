@@ -17,7 +17,7 @@ const Help: NextPage = async () => {
         <div className="mx-auto w-10/12 max-w-xl text-center">
           <h1 className="text-5xl font-bold drop-shadow-md">Help Center</h1>
           <Input
-            className="mt-10 shadow-lg"
+            className="ring-link mt-10 shadow-lg focus:ring"
             icon="search"
             placeholder="What do you need help with?"
             size="lg"
