@@ -122,10 +122,6 @@
   color: '80c042'
   description: Improves performance.
 
-- name: pr:autoupdate
-  color: '6624ff'
-  description: Kodiak will merge base branch into this PR.
-
 - name: pr:fixship
   color: '6624ff'
   description: A PR which is approved with notes and does not require re-review.
