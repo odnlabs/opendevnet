@@ -10,7 +10,7 @@ import { config } from '@odnlabs/utils-server';
 import { AccountDropdown } from './Header/AccountDropdown';
 
 export const Header: React.FC = () => (
-  <div className="border-border fixed left-0 top-0 h-14 w-full border-b bg-[rgb(var(--header))]">
+  <header className="border-border fixed left-0 top-0 h-14 w-full border-b bg-[rgb(var(--header))]">
     <div className="flex justify-between">
       {/* Branding */}
       <Link
@@ -65,5 +65,5 @@ export const Header: React.FC = () => (
         <AccountDropdown defaultAvatar={config.defaultAvatar} />
       </div>
     </div>
-  </div>
+  </header>
 );
