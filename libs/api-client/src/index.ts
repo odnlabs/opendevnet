@@ -30,7 +30,7 @@ export class Client extends Base {
       accessToken: options.accessToken,
       refreshToken: options.refreshToken,
       baseApiUrl: options.baseApiUrl,
-      baseWebAppUrl: options.baseWebAppUrl,
+      baseWebClientUrl: options.baseWebClientUrl,
     });
 
     this.auth = new Auth({
@@ -38,7 +38,7 @@ export class Client extends Base {
       accessToken: this.accessToken,
       refreshToken: options.refreshToken,
       baseApiUrl: this.baseApiUrl,
-      baseWebAppUrl: this.baseWebAppUrl,
+      baseWebClientUrl: this.baseWebClientUrl,
     });
 
     this.users = new Users({
@@ -46,7 +46,7 @@ export class Client extends Base {
       accessToken: this.accessToken,
       refreshToken: options.refreshToken,
       baseApiUrl: this.baseApiUrl,
-      baseWebAppUrl: this.baseWebAppUrl,
+      baseWebClientUrl: this.baseWebClientUrl,
     });
   }
 
