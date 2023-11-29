@@ -21,7 +21,7 @@
     "build:ci": "dotenv -e .env.ci -- nx run-many --target=build --all",
     "build:dev": "dotenv -e .env.local -- nx run-many --target=build --all",
     "commit": "commit",
-    "dev": "dotenv -e .env.local -- nx run-many --target=dev --all",
+    "dev": "dotenv -e .env.local -- nx run-many --target=dev --all --skip-nx-cache",
     "dev:frontend": "dotenv -e .env.local -- nx run-many --target=dev --projects=internal-docs,website,web-client",
     "e2e": "dotenv -e .env.local -- nx run-many --target=e2e --all --parallel=false",
     "fix": "manypkg fix",
