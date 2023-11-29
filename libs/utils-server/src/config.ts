@@ -10,7 +10,7 @@ interface Config {
   api: string;
   ws: string;
   website: string;
-  webApp: string;
+  webClient: string;
   internalDocs: string;
 }
 
@@ -41,7 +41,7 @@ const config: Config = {
   api: process.env.PUBLIC_API_URL as string,
   ws: process.env.PUBLIC_WS_URL as string,
   website: process.env.PUBLIC_WEBSITE_URL as string,
-  webApp: process.env.PUBLIC_WEB_CLIENT_URL as string,
+  webClient: process.env.PUBLIC_WEB_CLIENT_URL as string,
   internalDocs: process.env.PUBLIC_INTERNAL_DOCS_URL as string,
 };
 
