@@ -10,14 +10,11 @@ use axum_extra::extract::{
     cookie::{Cookie, SameSite},
     CookieJar,
 };
-use opendevnet_user::models::User;
+use opendevnet_auth::{generate_token, save_token_data_to_redis, token};
+use opendevnet_core::AppState;
+use opendevnet_user::User;
 use redis::AsyncCommands;
 use serde_json::json;
-
-use crate::{
-    utils::{generate_token, save_token_data_to_redis, token},
-    AppState,
-};
 
 pub async fn refresh_access_token_handler(
     cookie_jar: CookieJar,
@@ -107,22 +104,20 @@ pub async fn refresh_access_token_handler(
 
     save_token_data_to_redis(&data, &access_token_details, data.env.access_token_max_age).await?;
 
-    let access_cookie = Cookie::build(
+    let access_cookie = Cookie::build((
         "access_token",
         access_token_details.token.clone().unwrap_or_default(),
-    )
+    ))
     .path("/")
     .max_age(time::Duration::minutes(data.env.access_token_max_age * 60))
     .same_site(SameSite::Lax)
-    .http_only(true)
-    .finish();
+    .http_only(true);
 
-    let logged_in_cookie = Cookie::build("logged_in", "true")
+    let logged_in_cookie = Cookie::build(("logged_in", "true"))
         .path("/")
         .max_age(time::Duration::minutes(data.env.access_token_max_age * 60))
         .same_site(SameSite::Lax)
-        .http_only(false)
-        .finish();
+        .http_only(false);
 
     let mut response = Response::new(
         json!({"status": "success", "access_token": access_token_details.token.unwrap()})

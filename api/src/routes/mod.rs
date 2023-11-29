@@ -19,13 +19,12 @@ use auth::{
     register::register_user_handler,
 };
 use info::root::root_handler;
+use opendevnet_auth::jwt::auth;
+use opendevnet_core::AppState;
 use users::get_me::get_me_handler;
 
 use self::users::list_users::list_users;
-use crate::{
-    utils::{jwt_auth::auth, ws::ws_handler},
-    AppState,
-};
+use crate::ws::ws_handler;
 
 pub fn create_router(app_state: Arc<AppState>) -> Router {
     let assets_dir = PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("assets");

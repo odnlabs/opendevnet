@@ -52,7 +52,7 @@ export const Input: React.FC<InputProps> = ({
         )}
         <input
           {...props}
-          className={`focus:border-primary block w-full rounded-md border-2 border-transparent bg-[rgb(var(--input))] transition duration-200 placeholder:text-sm focus:bg-[rgb(var(--input-focus))] ${sizeStyles[size]} ${props.className}`}
+          className={`focus:border-primary block w-full rounded-md border-2 border-transparent bg-[rgb(var(--input))] transition duration-200 placeholder:text-sm focus:bg-[rgb(var(--input-focus))] focus-visible:transition-none ${sizeStyles[size]} ${props.className}`}
           size={20} // Use the default value because size is used as a custom prop
         />
       </div>
