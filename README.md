@@ -5,17 +5,19 @@
 <h3 align="center">Open Dev Net</h3>
 
 <p align="center">
-  <b>The Social Networking Platform for Developers and Designers.</b>
+  <b>The Social Networking Platform for Developers</b>
 </p>
 
 <div align="center">
-
-![CI Status](https://github.com/odnlabs/opendevnet/actions/workflows/ci.yaml/badge.svg) ![Open Issues](https://img.shields.io/github/issues/odnlabs/opendevnet) ![Github Repo Size](https://img.shields.io/github/repo-size/odnlabs/opendevnet) ![Github Repo Stars](https://img.shields.io/github/stars/odnlabs/opendevnet) [![License: BY-NC-SA SA 4.0](https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-
+  <a href="https://github.com/odnlabs/opendevnet/actions"><img src="https://github.com/odnlabs/opendevnet/actions/workflows/ci.yaml/badge.svg?branch=main" alt="CI Status" /></a>
+  <a href="https://codecov.io/gh/odnlabs/opendevnet"><img src="https://codecov.io/gh/odnlabs/opendevnet/graph/badge.svg?token=9RLHG3ZQWN"/></a>
+  <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Made%20with-Rust-1f425f.svg" alt="Made with Rust"></a>
+  <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-blue.svg" alt="License: BY-NC-SA SA 4.0" /></a>
+  <a href="http://opendevnet.com/"><img src="https://img.shields.io/website-up-down-green-red/http/opendevnet.com.svg" alt="Website opendevnet.com up"></a>
+  <a href=""><img src="https://img.shields.io/github/stars/odnlabs/opendevnet?color=9954ED" alt="Github Repo Stars" /></a>
   <h4>
-  <a href="https://opendevnet.com">Open Dev Net</a> · <a href="https://opendevnet.com/changelog">Changelog</a> · <a href="https://opendevnet.com/internal-docs">Internal Docs</a>
+    <a href="https://opendevnet.com">Open Dev Net</a> · <a href="https://opendevnet.com/changelog">Changelog</a> · <a href="https://opendevnet.com/internal-docs">Internal Docs</a>
   </h4>
-  
 </div>
 
 <br/>
