@@ -41,8 +41,5 @@
       "email": "test_user@opendevnet.com"
     }
   },
-  "rest-client.showResponseInDifferentTab": true,
-  "yaml.schemas": {
-    "https://json.schemastore.org/github-action.json": "file:///d%3A/github/opendevnet/tools/actions/pnpm-install/action.yaml"
-  }
+  "rest-client.showResponseInDifferentTab": true
 }
