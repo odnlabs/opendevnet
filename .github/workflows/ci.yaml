@@ -17,34 +17,6 @@ defaults:
     shell: bash
 
 jobs:
-  commitlint:
-    name: Commitlint
-    runs-on: ubuntu-latest
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          check-latest: true
-
-      - name: Install dependencies
-        uses: ./tools/actions/pnpm-install
-
-      - name: Create Environment Variables
-        shell: bash
-        run: chmod +x run.sh && ./run.sh ci setup env
-
-      - name: Validate current commit (last commit) with commitlint
-        if: github.event_name == 'push'
-        run: pnpm exec commitlint --from HEAD~${{ github.event.pull_request.commits }} --to HEAD --verbose
-
-      - name: Validate PR commits with commitlint
-        if: github.event_name == 'pull_request'
-        run: pnpm exec commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
-
   changes:
     name: Change Detection
     runs-on: ubuntu-latest

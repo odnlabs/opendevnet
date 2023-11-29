@@ -178,7 +178,7 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
                   {category.title}
                 </p>
                 <button
-                  className={`border-border/50 text-text-secondary block w-full border-t py-5 text-sm font-semibold uppercase transition duration-200 md:hidden ${
+                  className={`border-border/50 text-text-secondary block w-full border-t py-5 text-sm font-semibold uppercase ring-inset transition duration-200 focus-visible:ring md:hidden ${
                     openIndex !== index &&
                     'hover:bg-secondary active:bg-secondary-active'
                   }`}
@@ -191,33 +191,37 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, website }) => {
                 </button>
                 {/* Links */}
                 <div
-                  className={`origin-top transition-[max-height,transform,opacity] duration-300 ${
+                  className={`grid origin-top transition-[grid,transform,opacity] duration-300 ${
                     openIndex === index
-                      ? 'max-h-96 md:max-h-full'
-                      : 'max-h-0 scale-y-90 overflow-y-hidden opacity-0 md:max-h-full md:scale-y-100 md:overflow-y-auto md:opacity-100'
+                      ? 'grid-rows-[1fr]'
+                      : 'scale-y-90 grid-rows-[0fr] overflow-y-hidden opacity-0 md:scale-y-100 md:grid-rows-[1fr] md:overflow-y-auto md:opacity-100'
                   }`}
                 >
-                  {category.items.map((item) => (
-                    <div className="md:my-2" key={item.href}>
-                      {((useClass) => {
-                        return item.internal ? (
-                          <Link className={useClass} href={item.href}>
-                            {item.label}
-                          </Link>
-                        ) : (
-                          <a
-                            className={useClass}
-                            href={`${website}${item.href}`}
-                            rel="noreferrer"
-                          >
-                            {item.label}
-                          </a>
-                        );
-                      })(
-                        'block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:px-2 md:py-1 rounded-md focus-visible:text-text text-text-secondary md:text-text-faint hover:text-text-primary active:text-text transition duration-300 md:transition-none ring-inset focus-visible:ring'
-                      )}
-                    </div>
-                  ))}
+                  <div className="overflow-hidden">
+                    {category.items.map((item) => (
+                      <div className="md:my-2" key={item.href}>
+                        {((useClass) => {
+                          return openIndex !== index ? (
+                            <p className={useClass}>{item.label}</p>
+                          ) : item.internal ? (
+                            <Link className={useClass} href={item.href}>
+                              {item.label}
+                            </Link>
+                          ) : (
+                            <a
+                              className={useClass}
+                              href={`${website}${item.href}`}
+                              rel="noreferrer"
+                            >
+                              {item.label}
+                            </a>
+                          );
+                        })(
+                          'block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:px-2 md:py-1 md:rounded-md focus-visible:text-text text-text-secondary md:text-text-faint hover:text-text-primary active:text-text transition duration-300 md:transition-none ring-inset focus-visible:ring'
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
