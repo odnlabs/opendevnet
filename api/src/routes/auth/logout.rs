@@ -10,13 +10,10 @@ use axum_extra::extract::{
     cookie::{Cookie, SameSite},
     CookieJar,
 };
+use opendevnet_auth::{jwt::JWTAuthMiddleware, token};
+use opendevnet_core::AppState;
 use redis::AsyncCommands;
 use serde_json::json;
-
-use crate::{
-    utils::{jwt_auth::JWTAuthMiddleware, token},
-    AppState,
-};
 
 pub async fn logout_handler(
     cookie_jar: CookieJar,
