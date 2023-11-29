@@ -143,7 +143,7 @@ jobs:
     name: Build and Run API Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.api == 'true'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && needs.changes.outputs.api == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -160,7 +160,7 @@ jobs:
     name: Build and Run Website Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.website == 'true'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && needs.changes.outputs.website == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -177,7 +177,7 @@ jobs:
     name: Build and Run Web Client Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.web_client == 'true'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && needs.changes.outputs.web_client == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -194,7 +194,7 @@ jobs:
     name: Build and Run Internal Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.internal_docs == 'true'
+    if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && needs.changes.outputs.internal_docs == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -240,6 +240,7 @@ jobs:
   e2e_tests:
     name: End-to-end Tests
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
