@@ -21,9 +21,7 @@ export default defineConfig({
   // Opt out of parallel tests on CI.
   ...(ci ? { workers: 1 } : {}),
   // Generate a report after the test run.
-  reporter: [
-    ['html', { outputFolder: '../../dist/apps/website/playwright-report' }],
-  ],
+  reporter: [['html', { outputFolder: '../../coverage/apps/website' }]],
   // Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions.
   use: {
     headless: true,
