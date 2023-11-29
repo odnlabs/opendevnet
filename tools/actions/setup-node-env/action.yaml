@@ -1,0 +1,24 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+name: setup node env
+description: Setup node.js environment with pnpm
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Checkout'
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Install Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: latest
+        check-latest: true
+
+    - name: Install dependencies
+      uses: ./tools/actions/pnpm-install
+
+    - name: Create Environment Variables
+      run: |
+        chmod +x run.sh &&
+        ./run.sh ci setup env

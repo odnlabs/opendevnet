@@ -16,19 +16,8 @@ jobs:
     name: Commitlint
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          check-latest: true
-
-      - name: Install dependencies
-        uses: ./tools/actions/pnpm-install
+      - name: Setup Node Environment
+        uses: ./tools/actions/setup-node-env
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
@@ -97,22 +86,8 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          check-latest: true
-
-      - name: Install dependencies
-        uses: ./tools/actions/pnpm-install
-
-      - name: Create Environment Variables
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci setup env
+      - name: Setup Node Environment
+        uses: ./tools/actions/setup-node-env
 
       - name: Build
         run: pnpm run build:ci
@@ -124,17 +99,8 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          check-latest: true
-
-      - name: Install dependencies
-        uses: ./tools/actions/pnpm-install
+      - name: Setup Node Environment
+        uses: ./tools/actions/setup-node-env
 
       - name: Format check (main branch only)
         run: pnpm run format:check
@@ -215,25 +181,11 @@ jobs:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          check-latest: true
-
-      - name: Install dependencies
-        uses: ./tools/actions/pnpm-install
+      - name: Setup Node Environment
+        uses: ./tools/actions/setup-node-env
 
       - name: Check manypkg
         run: pnpm manypkg check
-
-      - name: Setup Environment Variables
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci setup env
 
       - name: Build
         run: pnpm run build
@@ -254,22 +206,8 @@ jobs:
     # Only run on main or dev branch
     if: (github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          check-latest: true
-
-      - name: Install dependencies
-        uses: ./tools/actions/pnpm-install
-
-      - name: Setup Environment Variables
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci setup env
+      - name: Setup Node Environment
+        uses: ./tools/actions/setup-node-env
 
       - name: Install Browsers for Playwright
         run: pnpm exec playwright install --with-deps chromium chrome msedge firefox webkit
