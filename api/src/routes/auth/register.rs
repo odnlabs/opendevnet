@@ -2,11 +2,10 @@ use std::sync::Arc;
 
 use argon2::{password_hash::SaltString, Argon2, PasswordHasher};
 use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
-use opendevnet_auth::models::RegisterUserSchema;
-use opendevnet_user::models::User;
+use opendevnet_auth::RegisterUserSchema;
+use opendevnet_core::AppState;
+use opendevnet_user::User;
 use rand_core::OsRng;
-
-use crate::AppState;
 
 pub async fn register_user_handler(
     State(data): State<Arc<AppState>>,

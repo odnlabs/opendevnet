@@ -5,21 +5,15 @@ use axum::http::{
     HeaderValue, Method,
 };
 use redis::Client;
-use sqlx::{postgres::PgPoolOptions, Pool, Postgres};
+use sqlx::postgres::PgPoolOptions;
 use tokio::net::TcpListener;
 use tower_http::cors::CorsLayer;
 
 mod routes;
-pub mod utils;
+mod ws;
 
+use opendevnet_core::{AppState, Config};
 use routes::create_router;
-use utils::config::Config;
-
-pub struct AppState {
-    db: Pool<Postgres>,
-    env: Config,
-    redis_client: Client,
-}
 
 pub async fn start_http_server(config: Config) {
     let pool = match PgPoolOptions::new()
