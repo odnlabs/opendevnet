@@ -1,6 +1,6 @@
 use axum::{http::StatusCode, response::IntoResponse, Extension, Json};
-
-use crate::utils::{jwt_auth::JWTAuthMiddleware, user::filter_user_record};
+use opendevnet_auth::jwt::JWTAuthMiddleware;
+use opendevnet_user::filter_user_record;
 
 pub async fn get_me_handler(
     Extension(jwtauth): Extension<JWTAuthMiddleware>,
