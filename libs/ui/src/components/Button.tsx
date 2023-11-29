@@ -1,3 +1,4 @@
+import { IconType } from '@react-icons/all-files';
 import React from 'react';
 
 export interface ButtonProps
@@ -23,7 +24,27 @@ export interface ButtonProps
   readonly width?: 'auto' | 'full';
   readonly outline?: boolean;
   readonly link?: boolean;
+  readonly iconLeft?: IconType;
+  readonly iconRight?: IconType;
+  readonly iconRotate?: number;
 }
+
+const ButtonIcon: React.FC<{
+  readonly icon: IconType;
+  readonly side: 'left' | 'right';
+  readonly iconRotate?: number | undefined;
+}> = ({ icon: Icon, side, iconRotate }) => {
+  return (
+    <Icon
+      className={`transiton -mb-0.5 mt-0.5 h-5 w-5 duration-300 ${
+        side === 'left' ? 'mr-1' : side === 'right' ? 'ml-1' : ''
+      }`}
+      style={{
+        transform: `rotate(${iconRotate ?? 0}deg)`,
+      }}
+    />
+  );
+};
 
 export const Button = ({
   label,
@@ -31,6 +52,9 @@ export const Button = ({
   variant = 'primary',
   width = 'auto',
   link = false,
+  iconLeft,
+  iconRight,
+  iconRotate,
   ...props
 }: ButtonProps): JSX.Element => {
   const sizeStyle = {
@@ -74,26 +98,34 @@ export const Button = ({
 
   return link ? (
     <p
-      className={`rounded-sm transition duration-200 group-focus-visible:ring group-focus-visible:transition-none ${
+      className={`flex rounded-sm transition duration-200 group-focus-visible:ring group-focus-visible:transition-none ${
         sizeStyle[size]
       } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'
       } ${width === 'full' && 'w-full'}`}
       {...(props as React.HTMLAttributes<HTMLParagraphElement>)}
     >
+      {iconLeft && <ButtonIcon icon={iconLeft} side="left" />}
       {label}
+      {iconRight && <ButtonIcon icon={iconRight} side="right" />}
     </p>
   ) : (
     <button
       type="button"
       {...props}
-      className={`rounded-sm transition duration-200 focus-visible:ring focus-visible:transition-none ${
+      className={`flex rounded-sm transition duration-200 focus-visible:ring focus-visible:transition-none ${
         sizeStyle[size]
       } ${variantStyle[`${variant}`]} ${
         variant.endsWith('-outline') && 'border'
       } ${width === 'full' && 'w-full'}`}
     >
+      {iconLeft && (
+        <ButtonIcon icon={iconLeft} iconRotate={iconRotate} side="left" />
+      )}
       {label}
+      {iconRight && (
+        <ButtonIcon icon={iconRight} iconRotate={iconRotate} side="right" />
+      )}
     </button>
   );
 };

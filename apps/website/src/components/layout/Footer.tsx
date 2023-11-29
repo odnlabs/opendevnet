@@ -187,23 +187,34 @@ export const Footer: React.FC<FooterProps> = ({ socialUrls, internalDocs }) => {
                   {category.title}
                 </button>
                 {/* Links */}
+
                 <div
-                  className={`origin-top transition-[max-height,transform,opacity] duration-300 ${
+                  className={`grid origin-top transition-[grid,transform,opacity] duration-300 ${
                     openIndex === index
-                      ? 'max-h-96 md:max-h-full'
-                      : 'max-h-0 scale-y-90 overflow-y-hidden opacity-0 md:max-h-full md:scale-y-100 md:overflow-y-auto md:opacity-100'
+                      ? 'grid-rows-[1fr]'
+                      : 'scale-y-90 grid-rows-[0fr] overflow-y-hidden opacity-0 md:scale-y-100 md:grid-rows-[1fr] md:overflow-y-auto md:opacity-100'
                   }`}
                 >
-                  {category.items.map((item) => (
-                    <div key={item.href}>
-                      <Link
-                        className="border-border/50 bg-secondary/50 hover:bg-secondary focus:bg-secondary-active text-text-secondary md:text-text-faint hover:text-text-primary active:text-text focus-visible:text-text block border-t py-4 text-center ring-inset transition duration-300 focus-visible:ring md:inline-block md:rounded-md md:border-none md:bg-transparent md:px-2 md:py-1 md:text-left md:transition-none md:hover:bg-transparent md:focus:bg-transparent"
-                        href={item.href}
-                      >
-                        {item.label}
-                      </Link>
-                    </div>
-                  ))}
+                  <div className="overflow-hidden">
+                    {category.items.map((item) => (
+                      <div className="md:my-2" key={item.href}>
+                        {((useClass) => {
+                          return openIndex !== index ? (
+                            <p className={useClass}>{item.label}</p>
+                          ) : (
+                            <Link
+                              className="border-border/50 bg-secondary/50 hover:bg-secondary focus:bg-secondary-active text-text-secondary md:text-text-faint hover:text-text-primary active:text-text focus-visible:text-text block border-t py-4 text-center ring-inset transition duration-300 focus-visible:ring md:inline-block md:rounded-md md:border-none md:bg-transparent md:px-2 md:py-1 md:text-left md:transition-none md:hover:bg-transparent md:focus:bg-transparent"
+                              href={item.href}
+                            >
+                              {item.label}
+                            </Link>
+                          );
+                        })(
+                          'block md:inline border-t border-border/50 md:border-none bg-secondary/50 hover:bg-secondary focus:bg-secondary-active md:bg-transparent md:hover:bg-transparent md:focus:bg-transparent text-center md:text-left py-4 md:px-2 md:py-1 md:rounded-md focus-visible:text-text text-text-secondary md:text-text-faint hover:text-text-primary active:text-text transition duration-300 md:transition-none ring-inset focus-visible:ring'
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}

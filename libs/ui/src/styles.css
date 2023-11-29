@@ -206,6 +206,11 @@ button:focus-visible {
 }
 
 /* Table */
+.table-parent {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
 table {
   margin: 20px 0;
   border: 1px solid rgb(var(--border));
@@ -213,8 +218,8 @@ table {
   border-bottom: none;
   border-right: none;
   border-collapse: collapse;
+  border-spacing: 0;
   table-layout: auto;
-  overflow-wrap: break-word;
   width: 100%;
 }
 

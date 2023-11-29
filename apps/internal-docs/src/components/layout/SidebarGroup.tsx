@@ -7,19 +7,28 @@ import { useState } from 'react';
 import { Item, OrderedSlugs } from '@odnlabs/utils-client';
 import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight';
 
-const SidebarLink: React.FC<{
+interface SidebarLinkProps {
   cat: OrderedSlugs;
   item: Item;
   subItem?: Item;
   disabled: boolean;
-}> = ({ cat, item, subItem, disabled }) => {
+  close: () => void;
+}
+
+const SidebarLink: React.FC<SidebarLinkProps> = ({
+  cat,
+  item,
+  subItem,
+  disabled,
+  close,
+}) => {
   const pathname = usePathname();
 
   const itemPath = `/${cat.slug}/${item.slug}${
     subItem ? `/${subItem.slug}` : ''
   }`;
 
-  const className = `my-1 block rounded-md px-2.5 py-1.5 text-sm  focus-visible:ring ${
+  const className = `my-1 block rounded-md px-3 py-2.5 lg:px-2.5 lg:py-1.5 text-sm focus-visible:ring ${
     itemPath === pathname ||
     (pathname === '/' && itemPath === '/introduction/introduction')
       ? 'bg-primary font-medium'
@@ -29,13 +38,18 @@ const SidebarLink: React.FC<{
   return disabled ? (
     <p className={className}>{subItem ? subItem.name : item.name}</p>
   ) : (
-    <Link className={className} href={itemPath}>
+    <Link className={className} href={itemPath} onClick={close}>
       {subItem ? subItem.name : item.name}
     </Link>
   );
 };
 
-export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
+interface SidebarGroupProps {
+  cat: OrderedSlugs;
+  close: () => void;
+}
+
+export const SidebarGroup: React.FC<SidebarGroupProps> = ({ cat, close }) => {
   const [open, setOpen] = useState<number[]>([]);
 
   const pathname = usePathname();
@@ -44,7 +58,7 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
     return item.items && item.items?.length > 0 ? (
       <div className="h-full" key={item.slug}>
         <button
-          className={`flex w-full justify-between rounded-md px-2.5 py-1.5 text-left text-sm focus-visible:ring ${
+          className={`flex w-full justify-between rounded-md px-3 py-2.5 text-left text-sm focus-visible:ring lg:px-2.5 lg:py-1.5 ${
             pathname.startsWith(`/${cat.slug}/${item.slug}`)
               ? 'bg-secondary cursor-default font-medium'
               : 'text-text-secondary hover:bg-secondary active:bg-secondary-hover hover:text-text active:text-text'
@@ -79,6 +93,7 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
             {item.items.map((subItem) => (
               <SidebarLink
                 cat={cat}
+                close={close}
                 disabled={
                   !(
                     pathname.startsWith(`/${cat.slug}/${item.slug}`) ||
@@ -94,7 +109,13 @@ export const SidebarGroup: React.FC<{ cat: OrderedSlugs }> = ({ cat }) => {
         </div>
       </div>
     ) : (
-      <SidebarLink cat={cat} disabled={false} item={item} key={item.slug} />
+      <SidebarLink
+        cat={cat}
+        close={close}
+        disabled={false}
+        item={item}
+        key={item.slug}
+      />
     );
   });
 };
