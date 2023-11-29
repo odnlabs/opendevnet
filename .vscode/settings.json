@@ -7,7 +7,8 @@
   },
   "editor.trimAutoWhitespace": false,
   "files.associations": {
-    "*.mdx": "mdx"
+    "*.mdx": "mdx",
+    "action.yaml": "github-actions-workflow"
   },
   "files.insertFinalNewline": true,
   "files.eol": "\n",
@@ -40,5 +41,8 @@
       "email": "test_user@opendevnet.com"
     }
   },
-  "rest-client.showResponseInDifferentTab": true
+  "rest-client.showResponseInDifferentTab": true,
+  "yaml.schemas": {
+    "https://json.schemastore.org/github-action.json": "file:///d%3A/github/opendevnet/tools/actions/pnpm-install/action.yaml"
+  }
 }
