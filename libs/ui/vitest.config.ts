@@ -8,7 +8,7 @@ export default mergeConfig(
     test: {
       environment: 'node',
       coverage: {
-        reportsDirectory: './../../coverage/ui',
+        reportsDirectory: './../../coverage/libs/ui',
       },
     },
   })

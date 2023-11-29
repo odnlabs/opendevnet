@@ -10,7 +10,7 @@ if (!process.env.PUBLIC_WEB_CLIENT_URL) {
 
 const client = new Client({
   baseApiUrl: process.env.PUBLIC_API_URL,
-  baseWebAppUrl: process.env.PUBLIC_WEB_CLIENT_URL,
+  baseWebClientUrl: process.env.PUBLIC_WEB_CLIENT_URL,
 });
 
 export default client;

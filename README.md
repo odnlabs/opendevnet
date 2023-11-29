@@ -14,7 +14,6 @@
   <a href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/Made%20with-Rust-1f425f.svg" alt="Made with Rust"></a>
   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="https://img.shields.io/badge/License-CC_BY--NC--SA_4.0-blue.svg" alt="License: BY-NC-SA SA 4.0" /></a>
   <a href="http://opendevnet.com/"><img src="https://img.shields.io/website-up-down-green-red/http/opendevnet.com.svg" alt="Website opendevnet.com up"></a>
-  <a href="https://github.com/odnlabs/opendevnet/"><img src="https://img.shields.io/github/stars/odnlabs/opendevnet?color=9954ED" alt="Github Repo Stars" /></a>
   <h4>
     <a href="https://opendevnet.com">Open Dev Net</a> · <a href="https://opendevnet.com/changelog">Changelog</a> · <a href="https://opendevnet.com/internal-docs">Internal Docs</a>
   </h4>
