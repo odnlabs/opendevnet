@@ -1,8 +1,4 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-action.json
-defaults:
-  run:
-    shell: bash
-
 name: setup node env
 description: Setup node.js environment with pnpm
 runs:
@@ -15,9 +11,11 @@ runs:
         check-latest: true
 
     - name: Install dependencies
+      shell: bash
       uses: ./tools/actions/pnpm-install
 
     - name: Create Environment Variables
+      shell: bash
       run: |
         chmod +x run.sh &&
         ./run.sh ci setup env
