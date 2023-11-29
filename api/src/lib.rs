@@ -1,12 +1,14 @@
 use std::sync::Arc;
 
-use axum::http::{
-    header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE},
-    HeaderValue, Method,
+use axum::{
+    http::{
+        header::{ACCEPT, AUTHORIZATION, CONTENT_TYPE},
+        HeaderValue, Method,
+    },
+    Router,
 };
 use redis::Client;
 use sqlx::postgres::PgPoolOptions;
-use tokio::net::TcpListener;
 use tower_http::cors::CorsLayer;
 
 mod routes;
@@ -15,7 +17,7 @@ mod ws;
 use opendevnet_core::{AppState, Config};
 use routes::create_router;
 
-pub async fn start_http_server(config: Config) {
+pub async fn app(config: Config) -> Router {
     let pool = match PgPoolOptions::new()
         .max_connections(10)
         .connect(&config.database_url)
@@ -55,16 +57,10 @@ pub async fn start_http_server(config: Config) {
         .allow_headers([AUTHORIZATION, ACCEPT, CONTENT_TYPE]);
 
     // Build the application with the defined routes
-    let router = create_router(Arc::new(AppState {
-        db: pool.clone(),
-        env: config.clone(),
-        redis_client: redis_client.clone(),
+    create_router(Arc::new(AppState {
+        db: pool,
+        env: config,
+        redis_client,
     }))
-    .layer(cors);
-
-    tracing::info!("🚀 API server started successfully");
-
-    // Run it with hyper on localhost:5000
-    let listener = TcpListener::bind("0.0.0.0:5000").await.unwrap();
-    axum::serve(listener, router).await.unwrap();
+    .layer(cors)
 }

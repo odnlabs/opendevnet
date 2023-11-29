@@ -74,6 +74,7 @@ dependencies = [
  "futures",
  "futures-util",
  "headers",
+ "http-body-util",
  "jsonwebtoken",
  "opendevnet_auth",
  "opendevnet_core",
