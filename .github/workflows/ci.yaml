@@ -16,6 +16,9 @@ jobs:
     name: Commitlint
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
       - name: Setup Node Environment
         uses: ./tools/actions/setup-node-env
 
@@ -86,6 +89,9 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
       - name: Setup Node Environment
         uses: ./tools/actions/setup-node-env
 
@@ -99,6 +105,9 @@ jobs:
     name: Format
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
       - name: Setup Node Environment
         uses: ./tools/actions/setup-node-env
 
@@ -181,6 +190,9 @@ jobs:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
       - name: Setup Node Environment
         uses: ./tools/actions/setup-node-env
 
@@ -206,6 +218,9 @@ jobs:
     # Only run on main or dev branch
     if: (github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))
     steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v4
+
       - name: Setup Node Environment
         uses: ./tools/actions/setup-node-env
 
