@@ -75,25 +75,22 @@ pub async fn logout_handler(
             (StatusCode::INTERNAL_SERVER_ERROR, Json(error_response))
         })?;
 
-    let access_cookie = Cookie::build("access_token", "")
+    let access_cookie = Cookie::build(("access_token", ""))
         .path("/")
         .max_age(time::Duration::minutes(-1))
         .same_site(SameSite::Lax)
-        .http_only(true)
-        .finish();
-    let refresh_cookie = Cookie::build("refresh_token", "")
+        .http_only(true);
+    let refresh_cookie = Cookie::build(("refresh_token", ""))
         .path("/")
         .max_age(time::Duration::minutes(-1))
         .same_site(SameSite::Lax)
-        .http_only(true)
-        .finish();
+        .http_only(true);
 
-    let logged_in_cookie = Cookie::build("logged_in", "true")
+    let logged_in_cookie = Cookie::build(("logged_in", "true"))
         .path("/")
         .max_age(time::Duration::minutes(-1))
         .same_site(SameSite::Lax)
-        .http_only(false)
-        .finish();
+        .http_only(false);
 
     let mut headers = HeaderMap::new();
     headers.append(

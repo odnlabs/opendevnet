@@ -11,14 +11,15 @@ license = "CC-BY-NC-SA-4.0"
 opendevnet_auth = { path = "../crates/opendevnet-auth" }
 opendevnet_user = { path = "../crates/opendevnet-user" }
 argon2 = "0.5.0"
-axum = { version = "0.6.12", features = ["json", "ws", "headers"] }
-axum-extra = { version = "0.8.0", features = ["cookie"] }
+axum = { version = "0.7.1", features = ["json", "ws"] }
+axum-extra = { version = "0.9.0", features = ["cookie", "typed-header"] }
+axum-macros = "0.4.0"
 futures = "0.3"
 futures-util = { version = "0.3", default-features = false, features = [
   "sink",
   "std",
 ] }
-headers = "0.3"
+headers = "0.4.0"
 base64 = "0.21.0"
 chrono = { version = "0.4.24", features = ["serde"] }
 dotenv = "0.15.0"
@@ -37,7 +38,7 @@ time = "0.3.20"
 tokio = { version = "1.34.0", features = ["full"] }
 tokio-tungstenite = "0.20"
 tower = { version = "0.4", features = ["util"] }
-tower-http = { version = "0.4.0", features = ["cors", "fs", "trace"] }
+tower-http = { version = "0.5.0", features = ["cors", "fs", "trace"] }
 uuid = { version = "1.3.0", features = ["serde", "v4"] }
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }

@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use axum::{
+    body::Body,
     extract::State,
     http::{header, Request, StatusCode},
     middleware::Next,
@@ -26,11 +27,11 @@ pub struct JWTAuthMiddleware {
     pub access_token_uuid: uuid::Uuid,
 }
 
-pub async fn auth<B>(
+pub async fn auth(
     cookie_jar: CookieJar,
     State(data): State<Arc<AppState>>,
-    mut req: Request<B>,
-    next: Next<B>,
+    mut req: Request<Body>,
+    next: Next,
 ) -> Result<impl IntoResponse, (StatusCode, Json<ErrorResponse>)> {
     let access_token = cookie_jar
         .get("access_token")
