@@ -6,6 +6,7 @@ use axum::http::{
 };
 use redis::Client;
 use sqlx::{postgres::PgPoolOptions, Pool, Postgres};
+use tokio::net::TcpListener;
 use tower_http::cors::CorsLayer;
 
 mod routes;
@@ -60,7 +61,7 @@ pub async fn start_http_server(config: Config) {
         .allow_headers([AUTHORIZATION, ACCEPT, CONTENT_TYPE]);
 
     // Build the application with the defined routes
-    let app = create_router(Arc::new(AppState {
+    let router = create_router(Arc::new(AppState {
         db: pool.clone(),
         env: config.clone(),
         redis_client: redis_client.clone(),
@@ -70,8 +71,6 @@ pub async fn start_http_server(config: Config) {
     tracing::info!("🚀 API server started successfully");
 
     // Run it with hyper on localhost:5000
-    axum::Server::bind(&"0.0.0.0:5000".parse().unwrap())
-        .serve(app.into_make_service())
-        .await
-        .unwrap();
+    let listener = TcpListener::bind("0.0.0.0:5000").await.unwrap();
+    axum::serve(listener, router).await.unwrap();
 }
