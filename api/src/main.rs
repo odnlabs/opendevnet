@@ -1,5 +1,6 @@
-use api::{start_http_server, utils::config::Config};
+use api::start_http_server;
 use dotenv::dotenv;
+use opendevnet_core::Config;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 #[tokio::main]
