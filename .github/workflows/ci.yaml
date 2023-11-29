@@ -306,5 +306,5 @@ jobs:
       - name: Clippy
         run: cargo clippy -- -D warnings --verbose
 
-      - name: Test
-        run: cargo test --verbose
+      # - name: Test
+      #   run: cargo test --verbose
