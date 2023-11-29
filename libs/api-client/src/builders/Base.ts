@@ -5,7 +5,7 @@ export interface BaseOptions {
   accessToken?: string | undefined;
   refreshToken?: string | undefined;
   baseApiUrl: string;
-  baseWebAppUrl: string;
+  baseWebClientUrl: string;
 }
 
 /**
@@ -19,7 +19,7 @@ export class Base {
   protected refreshToken?: string | undefined;
 
   protected baseApiUrl: string;
-  protected baseWebAppUrl: string;
+  protected baseWebClientUrl: string;
 
   /**
    * Creates a new client instance of the base class.
@@ -30,7 +30,7 @@ export class Base {
     this.accessToken = options.accessToken;
     this.refreshToken = options.refreshToken;
     this.baseApiUrl = options.baseApiUrl;
-    this.baseWebAppUrl = options.baseWebAppUrl;
+    this.baseWebClientUrl = options.baseWebClientUrl;
   }
 
   /**
