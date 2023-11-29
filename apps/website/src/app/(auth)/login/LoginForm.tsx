@@ -11,10 +11,10 @@ import { addToast } from '@store';
 import Link from 'next/link';
 
 interface LoginFormProps {
-  webApp?: string | undefined;
+  webClient?: string | undefined;
 }
 
-export const LoginForm: React.FC<LoginFormProps> = ({ webApp }) => {
+export const LoginForm: React.FC<LoginFormProps> = ({ webClient }) => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
@@ -53,7 +53,7 @@ export const LoginForm: React.FC<LoginFormProps> = ({ webApp }) => {
           })
         );
 
-        if (webApp) window.location.href = webApp;
+        if (webClient) window.location.href = webClient;
         else window.location.href = '/';
       }
     } catch (error) {
