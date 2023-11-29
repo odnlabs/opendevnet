@@ -20,8 +20,8 @@ interface DocumentContentProps {
 }
 
 const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
-  // Detect external links and add target="_blank" and rel="noreferrer"
   useEffect(() => {
+    // Detect external links and add target="_blank" and rel="noreferrer"
     const links = document
       .getElementById('mdx-content')
       ?.getElementsByTagName('a');
@@ -43,11 +43,31 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
         link.classList.add('link');
       }
     }
+
+    // Create div elements as parents for each table.
+    // Then overflow-x: auto can be applied to the parent, allowing for reponsive tables.
+    const tables = document.getElementsByTagName('table');
+    if (!tables) return;
+    for (
+      let index = 0, tablesLength = tables.length;
+      index < tablesLength;
+      index += 1
+    ) {
+      const table = tables[index];
+      if (!table) continue;
+      const parent = document.createElement('div');
+      parent.classList.add('table-parent');
+      table.parentNode?.insertBefore(parent, table);
+      parent.appendChild(table);
+    }
   }, []);
 
   return (
-    <div className="mx-auto mb-20 mt-10 w-11/12 max-w-5xl lg:mb-28 lg:mt-20 xl:mb-52">
-      <div className="flex">
+    <div className="mx-auto mb-20 mt-8 w-11/12 max-w-5xl lg:mb-28 xl:mb-52 xl:mt-10 2xl:mt-20">
+      <div className="flex-row-reverse xl:flex">
+        <uiComponents.Toc
+          editLink={`https://github.com/odnlabs/opendevnet/tree/dev/docs/internal/${doc.meta.path}`}
+        />
         <div className="w-full" id="mdx-content">
           <h1 className="text-text my-3 block text-4xl font-bold leading-[1.2] md:text-5xl">
             {doc.meta.title}
@@ -57,7 +77,9 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
             {doc.meta.lastUpdated}
           </p>
           <div className="bg-border mt-5 h-px w-full" />
-          <div className={`text-text-secondary mb-10 mt-8 ${styles.content}`}>
+          <div
+            className={`text-text-secondary relative mb-10 mt-8 w-full max-w-3xl ${styles.content}`}
+          >
             {doc.source && (
               <MDXRemote
                 components={{ Link, ...uiComponents }}
@@ -76,8 +98,8 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
               />
             )}
           </div>
-          <div className="border-border flex border-t pt-10">
-            <div className="w-1/2 pr-2">
+          <div className="border-border flex flex-wrap border-t pt-10">
+            <div className="w-full sm:w-1/2 lg:pr-2">
               {doc.meta.prev && (
                 <Link
                   className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-left transition duration-300 hover:no-underline"
@@ -104,7 +126,7 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
                 </Link>
               )}
             </div>
-            <div className="w-1/2 pl-2">
+            <div className="w-full pt-2 sm:w-1/2 sm:pl-2 sm:pt-0">
               {doc.meta.next && (
                 <Link
                   className="bg-background border-border hover:bg-background-secondary active:bg-background-tertiary hover:border-link active:border-link block h-full rounded-lg border p-5 text-right transition duration-300 hover:no-underline"
@@ -133,9 +155,6 @@ const DocumentContent: React.FC<DocumentContentProps> = ({ doc }) => {
             </div>
           </div>
         </div>
-        <uiComponents.Toc
-          editLink={`https://github.com/odnlabs/opendevnet/tree/dev/docs/internal/${doc.meta.path}`}
-        />
       </div>
     </div>
   );

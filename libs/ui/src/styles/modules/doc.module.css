@@ -1,4 +1,11 @@
 /* Styling for Posts */
+.content:not(.ignore) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
 /* Headings */
 .content:not(.ignore) h1,
 .content:not(.ignore) h2,
@@ -51,12 +58,12 @@
 
 /* Code Blocks */
 .content:not(.ignore) pre code {
-  display: block;
-  overflow: hidden;
   border-radius: 0.375rem;
   margin: 1.25rem 0;
   padding-right: 1.25rem;
-  cursor: text;
+  width: auto;
+  overflow: auto;
+  white-space: pre-line;
 }
 
 .content:not(.ignore) pre code span:last-of-type {
@@ -74,6 +81,7 @@
   border: 1px solid rgb(var(--border));
   background: rgb(var(--background));
   font-size: 14px;
+  word-wrap: break-word;
 }
 
 /* Code bit in paragraph */

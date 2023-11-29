@@ -64,5 +64,5 @@
   --tw-ring-color: rgb(var(--ring));
   border-color: var(--tw-ring-color);
   transition: none;
-  color: var(--text);
+  color: rgb(var(--text));
 }

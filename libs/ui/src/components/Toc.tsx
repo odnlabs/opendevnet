@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 
+import { HiChevronRight } from '@react-icons/all-files/hi/HiChevronRight';
 import { HiOutlineExternalLink } from '@react-icons/all-files/hi/HiOutlineExternalLink';
+
+import { Button } from './Button';
 
 /**
  * Hook to observe the headings.
@@ -55,6 +58,7 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
     'relative' | 'fixed' | 'absolute'
   >('relative');
   const [isMobileWidth, setIsMobileWidth] = useState<boolean>(false);
+  const [openOnMobile, setOpenOnMobile] = useState<boolean>(false);
 
   const { activeId } = useHeadsObserver();
 
@@ -81,6 +85,7 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
 
   useEffect(() => {
     const handleScroll = (): void => {
+      if (window.innerWidth < 1280) return;
       const footer = document.getElementById('footer');
       const toc = tocRef.current;
 
@@ -135,50 +140,89 @@ export const Toc: React.FC<TocProps> = ({ editLink }) => {
   ];
 
   return (
-    <div className="min-w-60 max-w-60 relative ml-20 min-h-full">
-      <div
-        className={`min-w-60 max-w-60 ${
-          tocPosition === 'relative'
-            ? 'relative'
-            : tocPosition === 'fixed'
-              ? 'fixed top-20'
-              : 'absolute bottom-0'
-        }`}
-        ref={tocRef}
-      >
-        <p className="border-border border-b py-2 font-semibold">
-          Table of Contents
-        </p>
-        <ul className="pt-2">
-          {headings.map((heading) => (
-            <li className={styles[heading.level - 1]} key={heading.id}>
+    <>
+      {/* Desktop */}
+      <div className="min-w-60 max-w-60 relative ml-20 min-h-full">
+        <div
+          className={`min-w-60 max-w-60 hidden xl:block ${
+            tocPosition === 'relative'
+              ? 'relative'
+              : tocPosition === 'fixed'
+                ? 'fixed top-20'
+                : 'absolute bottom-0'
+          }`}
+          ref={tocRef}
+        >
+          <p className="border-border border-b py-2 font-semibold">
+            Table of Contents
+          </p>
+          <ul className="pt-2">
+            {headings.map((heading) => (
+              <li className={styles[heading.level - 1]} key={heading.id}>
+                <a
+                  className={`relative text-sm after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring ${
+                    activeId === heading.id
+                      ? 'link font-semibold'
+                      : 'text-text-primary hover:underline'
+                  }`}
+                  href={`#${heading.id}`}
+                >
+                  {heading.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {editLink && (
+            <div className="border-border mt-3 border-t text-sm">
               <a
-                className={`relative text-sm after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring ${
-                  activeId === heading.id
-                    ? 'link font-semibold'
-                    : 'text-text-primary hover:underline'
-                }`}
-                href={`#${heading.id}`}
+                className="text-text-secondary hover:text-text active:text-text relative my-2 flex after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring"
+                href={editLink}
+                rel="noreferrer"
+                target="_blank"
               >
-                {heading.text}
+                Edit this page on GitHub
+                <HiOutlineExternalLink className="ml-1.5 mt-1 h-3 w-3 translate-y-px" />
               </a>
-            </li>
-          ))}
-        </ul>
-        {editLink && (
-          <div className="border-border mt-3 border-t text-sm">
-            <a
-              className="text-text-secondary hover:text-text active:text-text relative my-2 flex after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring"
-              href={editLink}
-              rel="noreferrer"
-              target="_blank"
-            >
-              Edit this page on GitHub
-              <HiOutlineExternalLink className="ml-1.5 mt-1 h-3 w-3 translate-y-px" />
-            </a>
-          </div>
-        )}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+      {/* Mobile */}
+      <div className="mb-5 xl:hidden">
+        <Button
+          iconRight={HiChevronRight}
+          iconRotate={openOnMobile ? 90 : 0}
+          label="On this page"
+          onClick={() => setOpenOnMobile(!openOnMobile)}
+          variant="secondary"
+        />
+        <div
+          className={`bg-background-secondary mt-3 grid origin-top rounded-lg transition-[visibility,transform,opacity,grid] duration-300 ${
+            openOnMobile
+              ? 'grid-rows-[1fr]'
+              : 'invisible scale-y-0 grid-rows-[0fr] opacity-0'
+          }`}
+        >
+          <div className="overflow-hidden">
+            <ul className="p-5">
+              {headings.map((heading) => (
+                <li className={styles[heading.level - 1]} key={heading.id}>
+                  <a
+                    className={`relative text-sm after:absolute after:-bottom-0.5 after:-left-1 after:-right-1 after:-top-0.5 after:rounded-md after:focus-visible:ring ${
+                      activeId === heading.id
+                        ? 'link font-semibold'
+                        : 'text-text-primary hover:underline'
+                    }`}
+                    href={`#${heading.id}`}
+                  >
+                    {heading.text}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
