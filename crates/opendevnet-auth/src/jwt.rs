@@ -9,11 +9,12 @@ use axum::{
     Json,
 };
 use axum_extra::extract::cookie::CookieJar;
-use opendevnet_user::models::User;
+use opendevnet_core::AppState;
+use opendevnet_user::User;
 use redis::AsyncCommands;
 use serde::{Deserialize, Serialize};
 
-use crate::{utils::token, AppState};
+use crate::token;
 
 #[derive(Debug, Serialize)]
 pub struct ErrorResponse {
