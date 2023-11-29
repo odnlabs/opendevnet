@@ -1,4 +1,8 @@
 # yaml-language-server: $schema=https://json.schemastore.org/github-action.json
+defaults:
+  run:
+    shell: bash
+
 name: setup node env
 description: Setup node.js environment with pnpm
 runs:
