@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use axum::{
+    body::Body,
     extract::State,
     http::{header, Request, StatusCode},
     middleware::Next,
@@ -8,11 +9,12 @@ use axum::{
     Json,
 };
 use axum_extra::extract::cookie::CookieJar;
-use opendevnet_user::models::User;
+use opendevnet_core::AppState;
+use opendevnet_user::User;
 use redis::AsyncCommands;
 use serde::{Deserialize, Serialize};
 
-use crate::{utils::token, AppState};
+use crate::token;
 
 #[derive(Debug, Serialize)]
 pub struct ErrorResponse {
@@ -26,11 +28,11 @@ pub struct JWTAuthMiddleware {
     pub access_token_uuid: uuid::Uuid,
 }
 
-pub async fn auth<B>(
+pub async fn auth(
     cookie_jar: CookieJar,
     State(data): State<Arc<AppState>>,
-    mut req: Request<B>,
-    next: Next<B>,
+    mut req: Request<Body>,
+    next: Next,
 ) -> Result<impl IntoResponse, (StatusCode, Json<ErrorResponse>)> {
     let access_token = cookie_jar
         .get("access_token")

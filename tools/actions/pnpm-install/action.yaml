@@ -4,8 +4,8 @@ description: Run pnpm install with cache enabled
 runs:
   using: 'composite'
   steps:
-    - if: runner.os == 'Linux'
-      name: Set up swap space
+    - name: Set up swap space
+      if: runner.os == 'Linux'
       uses: pierotofy/set-swap-space@v1.0
       with:
         swap-size-gb: 1
@@ -17,7 +17,7 @@ runs:
         run_install: false
 
     - name: Get pnpm store directory
-      id: pnpm-cache
+      id: pnpm-install
       run: echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
       shell: bash
 

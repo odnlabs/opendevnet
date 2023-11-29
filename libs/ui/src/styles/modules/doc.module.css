@@ -124,6 +124,32 @@
 .content:not(.ignore) h5 a,
 .content:not(.ignore) h6 a {
   color: rgb(var(--text));
+  position: relative;
+}
+
+.content:not(.ignore) h1 a:focus-visible,
+.content:not(.ignore) h2 a:focus-visible,
+.content:not(.ignore) h3 a:focus-visible,
+.content:not(.ignore) h4 a:focus-visible,
+.content:not(.ignore) h5 a:focus-visible,
+.content:not(.ignore) h6 a:focus-visible {
+  outline: none;
+}
+
+.content:not(.ignore) h1 a:focus-visible:after,
+.content:not(.ignore) h2 a:focus-visible:after,
+.content:not(.ignore) h3 a:focus-visible:after,
+.content:not(.ignore) h4 a:focus-visible:after,
+.content:not(.ignore) h5 a:focus-visible:after,
+.content:not(.ignore) h6 a:focus-visible:after {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: -1px;
+  right: -3px;
+  bottom: -1px;
+  box-shadow: 0 0 0 2px rgb(var(--ring));
+  border-radius: 3px;
 }
 
 .content:not(.ignore) h1 a:hover,

@@ -7,6 +7,11 @@ on:
   pull_request:
     branches: ['**']
 
+concurrency:
+  # Group based on workflow name and PR if it exists, if no PR, let it run so carryforward flags work
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 defaults:
   run:
     shell: bash
@@ -18,8 +23,6 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Install Node.js
         uses: actions/setup-node@v4
@@ -28,7 +31,11 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
+
+      - name: Create Environment Variables
+        shell: bash
+        run: chmod +x run.sh && ./run.sh ci setup env
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
@@ -107,12 +114,11 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
       - name: Create Environment Variables
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci setup env
+        shell: bash
+        run: chmod +x run.sh && ./run.sh ci setup env
 
       - name: Build
         run: pnpm run build:ci
@@ -134,7 +140,11 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
+
+      - name: Create Environment Variables
+        shell: bash
+        run: chmod +x run.sh && ./run.sh ci setup env
 
       - name: Format check (main branch only)
         run: pnpm run format:check
@@ -143,7 +153,8 @@ jobs:
     name: Build and Run API Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.api == 'true'
+    # Only run on main or dev branch
+    if: ((github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))) && needs.changes.outputs.api == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -156,11 +167,30 @@ jobs:
           chmod +x run.sh &&
           ./run.sh ci start api
 
+  build_and_run_internal_docs_image:
+    name: Build and Run Internal Image
+    runs-on: ubuntu-latest
+    needs: changes
+    # Only run on main or dev branch
+    if: ((github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))) && needs.changes.outputs.internal_docs == 'true'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Run Internal Docs Image
+        run: |
+          chmod +x run.sh &&
+          ./run.sh ci start internal_docs
+
   build_and_run_website_image:
     name: Build and Run Website Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.website == 'true'
+    # Only run on main or dev branch
+    if: ((github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev')))  && needs.changes.outputs.website == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -177,7 +207,8 @@ jobs:
     name: Build and Run Web Client Image
     runs-on: ubuntu-latest
     needs: changes
-    if: needs.changes.outputs.web_client == 'true'
+    # Only run on main or dev branch
+    if: ((github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))) && needs.changes.outputs.web_client == 'true'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -190,28 +221,11 @@ jobs:
           chmod +x run.sh &&
           ./run.sh ci start web_client
 
-  build_and_run_internal_docs_image:
-    name: Build and Run Internal Image
-    runs-on: ubuntu-latest
-    needs: changes
-    if: needs.changes.outputs.internal_docs == 'true'
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Run Internal Docs Image
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci start internal_docs
-
   unit_tests:
     name: Unit Tests
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 'Checkout'
         uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -221,15 +235,14 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
+
+      - name: Create Environment Variables
+        shell: bash
+        run: chmod +x run.sh && ./run.sh ci setup env
 
       - name: Check manypkg
         run: pnpm manypkg check
-
-      - name: Setup Environment Variables
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci setup env
 
       - name: Build
         run: pnpm run build
@@ -237,11 +250,20 @@ jobs:
       - name: Run Unit Tests
         run: pnpm run test
 
+      - name: Upload Utils Server Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: unit-report-utils-server
+          path: coverage/libs/utils-server/
+
   e2e_tests:
     name: End-to-end Tests
     runs-on: ubuntu-latest
+    # Only run on main or dev branch
+    if: (github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))
     steps:
-      - name: Checkout
+      - name: 'Checkout'
         uses: actions/checkout@v4
 
       - name: Install Node.js
@@ -251,14 +273,13 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
-      - name: Setup Environment Variables
-        run: |
-          chmod +x run.sh &&
-          ./run.sh ci setup env
+      - name: Create Environment Variables
+        shell: bash
+        run: chmod +x run.sh && ./run.sh ci setup env
 
-      - name: Install Browsers
+      - name: Install Browsers for Playwright
         run: pnpm exec playwright install --with-deps chromium chrome msedge firefox webkit
 
       - name: Run End-to-end Tests
@@ -268,25 +289,22 @@ jobs:
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-e2e-report-internal-docs
-          path: dist/apps/internal-docs/playwright-report/
-          retention-days: 30
+          name: e2e-report-internal-docs
+          path: coverage/apps/internal-docs/
 
       - name: Upload Web Client Report
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-e2e-report-web-client
-          path: dist/apps/web-client/playwright-report/
-          retention-days: 30
+          name: e2e-report-web-client
+          path: coverage/apps/web-client/
 
       - name: Upload Website Report
         uses: actions/upload-artifact@v3
         if: always()
         with:
-          name: playwright-e2e-report-website
-          path: dist/apps/website/playwright-report/
-          retention-days: 30
+          name: e2e-report-website
+          path: coverage/apps/website/
 
   rust_tests:
     name: Rust Tests
@@ -306,5 +324,34 @@ jobs:
       - name: Clippy
         run: cargo clippy -- -D warnings --verbose
 
-      - name: Test
-        run: cargo test --verbose
+      # TODO: Have to implement test coverage first
+      # - name: Upload API Report
+      #   uses: actions/upload-artifact@v3
+      #   if: always()
+      #   with:
+      #     name: api-report
+      #     path: coverage/api/
+
+      # - name: Test
+      #   run: cargo test --verbose
+
+
+  upload_to_codecov:
+    name: Upload to Codecov
+    runs-on: ubuntu-latest
+    needs: [unit_tests, e2e_tests]
+    # Only run on main or dev branch
+    if: (github.event_name == 'pull_request' && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'dev')) || (github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev'))
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+
+      - name: Upload to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true
+          verbose: true

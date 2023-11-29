@@ -12,7 +12,7 @@ export const Header: React.FC = () => (
     <header className="border-border no-select fixed left-0 top-0 z-50 flex h-14 w-full justify-between border-b bg-[rgb(var(--header))]">
       {/* Branding */}
       <Link
-        className="flex px-3 py-3 text-2xl font-medium ring-inset focus-visible:ring"
+        className="m-1 flex rounded-md p-2 text-2xl font-medium ring-inset focus-visible:ring"
         href="/"
       >
         <Image
@@ -31,7 +31,7 @@ export const Header: React.FC = () => (
       </Link>
       <div className="m-2 flex">
         <a
-          className="text-text-secondary hover:text-text active:text-text my-2 mr-3 -translate-y-px"
+          className="text-text-secondary hover:text-text active:text-text my-1 mr-2 -translate-y-px rounded-3xl p-1 focus-visible:ring"
           href={`${config.social.github}/opendevnet/tree/dev/docs/internal`}
           rel="noreferrer"
           target="_blank"

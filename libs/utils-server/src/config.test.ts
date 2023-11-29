@@ -12,7 +12,7 @@ describe('config', () => {
     const urlRegex = /^(?:http|https):\/\//;
     expect(config.api).toMatch(urlRegex);
     expect(config.website).toMatch(urlRegex);
-    expect(config.webApp).toMatch(urlRegex);
+    expect(config.webClient).toMatch(urlRegex);
     expect(config.internalDocs).toMatch(urlRegex);
   });
 });
