@@ -1,10 +1,10 @@
 use std::sync::Arc;
 
 use axum::{extract::State, http::StatusCode, response::IntoResponse, Json};
+use opendevnet_core::AppState;
+use opendevnet_user::PublicUser;
 use sqlx::Row;
 use uuid::Uuid;
-
-use crate::{utils::user::PublicUser, AppState};
 
 pub async fn list_users(
     State(data): State<Arc<AppState>>,
