@@ -5,8 +5,9 @@ use axum::extract::connect_info::ConnectInfo;
 use axum::{
     extract::ws::{CloseFrame, Message, WebSocket, WebSocketUpgrade},
     response::IntoResponse,
-    TypedHeader,
 };
+use axum_extra::TypedHeader;
+use axum_macros::debug_handler;
 // Allows to split the websocket stream into separate TX and RX branches.
 use futures::{sink::SinkExt, stream::StreamExt};
 
@@ -22,6 +23,7 @@ use futures::{sink::SinkExt, stream::StreamExt};
 /// `WebSocketUpgrade` which is a type that represents a websocket upgrade
 /// request. This will cause the server to switch from HTTP to
 /// websocket protocol.
+#[debug_handler]
 pub async fn ws_handler(
     ws: WebSocketUpgrade,
     user_agent: Option<TypedHeader<headers::UserAgent>>,
