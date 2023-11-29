@@ -28,7 +28,7 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
       - name: Validate current commit (last commit) with commitlint
         if: github.event_name == 'push'
@@ -107,7 +107,7 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
       - name: Create Environment Variables
         run: |
@@ -134,7 +134,7 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
       - name: Format check (main branch only)
         run: pnpm run format:check
@@ -225,7 +225,7 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
       - name: Check manypkg
         run: pnpm manypkg check
@@ -264,7 +264,7 @@ jobs:
           check-latest: true
 
       - name: Install dependencies
-        uses: ./tools/actions/pnpm-cache
+        uses: ./tools/actions/pnpm-install
 
       - name: Setup Environment Variables
         run: |
