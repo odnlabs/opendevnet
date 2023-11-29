@@ -76,6 +76,7 @@ dependencies = [
  "headers",
  "jsonwebtoken",
  "opendevnet_auth",
+ "opendevnet_core",
  "opendevnet_user",
  "rand_core",
  "redis",
@@ -1485,7 +1486,28 @@ checksum = "dd8b5dd2ae5ed71462c540258bedcb51965123ad7e7ccf4b9a8cafaa4a63576d"
 name = "opendevnet_auth"
 version = "0.0.0"
 dependencies = [
+ "axum",
+ "axum-extra",
+ "base64",
+ "chrono",
+ "jsonwebtoken",
+ "opendevnet_core",
+ "opendevnet_user",
+ "redis",
  "serde",
+ "serde_json",
+ "sqlx",
+ "tracing",
+ "uuid",
+]
+
+[[package]]
+name = "opendevnet_core"
+version = "0.0.0"
+dependencies = [
+ "redis",
+ "sqlx",
+ "tracing",
 ]
 
 [[package]]
@@ -1493,8 +1515,10 @@ name = "opendevnet_user"
 version = "0.0.0"
 dependencies = [
  "chrono",
+ "opendevnet_core",
  "serde",
  "sqlx",
+ "tracing",
  "uuid",
 ]
 
@@ -2766,9 +2790,9 @@ checksum = "09cc8ee72d2a9becf2f2febe0205bbed8fc6615b7cb429ad062dc7b7ddd036a9"
 
 [[package]]
 name = "uuid"
-version = "1.5.0"
+version = "1.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "88ad59a7560b41a70d191093a945f0b87bc1deeda46fb237479708a1d6b6cdfc"
+checksum = "5e395fcf16a7a3d8127ec99782007af141946b4795001f876d54fb0d55978560"
 dependencies = [
  "getrandom",
  "serde",
