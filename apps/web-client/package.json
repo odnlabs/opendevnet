@@ -21,7 +21,7 @@
     "@odnlabs/utils-client": "workspace:*",
     "@odnlabs/utils-server": "workspace:*",
     "@react-icons/all-files": "^4.1.0",
-    "@reduxjs/toolkit": "^1.9.7",
+    "@reduxjs/toolkit": "^2.0.0",
     "@splidejs/react-splide": "^0.7.12",
     "builder-validation": "^0.0.3",
     "next": "14.0.3",
