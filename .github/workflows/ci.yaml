@@ -223,7 +223,7 @@ jobs:
         run: pnpm run test
 
       - name: Upload Utils Server Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: unit-report-utils-server
@@ -258,21 +258,21 @@ jobs:
         run: pnpm run e2e
 
       - name: Upload Internal Docs Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: e2e-report-internal-docs
           path: coverage/apps/internal-docs/
 
       - name: Upload Web Client Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: e2e-report-web-client
           path: coverage/apps/web-client/
 
       - name: Upload Website Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: e2e-report-website
@@ -298,7 +298,7 @@ jobs:
 
       # TODO: Have to implement test coverage first
       # - name: Upload API Report
-      #   uses: actions/upload-artifact@v3
+      #   uses: actions/upload-artifact@v4
       #   if: always()
       #   with:
       #     name: api-report
