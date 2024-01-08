@@ -6,7 +6,7 @@
   "license": "CC-BY-NC-SA-4.0",
   "main": "index.js",
   "dependencies": {
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
     "@slekup/tsconfig": "1.0.0"
