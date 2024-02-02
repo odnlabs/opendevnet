@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@slekup/tsconfig": "1.0.0",
-    "@types/node": "^20.10.1",
+    "@types/node": "^20.11.16",
     "eslint-config-slekup": "1.0.23",
     "tsup": "^8.0.1"
   },
