@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@slekup/tsconfig": "1.0.0",
-    "@types/react": "^18.2.39",
+    "@types/react": "^18.2.53",
     "autoprefixer": "^10.4.16",
     "eslint-config-slekup": "1.0.23",
     "postcss": "^8.4.31",
