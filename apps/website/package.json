@@ -43,7 +43,7 @@
     "@slekup/tsconfig": "1.0.0",
     "@types/mdx": "^2.0.10",
     "@types/node": "^20.10.1",
-    "@types/react": "^18.2.39",
+    "@types/react": "^18.2.58",
     "@types/react-dom": "^18.2.16",
     "@types/uuid": "^9.0.7",
     "autoprefixer": "^10.4.16",
